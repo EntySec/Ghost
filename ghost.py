@@ -48,42 +48,69 @@ arrow = Fore.RED + "  └──>".decode("utf-8").strip() + Fore.WHITE
 arrow = str(arrow)
 connect = Fore.RED + "│".decode("utf-8").strip() + Fore.WHITE
 
-logo_design_1 = ('''
-'''
+logo_design_1 = Fore.WHITE + ('''
+     .-.
+   .'   `.
+   :0 0   :
+   : o    `.
+  :         ``.
+ :             `.
+:  :         .   `.
+:   :          ` . `.
+ `.. :            `. ``;
+    `:;             `:'
+       :              `.
+        `.              `.     .
+          `'`'`'`---..,___`;.-'
+''')
 
-logo_design_2 = Fore.GREEN + '''                                             
-  .;'                     `;,
- .;'  ,;'             `;,  `;,   {0}Ghost Framework
-.;'  ,;'  ,;'     `;,  `;,  `;,
-::   ::   :   {1}( ){0}   :   ::   ::  {1}Developed by Entynetproject (Ivan Nikolsky){0}
-':.  ':.  ':. {1}/_\{0} ,:'  ,:'  ,:'
- ':.  ':.    {1}/___\{0}    ,:'  ,:'   
-  ':.       {1}/_____\{0}      ,:'
-           {1}/       \\{0}
-'''.format(Fore.GREEN, Fore.WHITE, Fore.RED)
+logo_design_2 = Fore.WHITE + ('''                                             
+     .-.
+   .'   `.
+   :0 0   :
+   : o    `.
+  :         ``.
+ :             `.
+:  :         .   `.
+:   :          ` . `.
+ `.. :            `. ``;
+    `:;             `:'
+       :              `.
+        `.              `.     .
+          `'`'`'`---..,___`;.-'
+''')
 
-logo_design_pre = '''
-'''
+logo_design_pre = Fore.WHITE + ('''
+     .-.
+   .'   `.
+   :0 0   :
+   : o    `.
+  :         ``.
+ :             `.
+:  :         .   `.
+:   :          ` . `.
+ `.. :            `. ``;
+    `:;             `:'
+       :              `.
+        `.              `.     .
+          `'`'`'`---..,___`;.-'
+''')
 
-logo_design_4 = '''
-\033[92m
-          +hydNNNNdyh+
-        +mMMMMMMMMMMMMm+
-      `dMMm\033[0m:\033[92mNMMMMMMN\033[0m:\033[92mmMMd`
-      hMMMMMMMMMMMMMMMMMMh
-  \033[92m..  yyyyyyyyyyyyyyyyyyyy  ..              \033[0m Ghost Framework \033[92m
-\033[92m.mMMm`MMMMMMMMMMMMMMMMMMMM`mMMm.            \033[0m Developed by Entynetproject\033[92m
-\033[92m:MMMM-MMMMMMMMMMMMMMMMMMMM-MMMM:            \033[0m (Ivan Nikolsky)\033[92m
-:MMMM-MMMMMMMMMMMMMMMMMMMM-MMMM:
-:MMMM-MMMMMMMMMMMMMMMMMMMM-MMMM:
-:MMMM-MMMMMMMMMMMMMMMMMMMM-MMMM:
--MMMM-MMMMMMMMMMMMMMMMMMMM-MMMM-
- +yy+ MMMMMMMMMMMMMMMMMMMM +yy+
-      mMMMMMMMMMMMMMMMMMMm
-      `/++MMMMh++hMMMM++/`
-          MMMMo  oMMMM
-          MMMMo  oMMMM
-          oNMm-  -mMNs'''
+logo_design_4 = Fore.WHITE + ('''
+     .-.
+   .'   `.
+   :0 0   :
+   : o    `.
+  :         ``.
+ :             `.
+:  :         .   `.
+:   :          ` . `.
+ `.. :            `. ``;
+    `:;             `:'
+       :              `.
+        `.              `.     .
+          `'`'`'`---..,___`;.-'
+''')
 
 page_1 = '''\n
 {0}[{1}1{0}] {2}Show Connected Devices      {0}[{1}6{0}] {2}Screen record a phone               {0}[{1}11{0}] {2}Uninstall an app                   
@@ -94,7 +121,7 @@ page_1 = '''\n
 
 
 {0}[{1}99{0}] {2}Exit   {0}[{1}0{0}] {2}Clear   {0}[{1}p{0}] Next Page                           v1.2
-'''.format(Fore.CYAN, Fore.RED, Fore.WHITE)
+'''.format(Fore.GREEN, Fore.RED, Fore.WHITE)
 
 page_2 = '''\n
 {0}[{1}16{0}]{2} Port Forwarding                {0}[{1}21{0}]{2} NetStat 
@@ -105,7 +132,7 @@ page_2 = '''\n
 
 
 {0}[{1}99{0}] {2}Exit   {0}[{1}0{0}] {2}Clear   {0}[{1}b{0}] Back to page one
-'''.format(Fore.CYAN, Fore.RED, Fore.WHITE)
+'''.format(Fore.GREEN, Fore.RED, Fore.WHITE)
 
 
 #=============================
@@ -114,7 +141,7 @@ def main():
     page_num = 1
     os.system("adb tcpip 5555")
     os.system("adb devices -l")
-    print (("\n[{0}+{1}] Enter a phones ip address.").format(Fore.RED, Fore.WHITE))
+    print (("\n[{0}+{1}] Enter a phone IP address.").format(Fore.RED, Fore.WHITE))
     try:
         device_name = raw_input (arrow+" ghost"+Fore.RED + "(connect_phone)"+Fore.WHITE + "> ")
     except KeyboardInterrupt:
