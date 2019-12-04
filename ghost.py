@@ -355,52 +355,20 @@ def main():
             os.system("adb -s " +device_name+ " dumpsys activity")
             option = raw_input(Fore.WHITE + "ghost"+Fore.RED + "(main_menu)"+Fore.WHITE + "> ")
 
-        elif option == '0':
-            global page2
-            if page2 == True:
-                clear(page_2)
-                option = raw_input(Fore.WHITE + "ghost"+Fore.RED + "(main_menu)"+Fore.WHITE + "> ")
-            else:
-                clear(page_1)
-                option = raw_input(Fore.WHITE + "ghost"+Fore.RED + "(main_menu)"+Fore.WHITE + "> ")
+        elif option == '26':
+            os.system("clear")
 
-        elif option == 'p':
-            os.system('clear')
-            page2 = True
-            banner_title = random.choice([logo_design_1,logo_design_2,logo_design_3,logo_design_4])
-            print (Fore.RED + banner_title)
-            print (page_2)
-            option = raw_input(Fore.WHITE + "ghost"+Fore.RED + "(main_menu)"+Fore.WHITE + "> ")
-
-        elif option == 'b':
-            os.system('clear')
-            page2 = False
-            banner_title = random.choice([logo_design_1,logo_design_2,logo_design_3,logo_design_4])
-            print (Fore.RED + banner_title)
-            print (page_1)
-            option = raw_input(Fore.WHITE + "ghost"+Fore.RED + "(main_menu)"+Fore.WHITE + "> ")
-
-        elif option == '99':
+        elif option == '27':
             exit()
             break
         else:
-            os.system("error: invalid menu option")
+            print("ghost: error: invalid command")
             option = raw_input(Fore.WHITE + "ghost"+Fore.RED + "(main_menu)"+Fore.WHITE + "> ")
 
 
     main()
 
 #=============================
-
-def clear(page):
-    global page2
-    os.system('clear')
-    banner_title = random.choice([logo_design_1,logo_design_2,logo_design_3,logo_design_4])
-    print (Fore.RED + banner_title)    
-    print (page)
-
-
-
 #=============================  
 # Run
 yn = raw_input(Fore.WHITE + "Have you already installed adb "+Fore.GREEN + "Y"+Fore.WHITE+"/"+Fore.RED+"n "+Fore.WHITE)
