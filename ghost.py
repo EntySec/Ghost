@@ -97,37 +97,34 @@ logo_design_pre = Fore.WHITE + ('''
 ''')
 
 logo_design_4 = Fore.WHITE + ('''
-     .-.
-   .'   `.
-   :0 0   :
-   : o    `.
-  :         ``.
- :             `.
-:  :         .   `.
-:   :          ` . `.
- `.. :            `. ``;
-    `:;             `:'
-       :              `.
-        `.              `.     .
-          `'`'`'`---..,___`;.-'
+
 ''')
 
 page_1 = '''\n
-{0}[{1}1{0}] {2}Show connected phones      {0}[{1}10{0}] {2}Turn The Device off                              
-{0}[{1}2{0}] {2}Disconect all phones       {0}[{1}11{0}] {2}Uninstall an app
-{0}[{1}3{0}] {2}Connect a new phone        {0}[{1}12{0}] {2}Show log of device         
-{0}[{1}4{0}] {2}Access shell on a phone    {0}[{1}13{0}] {2}Dump System Info   
-{0}[{1}5{0}] {2}Install an apk on a phone  {0}[{1}14{0}] {2}List all apps on a phone
-{0}[{1}6{0}] {2}Screen record a phone      {0}[{1}15{0}] {2}Run an app
-{0}[{1}7{0}] {2}ScreenShot a phone         {0}[{1}16{0}]{2} Port Forwarding 
-{0}[{1}8{0}] {2}Restart Server             {0}[{1}17{0}]{2} Grab wpa_supplicant
-{0}[{1}9{0}] {2}Pull folders from phone    {0}[{1}18{0}]{2} Show Mac/Inet  
-
-{0}[{1}19{0}]{2} Extract apk from app      {0}[{1}24{0}]{2} Use Keycode
-{0}[{1}20{0}]{2} Get Battery Status        {0}[{1}25{0}]{2} Get Current Activity                
-{0}[{1}21{0}]{2} NetStat                   {0}[{1}25{0}]{2} Clear terminal window
-{0}[{1}22{0}]{2} Turn WiFi On/Off          {0}[{1}26{0}] {2}Exit Ghost Framework                       
-{0}[{1}23{0}]{2} Remove Password                                                     
+       
+     .-.    {0}[{1}Ghost Framework{0}]{2}
+   .'   `.   Developed by Entynetproject 
+   :0 0   :  {0}({1}Ivan Nikolsky{0}){2}           
+   : o    `.             
+  :         ``.               {0}[{1}1{0}] {2}Show connected phones
+ :             `.             {0}[{1}2{0}] {2}Disconect all phones
+:  :         .   `.           {0}[{1}3{0}] {2}Connect a new phone
+:   :          ` . `.         {0}[{1}4{0}] {2}Access shell on a phone
+ `.. :            `. ``;      {0}[{1}5{0}] {2}Install an apk on a phone
+    `:;             `:'       {0}[{1}6{0}] {2}Screen record a phone
+       :              `.      {0}[{1}7{0}] {2}ScreenShot a phone
+        `.              `.    {0}[{1}8{0}] {2}Restart Server
+          `'`'`'`---..,___`.  {0}[{1}9{0}] {2}Pull folders from phone        
+                     
+{0}[{1}10{0}] {2}Turn The Device off       {0}[{1}19{0}]{2} Extract apk from app                         
+{0}[{1}11{0}] {2}Uninstall an app          {0}[{1}20{0}]{2} Get Battery Status
+{0}[{1}12{0}] {2}Show log of device        {0}[{1}21{0}]{2} NetStat
+{0}[{1}13{0}] {2}Dump System Info          {0}[{1}22{0}]{2} Turn WiFi On/Off
+{0}[{1}14{0}] {2}List all apps on a phone  {0}[{1}23{0}]{2} Remove Password
+{0}[{1}15{0}] {2}Run an app                {0}[{1}24{0}]{2} Use Keycode
+{0}[{1}16{0}]{2} Port Forwarding           {0}[{1}25{0}]{2} Get Current Activity
+{0}[{1}17{0}]{2} Grab wpa_supplicant       {0}[{1}26{0}]{2} Clear terminal window
+{0}[{1}18{0}]{2} Show Mac/Inet             {0}[{1}27{0}] {2}Exit Ghost Framework                                                                                                                    
                               
 '''.format(Fore.GREEN, Fore.RED, Fore.WHITE)
 
@@ -458,14 +455,12 @@ def clear(page):
 
 #=============================  
 # Run
-yn = raw_input(Fore.WHITE + "Have you already installed adb via command line "+Fore.GREEN + "Y"+Fore.WHITE+"/"+Fore.RED+"n "+Fore.WHITE)
+yn = raw_input(Fore.WHITE + "Have you already installed adb "+Fore.GREEN + "Y"+Fore.WHITE+"/"+Fore.RED+"n "+Fore.WHITE)
 if yn == "n":
     os.system("sudo apt install adb")
-print (Fore.RED + "Starting  adb server..")
+print (Fore.RED + "Starting  adb server...")
 os.system("adb tcpip 5555")
 t.sleep(4)
 os.system('clear')
-banner_title = random.choice([logo_design_1,logo_design_2,logo_design_3,logo_design_4])
-print (Fore.RED + banner_title)
 print (page_1)
 main()
