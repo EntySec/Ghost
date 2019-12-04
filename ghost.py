@@ -48,73 +48,21 @@ arrow = Fore.RED + "  └──>".decode("utf-8").strip() + Fore.WHITE
 arrow = str(arrow)
 connect = Fore.RED + "│".decode("utf-8").strip() + Fore.WHITE
 
-logo_design_1 = Fore.WHITE + ('''
-     .-.
-   .'   `.
-   :0 0   :
-   : o    `.
-  :         ``.
- :             `.
-:  :         .   `.
-:   :          ` . `.
- `.. :            `. ``;
-    `:;             `:'
-       :              `.
-        `.              `.     .
-          `'`'`'`---..,___`;.-'
-''')
-
-logo_design_2 = Fore.WHITE + ('''                                             
-     .-.
-   .'   `.
-   :0 0   :
-   : o    `.
-  :         ``.
- :             `.
-:  :         .   `.
-:   :          ` . `.
- `.. :            `. ``;
-    `:;             `:'
-       :              `.
-        `.              `.     .
-          `'`'`'`---..,___`;.-'
-''')
-
-logo_design_pre = Fore.WHITE + ('''
-     .-.
-   .'   `.
-   :0 0   :
-   : o    `.
-  :         ``.
- :             `.
-:  :         .   `.
-:   :          ` . `.
- `.. :            `. ``;
-    `:;             `:'
-       :              `.
-        `.              `.     .
-          `'`'`'`---..,___`;.-'
-''')
-
-logo_design_4 = Fore.WHITE + ('''
-
-''')
-
-page_1 = '''\n
+page_1 = '''{2}
        
-     .-.    {0}[{1}Ghost Framework{0}]{2}
-   .'   `.   Developed by Entynetproject 
-   :0 0   :  {0}({1}Ivan Nikolsky{0}){2}           
+     .-.          {0}[{1}Ghost Framework{0}]{2}
+   .'   `.   {2}Developed by Entynetproject{2} 
+   :0 0   :        {0}({2}Ivan Nikolsky{0}){2}      
    : o    `.             
-  :         ``.               {0}[{1}1{0}] {2}Show connected phones
- :             `.             {0}[{1}2{0}] {2}Disconect all phones
-:  :         .   `.           {0}[{1}3{0}] {2}Connect a new phone
-:   :          ` . `.         {0}[{1}4{0}] {2}Access shell on a phone
- `.. :            `. ``;      {0}[{1}5{0}] {2}Install an apk on a phone
-    `:;             `:'       {0}[{1}6{0}] {2}Screen record a phone
-       :              `.      {0}[{1}7{0}] {2}ScreenShot a phone
-        `.              `.    {0}[{1}8{0}] {2}Restart Server
-          `'`'`'`---..,___`.  {0}[{1}9{0}] {2}Pull folders from phone        
+  :         ``.                {0}[{1}1{0}] {2}Show connected phones
+ :             `.              {0}[{1}2{0}] {2}Disconect all phones
+:  :         .   `.            {0}[{1}3{0}] {2}Connect a new phone
+:   :          ` . `.          {0}[{1}4{0}] {2}Access shell on a phone
+ `.. :            `. ``;       {0}[{1}5{0}] {2}Install an apk on a phone
+    `:;             `:'        {0}[{1}6{0}] {2}Screen record a phone
+       :              `.       {0}[{1}7{0}] {2}ScreenShot a phone
+        `.              `.     {0}[{1}8{0}] {2}Restart Server
+          `'`'`'`---..,___`.   {0}[{1}9{0}] {2}Pull folders from phone        
                      
 {0}[{1}10{0}] {2}Turn The Device off       {0}[{1}19{0}]{2} Extract apk from app                         
 {0}[{1}11{0}] {2}Uninstall an app          {0}[{1}20{0}]{2} Get Battery Status
