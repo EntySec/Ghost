@@ -66,13 +66,13 @@ page_1 = '''{2}
                      
 {0}[{1}10{0}] {2}Turn The Device off       {0}[{1}19{0}]{2} Extract apk from app                         
 {0}[{1}11{0}] {2}Uninstall an app          {0}[{1}20{0}]{2} Get Battery Status
-{0}[{1}12{0}] {2}Show log of device        {0}[{1}21{0}]{2} NetStat
-{0}[{1}13{0}] {2}Dump System Info          {0}[{1}22{0}]{2} Turn WiFi On/Off
+{0}[{1}12{0}] {2}Show log of device        {0}[{1}21{0}]{2} NetStat 
+{0}[{1}13{0}] {2}Dump System Info          {0}[{1}22{0}]{2} Turn WiFi on/off
 {0}[{1}14{0}] {2}List all apps on a phone  {0}[{1}23{0}]{2} Remove Password
 {0}[{1}15{0}] {2}Run an app                {0}[{1}24{0}]{2} Use Keycode
 {0}[{1}16{0}]{2} Port Forwarding           {0}[{1}25{0}]{2} Get Current Activity
-{0}[{1}17{0}]{2} Grab wpa_supplicant       {0}[{1}26{0}]{2} Clear terminal window
-{0}[{1}18{0}]{2} Show Mac/Inet             {0}[{1}27{0}] {2}Exit Ghost Framework                                                                                                                    
+{0}[{1}17{0}]{2} Grab wpa_supplicant       {0}[{1}26{0}]{2} Update Ghost Framework
+{0}[{1}18{0}]{2} Show Mac/Inet             {0}[{1}27{0}]{2} Exit Ghost Framework                                                                                                                    
                               
 '''.format(Fore.GREEN, Fore.RED, Fore.WHITE)
 
@@ -83,17 +83,6 @@ page_2 = '''\n
 #=============================
 #Main
 def main():
-      import argparse
-
-    parser = argparse.ArgumentParser()
-    parser.add_argument("-u","--update",action="store_true",help="Update Ghost Framework.")
-    args = parser.parse_args()
-
-    if args.update:
-        os.system("chmod +x bin/ghost && bin/ghost -u")
-        import sys
-        sys.exit()
-
     page_num = 1
     os.system("adb tcpip 5555")
     os.system("adb devices -l")
@@ -367,8 +356,9 @@ def main():
             option = raw_input(Fore.WHITE + "ghost"+Fore.RED + "(main_menu)"+Fore.WHITE + "> ")
 
         elif option == '26':
-            os.system("clear")
-            option = raw_input(Fore.WHITE + "ghost"+Fore.RED + "(main_menu)"+Fore.WHITE + "> ")
+           os.system("chmod +x bin/ghost && bin/ghost -u")
+           import sys
+           sys.exit()
 
         elif option == '27':
             exit()
