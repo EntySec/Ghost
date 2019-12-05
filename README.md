@@ -72,7 +72,26 @@
 > ghost
 
 ***
+
+# Why ghost framework?
+
+> Android Shell Access
+
+    INFO: Ghost Framework allows users to remotely access 
+    to the Android phone shell using Android Shell Access.
     
+> Android Keycode Access
+
+    INFO: Ghost Framework allows users to remotely emulate button 
+    presses on the Android phone using Android Keycode Access.
+
+> Android Remove Password
+
+    INFO: Ghost Framework allows users to remotely remove 
+    the Android phone password if it was forgotten.
+
+***
+
 # Ghost framework disclaimer
 
     INFO: Usage of the Ghost Framework for attacking targets without prior mutual consent is illegal. 
