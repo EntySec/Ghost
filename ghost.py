@@ -83,6 +83,17 @@ page_2 = '''\n
 #=============================
 #Main
 def main():
+      import argparse
+
+    parser = argparse.ArgumentParser()
+    parser.add_argument("-u","--update",action="store_true",help="Update Ghost Framework.")
+    args = parser.parse_args()
+
+    if args.update:
+        os.system("chmod +x bin/ghost && bin/ghost -u")
+        import sys
+        sys.exit()
+
     page_num = 1
     os.system("adb tcpip 5555")
     os.system("adb devices -l")
