@@ -73,13 +73,15 @@
 
 ***
     
-# Disclaimer
+# Ghost framework disclaimer
 
-Usage of the Ghost Framework for attacking targets without prior mutual consent is illegal. It is the end user's responsibility to obey all applicable local, state, federal, and international laws. Developers assume no liability and are not responsible for any misuse or damage caused by this program.
+    INFO: Usage of the Ghost Framework for attacking targets without prior mutual consent is illegal. 
+    It is the end user's responsibility to obey all applicable local, state, federal, and international laws. 
+    Developers assume no liability and are not responsible for any misuse or damage caused by this program.
     
 ***
 
-# Ghost apache license
+# Ghost framework license
 
     Copyright (C) 2016 - 2018 Entynetproject
 
