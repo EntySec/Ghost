@@ -357,6 +357,7 @@ def main():
 
         elif option == '26':
             os.system("clear")
+            option = raw_input(Fore.WHITE + "ghost"+Fore.RED + "(main_menu)"+Fore.WHITE + "> ")
 
         elif option == '27':
             exit()
