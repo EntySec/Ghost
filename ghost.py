@@ -12,6 +12,32 @@ from colorama import Fore, init
 reload(sys)
 sys.setdefaultencoding("utf-8")
 
+def autocomplete(text, state):
+    import readline
+    line = readline.get_line_buffer()
+    splitted = line.lstrip().split(" ")
+
+    # no space, autocomplete will be the basic commands:
+    options = [x + " " for x in actions if x.startswith(text)]
+    options.extend([x + " " for x in remap if x.startswith(text)])
+    try:
+        return options[state]
+    except:
+        return None
+
+def get_input(prompt, auto_complete_fn=None, basefile_fn=None):
+    try:
+        if auto_complete_fn != None:
+            import readline
+            readline.set_completer_delims(' \t\n;/')
+            readline.parse_and_bind("tab: complete")
+            readline.set_completer(auto_complete_fn)
+    except Exception as e:
+        pass
+
+    cmd = raw_input("%s" % prompt)
+    return cmd.strip()
+
 #=============================
 # Variables
 CurrentDir = os.path.dirname(os.path.abspath(__file__))
@@ -48,8 +74,7 @@ arrow = Fore.RED + "  └──>".decode("utf-8").strip() + Fore.WHITE
 arrow = str(arrow)
 connect = Fore.RED + "│".decode("utf-8").strip() + Fore.WHITE
 
-page_1 = '''{2}
-       
+page_1 = ''' 
      .-.          {0}[{1}Ghost Framework{0}]{2}
    .'   `.   {2}Developed by Entynetproject{2} 
    :0 0   :        {0}({2}Ivan Nikolsky{0}){2}      
@@ -72,8 +97,7 @@ page_1 = '''{2}
 {0}[{1}15{0}] {2}Run a device app          {0}[{1}24{0}]{2} Use Ghost Keycode
 {0}[{1}16{0}]{2} Port Forwarding           {0}[{1}25{0}]{2} Get Current Activity
 {0}[{1}17{0}]{2} Grab wpa_supplicant       {0}[{1}26{0}]{2} Update Ghost Framework
-{0}[{1}18{0}]{2} Show Mac/Inet             {0}[{1}27{0}]{2} Exit Ghost Framework                                                                                                                    
-                              
+{0}[{1}18{0}]{2} Show Mac/Inet             {0}[{1}27{0}]{2} Exit Ghost Framework
 '''.format(Fore.GREEN, Fore.RED, Fore.WHITE)
 
 page_2 = '''\n
