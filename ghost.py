@@ -153,11 +153,11 @@ def main():
             try:
                 device_name = raw_input (arrow+" ghost"+Fore.RED + "(connect_phone)"+Fore.WHITE + "> "+ENDL)
             except KeyboardInterrupt:
-                main()
+                option = raw_input(Fore.WHITE + "ghost"+Fore.RED + "(main_menu)"+Fore.WHITE + "> "+ENDL)
             if device_name == '':
-                main()
+                option = raw_input(Fore.WHITE + "ghost"+Fore.RED + "(main_menu)"+Fore.WHITE + "> "+ENDL)
             if device_name == '27':
-                main()
+                option = raw_input(Fore.WHITE + "ghost"+Fore.RED + "(main_menu)"+Fore.WHITE + "> "+ENDL)
                 
             os.system("adb connect "+device_name+":5555")
             option = raw_input(Fore.WHITE + "ghost"+Fore.RED + "(main_menu)"+Fore.WHITE + "> "+ENDL)
@@ -519,6 +519,7 @@ def main():
             option = raw_input(Fore.WHITE + "ghost"+Fore.RED + "(main_menu)"+Fore.WHITE + "> "+ENDL)
             
         elif option == '27':
+            os.system("adb disconnect")
             exit()
             break
         else:
