@@ -117,10 +117,20 @@ def main():
             option = raw_input(Fore.WHITE + "ghost"+Fore.RED + "(main_menu)"+Fore.WHITE + "> ")
         
         if option == '1':
+            try:
+                print(device_name)
+            except:
+                print (("[{0}+{1}] No devices attached yet.").format(Fore.RED, Fore.WHITE))
+                main()
             os.system("adb devices -l")
             option = raw_input(Fore.WHITE + "ghost"+Fore.RED + "(main_menu)"+Fore.WHITE + "> ")
 
         elif option  ==  '2':
+            try:
+                print(device_name)
+            except:
+                print (("[{0}+{1}] No devices attached yet.").format(Fore.RED, Fore.WHITE))
+                main()
             os.system("adb disconnect")
             main()
 
@@ -499,6 +509,9 @@ def main():
         else:
             print("ghost: error: invalid command")
             option = raw_input(Fore.WHITE + "ghost"+Fore.RED + "(main_menu)"+Fore.WHITE + "> ")
+            
+        elif option == '':
+            main()
 
 
     main()
