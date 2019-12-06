@@ -42,7 +42,7 @@
 
 # About ghost framework
 
-    INFO: Ghost Framework is a post exploitation framework that uses 
+    INFO: Ghost Framework is an Android post exploitation framework that uses 
     an Android Debug Bridge to get remote session on an Android device.
     
 ***
