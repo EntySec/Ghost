@@ -59,6 +59,7 @@ CurrentDir = os.path.dirname(os.path.abspath(__file__))
 readline.set_completer(autocomplete)
 readline.parse_and_bind("tab: complete")
 WHSL = '\033[0;97m'
+ENDL = '\033[0m'
 load_count = 0
 page2 = False
 
@@ -520,7 +521,7 @@ def main():
             
         elif option == '27':
             os.system("{ adb disconnect; } &> /dev/null")
-            print (("{1}[{0}+{1}] Exiting...{2}").format(Fore.RED, WHSL, ENDL))
+            print ("cleaning up and exiting..."+ENDL)
             exit()
             break
         else:
