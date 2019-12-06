@@ -18,13 +18,14 @@
 RS="\033[1;31m"
 YS="\033[1;33m"
 CE="\033[0;97m"
+C="\033[0m"
 
 WHS="\033[0;97m"
 
 if [[ $EUID -ne 0 ]]
 then
    sleep 1
-   echo -e ""$CE"["$RS"+"$CE"] This script must be run as root!"$CE"" 1>&2
+   echo -e ""$CE"["$RS"+"$CE"] This script must be run as root!"$C"" 1>&2
    sleep 1
    exit
 fi
