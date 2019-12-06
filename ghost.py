@@ -522,6 +522,5 @@ print (Fore.RED + "Starting ADB server...")
 os.system("{ adb tcpip 5555; } &> /dev/null")
 t.sleep(4)
 os.system('clear')
-device_name = ''
 print (page_1)
 main()
