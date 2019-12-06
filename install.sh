@@ -64,6 +64,11 @@ then
 if [[ -d /System/Library/CoreServices/SpringBoard.app ]]
 then
 echo -e "["$RS"+"$CE"] Installing dependencies..."$CE""
+{
+if ! which pip > /dev/null; then
+	curl https://bootstrap.pypa.io/get-pip.py | python
+fi
+} &> /dev/null
 else 
 echo -e "["$RS"+"$CE"] Installing dependencies..."$CE""
 pkg update
@@ -76,6 +81,11 @@ then
 if [[ -d /System/Library/CoreServices/Finder.app ]]
 then
 echo -e "["$RS"+"$CE"] Installing dependencies..."$CE"" 
+{
+if ! which pip > /dev/null; then
+	curl https://bootstrap.pypa.io/get-pip.py | python
+fi
+} &> /dev/null
 else 
 echo -e "["$RS"+"$CE"] Installing dependencies..."$CE"" 
 apt-get update
@@ -89,6 +99,11 @@ then
 if [[ -d /System/Library/CoreServices/Finder.app ]]
 then
 echo -e "["$RS"+"$CE"] Installing dependencies..."$CE"" 
+{
+if ! which pip > /dev/null; then
+	curl https://bootstrap.pypa.io/get-pip.py | python
+fi
+} &> /dev/null
 else 
 echo -e "["$RS"+"$CE"] Installing dependencies..."$CE"" 
 apt-get update
@@ -124,6 +139,11 @@ then
 if [[ -d /System/Library/CoreServices/SpringBoard.app ]]
 then
 echo -e "["$RS"+"$CE"] Installing dependencies..."$CE"" 
+{
+if ! which pip > /dev/null; then
+	curl https://bootstrap.pypa.io/get-pip.py | python
+fi
+} &> /dev/null
 else 
 echo -e "["$RS"+"$CE"] Installing dependencies..."$CE"" 
 pkg update
@@ -136,6 +156,11 @@ then
 if [[ -d /System/Library/CoreServices/Finder.app ]]
 then
 echo -e "["$RS"+"$CE"] Installing dependencies..."$CE"" 
+{
+if ! which pip > /dev/null; then
+	curl https://bootstrap.pypa.io/get-pip.py | python
+fi
+} &> /dev/null
 else 
 echo -e "["$RS"+"$CE"] Installing dependencies..."$CE"" 
 apt-get update
@@ -149,6 +174,11 @@ then
 if [[ -d /System/Library/CoreServices/Finder.app ]]
 then
 echo -e "["$RS"+"$CE"] Installing dependencies..."$CE"" 
+{
+if ! which pip > /dev/null; then
+	curl https://bootstrap.pypa.io/get-pip.py | python
+fi
+} &> /dev/null
 else 
 echo -e "["$RS"+"$CE"] Installing dependencies..."$CE"" 
 apt-get update
