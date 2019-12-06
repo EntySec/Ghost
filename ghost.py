@@ -146,7 +146,7 @@ def main():
                 print (("[{0}+{1}] No devices attached yet.").format(Fore.RED, Fore.WHITE))
                 main()
             os.system("adb disconnect")
-            main()
+            option = raw_input(Fore.WHITE + "ghost"+Fore.RED + "(main_menu)"+Fore.WHITE + "> "+ENDL)
 
         elif option == '3':
             print (("\n[{0}+{1}] Enter a phone IP address.").format(Fore.RED, Fore.WHITE))
