@@ -50,23 +50,8 @@ fi
 sleep 0.5
 clear
 sleep 0.5
-echo """
-
-                              .-.
-                            .'   `.
-                            :0 0   :
-                            : o    `.
-                           :         ``.
-                          :             `.
-                         :  :         .   `.
-                         :   :          ` . `.
-                          `.. :            `. ``;
-                             `:;             `:'
-                                :              `.
-                                 `.              `.     
-                                   `'`'`'`---..,___`.
-"""
 cd ~/ghost
+cat banner/banner.txt
 
 if [[ -f /etc/ghost.conf ]]
 then
