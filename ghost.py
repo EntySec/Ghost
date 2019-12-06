@@ -77,7 +77,7 @@ arrow = Fore.RED + "  └──>".decode("utf-8").strip() + Fore.WHITE
 arrow = str(arrow)
 connect = Fore.RED + "│".decode("utf-8").strip() + Fore.WHITE
 
-page_1 = '''{0} 
+page_1 = '''{2} 
      .-.          {0}[{1}Ghost Framework{0}]{2}
    .'   `.   {2}Developed by Entynetproject{2} 
    :0 0   :        {0}({2}Ivan Nikolsky{0}){2}      
