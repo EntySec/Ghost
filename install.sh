@@ -27,14 +27,14 @@ CE="\033[0;97m"
 #red start
 	RS="\033[0;31m"
 #green start
-	GNS="-e \033[1;32m"
+	GN="\033[0;32m"
 #white start
    WHS="\033[0;97m"
 
 if [[ $EUID -ne 0 ]]
 then
    sleep 1
-   echo -e ""$CE"["$RS"+"$CE"] This script must be run as root!"$C"" 1>&2
+   echo -e ""$GN"["$RS"+"$GN"]"$CE" This script must be run as root!"$C"" 1>&2
    sleep 1
    exit
 fi
@@ -52,6 +52,7 @@ sleep 0.5
 clear
 sleep 0.5
 cd ~/ghost
+echo
 cat banner/banner.txt
 echo
 
@@ -65,14 +66,14 @@ if [[ "$CONF" = "arm" ]]
 then
 if [[ -d /System/Library/CoreServices/SpringBoard.app ]]
 then
-echo -e ""$CE"["$RS"+"$CE"] Installing dependencies..."$C""
+echo -e ""$GN"["$RS"+"$GN"]"$CE" Installing dependencies..."$C""
 {
 if ! which pip > /dev/null; then
 	curl https://bootstrap.pypa.io/get-pip.py | python
 fi
 } &> /dev/null
 else 
-echo -e ""$CE"["$RS"+"$CE"] Installing dependencies..."$C""
+echo -e ""$GN"["$RS"+"$GN"]"$CE" Installing dependencies..."$C""
 pkg update
 pkg -y install python
 fi
@@ -82,14 +83,14 @@ if [[ "$CONF" = "amd" ]]
 then
 if [[ -d /System/Library/CoreServices/Finder.app ]]
 then
-echo -e ""$CE"["$RS"+"$CE"] Installing dependencies..."$C"" 
+echo -e ""$GN"["$RS"+"$GN"]"$CE" Installing dependencies..."$C"" 
 {
 if ! which pip > /dev/null; then
 	curl https://bootstrap.pypa.io/get-pip.py | python
 fi
 } &> /dev/null
 else 
-echo -e ""$CE"["$RS"+"$CE"] Installing dependencies..."$C"" 
+echo -e ""$GN"["$RS"+"$GN"]"$CE" Installing dependencies..."$C"" 
 apt-get update
 apt-get -y install python
 apt-get -y install python-pip
@@ -100,14 +101,14 @@ if [[ "$CONF" = "intel" ]]
 then
 if [[ -d /System/Library/CoreServices/Finder.app ]]
 then
-echo -e ""$CE"["$RS"+"$CE"] Installing dependencies..."$C"" 
+echo -e ""$GN"["$RS"+"$GN"]"$CE" Installing dependencies..."$C"" 
 {
 if ! which pip > /dev/null; then
 	curl https://bootstrap.pypa.io/get-pip.py | python
 fi
 } &> /dev/null
 else 
-echo -e ""$CE"["$RS"+"$CE"] Installing dependencies..."$C"" 
+echo -e ""$GN"["$RS"+"$GN"]"$CE" Installing dependencies..."$C"" 
 apt-get update
 apt-get -y install python
 apt-get -y install python-pip
@@ -115,14 +116,14 @@ fi
 fi
 
 else
-read -e -p $'\033[0;97m[\033[0;31m+\033[0;97m] Select your architecture (amd/intel/arm):' CONF
+read -e -p $'\033[0;32m[\033[0;31m+\033[0;32m]\033[0;97m Select your architecture (amd/intel/arm):' CONF
 if [[ "$CONF" = "" ]]
 then
 exit
 else
 if [[ "$CONF" = "arm" ]]
 then
-read -e -p $'\033[0;97m[\033[0;31m+\033[0;97m] Is this a single board computer (yes/no):' PI
+read -e -p $'\033[0;32m[\033[0;31m+\033[0;32m]\033[0;97m Is this a single board computer (yes/no):' PI
 if [[ "$PI" = "yes" ]]
 then
 echo "amd" >> /etc/ghost.conf
@@ -140,14 +141,14 @@ if [[ "$CONF" = "arm" ]]
 then
 if [[ -d /System/Library/CoreServices/SpringBoard.app ]]
 then
-echo -e ""$CE"["$RS"+"$CE"] Installing dependencies..."$C"" 
+echo -e ""$GN"["$RS"+"$GN"]"$CE" Installing dependencies..."$C"" 
 {
 if ! which pip > /dev/null; then
 	curl https://bootstrap.pypa.io/get-pip.py | python
 fi
 } &> /dev/null
 else 
-echo -e ""$CE"["$RS"+"$CE"] Installing dependencies..."$C"" 
+echo -e ""$GN"["$RS"+"$GN"]"$CE" Installing dependencies..."$C"" 
 pkg update
 pkg -y install python
 fi
@@ -157,14 +158,14 @@ if [[ "$CONF" = "amd" ]]
 then
 if [[ -d /System/Library/CoreServices/Finder.app ]]
 then
-echo -e ""$CE"["$RS"+"$CE"] Installing dependencies..."$C"" 
+echo -e ""$GN"["$RS"+"$GN"]"$CE" Installing dependencies..."$C"" 
 {
 if ! which pip > /dev/null; then
 	curl https://bootstrap.pypa.io/get-pip.py | python
 fi
 } &> /dev/null
 else 
-echo -e ""$CE"["$RS"+"$CE"] Installing dependencies..."$C"" 
+echo -e ""$GN"["$RS"+"$GN"]"$CE" Installing dependencies..."$C"" 
 apt-get update
 apt-get -y install python
 apt-get -y install python-pip
@@ -175,14 +176,14 @@ if [[ "$CONF" = "intel" ]]
 then
 if [[ -d /System/Library/CoreServices/Finder.app ]]
 then
-echo -e ""$CE"["$RS"+"$CE"] Installing dependencies..."$C"" 
+echo -e ""$GN"["$RS"+"$GN"]"$CE" Installing dependencies..."$C"" 
 {
 if ! which pip > /dev/null; then
 	curl https://bootstrap.pypa.io/get-pip.py | python
 fi
 } &> /dev/null
 else 
-echo -e ""$CE"["$RS"+"$CE"] Installing dependencies..."$C"" 
+echo -e ""$GN"["$RS"+"$GN"]"$CE" Installing dependencies..."$C"" 
 apt-get update
 apt-get -y install python
 apt-get -y install python-pip
