@@ -500,11 +500,11 @@ def main():
             option = raw_input(Fore.WHITE + "ghost"+Fore.RED + "(main_menu)"+Fore.WHITE + "> ")
 
         elif option == '26':
-           os.system("chmod +x bin/ghost && bin/ghost -u")
-           option = raw_input(Fore.WHITE + "ghost"+Fore.RED + "(main_menu)"+Fore.WHITE + "> ")
+            os.system("chmod +x bin/ghost && bin/ghost -u")
+            option = raw_input(Fore.WHITE + "ghost"+Fore.RED + "(main_menu)"+Fore.WHITE + "> ")
 
         elif option == '':
-            main()
+            option = raw_input(Fore.WHITE + "ghost"+Fore.RED + "(main_menu)"+Fore.WHITE + "> ")
             
         elif option == '27':
             exit()
