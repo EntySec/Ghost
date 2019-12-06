@@ -41,6 +41,8 @@ def get_input(prompt, auto_complete_fn=None, basefile_fn=None):
 #=============================
 # Variables
 CurrentDir = os.path.dirname(os.path.abspath(__file__))
+readline.set_completer(autocomplete)
+readline.parse_and_bind("tab: complete")
 load_count = 0
 page2 = False
 
