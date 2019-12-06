@@ -22,7 +22,6 @@ import sys
 import readline
 import random
 import time as  t
-from colorama import Fore, init
 
 reload(sys)
 sys.setdefaultencoding("utf-8")
