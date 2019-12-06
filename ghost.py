@@ -140,7 +140,9 @@ def main():
             option = raw_input(Fore.WHITE + "ghost"+Fore.RED + "(main_menu)"+Fore.WHITE + "> ")
 
         elif option  == '4':
-            if device_name == '':
+            try:
+                print(device_name)
+            except:
                 print (("\n[{0}+{1}] No devices attached yet.").format(Fore.RED, Fore.WHITE))
                 import sys
                 sys.exit()
