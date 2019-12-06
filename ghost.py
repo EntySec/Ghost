@@ -61,6 +61,7 @@ readline.parse_and_bind("tab: complete")
 WHSL = '\033[0;97m'
 ENDL = '\033[0m'
 REDL = '\033[0;31m'
+GNSL = '\033[0;32m'
 load_count = 0
 page2 = False
 
@@ -196,7 +197,7 @@ def main():
             print (("     "+connect))
             print (("    {1}[{0}+{1}] Please wait 3m its recording").format(REDL, WHSL))
             print (("     "+connect))
-            os.system("adb -s "+device_name+" shell screenrecord /sdcard/demo.mp4")
+            os.system("adb -s "+device_name+" shell screenrecord /sdcard/screen.mp4")
             print (("    {1}[{0}+{1}] Enter where you would like the video to be saved.").format(REDL, WHSL))
             place_location = raw_input("    "+arrow + "ghost"+REDL + "(screen_record)"+WHSL + "> ")
             os.system("adb -s "+device_name+" pull /sdcard/demo.mp4 "+place_location)
