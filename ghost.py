@@ -44,7 +44,6 @@ def get_input(prompt, auto_complete_fn=None, basefile_fn=None):
 CurrentDir = os.path.dirname(os.path.abspath(__file__))
 readline.set_completer(autocomplete)
 readline.parse_and_bind("tab: complete")
-device_name = ''
 load_count = 0
 page2 = False
 
@@ -490,5 +489,6 @@ print (Fore.RED + "Starting ADB server...")
 os.system("{ adb tcpip 5555; } &> /dev/null")
 t.sleep(4)
 os.system('clear')
+device_name = ''
 print (page_1)
 main()
