@@ -88,7 +88,7 @@ page2 = False
 
 #=============================
 
-arrow = Fore.RED + "   └──>".decode("utf-8").strip() + WHSL
+arrow = Fore.RED + "    └──>".decode("utf-8").strip() + WHSL
 arrow = str(arrow)
 connect = Fore.RED + "│".decode("utf-8").strip() + WHSL
 
