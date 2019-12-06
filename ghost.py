@@ -124,7 +124,19 @@ def main():
             main()
 
         elif option == '3':
-            main()
+            os.system("adb tcpip 5555")
+            print (("\n[{0}+{1}] Enter a phone IP address.").format(Fore.RED, Fore.WHITE))
+            try:
+                device_name = raw_input (arrow+" ghost"+Fore.RED + "(connect_phone)"+Fore.WHITE + "> ")
+            except KeyboardInterrupt:
+                main()
+            if device_name == '':
+                main()
+            if device_name == '27':
+                exit()
+                
+            os.system("adb connect "+device_name+":5555")
+            option = raw_input(Fore.WHITE + "ghost"+Fore.RED + "(main_menu)"+Fore.WHITE + "> ")
 
         elif option  == '4':
             os.system("adb -s "+device_name+" shell")
