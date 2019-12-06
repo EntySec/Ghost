@@ -118,7 +118,7 @@ def main():
         
         if option == '1':
             try:
-                print(device_name)
+                device_name
             except:
                 print (("[{0}+{1}] No devices attached yet.").format(Fore.RED, Fore.WHITE))
                 main()
@@ -127,7 +127,7 @@ def main():
 
         elif option  ==  '2':
             try:
-                print(device_name)
+                device_name
             except:
                 print (("[{0}+{1}] No devices attached yet.").format(Fore.RED, Fore.WHITE))
                 main()
@@ -150,7 +150,7 @@ def main():
 
         elif option  == '4':
             try:
-                print(device_name)
+                device_name
             except:
                 print (("[{0}+{1}] No devices attached yet.").format(Fore.RED, Fore.WHITE))
                 main()
@@ -159,7 +159,7 @@ def main():
 
         elif option == '5':
             try:
-                print(device_name)
+                device_name
             except:
                 print (("[{0}+{1}] No devices attached yet.").format(Fore.RED, Fore.WHITE))
                 main()
@@ -172,7 +172,7 @@ def main():
 
         elif option ==  '6':
             try:
-                print(device_name)
+                device_name
             except:
                 print (("[{0}+{1}] No devices attached yet.").format(Fore.RED, Fore.WHITE))
                 main()
@@ -187,7 +187,7 @@ def main():
 
         elif option  == '7':
             try:
-                print(device_name)
+                device_name
             except:
                 print (("[{0}+{1}] No devices attached yet.").format(Fore.RED, Fore.WHITE))
                 main()
@@ -204,7 +204,7 @@ def main():
 
         elif option == '9':
             try:
-                print(device_name)
+                device_name
             except:
                 print (("[{0}+{1}] No devices attached yet.").format(Fore.RED, Fore.WHITE))
                 main()
@@ -219,7 +219,7 @@ def main():
 
         elif option == '10':
             try:
-                print(device_name)
+                device_name
             except:
                 print (("[{0}+{1}] No devices attached yet.").format(Fore.RED, Fore.WHITE))
                 main()
@@ -228,7 +228,7 @@ def main():
 
         elif option ==  '11':
             try:
-                print(device_name)
+                device_name
             except:
                 print (("[{0}+{1}] No devices attached yet.").format(Fore.RED, Fore.WHITE))
                 main()
@@ -240,7 +240,7 @@ def main():
 
         elif option == '12':
             try:
-                print(device_name)
+                device_name
             except:
                 print (("[{0}+{1}] No devices attached yet.").format(Fore.RED, Fore.WHITE))
                 main()
@@ -249,7 +249,7 @@ def main():
 
         elif option == '13':
             try:
-                print(device_name)
+                device_name
             except:
                 print (("[{0}+{1}] No devices attached yet.").format(Fore.RED, Fore.WHITE))
                 main()
@@ -258,7 +258,7 @@ def main():
 
         elif option == '14':
             try:
-                print(device_name)
+                device_name
             except:
                 print (("[{0}+{1}] No devices attached yet.").format(Fore.RED, Fore.WHITE))
                 main()
@@ -267,7 +267,7 @@ def main():
 
         elif option == '15':
             try:
-                print(device_name)
+                device_name
             except:
                 print (("[{0}+{1}] No devices attached yet.").format(Fore.RED, Fore.WHITE))
                 main()
@@ -279,7 +279,7 @@ def main():
 
         elif option == '16':
             try:
-                print(device_name)
+                device_name
             except:
                 print (("[{0}+{1}] No devices attached yet.").format(Fore.RED, Fore.WHITE))
                 main()
@@ -304,7 +304,7 @@ def main():
 
             except KeyboardInterrupt:
                 try:
-                    print(device_name)
+                    device_name
                 except:
                     print (("[{0}+{1}] No devices attached yet.").format(Fore.RED, Fore.WHITE))
                     main()
@@ -313,7 +313,7 @@ def main():
 
         elif option == '18':
             try:
-                print(device_name)
+                device_name
             except:
                 print (("[{0}+{1}] No devices attached yet.").format(Fore.RED, Fore.WHITE))
                 main()
@@ -322,7 +322,7 @@ def main():
 
         elif option == '19':
             try:
-                print(device_name)
+                device_name
             except:
                 print (("[{0}+{1}] No devices attached yet.").format(Fore.RED, Fore.WHITE))
                 main()
@@ -341,7 +341,7 @@ def main():
 
         elif option == '20':
             try:
-                print(device_name)
+                device_name
             except:
                 print (("[{0}+{1}] No devices attached yet.").format(Fore.RED, Fore.WHITE))
                 main()
@@ -350,7 +350,7 @@ def main():
 
         elif option == '21':
             try:
-                print(device_name)
+                device_name
             except:
                 print (("[{0}+{1}] No devices attached yet.").format(Fore.RED, Fore.WHITE))
                 main()
@@ -359,7 +359,7 @@ def main():
 
         elif option == '22':
             try:
-                print(device_name)
+                device_name
             except:
                 print (("[{0}+{1}] No devices attached yet.").format(Fore.RED, Fore.WHITE))
                 main()
@@ -377,7 +377,7 @@ def main():
 
         elif option == '23':
             try:
-                print(device_name)
+                device_name
             except:
                 print (("[{0}+{1}] No devices attached yet.").format(Fore.RED, Fore.WHITE))
                 main()
@@ -393,7 +393,7 @@ def main():
 
         elif option == '24':
             try:
-                print(device_name)
+                device_name
             except:
                 print (("[{0}+{1}] No devices attached yet.").format(Fore.RED, Fore.WHITE))
                 main()
@@ -492,7 +492,7 @@ def main():
 
         elif option == '25':
             try:
-                print(device_name)
+                device_name
             except:
                 print (("[{0}+{1}] No devices attached yet.").format(Fore.RED, Fore.WHITE))
                 main()
