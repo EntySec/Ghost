@@ -93,29 +93,29 @@ arrow = str(arrow)
 connect = Fore.RED + "│".decode("utf-8").strip() + WHSL
 
 page_1 = '''{2} 
-     .-.          {0}[{1}Ghost Framework{0}]{2}
-   .'   `.   {2}Developed by Entynetproject{2} 
-   :0 0   :        {0}({2}Ivan Nikolsky{0}){2}      
+     .-.           {0}[{1}Ghost Framework{0}]{2}
+   .'   `.    {2}Developed by Entynetproject{2} 
+   :0 0   :         {0}({2}Ivan Nikolsky{0}){2}      
    : o    `.             
-  :         ``.                {0}[{1}1{0}] {2}Show connected devices
- :             `.              {0}[{1}2{0}] {2}Disconect all devices
-:  :         .   `.            {0}[{1}3{0}] {2}Connect a new device
-:   :          ` . `.          {0}[{1}4{0}] {2}Access shell on a device
- `.. :            `. ``;       {0}[{1}5{0}] {2}Install an apk on a device
-    `:;             `:'        {0}[{1}6{0}] {2}Screen record a device
-       :              `.       {0}[{1}7{0}] {2}Get device screenshot
-        `.              `.     {0}[{1}8{0}] {2}Restart ADB Server
-          `'`'`'`---..,___`.   {0}[{1}9{0}] {2}Pull folders from device       
+  :         ``.               {0}[{1}1{0}] {2}Show connected devices
+ :             `.             {0}[{1}2{0}] {2}Disconect all devices
+:  :         .   `.           {0}[{1}3{0}] {2}Connect a new device
+:   :          ` . `.         {0}[{1}4{0}] {2}Access shell on a device
+ `.. :            `. ``;      {0}[{1}5{0}] {2}Install an apk on a device
+    `:;             `:'       {0}[{1}6{0}] {2}Screen record a device
+       :              `.      {0}[{1}7{0}] {2}Get device screenshot
+        `.              `.    {0}[{1}8{0}] {2}Restart ADB Server
+          `'`'`'`---..,___`.  {0}[{1}9{0}] {2}Pull folders from device       
                      
-{0}[{1}10{0}] {2}Shutdown the device       {0}[{1}19{0}]{2} Extract apk from app                         
-{0}[{1}11{0}] {2}Uninstall an app          {0}[{1}20{0}]{2} Get Battery Status
-{0}[{1}12{0}] {2}Show device log           {0}[{1}21{0}]{2} Network status
-{0}[{1}13{0}] {2}Dump System Info          {0}[{1}22{0}]{2} Turn WiFi on/off
-{0}[{1}14{0}] {2}List all device apps      {0}[{1}23{0}]{2} Remove Password
-{0}[{1}15{0}] {2}Run a device app          {0}[{1}24{0}]{2} Use Ghost Keycode
-{0}[{1}16{0}]{2} Port Forwarding           {0}[{1}25{0}]{2} Get Current Activity
-{0}[{1}17{0}]{2} Grab wpa_supplicant       {0}[{1}26{0}]{2} Update Ghost Framework
-{0}[{1}18{0}]{2} Show Mac/Inet             {0}[{1}27{0}]{2} Exit Ghost Framework
+{0}[{1}10{0}] {2}Shutdown the device      {0}[{1}19{0}]{2} Extract apk from app                         
+{0}[{1}11{0}] {2}Uninstall an app         {0}[{1}20{0}]{2} Get Battery Status
+{0}[{1}12{0}] {2}Show device log          {0}[{1}21{0}]{2} Network status
+{0}[{1}13{0}] {2}Dump System Info         {0}[{1}22{0}]{2} Turn WiFi on/off
+{0}[{1}14{0}] {2}List all device apps     {0}[{1}23{0}]{2} Remove Password
+{0}[{1}15{0}] {2}Run a device app         {0}[{1}24{0}]{2} Use Ghost Keycode
+{0}[{1}16{0}]{2} Port Forwarding          {0}[{1}25{0}]{2} Get Current Activity
+{0}[{1}17{0}]{2} Grab wpa_supplicant      {0}[{1}26{0}]{2} Update Ghost Framework
+{0}[{1}18{0}]{2} Show Mac/Inet            {0}[{1}27{0}]{2} Exit Ghost Framework
 '''.format(Fore.GREEN, Fore.RED, WHSL)
 
 page_2 = '''\n
