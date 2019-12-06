@@ -87,9 +87,9 @@ page2 = False
 
 #=============================
 
-arrow = Fore.RED + "  └──>".decode("utf-8").strip() + Fore.WHITE
+arrow = Fore.RED + "   └──>".decode("utf-8").strip() + Fore.WHITE
 arrow = str(arrow)
-connect = Fore.RED + " │".decode("utf-8").strip() + Fore.WHITE
+connect = Fore.RED + "│".decode("utf-8").strip() + Fore.WHITE
 
 page_1 = '''{2} 
      .-.          {0}[{1}Ghost Framework{0}]{2}
@@ -519,7 +519,7 @@ def main():
             option = raw_input(Fore.WHITE + "ghost"+Fore.RED + "(main_menu)"+Fore.WHITE + "> "+ENDL)
             
         elif option == '27':
-            os.system("adb disconnect")
+            os.system("{ adb disconnect; } &> /dev/null")
             exit()
             break
         else:
@@ -532,7 +532,7 @@ def main():
 #=============================  
 # Run
 print (Fore.RED + "Starting ADB server...")
-os.system("adb tcpip 5555")
+os.system("{ adb tcpip 5555; } &> /dev/null")
 t.sleep(4)
 os.system('clear')
 print (page_1)
