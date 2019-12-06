@@ -22,7 +22,7 @@ printf '\033]2;Ghost Framework\a'
 #color end
 	CE="\033[0;97m"
 #red start
-	RS="\033[1;31m"
+	RS="\033[0;31m"
 	C="\033[0m"
 #green start
 	GNS="-e \033[1;32m"
