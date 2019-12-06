@@ -134,7 +134,7 @@ def main():
             try:
                 device_name
             except:
-                print (("[{0}+{1}] No devices attached yet.").format(Fore.RED, Fore.WHITE))
+                print (("{1}[{0}+{1}] No devices attached yet.").format(Fore.RED, Fore.WHITE))
                 main()
             os.system("adb devices -l")
             option = raw_input(Fore.WHITE + "ghost"+Fore.RED + "(main_menu)"+Fore.WHITE + "> "+ENDL)
@@ -143,13 +143,13 @@ def main():
             try:
                 device_name
             except:
-                print (("[{0}+{1}] No devices attached yet.").format(Fore.RED, Fore.WHITE))
+                print (("{1}[{0}+{1}] No devices attached yet.").format(Fore.RED, Fore.WHITE))
                 main()
             os.system("adb disconnect")
             option = raw_input(Fore.WHITE + "ghost"+Fore.RED + "(main_menu)"+Fore.WHITE + "> "+ENDL)
 
         elif option == '3':
-            print (("\n[{0}+{1}] Enter a phone IP address.").format(Fore.RED, Fore.WHITE))
+            print (("\n{1}[{0}+{1}] Enter a phone IP address.").format(Fore.RED, Fore.WHITE))
             try:
                 device_name = raw_input (arrow+" ghost"+Fore.RED + "(connect_phone)"+Fore.WHITE + "> "+ENDL)
             except KeyboardInterrupt:
@@ -166,7 +166,7 @@ def main():
             try:
                 device_name
             except:
-                print (("[{0}+{1}] No devices attached yet.").format(Fore.RED, Fore.WHITE))
+                print (("{1}[{0}+{1}] No devices attached yet.").format(Fore.RED, Fore.WHITE))
                 main()
             os.system("adb -s "+device_name+" shell")
             option = raw_input(Fore.WHITE + "ghost"+Fore.RED + "(main_menu)"+Fore.WHITE + "> "+ENDL)
@@ -175,10 +175,10 @@ def main():
             try:
                 device_name
             except:
-                print (("[{0}+{1}] No devices attached yet.").format(Fore.RED, Fore.WHITE))
+                print (("{1}[{0}+{1}] No devices attached yet.").format(Fore.RED, Fore.WHITE))
                 main()
             print (("     "+connect))
-            print (("    [{0}+{1}] Enter the apk location.").format(Fore.RED, Fore.WHITE))
+            print (("    {1}[{0}+{1}] Enter the apk location.").format(Fore.RED, Fore.WHITE))
             apk_location = raw_input("    "+arrow + "ghost"+Fore.RED + "(apk_install)"+Fore.WHITE + "> "+ENDL)
             os.system("adb -s  "+device_name+" install "+apk_location)
             print (Fore.GREEN  +  "Apk has been installed.")
@@ -188,13 +188,13 @@ def main():
             try:
                 device_name
             except:
-                print (("[{0}+{1}] No devices attached yet.").format(Fore.RED, Fore.WHITE))
+                print (("{1}[{0}+{1}] No devices attached yet.").format(Fore.RED, Fore.WHITE))
                 main()
             print (("     "+connect))
-            print (("    [{0}+{1}] Please wait 3m its recording").format(Fore.RED, Fore.WHITE))
+            print (("    {1}[{0}+{1}] Please wait 3m its recording").format(Fore.RED, Fore.WHITE))
             print (("     "+connect))
             os.system("adb -s "+device_name+" shell screenrecord /sdcard/demo.mp4")
-            print (("    [{0}+{1}] Enter where you would like the video to be saved.").format(Fore.RED, Fore.WHITE))
+            print (("    {1}[{0}+{1}] Enter where you would like the video to be saved.").format(Fore.RED, Fore.WHITE))
             place_location = raw_input("    "+arrow + "ghost"+Fore.RED + "(screen_record)"+Fore.WHITE + "> "+ENDL)
             os.system("adb -s "+device_name+" pull /sdcard/demo.mp4 "+place_location)
             option = raw_input(Fore.WHITE + "ghost"+Fore.RED + "(main_menu)"+Fore.WHITE + "> "+ENDL)
@@ -203,11 +203,11 @@ def main():
             try:
                 device_name
             except:
-                print (("[{0}+{1}] No devices attached yet.").format(Fore.RED, Fore.WHITE))
+                print (("{1}[{0}+{1}] No devices attached yet.").format(Fore.RED, Fore.WHITE))
                 main()
             os.system("adb -s "+device_name+" shell screencap /sdcard/screen.png")
             print (("     "+connect))
-            print (("    [{0}+{1}] Enter where you would like the screenshot to be saved.").format(Fore.RED, Fore.WHITE))
+            print (("    {1}[{0}+{1}] Enter where you would like the screenshot to be saved.").format(Fore.RED, Fore.WHITE))
             place_location = raw_input("    "+arrow + "ghost"+Fore.RED + "(screenshot)"+Fore.WHITE + "> "+ENDL)
             os.system("adb -s "+device_name+" pull /sdcard/screen.png "+place_location)
             option = raw_input(Fore.WHITE + "ghost"+Fore.RED + "(main_menu)"+Fore.WHITE + "> "+ENDL)
@@ -220,13 +220,13 @@ def main():
             try:
                 device_name
             except:
-                print (("[{0}+{1}] No devices attached yet.").format(Fore.RED, Fore.WHITE))
+                print (("{1}[{0}+{1}] No devices attached yet.").format(Fore.RED, Fore.WHITE))
                 main()
             print (("     "+connect))
-            print (("    [{0}+{1}] Enter a file location on a device.").format(Fore.RED, Fore.WHITE))
+            print (("    {1}[{0}+{1}] Enter a file location on a device.").format(Fore.RED, Fore.WHITE))
             file_location = raw_input("    "+arrow + "ghost"+Fore.RED + "(file_pull)"+Fore.WHITE + "> "+ENDL)
             print (("        "+connect))
-            print (("       [{0}+{1}] Enter where you would like the file to be saved.").format(Fore.RED, Fore.WHITE))
+            print (("       {1}[{0}+{1}] Enter where you would like the file to be saved.").format(Fore.RED, Fore.WHITE))
             place_location = raw_input("       "+arrow + "ghost"+Fore.RED + "(file_pull)"+Fore.WHITE + "> "+ENDL)
             os.system("adb -s "+device_name+" pull "+file_location+" "+place_location)
             option = raw_input(Fore.WHITE + "ghost"+Fore.RED + "(main_menu)"+Fore.WHITE + "> "+ENDL)
@@ -235,7 +235,7 @@ def main():
             try:
                 device_name
             except:
-                print (("[{0}+{1}] No devices attached yet.").format(Fore.RED, Fore.WHITE))
+                print (("{1}[{0}+{1}] No devices attached yet.").format(Fore.RED, Fore.WHITE))
                 main()
             os.system("adb -s "+device_name+ " reboot ")
             option = raw_input(Fore.WHITE + "ghost"+Fore.RED + "(main_menu)"+Fore.WHITE + "> "+ENDL)
@@ -244,10 +244,10 @@ def main():
             try:
                 device_name
             except:
-                print (("[{0}+{1}] No devices attached yet.").format(Fore.RED, Fore.WHITE))
+                print (("{1}[{0}+{1}] No devices attached yet.").format(Fore.RED, Fore.WHITE))
                 main()
             print (("     "+connect))
-            print (("    [{0}+{1}] Enter a package name.").format(Fore.RED, Fore.WHITE))
+            print (("    {1}[{0}+{1}] Enter a package name.").format(Fore.RED, Fore.WHITE))
             package_name = raw_input("    "+arrow + "ghost"+Fore.RED + "(app_delete)"+Fore.WHITE + "> "+ENDL)
             os.system("adb -s "+device_name+" unistall "+package_name)
             option = raw_input(Fore.WHITE + "ghost"+Fore.RED + "(main_menu)"+Fore.WHITE + "> "+ENDL)
@@ -256,7 +256,7 @@ def main():
             try:
                 device_name
             except:
-                print (("[{0}+{1}] No devices attached yet.").format(Fore.RED, Fore.WHITE))
+                print (("{1}[{0}+{1}] No devices attached yet.").format(Fore.RED, Fore.WHITE))
                 main()
             os.system('adb -s '+device_name+" logcat ")
             option = raw_input(Fore.WHITE + "ghost"+Fore.RED + "(main_menu)"+Fore.WHITE + "> "+ENDL)
@@ -265,7 +265,7 @@ def main():
             try:
                 device_name
             except:
-                print (("[{0}+{1}] No devices attached yet.").format(Fore.RED, Fore.WHITE))
+                print (("{1}[{0}+{1}] No devices attached yet.").format(Fore.RED, Fore.WHITE))
                 main()
             os.system("adb  -s "+device_name+" dumpsys")
             option = raw_input(Fore.WHITE + "ghost"+Fore.RED + "(main_menu)"+Fore.WHITE + "> "+ENDL)
@@ -274,7 +274,7 @@ def main():
             try:
                 device_name
             except:
-                print (("[{0}+{1}] No devices attached yet.").format(Fore.RED, Fore.WHITE))
+                print (("{1}[{0}+{1}] No devices attached yet.").format(Fore.RED, Fore.WHITE))
                 main()
             os.system("adb -s " +device_name+ " shell pm list packages -f")
             option = raw_input(Fore.WHITE + "ghost"+Fore.RED + "(main_menu)"+Fore.WHITE + "> "+ENDL)
@@ -283,10 +283,10 @@ def main():
             try:
                 device_name
             except:
-                print (("[{0}+{1}] No devices attached yet.").format(Fore.RED, Fore.WHITE))
+                print (("{1}[{0}+{1}] No devices attached yet.").format(Fore.RED, Fore.WHITE))
                 main()
             print (("     "+connect))
-            print (("    [{0}+{1}] Enter a package name.").format(Fore.RED, Fore.WHITE))
+            print (("    {1}[{0}+{1}] Enter a package name.").format(Fore.RED, Fore.WHITE))
             package_name = raw_input("    "+arrow + "ghost"+Fore.RED + "(app_run)"+Fore.WHITE + "> "+ENDL)
             os.system("adb -s "+device_name+" shell monkey -p "+package_name+" -v 500")
             option = raw_input(Fore.WHITE + "ghost"+Fore.RED + "(main_menu)"+Fore.WHITE + "> "+ENDL)
@@ -295,13 +295,13 @@ def main():
             try:
                 device_name
             except:
-                print (("[{0}+{1}] No devices attached yet.").format(Fore.RED, Fore.WHITE))
+                print (("{1}[{0}+{1}] No devices attached yet.").format(Fore.RED, Fore.WHITE))
                 main()
             print (("     "+connect))
-            print (("    [{0}+{1}] Enter a port on the device.").format(Fore.RED, Fore.WHITE))
+            print (("    {1}[{0}+{1}] Enter a port on the device.").format(Fore.RED, Fore.WHITE))
             port_device = raw_input("    "+arrow + "ghost"+Fore.RED + "(port_forward)"+Fore.WHITE + "> "+ENDL)
             print (("         "+connect))
-            print (("        [{0}+{1}] Enter a port to forward it too.").format(Fore.RED, Fore.WHITE))
+            print (("        {1}[{0}+{1}] Enter a port to forward it too.").format(Fore.RED, Fore.WHITE))
             forward_port = raw_input("        "+arrow + "ghost"+Fore.RED + "(port_forward)"+Fore.WHITE + "> "+ENDL)
             os.system("adb -s "+device_name+" forward tcp:"+port_device+" tcp:"+forward_port)
             option = raw_input(Fore.WHITE + "ghost"+Fore.RED + "(main_menu)"+Fore.WHITE + "> "+ENDL)
@@ -309,7 +309,7 @@ def main():
         elif option == '17':
             try:
                 print (("     "+connect))
-                print (("    [{0}+{1}] Enter where you want the file to be saved.").format(Fore.RED, Fore.WHITE))
+                print (("    {1}[{0}+{1}] Enter where you want the file to be saved.").format(Fore.RED, Fore.WHITE))
                 location = raw_input("    "+arrow + "ghost"+Fore.RED + "(wpa_grab)"+Fore.WHITE + "> "+ENDL)
                 os.system("adb -s "+device_name+" shell "+"su -c 'cp /data/misc/wifi/wpa_supplicant.conf /sdcard/'")
                 os.system("adb -s "+device_name+" pull /sdcard/wpa_supplicant.conf "+location)
@@ -319,7 +319,7 @@ def main():
                 try:
                     device_name
                 except:
-                    print (("[{0}+{1}] No devices attached yet.").format(Fore.RED, Fore.WHITE))
+                    print (("{1}[{0}+{1}] No devices attached yet.").format(Fore.RED, Fore.WHITE))
                     main()
                     
                 option = raw_input(Fore.WHITE + "ghost"+Fore.RED + "(main_menu)"+Fore.WHITE + "> "+ENDL)
@@ -328,7 +328,7 @@ def main():
             try:
                 device_name
             except:
-                print (("[{0}+{1}] No devices attached yet.").format(Fore.RED, Fore.WHITE))
+                print (("{1}[{0}+{1}] No devices attached yet.").format(Fore.RED, Fore.WHITE))
                 main()
             os.system("adb -s " +device_name+ " shell ip address show wlan0")
             option = raw_input(Fore.WHITE + "ghost"+Fore.RED + "(main_menu)"+Fore.WHITE + "> "+ENDL)
@@ -337,17 +337,17 @@ def main():
             try:
                 device_name
             except:
-                print (("[{0}+{1}] No devices attached yet.").format(Fore.RED, Fore.WHITE))
+                print (("{1}[{0}+{1}] No devices attached yet.").format(Fore.RED, Fore.WHITE))
                 main()
             print (("     "+connect))
-            print (("    [{0}+{1}] Enter a package name.").format(Fore.RED, Fore.WHITE))
+            print (("    {1}[{0}+{1}] Enter a package name.").format(Fore.RED, Fore.WHITE))
             package_name = raw_input("    "+arrow + "ghost"+Fore.RED + "(pull_apk)"+Fore.WHITE + "> "+ENDL)
             os.system("adb -s "+device_name+" shell pm path "+package_name)
             print (("         "+connect))
-            print (("        [{0}+{1}] Enter the path to apk.").format(Fore.RED, Fore.WHITE))
+            print (("        {1}[{0}+{1}] Enter the path to apk.").format(Fore.RED, Fore.WHITE))
             path = raw_input("        "+arrow + "ghost"+Fore.RED + "(pull_apk)"+Fore.WHITE + "> "+ENDL)
             print (("             "+connect))
-            print (("            [{0}+{1}] Enter The location to store the apk.")  .format(Fore.RED, Fore.WHITE))
+            print (("            {1}[{0}+{1}] Enter The location to store the apk.")  .format(Fore.RED, Fore.WHITE))
             location =   raw_input("            "+arrow + "ghost"+Fore.RED + "(pull_apk)"+Fore.WHITE + "> "+ENDL)
             os.system("adb -s " +device_name+" pull "+path+" "+location)
             option = raw_input(Fore.WHITE + "ghost"+Fore.RED + "(main_menu)"+Fore.WHITE + "> "+ENDL)
@@ -356,7 +356,7 @@ def main():
             try:
                 device_name
             except:
-                print (("[{0}+{1}] No devices attached yet.").format(Fore.RED, Fore.WHITE))
+                print (("{1}[{0}+{1}] No devices attached yet.").format(Fore.RED, Fore.WHITE))
                 main()
             os.system("adb -s " +device_name+ " shell dumpsys battery")
             option = raw_input(Fore.WHITE + "ghost"+Fore.RED + "(main_menu)"+Fore.WHITE + "> "+ENDL)
@@ -365,7 +365,7 @@ def main():
             try:
                 device_name
             except:
-                print (("[{0}+{1}] No devices attached yet.").format(Fore.RED, Fore.WHITE))
+                print (("{1}[{0}+{1}] No devices attached yet.").format(Fore.RED, Fore.WHITE))
                 main()
             os.system("adb -s " +device_name+ " shell netstat")
             option = raw_input(Fore.WHITE + "ghost"+Fore.RED + "(main_menu)"+Fore.WHITE + "> "+ENDL)
@@ -374,10 +374,10 @@ def main():
             try:
                 device_name
             except:
-                print (("[{0}+{1}] No devices attached yet.").format(Fore.RED, Fore.WHITE))
+                print (("{1}[{0}+{1}] No devices attached yet.").format(Fore.RED, Fore.WHITE))
                 main()
             print (("     "+connect))
-            print (("    [{0}+{1}] To turn wifi back on you need the device to be pluged in.").format(Fore.RED, Fore.WHITE))
+            print (("    {1}[{0}+{1}] To turn wifi back on you need the device to be pluged in.").format(Fore.RED, Fore.WHITE))
             print (("     "+connect))
             on_off = raw_input(Fore.WHITE + "    ["+Fore.RED+"+"+Fore.WHITE+"] Would you like the wifi "+Fore.GREEN +"on"+Fore.WHITE +"/"+Fore.RED +"off "+Fore.WHITE)
             if on_off == 'off':
@@ -392,7 +392,7 @@ def main():
             try:
                 device_name
             except:
-                print (("[{0}+{1}] No devices attached yet.").format(Fore.RED, Fore.WHITE))
+                print (("{1}[{0}+{1}] No devices attached yet.").format(Fore.RED, Fore.WHITE))
                 main()
             print (("     "+connect))
             print (Fore.RED + "****************** TRYING TO REMOVE PASS ******************")
@@ -407,7 +407,7 @@ def main():
             try:
                 device_name
             except:
-                print (("[{0}+{1}] No devices attached yet.").format(Fore.RED, Fore.WHITE))
+                print (("{1}[{0}+{1}] No devices attached yet.").format(Fore.RED, Fore.WHITE))
                 main()
             print ('''
     0 -->  "KEYCODE_UNKNOWN"
@@ -497,7 +497,7 @@ def main():
     84 -->  "KEYCODE_SEARCH"
     85 -->  "TAG_LAST_KEYCODE"
             ''')
-            print (("[{0}+{1}] Enter a number.").format(Fore.RED, Fore.WHITE))
+            print (("{1}[{0}+{1}] Enter a number.").format(Fore.RED, Fore.WHITE))
             num = raw_input(arrow + "ghost"+Fore.RED + "(keycode)"+Fore.WHITE + "> "+ENDL)
             os.system("adb -s "+device_name+" shell input keyevent "+num)
             option = raw_input(Fore.WHITE + "ghost"+Fore.RED + "(main_menu)"+Fore.WHITE + "> "+ENDL)
@@ -506,7 +506,7 @@ def main():
             try:
                 device_name
             except:
-                print (("[{0}+{1}] No devices attached yet.").format(Fore.RED, Fore.WHITE))
+                print (("{1}[{0}+{1}] No devices attached yet.").format(Fore.RED, Fore.WHITE))
                 main()
             os.system("adb -s " +device_name+ " dumpsys activity")
             option = raw_input(Fore.WHITE + "ghost"+Fore.RED + "(main_menu)"+Fore.WHITE + "> "+ENDL)
