@@ -503,16 +503,15 @@ def main():
            os.system("chmod +x bin/ghost && bin/ghost -u")
            option = raw_input(Fore.WHITE + "ghost"+Fore.RED + "(main_menu)"+Fore.WHITE + "> ")
 
+        elif option == '':
+            main()
+            
         elif option == '27':
             exit()
             break
         else:
             print("ghost: error: invalid command")
             option = raw_input(Fore.WHITE + "ghost"+Fore.RED + "(main_menu)"+Fore.WHITE + "> ")
-            
-        elif option == '':
-            main()
-
 
     main()
 
