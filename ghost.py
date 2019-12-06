@@ -5,6 +5,7 @@
 #Imports
 import os
 import sys
+import readline
 import random
 import time as  t
 from colorama import Fore, init
