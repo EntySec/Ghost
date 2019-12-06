@@ -87,9 +87,9 @@ page2 = False
 
 #=============================
 
-arrow = Fore.RED + "   └──>".decode("utf-8").strip() + Fore.WHITE
+arrow = Fore.RED + "  └──>".decode("utf-8").strip() + Fore.WHITE
 arrow = str(arrow)
-connect = Fore.RED + "│".decode("utf-8").strip() + Fore.WHITE
+connect = Fore.RED + " │".decode("utf-8").strip() + Fore.WHITE
 
 page_1 = '''{2} 
      .-.          {0}[{1}Ghost Framework{0}]{2}
