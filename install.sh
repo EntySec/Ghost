@@ -17,12 +17,12 @@
 
 RS="\033[1;31m"
 YS="\033[1;33m"
-CE="\033[0m"
+CE="\033[0;97m"
 
 #blue start 
 	BS="\033[1;34m"
 #color end
-	CE="\033[0m"
+	CE="\033[0;97m"
 #red start
 	RS="\033[31m"
 #green start
@@ -33,7 +33,7 @@ CE="\033[0m"
 if [[ $EUID -ne 0 ]]
 then
    sleep 1
-   echo -e ""$RS"[-] "$WHS"This script must be run as root!"$CE"" 1>&2
+   echo -e ""$CE"["$RS"+"$CE"] This script must be run as root!"$CE"" 1>&2
    sleep 1
    exit
 fi
@@ -114,14 +114,14 @@ fi
 fi
 
 else
-read -e -p $'[\033[0;31m+\033[0m] Select your architecture (amd/intel/arm): \033[0m' CONF
+read -e -p $'\033[0;97m[\033[0;31m+\033[0;97m] Select your architecture (amd/intel/arm): \033[0m' CONF
 if [[ "$CONF" = "" ]]
 then
 exit
 else
 if [[ "$CONF" = "arm" ]]
 then
-read -e -p $'[\033[0;31m+\033[0m] Is this a single board computer (yes/no): \033[0m' PI
+read -e -p $'\033[0;97m[\033[0;31m+\033[0;97m] Is this a single board computer (yes/no): \033[0m' PI
 if [[ "$PI" = "yes" ]]
 then
 echo "amd" >> /etc/ghost.conf
