@@ -22,7 +22,7 @@ printf '\033]2;Ghost Framework\a'
 #color end
 	CE="\033[0m"
 #red start
-	RS="\033[31m"
+	RS="\033[1;31m"
 #green start
 	GNS="-e \033[1;32m"
 #white start
@@ -52,19 +52,19 @@ ASESR="$( curl -s checkip.dyndns.org | sed -e 's/.*Current IP Address: //' -e 's
 if [[ "$ASESR" = "" ]]
 then 
 sleep 1
-echo -e ""$RS"[-] "$WHS"Download failed!"$CE""
+echo -e "["$RS"+"$CE"] Download failed!"$CE""
 sleep 1
 exit
 fi
 if [[ $EUID -ne 0 ]]
 then
 sleep 1
-echo -e ""$RS"[-] "$WHS"Permission denied!"$CE""
+echo -e "["$RS"+"$CE"] Permission denied!"$CE""
 sleep 1
 exit
 fi
 sleep 1
-echo ""$BS"[*] "$WHS"Installing update..."$CE""
+echo -e "["$RS"+"$CE"] Installing update..."$CE""
 {
 rm -r ~/ghost
 rm /bin/ghost
@@ -81,7 +81,7 @@ chmod +x install.sh
 ./install.sh
 fi
 } &> /dev/null
-echo ""$GNS"[+] "$WHS"Successfully updated!"$CE""
+echo -e "["$RS"+"$CE"] Successfully updated!"$CE""
 sleep 1
 exit
 fi
