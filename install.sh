@@ -23,6 +23,7 @@ CE="\033[0;97m"
 	BS="\033[1;34m"
 #color end
 	CE="\033[0;97m"
+	C="\033[0m"
 #red start
 	RS="\033[31m"
 #green start
@@ -33,7 +34,7 @@ CE="\033[0;97m"
 if [[ $EUID -ne 0 ]]
 then
    sleep 1
-   echo -e ""$CE"["$RS"+"$CE"] This script must be run as root!"$CE"" 1>&2
+   echo -e ""$CE"["$RS"+"$CE"] This script must be run as root!"$C"" 1>&2
    sleep 1
    exit
 fi
@@ -64,14 +65,14 @@ if [[ "$CONF" = "arm" ]]
 then
 if [[ -d /System/Library/CoreServices/SpringBoard.app ]]
 then
-echo -e ""$CE"["$RS"+"$CE"] Installing dependencies..."$CE""
+echo -e ""$CE"["$RS"+"$CE"] Installing dependencies..."$C""
 {
 if ! which pip > /dev/null; then
 	curl https://bootstrap.pypa.io/get-pip.py | python
 fi
 } &> /dev/null
 else 
-echo -e ""$CE"["$RS"+"$CE"] Installing dependencies..."$CE""
+echo -e ""$CE"["$RS"+"$CE"] Installing dependencies..."$C""
 pkg update
 pkg -y install python
 fi
@@ -81,14 +82,14 @@ if [[ "$CONF" = "amd" ]]
 then
 if [[ -d /System/Library/CoreServices/Finder.app ]]
 then
-echo -e ""$CE"["$RS"+"$CE"] Installing dependencies..."$CE"" 
+echo -e ""$CE"["$RS"+"$CE"] Installing dependencies..."$C"" 
 {
 if ! which pip > /dev/null; then
 	curl https://bootstrap.pypa.io/get-pip.py | python
 fi
 } &> /dev/null
 else 
-echo -e ""$CE"["$RS"+"$CE"] Installing dependencies..."$CE"" 
+echo -e ""$CE"["$RS"+"$CE"] Installing dependencies..."$C"" 
 apt-get update
 apt-get -y install python
 apt-get -y install python-pip
@@ -99,14 +100,14 @@ if [[ "$CONF" = "intel" ]]
 then
 if [[ -d /System/Library/CoreServices/Finder.app ]]
 then
-echo -e ""$CE"["$RS"+"$CE"] Installing dependencies..."$CE"" 
+echo -e ""$CE"["$RS"+"$CE"] Installing dependencies..."$C"" 
 {
 if ! which pip > /dev/null; then
 	curl https://bootstrap.pypa.io/get-pip.py | python
 fi
 } &> /dev/null
 else 
-echo -e ""$CE"["$RS"+"$CE"] Installing dependencies..."$CE"" 
+echo -e ""$CE"["$RS"+"$CE"] Installing dependencies..."$C"" 
 apt-get update
 apt-get -y install python
 apt-get -y install python-pip
@@ -139,14 +140,14 @@ if [[ "$CONF" = "arm" ]]
 then
 if [[ -d /System/Library/CoreServices/SpringBoard.app ]]
 then
-echo -e ""$CE"["$RS"+"$CE"] Installing dependencies..."$CE"" 
+echo -e ""$CE"["$RS"+"$CE"] Installing dependencies..."$C"" 
 {
 if ! which pip > /dev/null; then
 	curl https://bootstrap.pypa.io/get-pip.py | python
 fi
 } &> /dev/null
 else 
-echo -e ""$CE"["$RS"+"$CE"] Installing dependencies..."$CE"" 
+echo -e ""$CE"["$RS"+"$CE"] Installing dependencies..."$C"" 
 pkg update
 pkg -y install python
 fi
@@ -156,14 +157,14 @@ if [[ "$CONF" = "amd" ]]
 then
 if [[ -d /System/Library/CoreServices/Finder.app ]]
 then
-echo -e ""$CE"["$RS"+"$CE"] Installing dependencies..."$CE"" 
+echo -e ""$CE"["$RS"+"$CE"] Installing dependencies..."$C"" 
 {
 if ! which pip > /dev/null; then
 	curl https://bootstrap.pypa.io/get-pip.py | python
 fi
 } &> /dev/null
 else 
-echo -e ""$CE"["$RS"+"$CE"] Installing dependencies..."$CE"" 
+echo -e ""$CE"["$RS"+"$CE"] Installing dependencies..."$C"" 
 apt-get update
 apt-get -y install python
 apt-get -y install python-pip
@@ -174,14 +175,14 @@ if [[ "$CONF" = "intel" ]]
 then
 if [[ -d /System/Library/CoreServices/Finder.app ]]
 then
-echo -e ""$CE"["$RS"+"$CE"] Installing dependencies..."$CE"" 
+echo -e ""$CE"["$RS"+"$CE"] Installing dependencies..."$C"" 
 {
 if ! which pip > /dev/null; then
 	curl https://bootstrap.pypa.io/get-pip.py | python
 fi
 } &> /dev/null
 else 
-echo -e ""$CE"["$RS"+"$CE"] Installing dependencies..."$CE"" 
+echo -e ""$CE"["$RS"+"$CE"] Installing dependencies..."$C"" 
 apt-get update
 apt-get -y install python
 apt-get -y install python-pip
