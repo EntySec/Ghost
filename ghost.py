@@ -81,7 +81,7 @@ page2 = False
 #             coloring_file.write("init")
 #         else:
 #             coloring_file.write("false")
-#             yn = raw_input(WHSL + "Have you already installed adb via command line "+Fore.GREEN + "Y"+WHSL+"/"+REDL+"N "+WHSL)
+#             yn = raw_input(WHSL + "Have you already installed adb via command line "+GNSL + "Y"+WHSL+"/"+REDL+"N "+WHSL)
 #             if yn == "n":
 #                 os.system("sudo apt install adb")
 #             else:
@@ -117,10 +117,10 @@ page_1 = '''{2}
 {0}[{1}16{0}]{2} Port Forwarding           {0}[{1}25{0}]{2} Get Current Activity
 {0}[{1}17{0}]{2} Grab wpa_supplicant       {0}[{1}26{0}]{2} Update Ghost Framework
 {0}[{1}18{0}]{2} Show Mac/Inet             {0}[{1}27{0}]{2} Exit Ghost Framework
-'''.format(Fore.GREEN, REDL, WHSL)
+'''.format(GNSL, REDL, WHSL)
 
 page_2 = '''\n
-'''.format(Fore.GREEN, REDL, WHSL)
+'''.format(GNSL, REDL, WHSL)
 
 
 #=============================
@@ -184,7 +184,7 @@ def main():
             print (("    {1}[{0}+{1}] Enter the apk location.").format(REDL, WHSL))
             apk_location = raw_input("    "+arrow + "ghost"+REDL + "(apk_install)"+WHSL + "> ")
             os.system("adb -s  "+device_name+" install "+apk_location)
-            print (Fore.GREEN  +  "Apk has been installed.")
+            print (GNSL  +  "Apk has been installed.")
             option = raw_input(WHSL + "ghost"+REDL + "(main_menu)"+WHSL + "> ")
 
         elif option ==  '6':
@@ -382,7 +382,7 @@ def main():
             print (("     "+connect))
             print (("    {1}[{0}+{1}] To turn wifi back on you need the device to be pluged in.").format(REDL, WHSL))
             print (("     "+connect))
-            on_off = raw_input(WHSL + "    ["+REDL+"+"+WHSL+"] Would you like the wifi "+Fore.GREEN +"on"+WHSL +"/"+REDL +"off "+WHSL)
+            on_off = raw_input(WHSL + "    ["+REDL+"+"+WHSL+"] Would you like the wifi "+GNSL +"on"+WHSL +"/"+REDL +"off "+WHSL)
             if on_off == 'off':
                 command = " shell svc wifi disable"
             else:
