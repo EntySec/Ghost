@@ -69,6 +69,9 @@
 
 # How to execute ghost
 
+    INFO: To execute Camera Snapshot you 
+    should execute the following command!
+
 > ghost
 
 ***
