@@ -50,6 +50,22 @@ fi
 sleep 0.5
 clear
 sleep 0.5
+echo """
+
+                              .-.
+                            .'   `.
+                            :0 0   :
+                            : o    `.
+                           :         ``.
+                          :             `.
+                         :  :         .   `.
+                         :   :          ` . `.
+                          `.. :            `. ``;
+                             `:;             `:'
+                                :              `.
+                                 `.              `.     
+                                   `'`'`'`---..,___`.
+
 cd ~/ghost
 
 if [[ -f /etc/ghost.conf ]]
@@ -62,6 +78,7 @@ if [[ "$CONF" = "arm" ]]
 then
 if [[ -d /System/Library/CoreServices/SpringBoard.app ]]
 then
+echo -e "["$RS"+"$CE"] Installing dependencies..."$CE""
 else 
 echo -e "["$RS"+"$CE"] Installing dependencies..."$CE""
 pkg update
@@ -73,9 +90,9 @@ if [[ "$CONF" = "amd" ]]
 then
 if [[ -d /System/Library/CoreServices/Finder.app ]]
 then
-echo -e ""$BS"[*]"$WHS" Installing dependencies..."$CE""
+echo -e "["$RS"+"$CE"] Installing dependencies..."$CE"" 
 else 
-echo -e ""$BS"[*]"$WHS" Installing dependencies..."$CE""
+echo -e "["$RS"+"$CE"] Installing dependencies..."$CE"" 
 apt-get update
 apt-get -y install python
 apt-get -y install python-pip
@@ -86,9 +103,9 @@ if [[ "$CONF" = "intel" ]]
 then
 if [[ -d /System/Library/CoreServices/Finder.app ]]
 then
-echo -e ""$BS"[*]"$WHS" Installing dependencies..."$CE""
+echo -e "["$RS"+"$CE"] Installing dependencies..."$CE"" 
 else 
-echo -e ""$BS"[*]"$WHS" Installing dependencies..."$CE""
+echo -e "["$RS"+"$CE"] Installing dependencies..."$CE"" 
 apt-get update
 apt-get -y install python
 apt-get -y install python-pip
@@ -96,14 +113,14 @@ fi
 fi
 
 else
-read -e -p $'Select your architecture (amd/intel/arm): \033[0m' CONF
+read -e -p $'[\033[1;31m+\033[0m] Select your architecture (amd/intel/arm): \033[0m' CONF
 if [[ "$CONF" = "" ]]
 then
 exit
 else
 if [[ "$CONF" = "arm" ]]
 then
-read -e -p $'Is this a single board computer (yes/no): \033[0m' PI
+read -e -p $'[\033[1;31m+\033[0m] Is this a single board computer (yes/no): \033[0m' PI
 if [[ "$PI" = "yes" ]]
 then
 echo "amd" >> /etc/ghost.conf
@@ -121,8 +138,9 @@ if [[ "$CONF" = "arm" ]]
 then
 if [[ -d /System/Library/CoreServices/SpringBoard.app ]]
 then
+echo -e "["$RS"+"$CE"] Installing dependencies..."$CE"" 
 else 
-echo -e ""$BS"[*]"$WHS" Installing dependencies..."$CE""
+echo -e "["$RS"+"$CE"] Installing dependencies..."$CE"" 
 pkg update
 pkg -y install python
 fi
@@ -132,9 +150,9 @@ if [[ "$CONF" = "amd" ]]
 then
 if [[ -d /System/Library/CoreServices/Finder.app ]]
 then
-echo -e ""$BS"[*]"$WHS" Installing dependencies..."$CE""
+echo -e "["$RS"+"$CE"] Installing dependencies..."$CE"" 
 else 
-echo -e ""$BS"[*]"$WHS" Installing dependencies..."$CE""
+echo -e "["$RS"+"$CE"] Installing dependencies..."$CE"" 
 apt-get update
 apt-get -y install python
 apt-get -y install python-pip
@@ -145,9 +163,9 @@ if [[ "$CONF" = "intel" ]]
 then
 if [[ -d /System/Library/CoreServices/Finder.app ]]
 then
-echo -e ""$BS"[*]"$WHS" Installing dependencies..."$CE""
+echo -e "["$RS"+"$CE"] Installing dependencies..."$CE"" 
 else 
-echo -e ""$BS"[*]"$WHS" Installing dependencies..."$CE""
+echo -e "["$RS"+"$CE"] Installing dependencies..."$CE"" 
 apt-get update
 apt-get -y install python
 apt-get -y install python-pip
