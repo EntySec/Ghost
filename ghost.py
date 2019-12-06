@@ -154,7 +154,7 @@ def main():
         elif option == '3':
             print (("\n{1}[{0}+{1}] Enter a phone IP address.").format(REDL, WHSL))
             try:
-                device_name = raw_input (arrow+" ghost"+REDL + "(connect_phone)"+WHSL + "> ")
+                device_name = raw_input (" "+arrow+" ghost"+REDL + "(connect_phone)"+WHSL + "> ")
             except KeyboardInterrupt:
                 main()
             if device_name == '':
