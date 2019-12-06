@@ -371,8 +371,7 @@ def main():
 
         elif option == '26':
            os.system("chmod +x bin/ghost && bin/ghost -u")
-           import sys
-           sys.exit()
+           option = raw_input(Fore.WHITE + "ghost"+Fore.RED + "(main_menu)"+Fore.WHITE + "> ")
 
         elif option == '27':
             exit()
