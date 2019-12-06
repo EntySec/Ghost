@@ -65,7 +65,7 @@ echo """
                                 :              `.
                                  `.              `.     
                                    `'`'`'`---..,___`.
-
+"""
 cd ~/ghost
 
 if [[ -f /etc/ghost.conf ]]
