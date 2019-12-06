@@ -27,6 +27,64 @@ printf '\033]2;Ghost Framework\a'
 	GNS="-e \033[1;32m"
 #white start
         WHS="\033[0;97m"
+	
+if [[ "$1" = "-u" || "$1" = "--update" ]]
+then
+if [[ -d /data/data/com.termux ]]
+then
+if [[ -f /data/data/com.termux/files/usr/bin/ghost ]]
+then
+UPD="true"
+else
+UPD="false"
+fi
+else
+if [[ -f /usr/local/bin/ghost ]]
+then
+UPD="true"
+else
+UPD="false"
+fi
+fi
+{
+ASESR="$( curl -s checkip.dyndns.org | sed -e 's/.*Current IP Address: //' -e 's/<.*$//' )"
+} &> /dev/null
+if [[ "$ASESR" = "" ]]
+then 
+sleep 1
+echo -e "["$RS"+"$CE"] Download failed!"$CE""
+sleep 1
+exit
+fi
+if [[ $EUID -ne 0 ]]
+then
+sleep 1
+echo -e "["$RS"+"$CE"] Permission denied!"$CE""
+sleep 1
+exit
+fi
+sleep 1
+echo -e "["$RS"+"$CE"] Installing update..."$CE""
+{
+rm -r ~/ghost
+rm /bin/ghost
+rm /usr/local/bin/ghost
+rm /data/data/com.termux/files/usr/bin/ghost
+cd ~
+git clone https://github.com/entynetproject/ghost.git
+if [[ "$UPD" != "true" ]]
+then
+sleep 0
+else
+cd ghost
+chmod +x install.sh
+./install.sh
+fi
+} &> /dev/null
+echo -e "["$RS"+"$CE"] Successfully updated!"$CE""
+sleep 1
+exit
+fi
 
 if [[ -d ~/ghost ]]
 then
