@@ -520,6 +520,7 @@ def main():
             
         elif option == '27':
             os.system("{ adb disconnect; } &> /dev/null")
+            print (("{1}[{0}+{1}] Exiting...{2}").format(Fore.RED, WHSL, ENDL))
             exit()
             break
         else:
