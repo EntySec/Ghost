@@ -127,6 +127,7 @@ page_2 = '''\n
 def main():
     page_num = 1
     option = raw_input(WHSL + "ghost"+Fore.RED + "(main_menu)"+WHSL + "> ")
+        
     while(1):
         if option == '':
             option = raw_input(WHSL + "ghost"+Fore.RED + "(main_menu)"+WHSL + "> ")
@@ -154,11 +155,11 @@ def main():
             try:
                 device_name = raw_input (arrow+" ghost"+Fore.RED + "(connect_phone)"+WHSL + "> ")
             except KeyboardInterrupt:
-                option = raw_input(WHSL + "ghost"+Fore.RED + "(main_menu)"+WHSL + "> ")
+                main()
             if device_name == '':
-                option = raw_input(WHSL + "ghost"+Fore.RED + "(main_menu)"+WHSL + "> ")
+                main()
             if device_name == '27':
-                option = raw_input(WHSL + "ghost"+Fore.RED + "(main_menu)"+WHSL + "> ")
+                main()
                 
             os.system("adb connect "+device_name+":5555")
             option = raw_input(WHSL + "ghost"+Fore.RED + "(main_menu)"+WHSL + "> ")
