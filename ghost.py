@@ -126,6 +126,8 @@ page_2 = '''\n
 #=============================
 #Main
 def main():
+    import os
+    os.system("printf '\033]2;Ghost Framework\a'")
     page_num = 1
     option = raw_input(WHSL + "ghost"+GNSL+"("+REDL + "main_menu" + GNSL + ")"+WHSL + "> ")
         
