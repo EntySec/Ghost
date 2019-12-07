@@ -268,7 +268,7 @@ def main():
             except:
                 print (("{1}[{0}+{1}]{2} No devices attached yet.").format(REDL, GNSL, WHSL))
                 main()
-            os.system("adb  -s "+device_name+" dumpsys")
+            os.system("adb -s "+device_name+" shell dumpsys")
             option = raw_input(WHSL + "ghost"+GNSL+"("+REDL + "main_menu" + GNSL + ")"+WHSL + "> ")
 
         elif option == '14':
@@ -509,7 +509,7 @@ def main():
             except:
                 print (("{1}[{0}+{1}]{2} No devices attached yet.").format(REDL, GNSL, WHSL))
                 main()
-            os.system("adb -s " +device_name+ " dumpsys activity")
+            os.system("adb -s " +device_name+ " shell dumpsys activity")
             option = raw_input(WHSL + "ghost"+GNSL+"("+REDL + "main_menu" + GNSL + ")"+WHSL + "> ")
 
         elif option == '26':
