@@ -38,7 +38,7 @@
  </a>
 </p>
 
-![ghost](https://user-images.githubusercontent.com/54115104/70379700-e17eb400-1940-11ea-8aa8-686a28941500.png)
+![ghost](https://user-images.githubusercontent.com/54115104/70379805-9fef0880-1942-11ea-8bc8-eb313ab89567.png)
 
 ***
 
