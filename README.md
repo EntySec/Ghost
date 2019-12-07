@@ -38,7 +38,7 @@
  </a>
 </p>
 
-[![asciicast](https://user-images.githubusercontent.com/54115104/70378781-898e8000-1935-11ea-90d2-29e263c00da9.png)](https://asciinema.org/a/mG7WvaXX0a7cj7lIPXFlH2Z7b)
+![ghost](https://user-images.githubusercontent.com/54115104/70379261-aaf26a80-193b-11ea-86ae-5cb60dbbd951.png)
 
 ***
 
