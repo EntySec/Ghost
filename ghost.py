@@ -182,7 +182,7 @@ def main():
                 main()
             print (("     "+connect))
             print (("    {1}[{0}+{1}]{2} Enter the apk location.").format(REDL, GNSL, WHSL))
-            apk_location = raw_input("    "+arrow + "ghost"+REDL + "(apk_install)"+WHSL + "> ")
+            apk_location = raw_input("    "+arrow + " ghost"+GNSL+"("+REDL + "apk_install" + GNSL + ")"+WHSL + "> ")
             os.system("adb -s  "+device_name+" install "+apk_location)
             print (GNSL  +  "Apk has been installed.")
             option = raw_input(WHSL + "ghost"+GNSL+"("+REDL + "main_menu" + GNSL + ")"+WHSL + "> ")
@@ -198,8 +198,8 @@ def main():
             print (("     "+connect))
             os.system("adb -s "+device_name+" shell screenrecord /sdcard/screen.mp4")
             print (("    {1}[{0}+{1}]{2} Enter where you would like the video to be saved.").format(REDL, GNSL, WHSL))
-            place_location = raw_input("    "+arrow + "ghost"+REDL + "(screen_record)"+WHSL + "> ")
-            os.system("adb -s "+device_name+" pull /sdcard/demo.mp4 "+place_location)
+            place_location = raw_input("    "+arrow + " ghost"+GNSL+"("+REDL + "screen_record" + GNSL + ")"+WHSL + "> ")
+            os.system("adb -s "+device_name+" pull /sdcard/screen.mp4 "+place_location)
             option = raw_input(WHSL + "ghost"+GNSL+"("+REDL + "main_menu" + GNSL + ")"+WHSL + "> ")
 
         elif option  == '7':
@@ -211,7 +211,7 @@ def main():
             os.system("adb -s "+device_name+" shell screencap /sdcard/screen.png")
             print (("     "+connect))
             print (("    {1}[{0}+{1}]{2} Enter where you would like the screenshot to be saved.").format(REDL, GNSL, WHSL))
-            place_location = raw_input("    "+arrow + "ghost"+REDL + "(screenshot)"+WHSL + "> ")
+            place_location = raw_input("    "+arrow + " ghost"+GNSL+"("+REDL + "screenshot" + GNSL + ")"+WHSL + "> ")
             os.system("adb -s "+device_name+" pull /sdcard/screen.png "+place_location)
             option = raw_input(WHSL + "ghost"+GNSL+"("+REDL + "main_menu" + GNSL + ")"+WHSL + "> ")
 
@@ -227,10 +227,10 @@ def main():
                 main()
             print (("     "+connect))
             print (("    {1}[{0}+{1}]{2} Enter a file location on a device.").format(REDL, GNSL, WHSL))
-            file_location = raw_input("    "+arrow + "ghost"+REDL + "(file_pull)"+WHSL + "> ")
+            file_location = raw_input("    "+arrow + " ghost"+GNSL+"("+REDL + "file_pull" + GNSL + ")"+WHSL + "> ")
             print (("        "+connect))
             print (("       {1}[{0}+{1}]{2} Enter where you would like the file to be saved.").format(REDL, GNSL, WHSL))
-            place_location = raw_input("       "+arrow + "ghost"+REDL + "(file_pull)"+WHSL + "> ")
+            place_location = raw_input("       "+arrow + " ghost"+GNSL+"("+REDL + "file_pull" + GNSL + ")"+WHSL + "> ")
             os.system("adb -s "+device_name+" pull "+file_location+" "+place_location)
             option = raw_input(WHSL + "ghost"+GNSL+"("+REDL + "main_menu" + GNSL + ")"+WHSL + "> ")
 
@@ -251,7 +251,7 @@ def main():
                 main()
             print (("     "+connect))
             print (("    {1}[{0}+{1}]{2} Enter a package name.").format(REDL, GNSL, WHSL))
-            package_name = raw_input("    "+arrow + "ghost"+REDL + "(app_delete)"+WHSL + "> ")
+            package_name = raw_input("    "+arrow + " ghost"+GNSL+"("+REDL + "app_delete" + GNSL + ")"+WHSL + "> ")
             os.system("adb -s "+device_name+" unistall "+package_name)
             option = raw_input(WHSL + "ghost"+GNSL+"("+REDL + "main_menu" + GNSL + ")"+WHSL + "> ")
 
@@ -290,7 +290,7 @@ def main():
                 main()
             print (("     "+connect))
             print (("    {1}[{0}+{1}]{2} Enter a package name.").format(REDL, GNSL, WHSL))
-            package_name = raw_input("    "+arrow + "ghost"+REDL + "(app_run)"+WHSL + "> ")
+            package_name = raw_input("    "+arrow + " ghost"+GNSL+"("+REDL + "app_run" + GNSL + ")"+WHSL + "> ")
             os.system("adb -s "+device_name+" shell monkey -p "+package_name+" -v 500")
             option = raw_input(WHSL + "ghost"+GNSL+"("+REDL + "main_menu" + GNSL + ")"+WHSL + "> ")
 
@@ -302,10 +302,10 @@ def main():
                 main()
             print (("     "+connect))
             print (("    {1}[{0}+{1}]{2} Enter a port on the device.").format(REDL, GNSL, WHSL))
-            port_device = raw_input("    "+arrow + "ghost"+REDL + "(port_forward)"+WHSL + "> ")
+            port_device = raw_input("    "+arrow + " ghost"+GNSL+"("+REDL + "port_forward" + GNSL + ")"+WHSL + "> ")
             print (("         "+connect))
             print (("        {1}[{0}+{1}]{2} Enter a port to forward it too.").format(REDL, GNSL, WHSL))
-            forward_port = raw_input("        "+arrow + "ghost"+REDL + "(port_forward)"+WHSL + "> ")
+            forward_port = raw_input("        "+arrow + " ghost"+GNSL+"("+REDL + "port_forward" + GNSL + ")"+WHSL + "> ")
             os.system("adb -s "+device_name+" forward tcp:"+port_device+" tcp:"+forward_port)
             option = raw_input(WHSL + "ghost"+GNSL+"("+REDL + "main_menu" + GNSL + ")"+WHSL + "> ")
 
@@ -313,7 +313,7 @@ def main():
             try:
                 print (("     "+connect))
                 print (("    {1}[{0}+{1}]{2} Enter where you want the file to be saved.").format(REDL, GNSL, WHSL))
-                location = raw_input("    "+arrow + "ghost"+REDL + "(wpa_grab)"+WHSL + "> ")
+                location = raw_input("    "+arrow + " ghost"+GNSL+"("+REDL + "wpa_grub" + GNSL + ")"+WHSL + "> ")
                 os.system("adb -s "+device_name+" shell "+"su -c 'cp /data/misc/wifi/wpa_supplicant.conf /sdcard/'")
                 os.system("adb -s "+device_name+" pull /sdcard/wpa_supplicant.conf "+location)
                 option = raw_input(WHSL + "ghost"+GNSL+"("+REDL + "main_menu" + GNSL + ")"+WHSL + "> ")
@@ -344,14 +344,14 @@ def main():
                 main()
             print (("     "+connect))
             print (("    {1}[{0}+{1}]{2} Enter a package name.").format(REDL, GNSL, WHSL))
-            package_name = raw_input("    "+arrow + "ghost"+REDL + "(pull_apk)"+WHSL + "> ")
+            package_name = raw_input("    "+arrow + " ghost"+GNSL+"("+REDL + "pull_apk" + GNSL + ")"+WHSL + "> ")
             os.system("adb -s "+device_name+" shell pm path "+package_name)
             print (("         "+connect))
             print (("        {1}[{0}+{1}]{2} Enter the path to apk.").format(REDL, GNSL, WHSL))
-            path = raw_input("        "+arrow + "ghost"+REDL + "(pull_apk)"+WHSL + "> ")
+            path = raw_input("        "+arrow + " ghost"+GNSL+"("+REDL + "pull_apk" + GNSL + ")"+WHSL + "> ")
             print (("             "+connect))
             print (("            {1}[{0}+{1}]{2} Enter The location to store the apk.")  .format(REDL, GNSL, WHSL))
-            location =   raw_input("            "+arrow + "ghost"+REDL + "(pull_apk)"+WHSL + "> ")
+            location =   raw_input("            "+arrow + " ghost"+GNSL+"("+REDL + "pull_apk" + GNSL + ")"+WHSL + "> ")
             os.system("adb -s " +device_name+" pull "+path+" "+location)
             option = raw_input(WHSL + "ghost"+GNSL+"("+REDL + "main_menu" + GNSL + ")"+WHSL + "> ")
 
@@ -501,7 +501,7 @@ def main():
     85 -->  "TAG_LAST_KEYCODE"
             ''')
             print (("{1}[{0}+{1}]{2} Enter a number.").format(REDL, GNSL, WHSL))
-            num = raw_input(arrow + "ghost"+REDL + "(keycode)"+WHSL + "> ")
+            num = raw_input(arrow + " ghost"+GNSL+"("+REDL + "keycode" + GNSL + ")"+WHSL + "> ")
             os.system("adb -s "+device_name+" shell input keyevent "+num)
             option = raw_input(WHSL + "ghost"+GNSL+"("+REDL + "main_menu" + GNSL + ")"+WHSL + "> ")
 
