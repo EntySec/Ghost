@@ -90,7 +90,7 @@ page2 = False
 #=============================
 
 arrow = REDL + "   └──>".decode("utf-8").strip() + WHSL
-arrow = str(arrow)
+arrow = str(" "+arrow)
 connect = REDL + "│".decode("utf-8").strip() + WHSL
 
 page_1 = '''{2} 
