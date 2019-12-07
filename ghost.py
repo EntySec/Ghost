@@ -507,7 +507,7 @@ def main():
             try:
                 device_name
             except:
-                print (("{1}[{0}+{1}]{2} No devices attached yet.").format(REDL, GNSL, WHSL))
+                print (("{1}[{0}+{1}]{2} No devices connected yet.").format(REDL, GNSL, WHSL))
                 main()
             os.system("adb -s " +device_name+ " shell dumpsys activity")
             option = raw_input(WHSL + "ghost"+GNSL+"("+REDL + "main_menu" + GNSL + ")"+WHSL + "> ")
