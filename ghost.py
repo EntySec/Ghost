@@ -137,7 +137,7 @@ def main():
             try:
                 device_name
             except:
-                print (("{1}[{0}+{1}] No devices attached yet.").format(REDL, WHSL))
+                print (("{1}[{0}+{1}]{2} No devices attached yet.").format(REDL, GNSL, WHSL))
                 main()
             os.system("adb devices -l")
             option = raw_input(WHSL + "ghost"+GNSL+"("+REDL + "main_menu" + GNSL + ")"+WHSL + "> ")
@@ -146,13 +146,13 @@ def main():
             try:
                 device_name
             except:
-                print (("{1}[{0}+{1}] No devices attached yet.").format(REDL, WHSL))
+                print (("{1}[{0}+{1}]{2} No devices attached yet.").format(REDL, GNSL, WHSL))
                 main()
             os.system("adb disconnect")
             option = raw_input(WHSL + "ghost"+GNSL+"("+REDL + "main_menu" + GNSL + ")"+WHSL + "> ")
 
         elif option == '3':
-            print (("\n{1}[{0}+{1}] Enter a phone IP address.").format(REDL, WHSL))
+            print (("\n{1}[{0}+{1}]{2} Enter a phone IP address.").format(REDL, GNSL, WHSL))
             try:
                 device_name = raw_input (" "+arrow+" ghost"+REDL + "(connect_phone)"+WHSL + "> ")
             except KeyboardInterrupt:
@@ -169,7 +169,7 @@ def main():
             try:
                 device_name
             except:
-                print (("{1}[{0}+{1}] No devices attached yet.").format(REDL, WHSL))
+                print (("{1}[{0}+{1}]{2} No devices attached yet.").format(REDL, GNSL, WHSL))
                 main()
             os.system("adb -s "+device_name+" shell")
             option = raw_input(WHSL + "ghost"+GNSL+"("+REDL + "main_menu" + GNSL + ")"+WHSL + "> ")
@@ -178,10 +178,10 @@ def main():
             try:
                 device_name
             except:
-                print (("{1}[{0}+{1}] No devices attached yet.").format(REDL, WHSL))
+                print (("{1}[{0}+{1}]{2} No devices attached yet.").format(REDL, GNSL, WHSL))
                 main()
             print (("     "+connect))
-            print (("    {1}[{0}+{1}] Enter the apk location.").format(REDL, WHSL))
+            print (("    {1}[{0}+{1}]{2} Enter the apk location.").format(REDL, GNSL, WHSL))
             apk_location = raw_input("    "+arrow + "ghost"+REDL + "(apk_install)"+WHSL + "> ")
             os.system("adb -s  "+device_name+" install "+apk_location)
             print (GNSL  +  "Apk has been installed.")
@@ -191,13 +191,13 @@ def main():
             try:
                 device_name
             except:
-                print (("{1}[{0}+{1}] No devices attached yet.").format(REDL, WHSL))
+                print (("{1}[{0}+{1}]{2} No devices attached yet.").format(REDL, GNSL, WHSL))
                 main()
             print (("     "+connect))
-            print (("    {1}[{0}+{1}] Please wait 3m its recording").format(REDL, WHSL))
+            print (("    {1}[{0}+{1}]{2} Please wait 3m its recording").format(REDL, GNSL, WHSL))
             print (("     "+connect))
             os.system("adb -s "+device_name+" shell screenrecord /sdcard/screen.mp4")
-            print (("    {1}[{0}+{1}] Enter where you would like the video to be saved.").format(REDL, WHSL))
+            print (("    {1}[{0}+{1}]{2} Enter where you would like the video to be saved.").format(REDL, GNSL, WHSL))
             place_location = raw_input("    "+arrow + "ghost"+REDL + "(screen_record)"+WHSL + "> ")
             os.system("adb -s "+device_name+" pull /sdcard/demo.mp4 "+place_location)
             option = raw_input(WHSL + "ghost"+GNSL+"("+REDL + "main_menu" + GNSL + ")"+WHSL + "> ")
@@ -206,11 +206,11 @@ def main():
             try:
                 device_name
             except:
-                print (("{1}[{0}+{1}] No devices attached yet.").format(REDL, WHSL))
+                print (("{1}[{0}+{1}]{2} No devices attached yet.").format(REDL, GNSL, WHSL))
                 main()
             os.system("adb -s "+device_name+" shell screencap /sdcard/screen.png")
             print (("     "+connect))
-            print (("    {1}[{0}+{1}] Enter where you would like the screenshot to be saved.").format(REDL, WHSL))
+            print (("    {1}[{0}+{1}]{2} Enter where you would like the screenshot to be saved.").format(REDL, GNSL, WHSL))
             place_location = raw_input("    "+arrow + "ghost"+REDL + "(screenshot)"+WHSL + "> ")
             os.system("adb -s "+device_name+" pull /sdcard/screen.png "+place_location)
             option = raw_input(WHSL + "ghost"+GNSL+"("+REDL + "main_menu" + GNSL + ")"+WHSL + "> ")
@@ -223,13 +223,13 @@ def main():
             try:
                 device_name
             except:
-                print (("{1}[{0}+{1}] No devices attached yet.").format(REDL, WHSL))
+                print (("{1}[{0}+{1}]{2} No devices attached yet.").format(REDL, GNSL, WHSL))
                 main()
             print (("     "+connect))
-            print (("    {1}[{0}+{1}] Enter a file location on a device.").format(REDL, WHSL))
+            print (("    {1}[{0}+{1}]{2} Enter a file location on a device.").format(REDL, GNSL, WHSL))
             file_location = raw_input("    "+arrow + "ghost"+REDL + "(file_pull)"+WHSL + "> ")
             print (("        "+connect))
-            print (("       {1}[{0}+{1}] Enter where you would like the file to be saved.").format(REDL, WHSL))
+            print (("       {1}[{0}+{1}]{2} Enter where you would like the file to be saved.").format(REDL, GNSL, WHSL))
             place_location = raw_input("       "+arrow + "ghost"+REDL + "(file_pull)"+WHSL + "> ")
             os.system("adb -s "+device_name+" pull "+file_location+" "+place_location)
             option = raw_input(WHSL + "ghost"+GNSL+"("+REDL + "main_menu" + GNSL + ")"+WHSL + "> ")
@@ -238,7 +238,7 @@ def main():
             try:
                 device_name
             except:
-                print (("{1}[{0}+{1}] No devices attached yet.").format(REDL, WHSL))
+                print (("{1}[{0}+{1}]{2} No devices attached yet.").format(REDL, GNSL, WHSL))
                 main()
             os.system("adb -s "+device_name+ " reboot ")
             option = raw_input(WHSL + "ghost"+GNSL+"("+REDL + "main_menu" + GNSL + ")"+WHSL + "> ")
@@ -247,10 +247,10 @@ def main():
             try:
                 device_name
             except:
-                print (("{1}[{0}+{1}] No devices attached yet.").format(REDL, WHSL))
+                print (("{1}[{0}+{1}]{2} No devices attached yet.").format(REDL, GNSL, WHSL))
                 main()
             print (("     "+connect))
-            print (("    {1}[{0}+{1}] Enter a package name.").format(REDL, WHSL))
+            print (("    {1}[{0}+{1}]{2} Enter a package name.").format(REDL, GNSL, WHSL))
             package_name = raw_input("    "+arrow + "ghost"+REDL + "(app_delete)"+WHSL + "> ")
             os.system("adb -s "+device_name+" unistall "+package_name)
             option = raw_input(WHSL + "ghost"+GNSL+"("+REDL + "main_menu" + GNSL + ")"+WHSL + "> ")
@@ -259,7 +259,7 @@ def main():
             try:
                 device_name
             except:
-                print (("{1}[{0}+{1}] No devices attached yet.").format(REDL, WHSL))
+                print (("{1}[{0}+{1}]{2} No devices attached yet.").format(REDL, GNSL, WHSL))
                 main()
             os.system('adb -s '+device_name+" logcat ")
             option = raw_input(WHSL + "ghost"+GNSL+"("+REDL + "main_menu" + GNSL + ")"+WHSL + "> ")
@@ -268,7 +268,7 @@ def main():
             try:
                 device_name
             except:
-                print (("{1}[{0}+{1}] No devices attached yet.").format(REDL, WHSL))
+                print (("{1}[{0}+{1}]{2} No devices attached yet.").format(REDL, GNSL, WHSL))
                 main()
             os.system("adb  -s "+device_name+" dumpsys")
             option = raw_input(WHSL + "ghost"+GNSL+"("+REDL + "main_menu" + GNSL + ")"+WHSL + "> ")
@@ -277,7 +277,7 @@ def main():
             try:
                 device_name
             except:
-                print (("{1}[{0}+{1}] No devices attached yet.").format(REDL, WHSL))
+                print (("{1}[{0}+{1}]{2} No devices attached yet.").format(REDL, GNSL, WHSL))
                 main()
             os.system("adb -s " +device_name+ " shell pm list packages -f")
             option = raw_input(WHSL + "ghost"+GNSL+"("+REDL + "main_menu" + GNSL + ")"+WHSL + "> ")
@@ -286,10 +286,10 @@ def main():
             try:
                 device_name
             except:
-                print (("{1}[{0}+{1}] No devices attached yet.").format(REDL, WHSL))
+                print (("{1}[{0}+{1}]{2} No devices attached yet.").format(REDL, GNSL, WHSL))
                 main()
             print (("     "+connect))
-            print (("    {1}[{0}+{1}] Enter a package name.").format(REDL, WHSL))
+            print (("    {1}[{0}+{1}]{2} Enter a package name.").format(REDL, GNSL, WHSL))
             package_name = raw_input("    "+arrow + "ghost"+REDL + "(app_run)"+WHSL + "> ")
             os.system("adb -s "+device_name+" shell monkey -p "+package_name+" -v 500")
             option = raw_input(WHSL + "ghost"+GNSL+"("+REDL + "main_menu" + GNSL + ")"+WHSL + "> ")
@@ -298,13 +298,13 @@ def main():
             try:
                 device_name
             except:
-                print (("{1}[{0}+{1}] No devices attached yet.").format(REDL, WHSL))
+                print (("{1}[{0}+{1}]{2} No devices attached yet.").format(REDL, GNSL, WHSL))
                 main()
             print (("     "+connect))
-            print (("    {1}[{0}+{1}] Enter a port on the device.").format(REDL, WHSL))
+            print (("    {1}[{0}+{1}]{2} Enter a port on the device.").format(REDL, GNSL, WHSL))
             port_device = raw_input("    "+arrow + "ghost"+REDL + "(port_forward)"+WHSL + "> ")
             print (("         "+connect))
-            print (("        {1}[{0}+{1}] Enter a port to forward it too.").format(REDL, WHSL))
+            print (("        {1}[{0}+{1}]{2} Enter a port to forward it too.").format(REDL, GNSL, WHSL))
             forward_port = raw_input("        "+arrow + "ghost"+REDL + "(port_forward)"+WHSL + "> ")
             os.system("adb -s "+device_name+" forward tcp:"+port_device+" tcp:"+forward_port)
             option = raw_input(WHSL + "ghost"+GNSL+"("+REDL + "main_menu" + GNSL + ")"+WHSL + "> ")
@@ -312,7 +312,7 @@ def main():
         elif option == '17':
             try:
                 print (("     "+connect))
-                print (("    {1}[{0}+{1}] Enter where you want the file to be saved.").format(REDL, WHSL))
+                print (("    {1}[{0}+{1}]{2} Enter where you want the file to be saved.").format(REDL, GNSL, WHSL))
                 location = raw_input("    "+arrow + "ghost"+REDL + "(wpa_grab)"+WHSL + "> ")
                 os.system("adb -s "+device_name+" shell "+"su -c 'cp /data/misc/wifi/wpa_supplicant.conf /sdcard/'")
                 os.system("adb -s "+device_name+" pull /sdcard/wpa_supplicant.conf "+location)
@@ -322,7 +322,7 @@ def main():
                 try:
                     device_name
                 except:
-                    print (("{1}[{0}+{1}] No devices attached yet.").format(REDL, WHSL))
+                    print (("{1}[{0}+{1}]{2} No devices attached yet.").format(REDL, GNSL, WHSL))
                     main()
                     
                 option = raw_input(WHSL + "ghost"+GNSL+"("+REDL + "main_menu" + GNSL + ")"+WHSL + "> ")
@@ -331,7 +331,7 @@ def main():
             try:
                 device_name
             except:
-                print (("{1}[{0}+{1}] No devices attached yet.").format(REDL, WHSL))
+                print (("{1}[{0}+{1}]{2} No devices attached yet.").format(REDL, GNSL, WHSL))
                 main()
             os.system("adb -s " +device_name+ " shell ip address show wlan0")
             option = raw_input(WHSL + "ghost"+GNSL+"("+REDL + "main_menu" + GNSL + ")"+WHSL + "> ")
@@ -340,17 +340,17 @@ def main():
             try:
                 device_name
             except:
-                print (("{1}[{0}+{1}] No devices attached yet.").format(REDL, WHSL))
+                print (("{1}[{0}+{1}]{2} No devices attached yet.").format(REDL, GNSL, WHSL))
                 main()
             print (("     "+connect))
-            print (("    {1}[{0}+{1}] Enter a package name.").format(REDL, WHSL))
+            print (("    {1}[{0}+{1}]{2} Enter a package name.").format(REDL, GNSL, WHSL))
             package_name = raw_input("    "+arrow + "ghost"+REDL + "(pull_apk)"+WHSL + "> ")
             os.system("adb -s "+device_name+" shell pm path "+package_name)
             print (("         "+connect))
-            print (("        {1}[{0}+{1}] Enter the path to apk.").format(REDL, WHSL))
+            print (("        {1}[{0}+{1}]{2} Enter the path to apk.").format(REDL, GNSL, WHSL))
             path = raw_input("        "+arrow + "ghost"+REDL + "(pull_apk)"+WHSL + "> ")
             print (("             "+connect))
-            print (("            {1}[{0}+{1}] Enter The location to store the apk.")  .format(REDL, WHSL))
+            print (("            {1}[{0}+{1}]{2} Enter The location to store the apk.")  .format(REDL, GNSL, WHSL))
             location =   raw_input("            "+arrow + "ghost"+REDL + "(pull_apk)"+WHSL + "> ")
             os.system("adb -s " +device_name+" pull "+path+" "+location)
             option = raw_input(WHSL + "ghost"+GNSL+"("+REDL + "main_menu" + GNSL + ")"+WHSL + "> ")
@@ -359,7 +359,7 @@ def main():
             try:
                 device_name
             except:
-                print (("{1}[{0}+{1}] No devices attached yet.").format(REDL, WHSL))
+                print (("{1}[{0}+{1}]{2} No devices attached yet.").format(REDL, GNSL, WHSL))
                 main()
             os.system("adb -s " +device_name+ " shell dumpsys battery")
             option = raw_input(WHSL + "ghost"+GNSL+"("+REDL + "main_menu" + GNSL + ")"+WHSL + "> ")
@@ -368,7 +368,7 @@ def main():
             try:
                 device_name
             except:
-                print (("{1}[{0}+{1}] No devices attached yet.").format(REDL, WHSL))
+                print (("{1}[{0}+{1}]{2} No devices attached yet.").format(REDL, GNSL, WHSL))
                 main()
             os.system("adb -s " +device_name+ " shell netstat")
             option = raw_input(WHSL + "ghost"+GNSL+"("+REDL + "main_menu" + GNSL + ")"+WHSL + "> ")
@@ -377,10 +377,10 @@ def main():
             try:
                 device_name
             except:
-                print (("{1}[{0}+{1}] No devices attached yet.").format(REDL, WHSL))
+                print (("{1}[{0}+{1}]{2} No devices attached yet.").format(REDL, GNSL, WHSL))
                 main()
             print (("     "+connect))
-            print (("    {1}[{0}+{1}] To turn wifi back on you need the device to be pluged in.").format(REDL, WHSL))
+            print (("    {1}[{0}+{1}]{2} To turn wifi back on you need the device to be pluged in.").format(REDL, GNSL, WHSL))
             print (("     "+connect))
             on_off = raw_input(WHSL + "    ["+REDL+"+"+WHSL+"] Would you like the wifi "+GNSL +"on"+WHSL +"/"+REDL +"off "+WHSL)
             if on_off == 'off':
@@ -395,7 +395,7 @@ def main():
             try:
                 device_name
             except:
-                print (("{1}[{0}+{1}] No devices attached yet.").format(REDL, WHSL))
+                print (("{1}[{0}+{1}]{2} No devices attached yet.").format(REDL, GNSL, WHSL))
                 main()
             print (("     "+connect))
             print (REDL + "****************** TRYING TO REMOVE PASS ******************")
@@ -410,7 +410,7 @@ def main():
             try:
                 device_name
             except:
-                print (("{1}[{0}+{1}] No devices attached yet.").format(REDL, WHSL))
+                print (("{1}[{0}+{1}]{2} No devices attached yet.").format(REDL, GNSL, WHSL))
                 main()
             print ('''
     0 -->  "KEYCODE_UNKNOWN"
@@ -500,7 +500,7 @@ def main():
     84 -->  "KEYCODE_SEARCH"
     85 -->  "TAG_LAST_KEYCODE"
             ''')
-            print (("{1}[{0}+{1}] Enter a number.").format(REDL, WHSL))
+            print (("{1}[{0}+{1}]{2} Enter a number.").format(REDL, GNSL, WHSL))
             num = raw_input(arrow + "ghost"+REDL + "(keycode)"+WHSL + "> ")
             os.system("adb -s "+device_name+" shell input keyevent "+num)
             option = raw_input(WHSL + "ghost"+GNSL+"("+REDL + "main_menu" + GNSL + ")"+WHSL + "> ")
@@ -509,7 +509,7 @@ def main():
             try:
                 device_name
             except:
-                print (("{1}[{0}+{1}] No devices attached yet.").format(REDL, WHSL))
+                print (("{1}[{0}+{1}]{2} No devices attached yet.").format(REDL, GNSL, WHSL))
                 main()
             os.system("adb -s " +device_name+ " dumpsys activity")
             option = raw_input(WHSL + "ghost"+GNSL+"("+REDL + "main_menu" + GNSL + ")"+WHSL + "> ")
