@@ -130,8 +130,6 @@ def main():
     option = raw_input(WHSL + "ghost"+GNSL+"("+REDL + "main_menu" + GNSL + ")"+WHSL + "> ")
         
     while(1):
-        if option == '':
-            option = raw_input(WHSL + "ghost"+GNSL+"("+REDL + "main_menu" + GNSL + ")"+WHSL + "> ")
         
         if option == '1':
             try:
@@ -154,7 +152,7 @@ def main():
         elif option == '3':
             print (("\n{1}[{0}+{1}]{2} Enter a phone IP address.").format(REDL, GNSL, WHSL))
             try:
-                device_name = raw_input (arrow+" ghost"+REDL + "(connect_phone)"+WHSL + "> ")
+                device_name = raw_input (arrow+" ghost"+GNSL+"("+REDL + "connect_device" + GNSL + ")"+WHSL + "> ")
             except KeyboardInterrupt:
                 main()
             if device_name == '':
@@ -519,7 +517,7 @@ def main():
             option = raw_input(WHSL + "ghost"+GNSL+"("+REDL + "main_menu" + GNSL + ")"+WHSL + "> ")
 
         elif option == '':
-            option = raw_input(WHSL + "ghost"+REDL + "(main_menu)"+WHSL + "> ")
+            option = raw_input(WHSL + "ghost"+GNSL+"("+REDL + "main_menu" + GNSL + ")"+WHSL + "> ")
             
         elif option == '27':
             os.system("{ adb disconnect; } &> /dev/null")
