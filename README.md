@@ -38,7 +38,7 @@
  </a>
 </p>
 
-[![asciicast](https://asciinema.org/4fb04e15-97c4-4001-b8b6-cc32b3e9f488.png)](https://asciinema.org/4fb04e15-97c4-4001-b8b6-cc32b3e9f488)
+[![asciicast](https://asciinema.org/a/mG7WvaXX0a7cj7lIPXFlH2Z7b)](https://asciinema.org/a/mG7WvaXX0a7cj7lIPXFlH2Z7b)
 
 ***
 
