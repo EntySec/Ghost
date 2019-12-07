@@ -76,6 +76,8 @@
 
 > ghost
 
+[![asciicast](https://asciinema.org/a/mG7WvaXX0a7cj7lIPXFlH2Z7b.png)](https://asciinema.org/a/mG7WvaXX0a7cj7lIPXFlH2Z7b)
+
 ***
 
 # Why ghost framework?
