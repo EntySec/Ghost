@@ -94,19 +94,19 @@ arrow = str(" "+arrow)
 connect = REDL + "│".decode("utf-8").strip() + WHSL
 
 page_1 = '''{2} 
-     .-.           {0}[{1}Ghost Framework{0}]{2}
-   .'   `.    {2}Developed by Entynetproject{2} 
-   :0 0   :         {0}({2}Ivan Nikolsky{0}){2}      
-   : o    `.             
-  :         ``.               {0}[{1}1{0}] {2}Show connected devices
- :             `.             {0}[{1}2{0}] {2}Disconect all devices
-:  :         .   `.           {0}[{1}3{0}] {2}Connect a new device
-:   :          ` . `.         {0}[{1}4{0}] {2}Access shell on a device
- `.. :            `. ``;      {0}[{1}5{0}] {2}Install an apk on a device
-    `:;             `:'       {0}[{1}6{0}] {2}Screen record a device
-       :              `.      {0}[{1}7{0}] {2}Get device screenshot
-        `.              `.    {0}[{1}8{0}] {2}Restart ADB Server
-          `'`'`'`---..,___`.  {0}[{1}9{0}] {2}Pull files from device       
+      .-.           {0}[{1}Ghost Framework{0}]{2}
+    .'   `.    {2}Developed by Entynetproject{2} 
+    :0 0   :         {0}({2}Ivan Nikolsky{0}){2}      
+    : o    `.             
+   :         ``.               {0}[{1}1{0}] {2}Show connected devices
+  :             `.             {0}[{1}2{0}] {2}Disconect all devices
+ :  :         .   `.           {0}[{1}3{0}] {2}Connect a new device
+ :   :          ` . `.         {0}[{1}4{0}] {2}Access shell on a device
+  `.. :            `. ``;      {0}[{1}5{0}] {2}Install an apk on a device
+     `:;             `:'       {0}[{1}6{0}] {2}Screen record a device
+        :              `.      {0}[{1}7{0}] {2}Get device screenshot
+         `.              `.    {0}[{1}8{0}] {2}Restart ADB Server
+           `'`'`'`---..,___`.  {0}[{1}9{0}] {2}Pull files from device       
                      
 {0}[{1}10{0}] {2}Shutdown the device      {0}[{1}19{0}]{2} Extract apk from app                         
 {0}[{1}11{0}] {2}Uninstall an app         {0}[{1}20{0}]{2} Get Battery Status
