@@ -522,6 +522,7 @@ def main():
         elif option == '27':
             os.system("{ adb disconnect; } &> /dev/null")
             print (("{1}[{0}+{1}]{2} Stopping ADB server...").format(REDL, GNSL, WHSL))
+            t.sleep(5)
             exit()
             break
         else:
