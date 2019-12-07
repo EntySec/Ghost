@@ -106,7 +106,7 @@ page_1 = '''{2}
     `:;             `:'        {0}[{1}6{0}] {2}Screen record a device
        :              `.       {0}[{1}7{0}] {2}Get device screenshot
         `.              `.     {0}[{1}8{0}] {2}Restart ADB Server
-          `'`'`'`---..,___`.   {0}[{1}9{0}] {2}Pull folders from device       
+          `'`'`'`---..,___`.   {0}[{1}9{0}] {2}Pull files from device       
                      
 {0}[{1}10{0}] {2}Shutdown the device       {0}[{1}19{0}]{2} Extract apk from app                         
 {0}[{1}11{0}] {2}Uninstall an app          {0}[{1}20{0}]{2} Get Battery Status
