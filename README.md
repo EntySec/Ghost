@@ -45,7 +45,7 @@
 # About ghost framework
 
     INFO: Ghost Framework is an Android post exploitation framework that uses an Android 
-    Debug Bridge to remotely access an Android device. Ghost Framework allows you to 
+    Debug Bridge to remotely access an Android device. Ghost Framework allows people to 
     open the target's shell, emulate button presses, remove password and much more.
     
 ***
@@ -85,17 +85,17 @@
 
 > Accessing Android Shell
 
-    INFO: Ghost Framework allows you to remotely access to the 
+    INFO: Ghost Framework allows people to remotely access to the 
     Android device shell without using OpenSSH or other protocols.
     
 > Emulating Button Presses
 
-    INFO: Ghost Framework allows you to remotely emulate button 
+    INFO: Ghost Framework allows people to remotely emulate button 
     presses on the Android device using the Ghost Keycode.
 
 > Removing Android Password
 
-    INFO: Ghost Framework allows you to remotely remove 
+    INFO: Ghost Framework allows people to remotely remove 
     the Android device password if it was forgotten.
 
 ***
