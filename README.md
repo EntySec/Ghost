@@ -78,7 +78,7 @@
 
 ## Example of execution
 
-[![asciicast](https://asciinema.org/a/mG7WvaXX0a7cj7lIPXFlH2Z7b.png)](https://asciinema.org/a/mG7WvaXX0a7cj7lIPXFlH2Z7b)
+![video](https://user-images.githubusercontent.com/54115104/70388307-e8e5a200-19c0-11ea-96c5-8e5938cc03f6.png)
 
 ***
 
