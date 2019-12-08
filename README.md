@@ -71,12 +71,10 @@
 
 # How to execute ghost
 
-    INFO: To execute Camera Snapshot you 
+    INFO: To execute Ghost Framework you 
     should execute the following command!
 
 > ghost
-
-## Example of execution
 
 [![asciicast](https://user-images.githubusercontent.com/54115104/70388307-e8e5a200-19c0-11ea-96c5-8e5938cc03f6.png)](https://asciinema.org/a/mG7WvaXX0a7cj7lIPXFlH2Z7b)
 
