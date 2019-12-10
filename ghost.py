@@ -113,7 +113,7 @@ page_1 = '''{2}
  {0}[{1}12{0}] {2}Show device log          {0}[{1}21{0}]{2} Get Network Status
  {0}[{1}13{0}] {2}Dump System Info         {0}[{1}22{0}]{2} Turn WiFi on/off
  {0}[{1}14{0}] {2}List all device apps     {0}[{1}23{0}]{2} Remove device password
- {0}[{1}15{0}] {2}Run a device app         {0}[{1}24{0}]{2} Use Ghost Keycode
+ {0}[{1}15{0}] {2}Run a device app         {0}[{1}24{0}]{2} Emulate button presses
  {0}[{1}16{0}]{2} Port Forwarding          {0}[{1}25{0}]{2} Get Current Activity
  {0}[{1}17{0}]{2} Grab wpa_supplicant      {0}[{1}26{0}]{2} Update Ghost Framework
  {0}[{1}18{0}]{2} Show Mac/Inet            {0}[{1}27{0}]{2} Exit Ghost Framework
