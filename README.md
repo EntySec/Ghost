@@ -77,7 +77,7 @@
 
 > ghost
 
-[![asciicast](https://asciinema.org/a/w9rghqTqViezdkFREAXSzWLNG.png)](https://asciinema.org/a/w9rghqTqViezdkFREAXSzWLNG)
+[![asciicast](https://asciinema.org/a/286981.png)](https://asciinema.org/a/286981)
 
 ***
 
