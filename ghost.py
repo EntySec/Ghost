@@ -94,9 +94,9 @@ arrow = str(" "+arrow)
 connect = REDL + "│".decode("utf-8").strip() + WHSL
 
 page_1 = '''{2} 
-      .-.           {0}[{1}Ghost Framework{0}]{2}
-    .'   `.    {2}Developed by Entynetproject{2} 
-    :0 0   :         {0}({2}Ivan Nikolsky{0}){2}      
+      .-.            {0}[{1}Ghost Framework{0}]{2}
+    .'   `.       {0}({1}Android Remote Access{0}){2}
+    :0 0   :    {2}Developed by Entynetproject{2}
     : o    `.             
    :         ``.               {0}[{1}1{0}] {2}Show connected devices
   :             `.             {0}[{1}2{0}] {2}Disconect all devices
