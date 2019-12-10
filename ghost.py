@@ -1,6 +1,6 @@
 #-*- coding: utf-8 -*-
 
-# Copyright (C) 2016 - 2018 Entynetproject
+# Copyright (C) 2016 - 2019 Entynetproject
 #
 # Licensed under the Apache License, Version 2.0 (the "License"); you may not
 # use the software except in compliance with the License.
@@ -101,7 +101,7 @@ page_1 = '''{2}
    :         ``.               {0}[{1}1{0}] {2}Show connected devices
   :             `.             {0}[{1}2{0}] {2}Disconect all devices
  :  :         .   `.           {0}[{1}3{0}] {2}Connect a new device
- :   :          ` . `.         {0}[{1}4{0}] {2}Access shell on a device
+ :   :          ` . `.         {0}[{1}4{0}] {2}Access device shell
   `.. :            `. ``;      {0}[{1}5{0}] {2}Install an apk on a device
      `:;             `:'       {0}[{1}6{0}] {2}Screen record a device
         :              `.      {0}[{1}7{0}] {2}Get device screenshot
@@ -112,7 +112,7 @@ page_1 = '''{2}
  {0}[{1}11{0}] {2}Uninstall an app         {0}[{1}20{0}]{2} Get Battery Status
  {0}[{1}12{0}] {2}Show device log          {0}[{1}21{0}]{2} Get Network Status
  {0}[{1}13{0}] {2}Dump System Info         {0}[{1}22{0}]{2} Turn WiFi on/off
- {0}[{1}14{0}] {2}List all device apps     {0}[{1}23{0}]{2} Remove Password
+ {0}[{1}14{0}] {2}List all device apps     {0}[{1}23{0}]{2} Remove device password
  {0}[{1}15{0}] {2}Run a device app         {0}[{1}24{0}]{2} Use Ghost Keycode
  {0}[{1}16{0}]{2} Port Forwarding          {0}[{1}25{0}]{2} Get Current Activity
  {0}[{1}17{0}]{2} Grab wpa_supplicant      {0}[{1}26{0}]{2} Update Ghost Framework
