@@ -105,12 +105,12 @@ page_1 = '''{2}
   `.. :            `. ``;      {0}[{1}5{0}] {2}Install an apk on a device
      `:;             `:'       {0}[{1}6{0}] {2}Screen record a device
         :              `.      {0}[{1}7{0}] {2}Get device screenshot
-         `.              `.    {0}[{1}8{0}] {2}Restart ADB Server
+         `.              `.    {0}[{1}8{0}] {2}Restart Ghost Server
            `'`'`'`---..,___`.  {0}[{1}9{0}] {2}Pull files from device       
                      
  {0}[{1}10{0}] {2}Shutdown the device      {0}[{1}19{0}]{2} Extract apk from app                         
  {0}[{1}11{0}] {2}Uninstall an app         {0}[{1}20{0}]{2} Get Battery Status
- {0}[{1}12{0}] {2}Show device log          {0}[{1}21{0}]{2} Network status
+ {0}[{1}12{0}] {2}Show device log          {0}[{1}21{0}]{2} Get Network Status
  {0}[{1}13{0}] {2}Dump System Info         {0}[{1}22{0}]{2} Turn WiFi on/off
  {0}[{1}14{0}] {2}List all device apps     {0}[{1}23{0}]{2} Remove Password
  {0}[{1}15{0}] {2}Run a device app         {0}[{1}24{0}]{2} Use Ghost Keycode
@@ -521,7 +521,7 @@ def main():
             
         elif option == '27':
             os.system("{ adb disconnect; } &> /dev/null")
-            print (("{1}[{0}+{1}]{2} Stopping ADB server...").format(REDL, GNSL, WHSL))
+            print (("{1}[{0}+{1}]{2} Stopping Ghost Server...").format(REDL, GNSL, WHSL))
             t.sleep(5)
             exit()
             break
@@ -537,7 +537,7 @@ def main():
 
 import os
 os.system("printf '\033]2;Ghost Framework\a'")
-print (("{1}[{0}+{1}]{2} Starting ADB server...").format(REDL, GNSL, WHSL))
+print (("{1}[{0}+{1}]{2} Starting Ghost Server...").format(REDL, GNSL, WHSL))
 os.system("{ adb tcpip 5555; } &> /dev/null")
 t.sleep(4)
 os.system('clear')
