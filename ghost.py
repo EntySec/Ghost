@@ -498,7 +498,7 @@ def main():
  84  -->  KEYCODE_SEARCH
  85  -->  TAG_LAST_KEYCODE
             ''')
-            print (("{1}[{0}+{1}]{2} Enter an option number.").format(REDL, GNSL, WHSL))
+            print (("{1}[{0}+{1}]{2} Enter a keycode option number.").format(REDL, GNSL, WHSL))
             num = raw_input(arrow + " ghost"+GNSL+"("+REDL + "keycode" + GNSL + ")"+WHSL + "> ")
             os.system("adb -s "+device_name+" shell input keyevent "+num)
             option = raw_input(WHSL + "ghost"+GNSL+"("+REDL + "main_menu" + GNSL + ")"+WHSL + "> ")
