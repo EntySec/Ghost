@@ -85,18 +85,18 @@
 
 > Accessing device shell
 
-    INFO: Ghost Framework can be used to remotely access to the 
+    INFO: Ghost Framework can be used to access the remote
     Android device shell without using OpenSSH or other protocols.
     
 > Emulating device button presses
 
-    INFO: Ghost Framework can be used to remotely 
-    emulate button presses on the Android device.
+    INFO: Ghost Framework can be used to emulate 
+    button presses on the remote Android device.
 
 > Removing device password
 
-    INFO: Ghost Framework can be used to remotely remove 
-    the Android device password if it was forgotten.
+    INFO: Ghost Framework can be used to remove the 
+    remote Android device password if it was forgotten.
 
 ***
 
