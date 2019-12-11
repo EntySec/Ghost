@@ -380,7 +380,7 @@ def main():
             print (("     "+connect))
             print (("    {1}[{0}+{1}]{2} To turn WiFi back on, you should the device to be Pluged-In.").format(REDL, GNSL, WHSL))
             print (("     "+connect))
-            on_off = raw_input(GNSL + "    ["+REDL+"+"+GNSL+"]"+WHSL+" Would you like to turn the WiFi (on|off)")
+            on_off = raw_input(GNSL + "    ["+REDL+"+"+GNSL+"]"+WHSL+" Would you like to turn the WiFi on/off")
             if on_off == 'off':
                 command = " shell svc wifi disable"
             else:
