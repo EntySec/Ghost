@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Copyright (C) 2016 - 2018 Entynetproject
+# Copyright (C) 2016 - 2019 Entynetproject
 #
 # Licensed under the Apache License, Version 2.0 (the "License"); you may not
 # use the software except in compliance with the License.
