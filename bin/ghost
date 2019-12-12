@@ -92,7 +92,8 @@ then
 {
 cd ~/ghost
 } &> /dev/null
-python ghost.py
+chmod +x ghost
+./ghost
 else
 {
 ASESR="$( curl -s checkip.dyndns.org | sed -e 's/.*Current IP Address: //' -e 's/<.*$//' )"
@@ -104,7 +105,8 @@ cd ~
 git clone https://github.com/entynetproject/ghost.git
 cd ~/ghost
 } &> /dev/null
-python ghost.py
+chmod +x ghost
+./ghost
 else
 cd ~
 sleep 1
