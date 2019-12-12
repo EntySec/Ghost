@@ -67,7 +67,7 @@ fi
 sleep 1
 echo -e ""$GN"["$RS"+"$GN"]"$CE" Installing update..."$C""
 {
-rm -r ~/ghost
+rm -rf ~/ghost
 rm /bin/ghost
 rm /usr/local/bin/ghost
 rm /data/data/com.termux/files/usr/bin/ghost
