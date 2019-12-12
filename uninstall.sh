@@ -33,7 +33,7 @@ fi
 {
 rm /bin/ghost
 rm /usr/local/bin/ghost
-rm -r ~/ghost
+rm -rf ~/ghost
 rm /etc/ghost.conf
 rm /data/data/com.termux/files/usr/bin/ghost
 } &> /dev/null
