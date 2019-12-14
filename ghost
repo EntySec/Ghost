@@ -16,8 +16,6 @@
 # License for the specific language governing permissions and limitations under
 # the License.
 
-#=============================
-#Imports
 import os
 import sys
 import readline
@@ -53,8 +51,6 @@ def get_input(prompt, auto_complete_fn=None, basefile_fn=None):
     cmd = raw_input("%s" % prompt)
     return cmd.strip()
 
-#=============================
-# Variables
 CurrentDir = os.path.dirname(os.path.abspath(__file__))
 readline.set_completer(autocomplete)
 readline.parse_and_bind("tab: complete")
@@ -64,31 +60,6 @@ REDL = '\033[0;31m'
 GNSL = '\033[0;32m'
 load_count = 0
 page2 = False
-
-#=============================
-#Install Functions
-# def ColoringModeStartup():
-#     coloring_file = open(CurrentDir+"\\install\\coloring.txt", "a+")
-#     line = open(CurrentDir+"\\install\\coloring.txt", "a+").readline()
-#     if 'init' in line:
-#         init(convert=True)
-#         main()
-#     if 'false' in line:
-#         main()
-#     if "NOT_LOADED" in line:
-#         platform_choice = raw_input("Are you loading this script in (W)indows or (L)inux: ")
-#         open(CurrentDir+"\\install\\coloring.txt", "w").close()
-#         if platform_choice.lower() == 'w':
-#             coloring_file.write("init")
-#         else:
-#             coloring_file.write("false")
-#             yn = raw_input(WHSL + "Have you already installed adb via command line "+GNSL + "Y"+WHSL+"/"+REDL+"N "+WHSL)
-#             if yn == "n":
-#                 os.system("sudo apt install adb")
-#             else:
-#                 main()
-
-#=============================
 
 arrow = REDL + "   └──>".decode("utf-8").strip() + WHSL
 arrow = str(" "+arrow)
@@ -123,9 +94,6 @@ page_1 = '''{2}
 page_2 = '''\n
 '''.format(GNSL, REDL, WHSL)
 
-
-#=============================
-#Main
 def main():
     page_num = 1
     option = raw_input(WHSL + "ghost"+GNSL+"("+REDL + "main_menu" + GNSL + ")"+WHSL + "> ")
@@ -531,11 +499,7 @@ def main():
             option = raw_input(WHSL + "ghost"+GNSL+"("+REDL + "main_menu" + GNSL + ")"+WHSL + "> ")
 
     main()
-
-#=============================
-#=============================  
-# Run
-
+    
 import os
 os.system("printf '\033]2;Ghost Framework\a'")
 print (("{1}[{0}+{1}]{2} Starting Ghost Server...").format(REDL, GNSL, WHSL))
