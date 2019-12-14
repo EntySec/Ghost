@@ -116,14 +116,14 @@ fi
 fi
 
 else
-read -e -p $'\033[0;32m[\033[0;31m+\033[0;32m]\033[0;97m Select your architecture (amd/intel/arm):' CONF
+read -e -p $'\033[0;32m[\033[0;31m+\033[0;32m]\033[0;97m Select your architecture (amd/intel/arm): ' CONF
 if [[ "$CONF" = "" ]]
 then
 exit
 else
 if [[ "$CONF" = "arm" ]]
 then
-read -e -p $'\033[0;32m[\033[0;31m+\033[0;32m]\033[0;97m Is this a single board computer (yes/no):' PI
+read -e -p $'\033[0;32m[\033[0;31m+\033[0;32m]\033[0;97m Is this a single board computer (yes/no): ' PI
 if [[ "$PI" = "yes" ]]
 then
 echo "amd" >> /etc/ghost.conf
