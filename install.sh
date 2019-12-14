@@ -67,15 +67,11 @@ then
 if [[ -d /System/Library/CoreServices/SpringBoard.app ]]
 then
 echo -e ""$GN"["$RS"+"$GN"]"$CE" Installing dependencies..."$C""
-{
-if ! which pip > /dev/null; then
-	curl https://bootstrap.pypa.io/get-pip.py | python
-fi
-} &> /dev/null
 else 
 echo -e ""$GN"["$RS"+"$GN"]"$CE" Installing dependencies..."$C""
 pkg update
 pkg -y install python
+pkg -y install adb
 fi
 fi
 
@@ -84,16 +80,11 @@ then
 if [[ -d /System/Library/CoreServices/Finder.app ]]
 then
 echo -e ""$GN"["$RS"+"$GN"]"$CE" Installing dependencies..."$C"" 
-{
-if ! which pip > /dev/null; then
-	curl https://bootstrap.pypa.io/get-pip.py | python
-fi
-} &> /dev/null
 else 
 echo -e ""$GN"["$RS"+"$GN"]"$CE" Installing dependencies..."$C"" 
 apt-get update
 apt-get -y install python
-apt-get -y install python-pip
+apt-get -y install adb
 fi
 fi
 
@@ -102,16 +93,11 @@ then
 if [[ -d /System/Library/CoreServices/Finder.app ]]
 then
 echo -e ""$GN"["$RS"+"$GN"]"$CE" Installing dependencies..."$C"" 
-{
-if ! which pip > /dev/null; then
-	curl https://bootstrap.pypa.io/get-pip.py | python
-fi
-} &> /dev/null
 else 
 echo -e ""$GN"["$RS"+"$GN"]"$CE" Installing dependencies..."$C"" 
 apt-get update
 apt-get -y install python
-apt-get -y install python-pip
+apt-get -y install adb
 fi
 fi
 
@@ -142,15 +128,11 @@ then
 if [[ -d /System/Library/CoreServices/SpringBoard.app ]]
 then
 echo -e ""$GN"["$RS"+"$GN"]"$CE" Installing dependencies..."$C"" 
-{
-if ! which pip > /dev/null; then
-	curl https://bootstrap.pypa.io/get-pip.py | python
-fi
-} &> /dev/null
 else 
 echo -e ""$GN"["$RS"+"$GN"]"$CE" Installing dependencies..."$C"" 
 pkg update
 pkg -y install python
+pkg -y install adb
 fi
 fi
 
@@ -159,16 +141,11 @@ then
 if [[ -d /System/Library/CoreServices/Finder.app ]]
 then
 echo -e ""$GN"["$RS"+"$GN"]"$CE" Installing dependencies..."$C"" 
-{
-if ! which pip > /dev/null; then
-	curl https://bootstrap.pypa.io/get-pip.py | python
-fi
-} &> /dev/null
 else 
 echo -e ""$GN"["$RS"+"$GN"]"$CE" Installing dependencies..."$C"" 
 apt-get update
 apt-get -y install python
-apt-get -y install python-pip
+apt-get -y install adb
 fi
 fi
 
@@ -177,16 +154,11 @@ then
 if [[ -d /System/Library/CoreServices/Finder.app ]]
 then
 echo -e ""$GN"["$RS"+"$GN"]"$CE" Installing dependencies..."$C"" 
-{
-if ! which pip > /dev/null; then
-	curl https://bootstrap.pypa.io/get-pip.py | python
-fi
-} &> /dev/null
 else 
 echo -e ""$GN"["$RS"+"$GN"]"$CE" Installing dependencies..."$C"" 
 apt-get update
 apt-get -y install python
-apt-get -y install python-pip
+apt-get -y install adb
 fi
 fi
 fi
