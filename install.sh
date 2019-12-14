@@ -192,10 +192,6 @@ fi
 fi
 
 {
-pip install -r requirements.txt
-} &> /dev/null
-
-{
 cd ~/ghost/bin
 cp ghost /usr/local/bin
 chmod +x /usr/local/bin/ghost
