@@ -503,8 +503,9 @@ def main():
 import os
 os.system("printf '\033]2;Ghost Framework\a'")
 print (("{1}[{0}+{1}]{2} Starting Ghost Server...").format(REDL, GNSL, WHSL))
-os.system("adb tcpip 5555 > /dev/null")
 t.sleep(4)
+os.system('clear')
+os.system("adb tcpip 5555")
 os.system('clear')
 print (page_1)
 main()
