@@ -482,7 +482,7 @@ def main():
             option = raw_input(WHSL + "ghost"+GNSL+"("+REDL + "main_menu" + GNSL + ")"+WHSL + "> ")
 
         elif option == '26':
-            os.system("chmod +x bin/ghost && bin/ghost -u")
+            os.system("chmod +x etc/update.sh && etc/update.sh")
             option = raw_input(WHSL + "ghost"+GNSL+"("+REDL + "main_menu" + GNSL + ")"+WHSL + "> ")
 
         elif option == '':
