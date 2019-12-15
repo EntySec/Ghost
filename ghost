@@ -490,7 +490,7 @@ def main():
             
         elif option == '27':
             os.system("adb disconnect > /dev/null")
-            print (("{1}[{0}+{1}]{2} Stopping Ghost Server...").format(REDL, GNSL, WHSL))
+            print (("{1}[{0}+{1}]{2} Stopping Ghost Server...{3}").format(REDL, GNSL, WHSL, ENDL))
             t.sleep(5)
             exit()
             break
