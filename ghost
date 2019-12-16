@@ -309,8 +309,15 @@ def main():
                 print (("     "+connect))
                 print (("    {1}[{0}+{1}]{2} Enter where you would like to save the file.").format(REDL, GNSL, WHSL))
                 location = raw_input("    "+arrow + " ghost"+GNSL+"("+REDL + "wpa_grub" + GNSL + ")"+WHSL + "> ")
+                
+                w = os.environ['OLDPWD']
+                os.chdir(w)
+
                 os.system("adb -s "+device_name+" shell "+"su -c 'cp /data/misc/wifi/wpa_supplicant.conf /sdcard/'")
                 os.system("adb -s "+device_name+" pull /sdcard/wpa_supplicant.conf "+location)
+
+                os.chdir(g)
+
                 option = raw_input(WHSL + "ghost"+GNSL+"("+REDL + "main_menu" + GNSL + ")"+WHSL + "> ")
 
             except KeyboardInterrupt:
