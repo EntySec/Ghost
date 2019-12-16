@@ -150,7 +150,14 @@ def main():
             print (("     "+connect))
             print (("    {1}[{0}+{1}]{2} Enter the apk location.").format(REDL, GNSL, WHSL))
             apk_location = raw_input("    "+arrow + " ghost"+GNSL+"("+REDL + "apk_install" + GNSL + ")"+WHSL + "> ")
+           
+            w = os.environ['OLDPWD']
+            os.chdir(w)
+
             os.system("adb -s  "+device_name+" install "+apk_location)
+            
+            os.chdir(g)
+
             print (GNSL  +  "Apk has been installed.")
             option = raw_input(WHSL + "ghost"+GNSL+"("+REDL + "main_menu" + GNSL + ")"+WHSL + "> ")
 
@@ -503,6 +510,7 @@ def main():
 import os
 os.system("printf '\033]2;Ghost Framework\a'")
 print (("{1}[{0}+{1}]{2} Starting Ghost Server...").format(REDL, GNSL, WHSL))
+g = os.environ['PWD']
 t.sleep(4)
 os.system('clear')
 os.system("adb tcpip 5555")
