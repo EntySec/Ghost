@@ -56,112 +56,27 @@ echo
 cat banner/banner.txt
 echo
 
-if [[ -f /etc/ghost.conf ]]
-then
-
-CONF="$( cat /etc/ghost.conf )"
+sleep 1
+echo -e ""$GN"["$RS"+"$GN"]"$CE" Installing dependencies..."$C""
 sleep 1
 
-if [[ "$CONF" = "arm" ]]
-then
-if [[ -d /System/Library/CoreServices/SpringBoard.app ]]
-then
-echo -e ""$GN"["$RS"+"$GN"]"$CE" Installing dependencies..."$C""
-else 
-echo -e ""$GN"["$RS"+"$GN"]"$CE" Installing dependencies..."$C""
+{
 pkg update
 pkg -y install python
-pkg -y install adb
-fi
-fi
-
-if [[ "$CONF" = "amd" ]]
-then
-if [[ -d /System/Library/CoreServices/Finder.app ]]
-then
-echo -e ""$GN"["$RS"+"$GN"]"$CE" Installing dependencies..."$C"" 
-else 
-echo -e ""$GN"["$RS"+"$GN"]"$CE" Installing dependencies..."$C"" 
 apt-get update
 apt-get -y install python
 apt-get -y install adb
-fi
-fi
-
-if [[ "$CONF" = "intel" ]]
-then
-if [[ -d /System/Library/CoreServices/Finder.app ]]
-then
-echo -e ""$GN"["$RS"+"$GN"]"$CE" Installing dependencies..."$C"" 
-else 
-echo -e ""$GN"["$RS"+"$GN"]"$CE" Installing dependencies..."$C"" 
-apt-get update
-apt-get -y install python
-apt-get -y install adb
-fi
-fi
-
-else
-read -e -p $'\033[0;32m[\033[0;31m+\033[0;32m]\033[0;97m Select your architecture (amd/intel/arm): ' CONF
-if [[ "$CONF" = "" ]]
-then
-exit
-else
-if [[ "$CONF" = "arm" ]]
-then
-read -e -p $'\033[0;32m[\033[0;31m+\033[0;32m]\033[0;97m Is this a single board computer (yes/no): ' PI
-if [[ "$PI" = "yes" ]]
-then
-echo "amd" >> /etc/ghost.conf
-CONF="amd"
-else
-echo "$CONF" >> /etc/ghost.conf
-fi
-else
-echo "$CONF" >> /etc/ghost.conf
-fi
-fi
-sleep 1
-
-if [[ "$CONF" = "arm" ]]
-then
-if [[ -d /System/Library/CoreServices/SpringBoard.app ]]
-then
-echo -e ""$GN"["$RS"+"$GN"]"$CE" Installing dependencies..."$C"" 
-else 
-echo -e ""$GN"["$RS"+"$GN"]"$CE" Installing dependencies..."$C"" 
-pkg update
-pkg -y install python
-pkg -y install adb
-fi
-fi
-
-if [[ "$CONF" = "amd" ]]
-then
-if [[ -d /System/Library/CoreServices/Finder.app ]]
-then
-echo -e ""$GN"["$RS"+"$GN"]"$CE" Installing dependencies..."$C"" 
-else 
-echo -e ""$GN"["$RS"+"$GN"]"$CE" Installing dependencies..."$C"" 
-apt-get update
-apt-get -y install python
-apt-get -y install adb
-fi
-fi
-
-if [[ "$CONF" = "intel" ]]
-then
-if [[ -d /System/Library/CoreServices/Finder.app ]]
-then
-echo -e ""$GN"["$RS"+"$GN"]"$CE" Installing dependencies..."$C"" 
-else 
-echo -e ""$GN"["$RS"+"$GN"]"$CE" Installing dependencies..."$C"" 
-apt-get update
-apt-get -y install python
-apt-get -y install adb
-fi
-fi
-fi
+apk add python
+apk add adb
+pacman -Sy
+yes | pacman -S python
+yes | pacman -S adb
+zypper refresh
+zypper install -y python
+zypper install -y adb
+yum -y install python
+yum -y install adb
+} &> /dev/null
 
 {
 cd ~/ghost/bin
