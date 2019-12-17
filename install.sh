@@ -68,9 +68,12 @@ apt-get -y install python
 apt-get -y install adb
 apk add python
 apk add adb
+if [[ -f /usr/bin/pacman ]]
+then
 pacman -Sy
 yes | pacman -S python
 yes | pacman -S adb
+fi
 zypper refresh
 zypper install -y python
 zypper install -y adb
