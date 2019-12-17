@@ -17,7 +17,6 @@
 
 printf '\033]2;Ghost Framework\a'
 
-cd ~
 if [[ -d ~/ghost ]]
 then
 {
