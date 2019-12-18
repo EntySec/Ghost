@@ -86,8 +86,6 @@ eopkg -y install android-tools
 xbps-install -S
 xbps-install -y python
 xbps-install -y android-tools
-nix-env -i python
-nix-env -i adb
 } &> /dev/null
 
 {
