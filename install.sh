@@ -82,6 +82,7 @@ dnf -y install android-tools
 eopkg update-repo
 eopkg -y install python
 eopkg -y install android-tools
+xbps-install -S
 xbps-install -y python
 xbps-install -y android-tools
 nix-env -i python
