@@ -66,7 +66,7 @@ pkg -y install python
 pkg -y install android-tools
 apt-get update
 apt-get -y install python
-apt-get -y install android-tools
+apt-get -y install adb
 apk add python
 apk add android-tools
 pacman -Sy
@@ -79,12 +79,12 @@ yum -y install python
 yum -y install android-tools
 dnf -y install python
 dnf -y install android-tools
-eopkg install python
-eopkg install android-tools
+eopkg -y install python
+eopkg -y install android-tools
 xbps-install -y python
 xbps-install -y android-tools
 nix-env -i python
-nix-env -i android-tools
+nix-env -i adb
 
 } &> /dev/null
 
