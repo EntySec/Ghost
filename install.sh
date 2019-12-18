@@ -79,6 +79,7 @@ yum -y install python
 yum -y install android-tools
 dnf -y install python
 dnf -y install android-tools
+eopkg update-repo
 eopkg -y install python
 eopkg -y install android-tools
 xbps-install -y python
