@@ -62,28 +62,37 @@ sleep 1
 
 {
 pkg update
+pkg -y install git
 pkg -y install python
 pkg -y install android-tools
 apt-get update
+apt-get -y install git
 apt-get -y install python
 apt-get -y install adb
 apk update
+apk add git
 apk add python
 apk add android-tools
 pacman -Sy
+pacman -S --noconfirm git
 pacman -S --noconfirm python
 pacman -S --noconfirm android-tools
 zypper refresh
+zypper install -y git
 zypper install -y python
 zypper install -y android-tools
+yum -y install git
 yum -y install python
 yum -y install android-tools
+dnf -y install git
 dnf -y install python
 dnf -y install android-tools
 eopkg update-repo
+eopkg -y install git
 eopkg -y install python
 eopkg -y install android-tools
 xbps-install -S
+xbps-install -y git
 xbps-install -y python
 xbps-install -y android-tools
 } &> /dev/null
