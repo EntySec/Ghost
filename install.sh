@@ -106,3 +106,7 @@ chmod +x /bin/ghost
 cp ghost /data/data/com.termux/files/usr/bin
 chmod +x /data/data/com.termux/files/usr/bin/ghost
 } &> /dev/null
+
+sleep 1
+echo -e ""$GN"["$RS"+"$GN"]"$CE" Successfully installed!"$C""
+sleep 1
