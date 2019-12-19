@@ -150,14 +150,8 @@ def main():
             print (("     "+connect))
             print (("    {1}[{0}+{1}]{2} Enter the apk location.").format(REDL, GNSL, WHSL))
             apk_location = raw_input("    "+arrow + " ghost"+GNSL+"("+REDL + "apk_install" + GNSL + ")"+WHSL + "> ")
-           
-            w = os.environ['OLDPWD']
-            os.chdir(w)
 
             os.system("adb -s  "+device_name+" install "+apk_location)
-            
-            os.chdir(g)
-
             print (GNSL  +  "Apk has been installed.")
             option = raw_input(WHSL + "ghost"+GNSL+"("+REDL + "main_menu" + GNSL + ")"+WHSL + "> ")
 
@@ -174,13 +168,7 @@ def main():
             print (("    {1}[{0}+{1}]{2} Enter where you would like to save the video.").format(REDL, GNSL, WHSL))
             place_location = raw_input("    "+arrow + " ghost"+GNSL+"("+REDL + "screen_record" + GNSL + ")"+WHSL + "> ")
             
-            w = os.environ['OLDPWD']
-            os.chdir(w)
-
             os.system("adb -s "+device_name+" pull /sdcard/screen.mp4 "+place_location)
-            
-            os.chdir(g)
-
             option = raw_input(WHSL + "ghost"+GNSL+"("+REDL + "main_menu" + GNSL + ")"+WHSL + "> ")
 
         elif option  == '7':
@@ -194,13 +182,7 @@ def main():
             print (("    {1}[{0}+{1}]{2} Enter where you would like to save the screenshot.").format(REDL, GNSL, WHSL))
             place_location = raw_input("    "+arrow + " ghost"+GNSL+"("+REDL + "screenshot" + GNSL + ")"+WHSL + "> ")
 
-            w = os.environ['OLDPWD']
-            os.chdir(w)
-
             os.system("adb -s "+device_name+" pull /sdcard/screen.png "+place_location)
-            
-            os.chdir(g)
-
             option = raw_input(WHSL + "ghost"+GNSL+"("+REDL + "main_menu" + GNSL + ")"+WHSL + "> ")
 
         elif option == '8':
@@ -219,14 +201,8 @@ def main():
             print (("        "+connect))
             print (("       {1}[{0}+{1}]{2} Enter where you would like to save the file.").format(REDL, GNSL, WHSL))
             place_location = raw_input("       "+arrow + " ghost"+GNSL+"("+REDL + "file_pull" + GNSL + ")"+WHSL + "> ")
-            
-            w = os.environ['OLDPWD']
-            os.chdir(w)
 
             os.system("adb -s "+device_name+" pull "+file_location+" "+place_location)
- 
-            os.chdir(g)
-
             option = raw_input(WHSL + "ghost"+GNSL+"("+REDL + "main_menu" + GNSL + ")"+WHSL + "> ")
 
         elif option == '10':
@@ -309,14 +285,9 @@ def main():
                 print (("     "+connect))
                 print (("    {1}[{0}+{1}]{2} Enter where you would like to save the file.").format(REDL, GNSL, WHSL))
                 location = raw_input("    "+arrow + " ghost"+GNSL+"("+REDL + "wpa_grub" + GNSL + ")"+WHSL + "> ")
-                
-                w = os.environ['OLDPWD']
-                os.chdir(w)
 
                 os.system("adb -s "+device_name+" shell "+"su -c 'cp /data/misc/wifi/wpa_supplicant.conf /sdcard/'")
                 os.system("adb -s "+device_name+" pull /sdcard/wpa_supplicant.conf "+location)
-
-                os.chdir(g)
 
                 option = raw_input(WHSL + "ghost"+GNSL+"("+REDL + "main_menu" + GNSL + ")"+WHSL + "> ")
 
@@ -354,14 +325,8 @@ def main():
             print (("             "+connect))
             print (("            {1}[{0}+{1}]{2} Enter The location to store the apk.")  .format(REDL, GNSL, WHSL))
             location =   raw_input("            "+arrow + " ghost"+GNSL+"("+REDL + "pull_apk" + GNSL + ")"+WHSL + "> ")
-       
-            w = os.environ['OLDPWD']
-            os.chdir(w)
 
             os.system("adb -s " +device_name+" pull "+path+" "+location)
-            
-            os.chdir(g)
-            
             option = raw_input(WHSL + "ghost"+GNSL+"("+REDL + "main_menu" + GNSL + ")"+WHSL + "> ")
 
         elif option == '20':
@@ -545,7 +510,6 @@ def main():
 import os
 os.system("printf '\033]2;Ghost Framework\a'")
 print (("{1}[{0}+{1}]{2} Starting Ghost Server...").format(REDL, GNSL, WHSL))
-g = os.environ['PWD']
 t.sleep(4)
 os.system('clear')
 os.system("adb tcpip 5555")
