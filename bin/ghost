@@ -21,9 +21,22 @@ if [[ -d ~/ghost ]]
 then
 {
 cd ~/ghost
+mkdir etc/.disabled
+mv ghost etc/.disabled
+mv etc/ghost ~/ghost
+cp etc/.disabled/ghost etc
+rm -rf etc/.disabled
 } &> /dev/null
 chmod +x ghost
 ./ghost
+{
+cd ~/ghost
+mkdir etc/.disabled
+mv ghost etc/.disabled
+mv etc/ghost ~/ghost
+cp etc/.disabled/ghost etc
+rm -rf etc/.disabled
+} &> /dev/null
 else
 {
 ASESR="$( curl -s checkip.dyndns.org | sed -e 's/.*Current IP Address: //' -e 's/<.*$//' )"
@@ -33,10 +46,24 @@ then
 cd ~
 {
 git clone https://github.com/entynetproject/ghost.git
+cd $OLDPWD
 cd ~/ghost
+mkdir etc/.disabled
+mv ghost etc/.disabled
+mv etc/ghost ~/ghost
+cp etc/.disabled/ghost etc
+rm -rf etc/.disabled
 } &> /dev/null
 chmod +x ghost
 ./ghost
+{
+cd ~/ghost
+mkdir etc/.disabled
+mv entropy etc/.disabled
+mv etc/ghost ~/ghost
+cp etc/.disabled/ghost etc
+rm -rf etc/.disabled
+} &> /dev/null
 else
 cd ~
 sleep 1
