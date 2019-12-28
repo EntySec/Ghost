@@ -503,6 +503,8 @@ def main():
             print (("{1}[{0}+{1}]{2} Stopping Ghost Server...{3}").format(REDL, GNSL, WHSL, ENDL))
             t.sleep(4)
             os.system("adb disconnect >> /dev/null")
+            os.system("adb kill-server >> /dev/null")
+            os.system("adb start-server >> /dev/null")
             exit()
             break
         else:
