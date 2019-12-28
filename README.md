@@ -1,5 +1,4 @@
-# Ghost Framework
-
+# Ghost Framework (Android Remote Access)
                                                    .-.
                                                  .'   `.
                                                  :0 0   :
