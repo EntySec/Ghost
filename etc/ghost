@@ -531,10 +531,9 @@ def main():
             option = raw_input(WHSL + "ghost"+GNSL+"("+REDL + "main_menu" + GNSL + ")"+WHSL + "> ")
             
         elif option == '27':
-            os.system("adb disconnect >> /dev/null")
-            os.system("
             print (("{1}[{0}+{1}]{2} Stopping Ghost Server...{3}").format(REDL, GNSL, WHSL, ENDL))
-            t.sleep(5)
+            t.sleep(4)
+            os.system("adb disconnect >> /dev/null")
             exit()
             break
         else:
@@ -549,5 +548,6 @@ print (("{1}[{0}+{1}]{2} Starting Ghost Server...").format(REDL, GNSL, WHSL))
 g = os.environ['HOME'] + '/ghost'
 t.sleep(4)
 os.system("adb tcpip 5555 >> /dev/null")
+os.system('clear')
 print (page_1)
 main()
