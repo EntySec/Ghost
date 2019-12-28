@@ -70,7 +70,7 @@
 
 ***
 
-# How to execute Ghost
+# Ghost Framework execution
 
     INFO: To execute Ghost Framework you 
     should execute the following command!
