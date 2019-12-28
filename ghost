@@ -186,7 +186,11 @@ def main():
             option = raw_input(WHSL + "ghost"+GNSL+"("+REDL + "main_menu" + GNSL + ")"+WHSL + "> ")
 
         elif option == '8':
-            os.system("adb kill-server && adb start-server")
+            print (("{1}[{0}+{1}]{2} Restarting Ghost Server...{3}").format(REDL, GNSL, WHSL, ENDL))
+            t.sleep(4)
+            os.system("adb disconnect >> /dev/null")
+            os.system("adb kill-server >> /dev/null")
+            os.system("adb start-server >> /dev/null")
             option = raw_input(WHSL + "ghost"+GNSL+"("+REDL + "main_menu" + GNSL + ")"+WHSL + "> ")
 
         elif option == '9':
