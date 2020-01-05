@@ -96,7 +96,7 @@ page_2 = '''\n
 
 def main():
     page_num = 1
-    option = raw_input(WHSL + "ghost"+GNSL+"("+REDL + "main_menu" + GNSL + ")"+WHSL + "> ")
+    option = raw_input(ENDL + "ghost"+GNSL+"("+REDL + "main_menu" + GNSL + ")"+ENDL + "> ")
         
     while(1):
         
@@ -107,7 +107,7 @@ def main():
                 print (("{1}[{0}+{1}]{2} No devices connected yet.").format(REDL, GNSL, WHSL))
                 main()
             os.system("adb devices -l")
-            option = raw_input(WHSL + "ghost"+GNSL+"("+REDL + "main_menu" + GNSL + ")"+WHSL + "> ")
+            option = raw_input(ENDL + "ghost"+GNSL+"("+REDL + "main_menu" + GNSL + ")"+ENDL + "> ")
 
         elif option  ==  '2':
             try:
@@ -116,12 +116,12 @@ def main():
                 print (("{1}[{0}+{1}]{2} No devices connected yet.").format(REDL, GNSL, WHSL))
                 main()
             os.system("adb disconnect")
-            option = raw_input(WHSL + "ghost"+GNSL+"("+REDL + "main_menu" + GNSL + ")"+WHSL + "> ")
+            option = raw_input(ENDL + "ghost"+GNSL+"("+REDL + "main_menu" + GNSL + ")"+ENDL + "> ")
 
         elif option == '3':
             print (("\n{1}[{0}+{1}]{2} Enter a device IP address.").format(REDL, GNSL, WHSL))
             try:
-                device_name = raw_input (arrow+" ghost"+GNSL+"("+REDL + "connect_device" + GNSL + ")"+WHSL + "> ")
+                device_name = raw_input (arrow+" ghost"+GNSL+"("+REDL + "connect_device" + GNSL + ")"+ENDL + "> ")
             except KeyboardInterrupt:
                 main()
             if device_name == '':
@@ -130,7 +130,7 @@ def main():
                 main()
                 
             os.system("adb connect "+device_name+":5555")
-            option = raw_input(WHSL + "ghost"+GNSL+"("+REDL + "main_menu" + GNSL + ")"+WHSL + "> ")
+            option = raw_input(ENDL + "ghost"+GNSL+"("+REDL + "main_menu" + GNSL + ")"+ENDL + "> ")
 
         elif option  == '4':
             try:
@@ -139,7 +139,7 @@ def main():
                 print (("{1}[{0}+{1}]{2} No devices connected yet.").format(REDL, GNSL, WHSL))
                 main()
             os.system("adb -s "+device_name+" shell")
-            option = raw_input(WHSL + "ghost"+GNSL+"("+REDL + "main_menu" + GNSL + ")"+WHSL + "> ")
+            option = raw_input(ENDL + "ghost"+GNSL+"("+REDL + "main_menu" + GNSL + ")"+ENDL + "> ")
 
         elif option == '5':
             try:
@@ -149,7 +149,7 @@ def main():
                 main()
             print (("     "+connect))
             print (("    {1}[{0}+{1}]{2} Enter the apk location.").format(REDL, GNSL, WHSL))
-            apk_location = raw_input("    "+arrow + " ghost"+GNSL+"("+REDL + "apk_install" + GNSL + ")"+WHSL + "> ")
+            apk_location = raw_input("    "+arrow + " ghost"+GNSL+"("+REDL + "apk_install" + GNSL + ")"+ENDL + "> ")
            
             w = os.environ['OLDPWD']
             os.chdir(w)
@@ -159,7 +159,7 @@ def main():
             os.chdir(g)
 
             print (GNSL  +  "Apk has been installed.")
-            option = raw_input(WHSL + "ghost"+GNSL+"("+REDL + "main_menu" + GNSL + ")"+WHSL + "> ")
+            option = raw_input(ENDL + "ghost"+GNSL+"("+REDL + "main_menu" + GNSL + ")"+ENDL + "> ")
 
         elif option ==  '6':
             try:
@@ -172,7 +172,7 @@ def main():
             print (("     "+connect))
             os.system("adb -s "+device_name+" shell screenrecord /sdcard/screen.mp4")
             print (("    {1}[{0}+{1}]{2} Enter where you would like to save the video.").format(REDL, GNSL, WHSL))
-            place_location = raw_input("    "+arrow + " ghost"+GNSL+"("+REDL + "screen_record" + GNSL + ")"+WHSL + "> ")
+            place_location = raw_input("    "+arrow + " ghost"+GNSL+"("+REDL + "screen_record" + GNSL + ")"+ENDL + "> ")
             
             w = os.environ['OLDPWD']
             os.chdir(w)
@@ -181,7 +181,7 @@ def main():
             
             os.chdir(g)
 
-            option = raw_input(WHSL + "ghost"+GNSL+"("+REDL + "main_menu" + GNSL + ")"+WHSL + "> ")
+            option = raw_input(ENDL + "ghost"+GNSL+"("+REDL + "main_menu" + GNSL + ")"+ENDL + "> ")
 
         elif option  == '7':
             try:
@@ -192,7 +192,7 @@ def main():
             os.system("adb -s "+device_name+" shell screencap /sdcard/screen.png")
             print (("     "+connect))
             print (("    {1}[{0}+{1}]{2} Enter where you would like to save the screenshot.").format(REDL, GNSL, WHSL))
-            place_location = raw_input("    "+arrow + " ghost"+GNSL+"("+REDL + "screenshot" + GNSL + ")"+WHSL + "> ")
+            place_location = raw_input("    "+arrow + " ghost"+GNSL+"("+REDL + "screenshot" + GNSL + ")"+ENDL + "> ")
 
             w = os.environ['OLDPWD']
             os.chdir(w)
@@ -201,7 +201,7 @@ def main():
             
             os.chdir(g)
 
-            option = raw_input(WHSL + "ghost"+GNSL+"("+REDL + "main_menu" + GNSL + ")"+WHSL + "> ")
+            option = raw_input(ENDL + "ghost"+GNSL+"("+REDL + "main_menu" + GNSL + ")"+ENDL + "> ")
 
         elif option == '8':
             print (("{1}[{0}+{1}]{2} Restarting Ghost Server...{3}").format(REDL, GNSL, WHSL, ENDL))
@@ -209,7 +209,7 @@ def main():
             os.system("adb disconnect >> /dev/null")
             os.system("adb kill-server >> /dev/null")
             os.system("adb start-server >> /dev/null")
-            option = raw_input(WHSL + "ghost"+GNSL+"("+REDL + "main_menu" + GNSL + ")"+WHSL + "> ")
+            option = raw_input(ENDL + "ghost"+GNSL+"("+REDL + "main_menu" + GNSL + ")"+ENDL + "> ")
 
         elif option == '9':
             try:
@@ -219,10 +219,10 @@ def main():
                 main()
             print (("     "+connect))
             print (("    {1}[{0}+{1}]{2} Enter a file location on a device.").format(REDL, GNSL, WHSL))
-            file_location = raw_input("    "+arrow + " ghost"+GNSL+"("+REDL + "file_pull" + GNSL + ")"+WHSL + "> ")
+            file_location = raw_input("    "+arrow + " ghost"+GNSL+"("+REDL + "file_pull" + GNSL + ")"+ENDL + "> ")
             print (("        "+connect))
             print (("       {1}[{0}+{1}]{2} Enter where you would like to save the file.").format(REDL, GNSL, WHSL))
-            place_location = raw_input("       "+arrow + " ghost"+GNSL+"("+REDL + "file_pull" + GNSL + ")"+WHSL + "> ")
+            place_location = raw_input("       "+arrow + " ghost"+GNSL+"("+REDL + "file_pull" + GNSL + ")"+ENDL + "> ")
             
             w = os.environ['OLDPWD']
             os.chdir(w)
@@ -231,7 +231,7 @@ def main():
  
             os.chdir(g)
 
-            option = raw_input(WHSL + "ghost"+GNSL+"("+REDL + "main_menu" + GNSL + ")"+WHSL + "> ")
+            option = raw_input(ENDL + "ghost"+GNSL+"("+REDL + "main_menu" + GNSL + ")"+ENDL + "> ")
 
         elif option == '10':
             try:
@@ -240,7 +240,7 @@ def main():
                 print (("{1}[{0}+{1}]{2} No devices connected yet.").format(REDL, GNSL, WHSL))
                 main()
             os.system("adb -s "+device_name+ " reboot ")
-            option = raw_input(WHSL + "ghost"+GNSL+"("+REDL + "main_menu" + GNSL + ")"+WHSL + "> ")
+            option = raw_input(ENDL + "ghost"+GNSL+"("+REDL + "main_menu" + GNSL + ")"+ENDL + "> ")
 
         elif option ==  '11':
             try:
@@ -250,9 +250,9 @@ def main():
                 main()
             print (("     "+connect))
             print (("    {1}[{0}+{1}]{2} Enter a package name.").format(REDL, GNSL, WHSL))
-            package_name = raw_input("    "+arrow + " ghost"+GNSL+"("+REDL + "app_delete" + GNSL + ")"+WHSL + "> ")
+            package_name = raw_input("    "+arrow + " ghost"+GNSL+"("+REDL + "app_delete" + GNSL + ")"+ENDL + "> ")
             os.system("adb -s "+device_name+" unistall "+package_name)
-            option = raw_input(WHSL + "ghost"+GNSL+"("+REDL + "main_menu" + GNSL + ")"+WHSL + "> ")
+            option = raw_input(ENDL + "ghost"+GNSL+"("+REDL + "main_menu" + GNSL + ")"+ENDL + "> ")
 
         elif option == '12':
             try:
@@ -261,7 +261,7 @@ def main():
                 print (("{1}[{0}+{1}]{2} No devices connected yet.").format(REDL, GNSL, WHSL))
                 main()
             os.system('adb -s '+device_name+" logcat ")
-            option = raw_input(WHSL + "ghost"+GNSL+"("+REDL + "main_menu" + GNSL + ")"+WHSL + "> ")
+            option = raw_input(ENDL + "ghost"+GNSL+"("+REDL + "main_menu" + GNSL + ")"+ENDL + "> ")
 
         elif option == '13':
             try:
@@ -270,7 +270,7 @@ def main():
                 print (("{1}[{0}+{1}]{2} No devices connected yet.").format(REDL, GNSL, WHSL))
                 main()
             os.system("adb -s "+device_name+" shell dumpsys")
-            option = raw_input(WHSL + "ghost"+GNSL+"("+REDL + "main_menu" + GNSL + ")"+WHSL + "> ")
+            option = raw_input(ENDL + "ghost"+GNSL+"("+REDL + "main_menu" + GNSL + ")"+ENDL + "> ")
 
         elif option == '14':
             try:
@@ -279,7 +279,7 @@ def main():
                 print (("{1}[{0}+{1}]{2} No devices connected yet.").format(REDL, GNSL, WHSL))
                 main()
             os.system("adb -s " +device_name+ " shell pm list packages -f")
-            option = raw_input(WHSL + "ghost"+GNSL+"("+REDL + "main_menu" + GNSL + ")"+WHSL + "> ")
+            option = raw_input(ENDL + "ghost"+GNSL+"("+REDL + "main_menu" + GNSL + ")"+ENDL + "> ")
 
         elif option == '15':
             try:
@@ -289,9 +289,9 @@ def main():
                 main()
             print (("     "+connect))
             print (("    {1}[{0}+{1}]{2} Enter a package name.").format(REDL, GNSL, WHSL))
-            package_name = raw_input("    "+arrow + " ghost"+GNSL+"("+REDL + "app_run" + GNSL + ")"+WHSL + "> ")
+            package_name = raw_input("    "+arrow + " ghost"+GNSL+"("+REDL + "app_run" + GNSL + ")"+ENDL + "> ")
             os.system("adb -s "+device_name+" shell monkey -p "+package_name+" -v 500")
-            option = raw_input(WHSL + "ghost"+GNSL+"("+REDL + "main_menu" + GNSL + ")"+WHSL + "> ")
+            option = raw_input(ENDL + "ghost"+GNSL+"("+REDL + "main_menu" + GNSL + ")"+ENDL + "> ")
 
         elif option == '16':
             try:
@@ -301,18 +301,18 @@ def main():
                 main()
             print (("     "+connect))
             print (("    {1}[{0}+{1}]{2} Enter a port on the device.").format(REDL, GNSL, WHSL))
-            port_device = raw_input("    "+arrow + " ghost"+GNSL+"("+REDL + "port_forward" + GNSL + ")"+WHSL + "> ")
+            port_device = raw_input("    "+arrow + " ghost"+GNSL+"("+REDL + "port_forward" + GNSL + ")"+ENDL + "> ")
             print (("         "+connect))
             print (("        {1}[{0}+{1}]{2} Enter a port to forward it too.").format(REDL, GNSL, WHSL))
-            forward_port = raw_input("        "+arrow + " ghost"+GNSL+"("+REDL + "port_forward" + GNSL + ")"+WHSL + "> ")
+            forward_port = raw_input("        "+arrow + " ghost"+GNSL+"("+REDL + "port_forward" + GNSL + ")"+ENDL + "> ")
             os.system("adb -s "+device_name+" forward tcp:"+port_device+" tcp:"+forward_port)
-            option = raw_input(WHSL + "ghost"+GNSL+"("+REDL + "main_menu" + GNSL + ")"+WHSL + "> ")
+            option = raw_input(ENDL + "ghost"+GNSL+"("+REDL + "main_menu" + GNSL + ")"+ENDL + "> ")
 
         elif option == '17':
             try:
                 print (("     "+connect))
                 print (("    {1}[{0}+{1}]{2} Enter where you would like to save the file.").format(REDL, GNSL, WHSL))
-                location = raw_input("    "+arrow + " ghost"+GNSL+"("+REDL + "wpa_grub" + GNSL + ")"+WHSL + "> ")
+                location = raw_input("    "+arrow + " ghost"+GNSL+"("+REDL + "wpa_grub" + GNSL + ")"+ENDL + "> ")
                 
                 w = os.environ['OLDPWD']
                 os.chdir(w)
@@ -322,7 +322,7 @@ def main():
 
                 os.chdir(g)
 
-                option = raw_input(WHSL + "ghost"+GNSL+"("+REDL + "main_menu" + GNSL + ")"+WHSL + "> ")
+                option = raw_input(ENDL + "ghost"+GNSL+"("+REDL + "main_menu" + GNSL + ")"+ENDL + "> ")
 
             except KeyboardInterrupt:
                 try:
@@ -331,7 +331,7 @@ def main():
                     print (("{1}[{0}+{1}]{2} No devices connected yet.").format(REDL, GNSL, WHSL))
                     main()
                     
-                option = raw_input(WHSL + "ghost"+GNSL+"("+REDL + "main_menu" + GNSL + ")"+WHSL + "> ")
+                option = raw_input(ENDL + "ghost"+GNSL+"("+REDL + "main_menu" + GNSL + ")"+ENDL + "> ")
 
         elif option == '18':
             try:
@@ -340,7 +340,7 @@ def main():
                 print (("{1}[{0}+{1}]{2} No devices connected yet.").format(REDL, GNSL, WHSL))
                 main()
             os.system("adb -s " +device_name+ " shell ip address show wlan0")
-            option = raw_input(WHSL + "ghost"+GNSL+"("+REDL + "main_menu" + GNSL + ")"+WHSL + "> ")
+            option = raw_input(ENDL + "ghost"+GNSL+"("+REDL + "main_menu" + GNSL + ")"+ENDL + "> ")
 
         elif option == '19':
             try:
@@ -350,14 +350,14 @@ def main():
                 main()
             print (("     "+connect))
             print (("    {1}[{0}+{1}]{2} Enter a package name.").format(REDL, GNSL, WHSL))
-            package_name = raw_input("    "+arrow + " ghost"+GNSL+"("+REDL + "pull_apk" + GNSL + ")"+WHSL + "> ")
+            package_name = raw_input("    "+arrow + " ghost"+GNSL+"("+REDL + "pull_apk" + GNSL + ")"+ENDL + "> ")
             os.system("adb -s "+device_name+" shell pm path "+package_name)
             print (("         "+connect))
             print (("        {1}[{0}+{1}]{2} Enter the path to apk.").format(REDL, GNSL, WHSL))
-            path = raw_input("        "+arrow + " ghost"+GNSL+"("+REDL + "pull_apk" + GNSL + ")"+WHSL + "> ")
+            path = raw_input("        "+arrow + " ghost"+GNSL+"("+REDL + "pull_apk" + GNSL + ")"+ENDL + "> ")
             print (("             "+connect))
             print (("            {1}[{0}+{1}]{2} Enter The location to store the apk.")  .format(REDL, GNSL, WHSL))
-            location =   raw_input("            "+arrow + " ghost"+GNSL+"("+REDL + "pull_apk" + GNSL + ")"+WHSL + "> ")
+            location =   raw_input("            "+arrow + " ghost"+GNSL+"("+REDL + "pull_apk" + GNSL + ")"+ENDL + "> ")
        
             w = os.environ['OLDPWD']
             os.chdir(w)
@@ -366,7 +366,7 @@ def main():
             
             os.chdir(g)
             
-            option = raw_input(WHSL + "ghost"+GNSL+"("+REDL + "main_menu" + GNSL + ")"+WHSL + "> ")
+            option = raw_input(ENDL + "ghost"+GNSL+"("+REDL + "main_menu" + GNSL + ")"+ENDL + "> ")
 
         elif option == '20':
             try:
@@ -375,7 +375,7 @@ def main():
                 print (("{1}[{0}+{1}]{2} No devices connected yet.").format(REDL, GNSL, WHSL))
                 main()
             os.system("adb -s " +device_name+ " shell dumpsys battery")
-            option = raw_input(WHSL + "ghost"+GNSL+"("+REDL + "main_menu" + GNSL + ")"+WHSL + "> ")
+            option = raw_input(ENDL + "ghost"+GNSL+"("+REDL + "main_menu" + GNSL + ")"+ENDL + "> ")
 
         elif option == '21':
             try:
@@ -384,7 +384,7 @@ def main():
                 print (("{1}[{0}+{1}]{2} No devices connected yet.").format(REDL, GNSL, WHSL))
                 main()
             os.system("adb -s " +device_name+ " shell netstat")
-            option = raw_input(WHSL + "ghost"+GNSL+"("+REDL + "main_menu" + GNSL + ")"+WHSL + "> ")
+            option = raw_input(ENDL + "ghost"+GNSL+"("+REDL + "main_menu" + GNSL + ")"+ENDL + "> ")
 
         elif option == '22':
             try:
@@ -402,7 +402,7 @@ def main():
                 command = " shell svc wifi enable"
 
             os.system("adb -s "+device_name+command)
-            option = raw_input(WHSL + "ghost"+GNSL+"("+REDL + "main_menu" + GNSL + ")"+WHSL + "> ")
+            option = raw_input(ENDL + "ghost"+GNSL+"("+REDL + "main_menu" + GNSL + ")"+ENDL + "> ")
 
         elif option == '23':
             try:
@@ -417,7 +417,7 @@ def main():
             os.system("adb -s "+device_name+" shell su 0 'rm /data/system/locksettings.db-wal'")
             os.system("adb -s "+device_name+" shell su 0 'rm /data/system/locksettings.db-shm'")
             print (REDL + "****************** REMOVING PASSWORD ******************")
-            option = raw_input(WHSL + "ghost"+GNSL+"("+REDL + "main_menu" + GNSL + ")"+WHSL + "> ")
+            option = raw_input(ENDL + "ghost"+GNSL+"("+REDL + "main_menu" + GNSL + ")"+ENDL + "> ")
 
         elif option == '24':
             try:
@@ -514,9 +514,9 @@ def main():
  85  -->  TAG_LAST_KEYCODE
             ''')
             print (("{1}[{0}+{1}]{2} Enter a keycode option number.").format(REDL, GNSL, WHSL))
-            num = raw_input(arrow + " ghost"+GNSL+"("+REDL + "keycode" + GNSL + ")"+WHSL + "> ")
+            num = raw_input(arrow + " ghost"+GNSL+"("+REDL + "keycode" + GNSL + ")"+ENDL + "> ")
             os.system("adb -s "+device_name+" shell input keyevent "+num)
-            option = raw_input(WHSL + "ghost"+GNSL+"("+REDL + "main_menu" + GNSL + ")"+WHSL + "> ")
+            option = raw_input(ENDL + "ghost"+GNSL+"("+REDL + "main_menu" + GNSL + ")"+ENDL + "> ")
 
         elif option == '25':
             try:
@@ -525,14 +525,14 @@ def main():
                 print (("{1}[{0}+{1}]{2} No devices connected yet.").format(REDL, GNSL, WHSL))
                 main()
             os.system("adb -s " +device_name+ " shell dumpsys activity")
-            option = raw_input(WHSL + "ghost"+GNSL+"("+REDL + "main_menu" + GNSL + ")"+WHSL + "> ")
+            option = raw_input(ENDL + "ghost"+GNSL+"("+REDL + "main_menu" + GNSL + ")"+ENDL + "> ")
 
         elif option == '26':
             os.system("chmod +x etc/update.sh && etc/update.sh")
-            option = raw_input(WHSL + "ghost"+GNSL+"("+REDL + "main_menu" + GNSL + ")"+WHSL + "> ")
+            option = raw_input(ENDL + "ghost"+GNSL+"("+REDL + "main_menu" + GNSL + ")"+ENDL + "> ")
 
         elif option == '':
-            option = raw_input(WHSL + "ghost"+GNSL+"("+REDL + "main_menu" + GNSL + ")"+WHSL + "> ")
+            option = raw_input(ENDL + "ghost"+GNSL+"("+REDL + "main_menu" + GNSL + ")"+ENDL + "> ")
             
         elif option == '27':
             print (("{1}[{0}+{1}]{2} Stopping Ghost Server...{3}").format(REDL, GNSL, WHSL, ENDL))
@@ -544,7 +544,7 @@ def main():
             break
         else:
             print("ghost: error: invalid command")
-            option = raw_input(WHSL + "ghost"+GNSL+"("+REDL + "main_menu" + GNSL + ")"+WHSL + "> ")
+            option = raw_input(ENDL + "ghost"+GNSL+"("+REDL + "main_menu" + GNSL + ")"+ENDL + "> ")
 
     main()
     
