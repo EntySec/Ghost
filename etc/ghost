@@ -205,10 +205,10 @@ def main():
 
         elif option == '8':
             print (("{1}[{0}+{1}]{2} Restarting Ghost Server...{3}").format(REDL, GNSL, WHSL, ENDL))
-            t.sleep(4)
             os.system("adb disconnect >> /dev/null")
             os.system("adb kill-server >> /dev/null")
             os.system("adb start-server >> /dev/null")
+            t.sleep(4)
             option = raw_input(ENDL + "ghost"+GNSL+"("+REDL + "main_menu" + GNSL + ")"+ENDL + "> ")
 
         elif option == '9':
@@ -536,9 +536,9 @@ def main():
             
         elif option == '27':
             print (("{1}[{0}+{1}]{2} Stopping Ghost Server...{3}").format(REDL, GNSL, WHSL, ENDL))
-            t.sleep(4)
             os.system("adb disconnect >> /dev/null")
             os.system("adb kill-server >> /dev/null")
+            t.sleep(4)
             exit()
             break
         else:
@@ -551,8 +551,8 @@ import os
 os.system("printf '\033]2;Ghost Framework\a'")
 print (("{1}[{0}+{1}]{2} Starting Ghost Server...").format(REDL, GNSL, WHSL))
 g = os.environ['HOME'] + '/ghost'
-t.sleep(4)
 os.system("adb tcpip 5555 >> /dev/null")
+t.sleep(4)
 os.system('clear')
 print (page_1)
 main()
