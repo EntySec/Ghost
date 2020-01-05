@@ -80,8 +80,6 @@
 
 # Why Ghost Framework
 
-![exploiting](https://user-images.githubusercontent.com/54115104/71786706-d89c0380-300e-11ea-95fa-e24f9f760674.png)
-
 > Accessing device shell
 
     Ghost Framework can be used to access the remote Android 
@@ -96,6 +94,8 @@
 
     Ghost Framework can be used to remove the remote 
     Android device password if it was forgotten.
+    
+![exploiting](https://user-images.githubusercontent.com/54115104/71786706-d89c0380-300e-11ea-95fa-e24f9f760674.png)
 
 ***
 
