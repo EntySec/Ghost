@@ -539,7 +539,6 @@ def main():
             t.sleep(4)
             os.system("adb disconnect >> /dev/null")
             os.system("adb kill-server >> /dev/null")
-            os.system("adb start-server >> /dev/null")
             exit()
             break
         else:
