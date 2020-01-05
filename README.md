@@ -37,7 +37,7 @@
  </a>
 </p>
 
-![ghost](https://user-images.githubusercontent.com/54115104/71784678-25bfab80-2ff6-11ea-8abd-be98822e888b.png)
+![ghost](https://user-images.githubusercontent.com/54115104/71786705-d89c0380-300e-11ea-9ade-2fcc0e2ce2ce.png)
 
 ***
 
@@ -76,11 +76,11 @@
 
 > ghost
 
-[![asciicast](https://asciinema.org/a/286981.png)](https://asciinema.org/a/286981)
-
 ***
 
 # Why Ghost Framework
+
+![exploiting](https://user-images.githubusercontent.com/54115104/71786706-d89c0380-300e-11ea-95fa-e24f9f760674.png)
 
 > Accessing device shell
 
