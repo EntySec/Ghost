@@ -37,7 +37,7 @@
  </a>
 </p>
 
-![ghost](https://user-images.githubusercontent.com/54115104/71786705-d89c0380-300e-11ea-9ade-2fcc0e2ce2ce.png)
+![ghost](https://user-images.githubusercontent.com/54115104/72079297-b276ac00-330b-11ea-95f8-48022f5bff3d.png)
 
 ***
 
@@ -95,7 +95,7 @@
     Ghost Framework can be used to remove the remote 
     Android device password if it was forgotten.
     
-![exploiting](https://user-images.githubusercontent.com/54115104/71786706-d89c0380-300e-11ea-95fa-e24f9f760674.png)
+![exploiting](https://user-images.githubusercontent.com/54115104/72079295-b276ac00-330b-11ea-83ca-fe002d009fa3.png)
 
 ***
 
