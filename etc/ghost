@@ -57,7 +57,7 @@ def get_input(prompt, auto_complete_fn=None, basefile_fn=None):
 CurrentDir = os.path.dirname(os.path.abspath(__file__))
 readline.set_completer(autocomplete)
 readline.parse_and_bind("tab: complete")
-WHSL = '\033[0;97m'
+WHSL = '\033[0m'
 ENDL = '\033[0m'
 REDL = '\033[0;31m'
 GNSL = '\033[0;32m'
