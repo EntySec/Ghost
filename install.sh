@@ -20,21 +20,21 @@
 
 RS="\033[0;31m"
 YS="\033[1;33m"
-CE="\033[0;97m"
+CE="\033[0m"
 
 printf '\033]2;install.sh\a'
 
 #blue start 
 	BS="\033[1;34m"
 #color end
-	CE="\033[0;97m"
+	CE="\033[0m"
 	C="\033[0m"
 #red start
 	RS="\033[0;31m"
 #green start
 	GN="\033[0;32m"
 #white start
-   WHS="\033[0;97m"
+   WHS="\033[0m"
 
 if [[ $EUID -ne 0 ]]
 then
