@@ -72,7 +72,7 @@
 # Ghost Framework execution
 
     To execute Ghost Framework you 
-    should execute the following command!
+    should execute the following command.
 
 > ghost
 
