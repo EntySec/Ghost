@@ -76,7 +76,7 @@ apt-get -y install python3
 apt-get -y install adb
 apk update
 apk add git
-apk add py3
+apk add python3
 apk add android-tools
 pacman -Sy
 pacman -S --noconfirm git
