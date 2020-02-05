@@ -3,7 +3,7 @@
 #            --------------------------------------------------
 #                             Ghost Framework                                                  
 #            --------------------------------------------------
-#                  Copyright (C) <2019>  <Entynetproject>
+#                  Copyright (C) <2020>  <Entynetproject>
 #
 #        This program is free software: you can redistribute it and/or modify
 #        it under the terms of the GNU General Public License as published by
