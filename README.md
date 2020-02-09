@@ -1,5 +1,4 @@
 # Ghost Framework
-                                                   .-.
 
 ![ghost](https://user-images.githubusercontent.com/54115104/74107008-ddf3ed00-4b7c-11ea-8d26-3697ee0ff25e.jpeg)
 
