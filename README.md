@@ -66,10 +66,11 @@
 
 # Why Ghost Framework
 
- * Device button presses emulation.
+ * Simple and clear UX/UI.
 ```
-Ghost Framework can be used to emulate 
-button presses on the remote Android device.
+Ghost Framework has a simple and clear UX/UI. 
+It is easy to understand and it will be easier 
+for you to master the Ghost Framework.
 ```
  * Device password removal.
 ```
