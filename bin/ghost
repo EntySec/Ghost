@@ -33,12 +33,17 @@ rm -rf etc/.disabled
 chmod +x ghost
 ./ghost
 {
+if [[ -f ~/ghost/.updated ]]
+then
+rm ~/ghost/.updated
+else
 cd ~/ghost
 mkdir etc/.disabled
 mv ghost etc/.disabled
 mv etc/ghost ~/ghost
 cp etc/.disabled/ghost etc
 rm -rf etc/.disabled
+fi
 } &> /dev/null
 else
 {
@@ -60,12 +65,17 @@ rm -rf etc/.disabled
 chmod +x ghost
 ./ghost
 {
+if [[ -f ~/ghost/.updated ]]
+then
+rm ~/ghost/.updated
+else
 cd ~/ghost
 mkdir etc/.disabled
 mv entropy etc/.disabled
 mv etc/ghost ~/ghost
 cp etc/.disabled/ghost etc
 rm -rf etc/.disabled
+fi
 } &> /dev/null
 else
 cd ~
