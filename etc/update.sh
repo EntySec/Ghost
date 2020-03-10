@@ -82,5 +82,7 @@ chmod +x install.sh
 fi
 } &> /dev/null
 echo -e ""$GN"["$RS"+"$GN"]"$CE" Successfully updated!"$C""
+cd .
+touch .updated
 sleep 1
 exit
