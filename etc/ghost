@@ -83,7 +83,7 @@ def main():
             print(G+"Stoping Ghost Server...")
             subprocess.Popen("adb kill-server".split(),stdout=open(os.devnull, 'wb'))
             sys.exit()
-        elif con == "clear":
+        elif ui == "clear":
             os.system("clear")
         elif ui == "":
             pass
