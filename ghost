@@ -64,7 +64,7 @@ readline.parse_and_bind("tab: complete")
 
 def start_server():
     adb = os.popen("which adb").read()
-    if adb == "":
+    if adb.strip("\n") == "":
         print(E+"Failed to start Ghost Server!")
         sys.exit()
     else:
