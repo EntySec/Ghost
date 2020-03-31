@@ -1,0 +1,4 @@
+
+    Command          Description
+    -------          -----------
+    emulator         Launch device gesture emulator.

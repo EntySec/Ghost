@@ -1,0 +1,7 @@
+
+    Command          Description
+    -------          -----------
+    connect          Connect device.
+    exit             Exit Ghost Framework.
+    help             Show help information.
+    update           Update Ghost Framework.
