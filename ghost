@@ -63,7 +63,12 @@ readline.set_completer(autocomplete)
 readline.parse_and_bind("tab: complete")
 
 def start_server():
-    os.system("chmod +x core/server.sh && core/server.sh")
+    adb = os.popen("which adb").read()
+    if adb == "":
+        print(E+"Failed to start Ghost Server!")
+        sys.exit()
+    else:
+        os.system("chmod +x core/server.sh && core/server.sh")
 
 def banner():
     os.system("clear")
