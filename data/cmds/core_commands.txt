@@ -5,4 +5,5 @@
     connect        Connect target device.
     exit           Exit Ghost Framework.
     help           Show help information.
+    multih         Start MultiHandler.
     update         Update Ghost Framework.
