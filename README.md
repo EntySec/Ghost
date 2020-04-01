@@ -29,10 +29,12 @@
 
 # About Ghost Framework
 
-    Ghost Framework is an Android post-exploitation framework that uses an
-    Android Debug Bridge to remotely access an Android device. Ghost Framework 
-    gives you the power and convenience of remote Android device administration.
-    
+```
+Ghost Framework is an Android post-exploitation framework that uses an
+Android Debug Bridge to remotely access an Android device. Ghost Framework 
+gives you the power and convenience of remote Android device administration.
+```
+
 ***
 
 # Getting started
@@ -57,8 +59,10 @@
 
 # Ghost Framework execution
 
-    To execute Ghost Framework you 
-    should execute the following command.
+```
+To execute Ghost Framework you 
+should execute the following command.
+```
 
 > ghost
 
@@ -89,17 +93,15 @@ device shell without using OpenSSH or other protocols.
 
 # Ghost Framework disclaimer
 
-    Usage of the Ghost Framework for attacking targets without prior mutual consent is illegal. 
-    It is the end user's responsibility to obey all applicable local, state, federal, and international laws. 
-    Developers assume no liability and are not responsible for any misuse or damage caused by this program.
-    
+```
+Usage of the Ghost Framework for attacking targets without prior mutual consent is illegal.
+It is the end user's responsibility to obey all applicable local, state, federal, and international laws.
+Developers assume no liability and are not responsible for any misuse or damage caused by this program.
+```
+  
 ***
 
-# Ghost Framework license
-
-```
-    ---------------------------------------------------
-                      Ghost Framework                                                                         
+# Ghost Framework license                     
     ---------------------------------------------------
         Copyright (C) <2019-2020>  <Entynetproject>
 
