@@ -103,6 +103,8 @@ def main():
                 print("Usage: connect <device>")
             else:
                 print(G+"Connecting to "+ui[8:]+"...")
+                time.sleep(0.5)
+                print(G+"Sending payload to "+ui[8:]+"...")
                 os.system("adb connect "+ui[8:]+" > /dev/null")
                 str = os.popen("adb devices | grep :5555").read()
                 if str == "":
