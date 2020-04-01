@@ -71,17 +71,22 @@ should execute the following command.
 # Why Ghost Framework
 
  * Simple and clear UX/UI.
+
 ```
 Ghost Framework has a simple and clear UX/UI. 
 It is easy to understand and it will be easier 
 for you to master the Ghost Framework.
 ```
+
  * Device password removal.
+
 ```
 Ghost Framework can be used to remove the remote 
 Android device password if it was forgotten.
 ```
+
  * Device shell access.
+
 ```
 Ghost Framework can be used to access the remote Android 
 device shell without using OpenSSH or other protocols.
@@ -102,6 +107,7 @@ Developers assume no liability and are not responsible for any misuse or damage 
 ***
 
 # Ghost Framework license
+
 ```
     ---------------------------------------------------
                       Ghost Framework                  
