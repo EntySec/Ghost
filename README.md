@@ -23,7 +23,7 @@
  </a>
 </p>
 
-![ghost](https://user-images.githubusercontent.com/54115104/78134200-6b8ae500-7428-11ea-9b89-0397ed1525e1.png)
+![ghost](https://user-images.githubusercontent.com/54115104/78183703-0a3b3400-7471-11ea-86a5-7b510a05fa58.png)
 
 ***
 
