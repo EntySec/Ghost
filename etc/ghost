@@ -82,7 +82,7 @@ def banner():
     print("")
 
 def main():
-    ui = input('ghost> ')
+    ui = input('ghost> ').strip(" ")
     while True:
         if ui == "exit":
             print(G+"Stoping Ghost Server...")
@@ -114,7 +114,7 @@ def main():
                 print(G+"Sending payload to "+ui[8:]+"...")
                 time.sleep(1)
                 device = ui[8:]
-                con = input('ghost(\033[1;31m'+device+'\033[0m)> ')
+                con = input('ghost(\033[1;31m'+device+'\033[0m)> ').strip(" ")
                 while True:
                     if con == "exit":
                         subprocess.Popen("adb disconnect".split(),stdout=open(os.devnull, 'wb'))
@@ -230,10 +230,10 @@ def main():
                             os.chdir(g)
                     else:
                         print(E+"Unrecognized command!")
-                    con = input('ghost(\033[1;31m'+device+'\033[0m)> ')
+                    con = input('ghost(\033[1;31m'+device+'\033[0m)> ').strip(" ")
         else:
             print(E+"Unrecognized command!")
-        ui = input('ghost> ')
+        ui = input('ghost> ').strip(" ")
 
 start_server()
 banner()
