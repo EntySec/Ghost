@@ -82,7 +82,7 @@ def banner():
     print("")
 
 def main():
-    ui = input('ghost> ').strip(" ")
+    ui = input('\033[4mghost\033[0m> ').strip(" ")
     while True:
         if ui == "exit":
             print(G+"Stoping Ghost Server...")
@@ -114,7 +114,7 @@ def main():
                 print(G+"Sending payload to "+ui[8:]+"...")
                 time.sleep(1)
                 device = ui[8:]
-                con = input('ghost(\033[1;31m'+device+'\033[0m)> ').strip(" ")
+                con = input('\033[4mghost\033[0m(\033[1;31m'+device+'\033[0m)> ').strip(" ")
                 while True:
                     if con == "exit":
                         subprocess.Popen("adb disconnect".split(),stdout=open(os.devnull, 'wb'))
@@ -222,7 +222,6 @@ def main():
                             os.chdir(w)
                             if os.path.exists(con[10:]):
                                 print(G+"Recording screen...")
-                                print("Type CTRL+C to stop...")
                                 os.system("adb shell screenrecord /sdcard/screen.mp4 > /dev/null")
                                 os.system("adb pull /sdcard/screen.mp4 "+con[10:]+" > /dev/null")
                             else:
@@ -230,10 +229,10 @@ def main():
                             os.chdir(g)
                     else:
                         print(E+"Unrecognized command!")
-                    con = input('ghost(\033[1;31m'+device+'\033[0m)> ').strip(" ")
+                    con = input('\033[4mghost\033[0m(\033[1;31m'+device+'\033[0m)> ').strip(" ")
         else:
             print(E+"Unrecognized command!")
-        ui = input('ghost> ').strip(" ")
+        ui = input('\033[4mghost\033[0m> ').strip(" ")
 
 start_server()
 banner()
