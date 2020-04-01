@@ -214,7 +214,6 @@ def main():
                         else:
                             if os.path.exists(con[10:]):
                                 print(G+"Recording screen...")
-                                print("Type CTRL+C to stop...")
                                 os.system("adb shell screenrecord /sdcard/screen.mp4 > /dev/null")
                                 os.system("adb pull /sdcard/screen.mp4 "+con[10:]+" > /dev/null")
                             else:
