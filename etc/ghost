@@ -110,6 +110,9 @@ def main():
                 if str == "":
                     print(E+"Failed to connect to "+ui[8:])
                     main()
+                time.sleep(0.5)
+                print(G+"Sending payload to "+ui[8:]+"...")
+                time.sleep(1)
                 device = ui[8:]
                 con = input('ghost(\033[1;31m'+device+'\033[0m)> ')
                 while True:
