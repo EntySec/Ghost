@@ -1,6 +1,6 @@
 
-    Command          Description
-    -------          -----------
-    eatpass          Remove device password.
-    shell            Open device shell.
-    sush             Open device root shell.
+    Command        Description
+    -------        -----------
+    eatpass        Remove device password.
+    shell          Open device shell.
+    sush           Open device root shell.
