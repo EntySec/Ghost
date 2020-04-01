@@ -1,6 +1,6 @@
 
-    Command          Description
-    -------          -----------
-    screenrec        Record device screen.
-    screenshot       Take device screenshot.
-    wgrabber         Grab wpa_supplicant.
+    Command        Description
+    -------        -----------
+    screenrec      Record device screen.
+    screenshot     Take device screenshot.
+    wgrabber       Grab wpa_supplicant.
