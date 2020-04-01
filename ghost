@@ -92,8 +92,6 @@ def main():
             pass
         elif ui == "update":
             os.system("chmod +x etc/update.sh && etc/update.sh")
-        elif ui == "multih":
-            mh = input('\033[4mmultihandler\033[0m> ')
         elif ui == "help":
             print("")
             print("Core Commands")
