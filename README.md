@@ -23,6 +23,8 @@
  </a>
 </p>
 
+![ghost](https://user-images.githubusercontent.com/54115104/78134200-6b8ae500-7428-11ea-9b89-0397ed1525e1.png)
+
 ***
 
 # About Ghost Framework
@@ -80,6 +82,8 @@ Android device password if it was forgotten.
 Ghost Framework can be used to access the remote Android 
 device shell without using OpenSSH or other protocols.
 ``` 
+
+![shell](https://user-images.githubusercontent.com/54115104/78134215-70e82f80-7428-11ea-9d2f-2cf2aa5b9c91.png)
 
 ***
 
