@@ -57,7 +57,6 @@ sleep 0.5
 clear
 sleep 0.5
 cd ~/ghost
-echo
 cat banner/banner.txt
 echo
 
