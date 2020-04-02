@@ -227,6 +227,38 @@ def main():
                             else:
                                 print(E+"No such directory!")
                             os.chdir(g)
+                    elif con[:9] == "uninstall":
+                        if con[10:] == "":
+                            print("Usage: uninstall <application>")
+                        else:
+                            apps = os.popen("adb shell pm list packages -f | grep package:").read()
+                            cache = apps.split("\n")
+                            apps = [i[i.index(":")+1:] for i in cache if ":" in i]
+                            for i in apps:
+                                if con[10:] == i:
+                                    turn = 1
+                                else:
+                                    turn = 0
+                            if turn == "1":
+                                os.system("adb uninstall "+con[10:]+" > /dev/null")
+                            else:
+                                print(E+"No such application!")
+                    elif con[:6] == "launch":
+                        if con[7:] == "":
+                            print("Usage: launch <application>")
+                        else:
+                            apps = os.popen("adb shell pm list packages -f | grep package:").read()
+                            cache = apps.split("\n")
+                            apps = [i[i.index(":")+1:] for i in cache if ":" in i]
+                            for i in apps:
+                                if con[7:] == i:
+                                    turn = 1
+                                else:
+                                    turn = 0
+                            if turn == "1":
+                                os.system("chmod +x core/launch.sh && core/launch.sh "+con[7:])
+                            else:
+                                print(E+"No such application!")
                     else:
                         print(E+"Unrecognized command!")
                     con = input('\033[4mghost\033[0m(\033[1;31m'+device+'\033[0m)> ').strip(" ")
