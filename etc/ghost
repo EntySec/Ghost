@@ -231,7 +231,7 @@ def main():
                         else:
                             apps = os.popen("adb shell pm list packages -f | grep package:").read()
                             cache = apps.split("\n")
-                            apps = [i[i.index("=")+1:] for i in cache if ":" in i]
+                            apps = [i[i.index("=")+1:] for i in cache if "=" in i]
                             for i in apps:
                                 if con[10:] == i:
                                     turn = 1
@@ -247,7 +247,7 @@ def main():
                         else:
                             apps = os.popen("adb shell pm list packages -f | grep package:").read()
                             cache = apps.split("\n")
-                            apps = [i[i.index("=")+1:] for i in cache if ":" in i]
+                            apps = [i[i.index("=")+1:] for i in cache if "=" in i]
                             for i in apps:
                                 if con[7:] == i:
                                     turn = 1
@@ -260,7 +260,7 @@ def main():
                     elif con == "apps":
                         apps = os.popen("adb shell pm list packages -f | grep package:").read()
                         cache = apps.split("\n")
-                        apps = [i[i.index("=")+1:] for i in cache if ":" in i]
+                        apps = [i[i.index("=")+1:] for i in cache if "=" in i]
                         for i in apps:
                             print(i)
                     else:
