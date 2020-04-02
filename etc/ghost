@@ -174,8 +174,6 @@ def main():
                         os.system("chmod +x data/payloads/activity && data/payloads/activity")
                     elif con == "netstat":
                         os.system("chmod +x data/payloads/netstat && data/payloads/netstat")
-                    elif con == "apps":
-                        os.system("chmod +x data/payloads/apps && data/payloads/apps")
                     elif con == "log":
                         os.system("chmod +x data/payloads/log && data/payloads/log")
                     elif con == "sysinfo":
@@ -233,7 +231,7 @@ def main():
                         else:
                             apps = os.popen("adb shell pm list packages -f | grep package:").read()
                             cache = apps.split("\n")
-                            apps = [i[i.index(":")+1:] for i in cache if ":" in i]
+                            apps = [i[i.index("=")+1:] for i in cache if ":" in i]
                             for i in apps:
                                 if con[10:] == i:
                                     turn = 1
@@ -249,7 +247,7 @@ def main():
                         else:
                             apps = os.popen("adb shell pm list packages -f | grep package:").read()
                             cache = apps.split("\n")
-                            apps = [i[i.index(":")+1:] for i in cache if ":" in i]
+                            apps = [i[i.index("=")+1:] for i in cache if ":" in i]
                             for i in apps:
                                 if con[7:] == i:
                                     turn = 1
@@ -259,6 +257,12 @@ def main():
                                 os.system("chmod +x core/launch.sh && core/launch.sh "+con[7:])
                             else:
                                 print(E+"No such application!")
+                    elif con == "apps":
+                        apps = os.popen("adb shell pm list packages -f | grep package:").read()
+                        cache = apps.split("\n")
+                        apps = [i[i.index("=")+1:] for i in cache if ":" in i]
+                        for i in apps:
+                            print(i)
                     else:
                         print(E+"Unrecognized command!")
                     con = input('\033[4mghost\033[0m(\033[1;31m'+device+'\033[0m)> ').strip(" ")
