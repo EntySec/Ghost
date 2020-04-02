@@ -263,6 +263,19 @@ def main():
                         apps = [i[i.index("=")+1:] for i in cache if "=" in i]
                         for i in apps:
                             print(i)
+                    elif con[:7] == "install":
+                        if con[8:] == "":
+                            print("Usage: install <local_path>")
+                        else:
+                            w = os.environ['OLDPWD']
+                            os.chdir(w)
+                            if os.path.exists(con[8:]):
+                                print(G+"Installing "+con[8:]+"...")
+                                os.system("adb install "+con[8:]+" > /dev/null")
+                                print(S+"Succcessfully installed!")
+                            else:
+                                print(E+"No such apk file!")
+                            os.chdir(g)
                     else:
                         print(E+"Unrecognized command!")
                     con = input('\033[4mghost\033[0m(\033[1;31m'+device+'\033[0m)> ').strip(" ")
