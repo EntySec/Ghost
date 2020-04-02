@@ -2,7 +2,7 @@
     Command        Description
     -------        -----------
     acitivity      Show user activity.
-    apps           Show installed applications.
+    apps           List installed applications.
     battery        Show battery status.
     inet           Show inet status.
     launch         Launch an application.
