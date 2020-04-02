@@ -5,6 +5,7 @@
     apps           List installed applications.
     battery        Show battery status.
     inet           Show inet status.
+    install        Install an apk.
     launch         Launch an application.
     log            Show device log.
     netstat        Show network status.
