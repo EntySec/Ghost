@@ -262,6 +262,14 @@ def main():
                                 print(S+"Succcessfully installed!")
                             else:
                                 print(E+"No such apk file!")
+                    elif con[:8] == "download":
+                        if len(con.split()) < 2:
+                            print("Usage: download <remote_path> <local_path>")
+                        else:
+                            if len(con.split()) < 3:
+                                print("Usage: download <remote_path> <local_path>")
+                            else:
+                                pass
                     else:
                         print(E+"Unrecognized command!")
                     con = input('\033[4mghost\033[0m(\033[1;31m'+device+'\033[0m)> ').strip(" ")
