@@ -20,3 +20,20 @@
 
 G="\033[1;34m[*] \033[0m"
 E="\033[1;31m[-] \033[0m"
+S="\033[1;32m[+] \033[0m"
+
+if [[ "$1" = "" ]]; then
+    echo "Usage: upload <local_path> <remote_path>"
+else
+    if [[ "$2" = "" ]]; then
+        echo "Usage: upload <local_path> <remote_path>"
+    else
+        if [[ -f "$1" ]]; then
+            {
+            check_remote_path_exists="$(adb stat "$2")"
+            } &> /dev/null
+        else
+            echo -e ""$E" No such file!"
+        fi
+    fi
+fi
