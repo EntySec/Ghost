@@ -259,7 +259,7 @@ def main():
                                 os.system("adb install "+con[8:]+" > /dev/null")
                                 print(S+"Succcessfully installed!")
                             else:
-                                print(E+"No such apk file!")
+                                print(E+"Local file: "+con[8:]+": does not exist!")
                     elif con[:8] == "download":
                         if con[9:] == "":
                             print("Usage: download <remote_path>")
