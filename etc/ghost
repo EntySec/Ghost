@@ -261,7 +261,7 @@ def main():
                                 os.system("adb install "+con[8:]+" > /dev/null")
                                 print(S+"Succcessfully installed!")
                             else:
-                                print(E+"No such apk file!")
+                                print(E+"Local file: "+con[8:]+": does not exist!")
                     elif con[:8] == "download":
                         if con[9:] == "":
                             print("Usage: download <remote_path>")
@@ -280,7 +280,7 @@ def main():
                                 if os.path.exists(con.split()[1]):
                                     os.system("~/ghost/data/payloads/upload "+con.split()[1]+" "+con.split()[2])
                                 else:
-                                    print(E+"No such file!")
+                                    print(E+"Local file: "+con.split()[1]+": does not exist!")
                                 g = os.environ['HOME']
                                 os.chdir(g + "/mouse")
                     else:
