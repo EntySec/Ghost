@@ -275,7 +275,14 @@ def main():
                             if len(con.split()) < 3:
                                 print("Usage: upload <local_path> <remote_path>")
                             else:
-                                os.system("data/payloads/upload "+con.split()[1]+" "+con.split[2])
+                                w = os.environ['OLDPWD']
+                                os.chdir(w)
+                                if os.path.exists(con.split()[1]):
+                                    os.system("~/ghost/data/payloads/upload "+con.split()[1]+" "+con.split()[2])
+                                else:
+                                    print(E+"No such file!")
+                                g = os.environ['HOME']
+                                os.chdir(g + "/mouse")
                     else:
                         print(E+"Unrecognized command!")
                     con = input('\033[4mghost\033[0m(\033[1;31m'+device+'\033[0m)> ').strip(" ")
