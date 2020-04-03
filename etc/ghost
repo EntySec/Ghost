@@ -276,6 +276,22 @@ def main():
                             else:
                                 print(E+"No such apk file!")
                             os.chdir(g)
+                    elif con[:8] == "download":
+                        if len(con.split()) < 2:
+                            print("Usage: download <remote_path> <local_path>")
+                        else:
+                            if len(con.split()) < 3:
+                                print("Usage: download <remote_path> <local_path>")
+                            else:
+                                os.system("data/payloads/download")
+                    elif con[:6] == "upload":
+                        if len(con.split()) < 2:
+                            print("Usage: upload <local_path> <remote_path>")
+                        else:
+                            if len(con.split()) < 3:
+                                print("Usage: upload <local_path> <remote_path>")
+                            else:
+                                os.system("data/payloads/upload")
                     else:
                         print(E+"Unrecognized command!")
                     con = input('\033[4mghost\033[0m(\033[1;31m'+device+'\033[0m)> ').strip(" ")
