@@ -18,19 +18,26 @@
 #        You should have received a copy of the GNU General Public License
 #        along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-RS="\033[0;31m"
-YS="\033[1;33m"
+RS="\033[1;31m"
 CE="\033[0m"
-C="\033[0m"
-GN="\033[0;32m"
-WHS="\033[0m"
+
+#blue start 
+	BS="\033[1;34m"
+#color end
+	CE="\033[0m"
+#red start
+	RS="\033[0;31m"
+#green start
+	GN="\033[1;32m"
+#white start
+   WHS="\033[0m"
 
 printf '\033]2;uninstall.sh\a'
 
 if [[ $EUID -ne 0 ]]
 then
    sleep 1
-   echo -e ""$GN"["$RS"+"$GN"]"$CE" This script must be run as root!"$C"" 1>&2
+   echo -e ""$RS"[-]"$CE" This script must be run as root!"$CE"" 1>&2
    sleep 1
    exit
 fi
