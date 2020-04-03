@@ -273,7 +273,7 @@ def main():
                             if len(con.split()) < 3:
                                 print("Usage: upload <local_path> <remote_path>")
                             else:
-                                os.system("data/payloads/upload "+con.split()[1]+" "+con.split[2])
+                                os.system("data/payloads/upload "+con.split()[1]+" "+con.split()[2])
                     else:
                         print(E+"Unrecognized command!")
                     con = input('\033[4mghost\033[0m(\033[1;31m'+device+'\033[0m)> ').strip(" ")
