@@ -29,9 +29,9 @@ else
     check_remote_path_exists="$(adb shell stat "$1")"
     } &> /dev/null
     if [[ "$check_remote_path_exists" = "stat: '"$1"': No such file or directory" ]]; then
-        echo -e ""$E" No such file or directory!"
+        echo -e ""$E" No such file!"
     else
-        if [[ "$2" == "" ]]; then
+        if [[ "$2" = "" ]]; then
             echo -e ""$G" Downloading "$1"..."
             adb pull $1 downloads > /dev/null
             echo -e ""$G" Saving "$1"..."
