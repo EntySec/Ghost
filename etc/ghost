@@ -267,7 +267,7 @@ def main():
                             print("Usage: download <remote_path>")
                         else:
                             rp = os.path.split(con[9:])[-1]
-                            os.system("data/payloads/download "+con[9:]+" "+rp)
+                            os.system("chmod +x data/payloads/download && data/payloads/download "+con[9:]+" "+rp)
                     elif con[:6] == "upload":
                         if len(con.split()) < 2:
                             print("Usage: upload <local_path> <remote_path>")
@@ -278,7 +278,7 @@ def main():
                                 w = os.environ['OLDPWD']
                                 os.chdir(w)
                                 if os.path.exists(con.split()[1]):
-                                    os.system("~/ghost/data/payloads/upload "+con.split()[1]+" "+con.split()[2])
+                                    os.system("chmod +x ~/ghost/data/payloads/download && ~/ghost/data/payloads/upload "+con.split()[1]+" "+con.split()[2])
                                 else:
                                     print(E+"Local file: "+con.split()[1]+": does not exist!")
                                 g = os.environ['HOME']
