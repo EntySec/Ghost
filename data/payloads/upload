@@ -33,15 +33,15 @@ else
             check_remote_path_exists="$(adb shell stat "$1")"
             } &> /dev/null
             if [[ "$check_remote_path_exists" = "stat: '"$1"': No such file or directory" ]]; then
-                echo -e ""$E" Remote directory: "$1": does not exist!"
+                echo -e ""$E"Remote directory: "$1": does not exist!"
             else
                 {
                 adb push $1 $2 
                 } &> /dev/null
-                echo -e ""$S" File successfully uploaded!"
+                echo -e ""$S"File successfully uploaded!"
             fi
         else
-            echo -e ""$E" Local file: "$1": does not exist!"
+            echo -e ""$E"Local file: "$1": does not exist!"
         fi
     fi
 fi
