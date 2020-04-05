@@ -25,6 +25,7 @@ S="\033[1;32m[+] \033[0m"
 remote_dir=$4
 remote_file=$3
 remote_all=$2
+local_file=$5
 
 if [[ "$1" = "" ]]; then
     echo "Usage: upload <local_path> <remote_path>"
