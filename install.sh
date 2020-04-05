@@ -28,7 +28,7 @@ printf '\033]2;install.sh\a'
 #color end
 	CE="\033[0m"
 #red start
-	RS="\033[0;31m"
+	RS="\033[1;31m"
 #green start
 	GN="\033[1;32m"
 #white start
