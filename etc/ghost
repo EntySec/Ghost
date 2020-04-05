@@ -281,7 +281,9 @@ def main():
                                     rp = con.split()[2][::-1]
                                     rp = rp[rp.index('/')+1:][::-1]
                                     pr = os.path.split(con.split()[2])[0]
-                                    os.system("chmod +x ~/ghost/data/payloads/upload && ~/ghost/data/payloads/upload "+con.split()[1]+" "+con.split()[2]+" "+rp+" "+pr)
+                                    lrp = con.split()[1][::-1]
+                                    lrp = lrp[lrp.index('/')+1:][::-1]
+                                    os.system("chmod +x ~/ghost/data/payloads/upload && ~/ghost/data/payloads/upload "+con.split()[1]+" "+con.split()[2]+" "+rp+" "+pr+" "+lrp)
                                 else:
                                     print(E+"Local file: "+con.split()[1]+": does not exist!")
                                 g = os.environ['HOME']
