@@ -156,7 +156,7 @@ def main():
                         os.system("cat data/cmds/other_commands.txt")
                         print("")
                     elif con == "connect":
-                        print(W+"Allready connected to "+device+".")
+                        print(W+"Already connected to "+device+".")
                     elif con == "eatpass":
                         os.system("chmod +x data/payloads/eatpass && data/payloads/eatpass")
                         print(S+"Password successfully removed!")
