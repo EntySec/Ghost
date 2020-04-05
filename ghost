@@ -207,7 +207,7 @@ def main():
                         print(S+"Saved to downloads/screen.png!")
                     elif con[:9] == "screenrec":
                         print(G+"Recording screen...")
-                        print("Type Ctrl-C to stop.")
+                        print(G+"Press Ctrl-C to stop.")
                         os.system("adb shell screenrecord /sdcard/screen.mp4 > /dev/null")
                         os.system("adb pull /sdcard/screen.mp4 downloads > /dev/null")
                         print(G+"Saving screen.mp4...")
