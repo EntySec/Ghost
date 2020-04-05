@@ -24,7 +24,7 @@ S="\033[1;32m[+] \033[0m"
 
 remote_dir=$4
 remote_file=$3
-remote_all=$remote_dir"/"$remote_file
+remote_all=$2
 
 if [[ "$1" = "" ]]; then
     echo "Usage: upload <local_path> <remote_path>"
@@ -45,7 +45,7 @@ else
             if [[ $dchk = "0" ]]; then
                 if [[ "${chk[@]: :4}" != "stat" ]]; then
                     {
-                    adb push $1 $remote_all
+                    adb push $1 $remote_all"/"$local_file
                     } &> /dev/null
                     echo -e ""$S"File successfully uploaded!"
                 else
