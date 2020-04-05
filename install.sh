@@ -42,6 +42,17 @@ then
    exit
 fi
 
+{
+ASESR="$( curl -s checkip.dyndns.org | sed -e 's/.*Current IP Address: //' -e 's/<.*$//' )"
+} &> /dev/null
+if [[ "$ASESR" = "" ]]
+then 
+   sleep 1
+   echo -e ""$RS"[-] "$WHS"No Internet connection!"$CE""
+   sleep 1
+   exit
+fi
+
 if [[ -d ~/ghost ]]
 then
 sleep 0
