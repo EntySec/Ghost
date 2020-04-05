@@ -22,17 +22,48 @@ G="\033[1;34m[*] \033[0m"
 E="\033[1;31m[-] \033[0m"
 S="\033[1;32m[+] \033[0m"
 
+remote_dir=$4
+remote_file=$3
+remote_all=$remote_dir"/"$remote_file
+
 if [[ "$1" = "" ]]; then
     echo "Usage: upload <local_path> <remote_path>"
 else
     if [[ "$2" = "" ]]; then
         echo "Usage: upload <local_path> <remote_path>"
     else
+        {
+        chk="$(adb shell stat "$remote_all")"
+        } &> /dev/null
+        {
+        dchk="$(adb shell """if [[ -d """$remote_all""" ]]
+        then
+        echo 0
+        fi""")"
+        } &> /dev/null
         if [[ -f "$1" ]]; then
-            {
-            adb push $1 $2 
-            } &> /dev/null
-            echo -e ""$S"File successfully uploaded!"
+            if [[ $dchk = "0" ]]; then
+                if [[ "${chk[@]: :4}" != "stat" ]]; then
+                    {
+                    adb push $1 $remote_all
+                    } &> /dev/null
+                    echo -e ""$S"File successfully uploaded!"
+                else
+                    echo -e ""$E"Remote directory: "$remote_all": does not exist!"
+                fi
+            else
+                {
+                schk="$(adb shell stat "$remote_dir")"
+                } &> /dev/null
+                if [[ "${schk[@]: :4}" != "stat" ]]; then
+                    {
+                    adb push $1 $remote_all
+                    } &> /dev/null
+                    echo -e ""$S"File successfully uploaded!"
+                else
+                    echo -e ""$E"Remote directory: "$remote_dir": does not exist!"
+                fi
+            fi
         else
             echo -e ""$E"Local file: "$1": does not exist!"
         fi
