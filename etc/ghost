@@ -278,7 +278,10 @@ def main():
                                 w = os.environ['OLDPWD']
                                 os.chdir(w)
                                 if os.path.exists(con.split()[1]):
-                                    os.system("chmod +x ~/ghost/data/payloads/download && ~/ghost/data/payloads/upload "+con.split()[1]+" "+con.split()[2])
+                                    rp = con.split()[2][::-1]
+                                    rp = rp[rp.index('/')+1:][::-1]
+                                    pr = os.path.split(con.split()[2])[0]
+                                    os.system("chmod +x ~/ghost/data/payloads/upload && ~/ghost/data/payloads/upload "+con.split()[1]+" "+con.split()[2]+" "+rp+" "+pr)
                                 else:
                                     print(E+"Local file: "+con.split()[1]+": does not exist!")
                                 g = os.environ['HOME']
