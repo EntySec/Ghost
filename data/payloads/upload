@@ -35,6 +35,10 @@ else
     else
         {
         chk="$(adb shell stat "$remote_all")"
+        } &> .chk
+        {
+        chk="$(cat .chk)"
+        rm .chk
         } &> /dev/null
         {
         dchk="$(adb shell """if [[ -d """$remote_all""" ]]
@@ -55,6 +59,10 @@ else
             else
                 {
                 schk="$(adb shell stat "$remote_dir")"
+                } &> .schk
+                {
+                schk="$(cat .schk)"
+                rm .schk
                 } &> /dev/null
                 if [[ "${schk[@]: :4}" != "stat" ]]; then
                     {
