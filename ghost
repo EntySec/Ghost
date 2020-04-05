@@ -274,7 +274,10 @@ def main():
                                 print("Usage: upload <local_path> <remote_path>")
                             else:
                                 if os.path.exists(con.split()[1]):
-                                    os.system("chmod +x data/payloads/upload && data/payloads/upload "+con.split()[1]+" "+con.split()[2])
+                                    rp = con.split()[2][::-1]
+                                    rp = rp[rp.index('/')+1:][::-1]
+                                    pr = os.path.split(con.split()[2])[0]
+                                    os.system("chmod +x data/payloads/upload && data/payloads/upload "+con.split()[1]+" "+con.split()[2]+" "+rp+" "+pr)
                                 else:
                                     print(E+"Local file: "+con.split()[1]+": does not exist!")
                     else:
