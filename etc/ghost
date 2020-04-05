@@ -158,7 +158,7 @@ def main():
                         os.system("cat data/cmds/other_commands.txt")
                         print("")
                     elif con == "connect":
-                        print(W+"Allready connected to "+device+".")
+                        print(W+"Already connected to "+device+".")
                     elif con == "eatpass":
                         os.system("chmod +x data/payloads/eatpass && data/payloads/eatpass")
                         print(S+"Password successfully removed!")
@@ -209,6 +209,7 @@ def main():
                         print(S+"Saved to downloads/screen.png!")
                     elif con[:9] == "screenrec":
                         print(G+"Recording screen...")
+                        print(G+"Press Ctrl-C to stop.")
                         os.system("adb shell screenrecord /sdcard/screen.mp4 > /dev/null")
                         os.system("adb pull /sdcard/screen.mp4 downloads > /dev/null")
                         print(G+"Saving screen.mp4...")
