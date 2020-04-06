@@ -62,12 +62,6 @@ def get_input(prompt, auto_complete_fn=None, basefile_fn=None):
 readline.set_completer(autocomplete)
 readline.parse_and_bind("tab: complete")
 
-def locales():
-    if os.path.exists("downloads"):
-        pass
-    else:
-        os.system("mkdir downloads")
-
 def start_server():
     adb = os.popen("which adb").read()
     if adb.strip("\n") == "":
@@ -201,7 +195,7 @@ def main():
                                 if os.path.exists(con.split()[1]):
                                     rp = os.path.split(con.split()[1])[1]
                                     print(G+"Grabbing WPA Supplicant...")
-                                    os.system("chmod +x data/grabber/grabber.sh && data/grabber/grabber.sh -w "+con.split()[1]+"/wpa_supplicant.conf")
+                                    os.system("chmod +x ~/ghost/data/grabber/grabber.sh && ~/ghost/data/grabber/grabber.sh -w "+con.split()[1]+"/wpa_supplicant.conf")
                                     print(G+"Saving wpa_supplicant.conf...")
                                     time.sleep(1)
                                     print(S+"Saved to "+con.split()[1]+"/wpa_supplicant.conf!")
@@ -213,7 +207,7 @@ def main():
                                     if os.path.isdir(rp):
                                         rp = os.path.split(con.split()[1])[1]
                                         print(G+"Grabbing WPA Supplicant...")
-                                        os.system("chmod +x data/grabber/grabber.sh && data/grabber/grabber.sh -w "+con.split()[1])
+                                        os.system("chmod +x ~/ghost/data/grabber/grabber.sh && ~/ghost/data/grabber/grabber.sh -w "+con.split()[1])
                                         print(G+"Saving wpa_supplicant.conf...")
                                         time.sleep(1)
                                         print(S+"Saved to "+con.split()[1]+"!")
@@ -232,7 +226,7 @@ def main():
                             if os.path.isdir(con.split()[1]):
                                 if os.path.exists(con.split()[1]):
                                     print(G+"Taking screenshot...")
-                                    os.system("chmod +x data/grabber/grabber.sh && data/grabber/grabber.sh -s "+con.split()[1]+"/screen.png")
+                                    os.system("chmod +x ~/ghost/data/grabber/grabber.sh && ~/ghost/data/grabber/grabber.sh -s "+con.split()[1]+"/screen.png")
                                     print(G+"Saving to "+con.split()[1]+"/screen.png...")
                                     time.sleep(1)
                                     print(S+"Saved to "+con.split()[1]+"/screen.png!")
@@ -244,7 +238,7 @@ def main():
                                     if os.path.isdir(rp):
                                         rp = os.path.split(con.split()[1])[1]
                                         print(G+"Taking screenshot...")
-                                        os.system("chmod +x data/grabber/grabber.sh && data/grabber/grabber.sh -s "+con.split()[1])
+                                        os.system("chmod +x ~/ghost/data/grabber/grabber.sh && ~/ghost/data/grabber/grabber.sh -s "+con.split()[1])
                                         print(G+"Saving to "+con.split()[1]+"...")
                                         time.sleep(1)
                                         print(S+"Saved to "+con.split()[1]+"!")
@@ -264,7 +258,7 @@ def main():
                                 if os.path.exists(con.split()[1]):
                                     print(G+"Recording screen...")
                                     print(G+"Press Ctrl-C to stop.")
-                                    os.system("chmod +x data/grabber/grabber.sh && data/grabber/grabber.sh -r "+con.split()[1]+"/screen.mp4")
+                                    os.system("chmod +x ~/ghost/data/grabber/grabber.sh && ~/ghost/data/grabber/grabber.sh -r "+con.split()[1]+"/screen.mp4")
                                     print(G+"Saving to "+con.split()[1]+"/screen.mp4...")
                                     time.sleep(1)
                                     print(S+"Saved to "+con.split()[1]+"/screen.mp4!")
@@ -277,7 +271,7 @@ def main():
                                         rp = os.path.split(con.split()[1])[1]
                                         print(G+"Recording screen...")
                                         print(G+"Press Ctrl-C to stop.")
-                                        os.system("chmod +x data/grabber/grabber.sh && data/grabber/grabber.sh -s "+con.split()[1])
+                                        os.system("chmod +x ~/ghost/data/grabber/grabber.sh && ~/ghost/data/grabber/grabber.sh -s "+con.split()[1])
                                         print(G+"Saving to "+con.split()[1]+"...")
                                         time.sleep(1)
                                         print(S+"Saved to "+con.split()[1]+"!")
@@ -300,7 +294,9 @@ def main():
                                 else:
                                     turn = 0
                             if turn == "1":
+                                print(G+"Uninstalling "+con[10:]+"...")
                                 os.system("chmod +x core/apps/uninstall.sh && core/apps/uninstall.sh "+con[10:])
+                                print(S+"Successfully uninstalled!")
                             else:
                                 print(E+"No such application!")
                     elif con[:6] == "launch":
@@ -338,7 +334,7 @@ def main():
                                 else:
                                     if ext == ".apk":
                                         print(G+"Installing "+con[8:]+"...")
-                                        os.system("chmod +x core/apps/install.sh && core/apps/install.sh "+con[8:])
+                                        os.system("chmod +x ~/ghost/core/apps/install.sh && core/apps/install.sh "+con[8:])
                                         print(S+"Succcessfully installed!")
                                     else:
                                         print(E+"Error: "+con[8:]+": not an apk file!")
@@ -352,12 +348,12 @@ def main():
                         else:
                             w = os.environ['OLDPWD']
                             os.chdir(w)
-                            chk = os.popen("chmod +x data/check/check.sh && data/check/check.sh "+con.split()[1]).read()
+                            chk = os.popen("chmod +x ~/ghost/data/check/check.sh && ~/ghost/data/check/check.sh "+con.split()[1]).read()
                             if chk == "0\n":
                                 if os.path.isdir(con.split()[2]):
                                     if os.path.exists(con.split()[2]):
                                         rp = os.path.split(con.split()[1])[1]
-                                        os.system("chmod +x data/payloads/download && data/payloads/download "+con.split()[1]+" "+con.split()[2]+" "+rp)
+                                        os.system("chmod +x ~/ghost/data/payloads/download && ~/ghost/data/payloads/download "+con.split()[1]+" "+con.split()[2]+" "+rp)
                                     else:
                                         print(E+"Local directory: "+con.split()[2]+": does not exist!")
                                 else:
@@ -366,7 +362,7 @@ def main():
                                         if os.path.isdir(rp):
                                             rp = os.path.split(con.split()[2])[1]
                                             pr = os.path.split(con.split()[1])[1]
-                                            os.system("chmod +x data/payloads/download && data/payloads/download "+con.split()[1]+" "+con.split()[2]+" "+rp+" "+pr)
+                                            os.system("chmod +x ~/ghost/data/payloads/download && ~/ghost/data/payloads/download "+con.split()[1]+" "+con.split()[2]+" "+rp+" "+pr)
                                         else:
                                             print(E+"Error: "+rp+": not a directory!")
                                     else:
@@ -390,7 +386,7 @@ def main():
                                     pr = os.path.split(con.split()[2])[0]
                                     lrp = con.split()[1][::-1]
                                     lrp = lrp[lrp.index('/')+1:][::-1]
-                                    os.system("chmod +x data/payloads/upload && data/payloads/upload "+con.split()[1]+" "+con.split()[2]+" "+rp+" "+pr+" "+lrp)
+                                    os.system("chmod +x ~/ghost/data/payloads/upload && ~/ghost/data/payloads/upload "+con.split()[1]+" "+con.split()[2]+" "+rp+" "+pr+" "+lrp)
                             else:
                                 print(E+"Local file: "+con.split()[1]+": does not exist!")
                             g = os.environ['HOME']
@@ -402,7 +398,6 @@ def main():
             print(E+"Unrecognized command!")
         ui = input('\033[4mghost\033[0m> ').strip(" ")
 
-locales()
 start_server()
 banner()
 main()
