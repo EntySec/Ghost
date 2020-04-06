@@ -349,23 +349,27 @@ def main():
                         else:
                             w = os.environ['OLDPWD']
                             os.chdir(w)
-                            if os.path.isdir(con.split()[2]):
-                                if os.path.exists(con.split()[2]):
-                                    rp = os.path.split(con.split()[1])[1]
-                                    os.system("chmod +x data/payloads/download && data/payloads/download "+con.split()[1]+" "+con.split()[2]+" "+rp)
-                                else:
-                                    print(E+"Local directory: "+con.split()[2]+": does not exist!")
-                            else:
-                                rp = os.path.split(con.split()[2])[0]
-                                if os.path.exists(rp):
-                                    if os.path.isdir(rp):
-                                        rp = os.path.split(con.split()[2])[1]
-                                        pr = os.path.split(con.split()[1])[1]
-                                        os.system("chmod +x data/payloads/download && data/payloads/download "+con.split()[1]+" "+con.split()[2]+" "+rp+" "+pr)
+                            chk = os.popen("chmod +x data/check/check.sh && data/check/check.sh "+con.split()[1]).read()
+                            if chk == "0":
+                                if os.path.isdir(con.split()[2]):
+                                    if os.path.exists(con.split()[2]):
+                                        rp = os.path.split(con.split()[1])[1]
+                                        os.system("chmod +x data/payloads/download && data/payloads/download "+con.split()[1]+" "+con.split()[2]+" "+rp)
                                     else:
-                                        print(E+"Error: "+rp+": not a directory!")
+                                        print(E+"Local directory: "+con.split()[2]+": does not exist!")
                                 else:
-                                    print(E+"Local directory: "+rp+": does not exists!")
+                                    rp = os.path.split(con.split()[2])[0]
+                                    if os.path.exists(rp):
+                                        if os.path.isdir(rp):
+                                            rp = os.path.split(con.split()[2])[1]
+                                            pr = os.path.split(con.split()[1])[1]
+                                            os.system("chmod +x data/payloads/download && data/payloads/download "+con.split()[1]+" "+con.split()[2]+" "+rp+" "+pr)
+                                        else:
+                                            print(E+"Error: "+rp+": not a directory!")
+                                    else:
+                                        print(E+"Local directory: "+rp+": does not exists!")
+                            else:
+                                print(E+"Remote file: "+con.split()[1]+": does not exist!")
                             g = os.environ['HOME']
                             os.chdir(g + "/ghost")
                     elif con[:6] == "upload":
