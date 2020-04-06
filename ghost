@@ -241,7 +241,7 @@ def main():
                                     os.system("adb pull /sdcard/screen.png "+con.split()[1]+" > /dev/null")
                                     print(G+"Saving to "+con.split()[1]+"...")
                                     time.sleep(1)
-                                    print(S+"Saved to "+con.split()[1]+"/screen.png!")
+                                    print(S+"Saved to "+con.split()[1]+"!")
                                 else:
                                     print(E+"Local directory: "+rp+": does not exists!")
                     elif con[:9] == "screenrec":
