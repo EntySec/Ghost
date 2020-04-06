@@ -25,10 +25,12 @@ S="\033[1;32m[+] \033[0m"
 if [[ "$1" = "" ]]; then
     echo "Usage: download <remote_path> <local_path> <remote_file>"
     exit
+fi
 
 if [[ "$2" = "" ]]; then
     echo "Usage: download <remote_path> <local_path> <remote_file>"
     exit
+fi
     
 if [[ "$3" = "" ]]; then
     echo "Usage: download <remote_path> <local_path> <remote_file>"
