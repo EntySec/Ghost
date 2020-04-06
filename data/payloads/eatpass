@@ -30,11 +30,19 @@ then
 echo -e ""$E"Target device is not rooted!"
 else
 echo -e ""$G"Removing /data/system/gesture.key..."
-adb shell su 0 'rm /data/system/gesture.key' > /dev/null
+{
+adb shell su 0 'rm /data/system/gesture.key' 
+} &> /dev/null
 echo -e ""$G"Removing /data/system/locksettings.db..."
-adb shell su 0 'rm /data/system/locksettings.db' > /dev/null
+{
+adb shell su 0 'rm /data/system/locksettings.db' 
+} &> /dev/null
 echo -e ""$G"Removing /data/system/locksettings.db-wal..."
-adb shell su 0 'rm /data/system/locksettings.db-wal' > dev/null
+{
+adb shell su 0 'rm /data/system/locksettings.db-wal' 
+} &> dev/null
 echo -e ""$G"Removing /data/system/locksettings.db-shm..."
-adb shell su 0 'rm /data/system/locksettings.db-shm' > /dev/null
+{
+adb shell su 0 'rm /data/system/locksettings.db-shm' 
+} &> /dev/null
 fi
