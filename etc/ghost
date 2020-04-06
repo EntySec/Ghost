@@ -264,11 +264,27 @@ def main():
                             else:
                                 print(E+"Local file: "+con[8:]+": does not exist!")
                     elif con[:8] == "download":
-                        if con[9:] == "":
-                            print("Usage: download <remote_path>")
+                        if len(con.split()) < 3:
+                            print("Usage: download <remote_path> <local_path>")
                         else:
-                            rp = os.path.split(con[9:])[-1]
-                            os.system("chmod +x data/payloads/download && data/payloads/download "+con[9:]+" "+rp)
+                            w = os.environ['OLDPWD']
+                            os.chdir(w)
+                            if os.path.isdir(con.split()[2]):
+                                if os.path.exists(con.split()[2]):
+                                    rp = os.path.split(con.split()[1])[1]
+                                    os.system("chmod +x data/payloads/download && data/payloads/download "+con.split()[1]+" "+con.split()[2]+" "+rp)
+                                else:
+                                    print(E+"Local directory: "+con.split()[2]+": does not exist!")
+                            else:
+                                rp = os.path.split(con.split()[2])[0]
+                                if os.path.exists(rp):
+                                    rp = os.path.split(con.split()[2])[1]
+                                    pr = os.path.split(con.split()[1])[1]
+                                    os.system("chmod +x data/payloads/download && data/payloads/download "+con.split()[1]+" "+con.split()[2]+" "+rp+" "+pr)
+                                else:
+                                    print(E+"Local directory: "+rp+": does not exists!")
+                            g = os.environ['HOME']
+                            os.chdir(g + "/ghost")
                     elif con[:6] == "upload":
                         if len(con.split()) < 2:
                             print("Usage: upload <local_path> <remote_path>")
@@ -288,7 +304,7 @@ def main():
                                 else:
                                     print(E+"Local file: "+con.split()[1]+": does not exist!")
                                 g = os.environ['HOME']
-                                os.chdir(g + "/mouse")
+                                os.chdir(g + "/ghost")
                     else:
                         print(E+"Unrecognized command!")
                     con = input('\033[4mghost\033[0m(\033[1;31m'+device+'\033[0m)> ').strip(" ")
