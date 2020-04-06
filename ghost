@@ -282,7 +282,9 @@ def main():
                                 else:
                                     turn = 0
                             if turn == "1":
+                                print(G+"Uninstalling "+con[10:]+"...")
                                 os.system("chmod +x core/apps/uninstall.sh && core/apps/uninstall.sh "+con[10:])
+                                print(S+"Successfully uninstalled!")
                             else:
                                 print(E+"No such application!")
                     elif con[:6] == "launch":
