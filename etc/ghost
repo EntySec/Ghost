@@ -353,6 +353,7 @@ def main():
                             if chk == "0\n":
                                 if dchk == "0\n":
                                     print(E+"Error: "+con.split()[1]+": not a file!")
+                                else:
                                     if os.path.isdir(con.split()[2]):
                                         if os.path.exists(con.split()[2]):
                                             rp = os.path.split(con.split()[1])[1]
