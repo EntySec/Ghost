@@ -90,7 +90,7 @@ def main():
     while True:
         if ui == "exit":
             print(G+"Stoping Ghost Server...")
-            subprocess.Popen("adb kill-server".split(),stdout=open(os.devnull, 'wb'))
+            os.system("adb kill-server > /dev/null")
             sys.exit()
         elif ui == "clear":
             os.system("clear")
@@ -195,6 +195,8 @@ def main():
                         if len(con.split()) < 2:
                             print("Usage: wgrabber <local_path>")
                         else:
+                            w = os.environ['OLDPWD']
+                            os.chdir(w)
                             if os.path.isdir(con.split()[1]):
                                 if os.path.exists(con.split()[1]):
                                     rp = os.path.split(con.split()[1])[1]
@@ -219,10 +221,14 @@ def main():
                                         print(E+"Error: "+rp+": not a directory!")
                                 else:
                                     print(E+"Local directory: "+rp+": does not exists!")
+                            g = os.environ['HOME']
+                            os.chdir(g + "/ghost")
                     elif con[:10] == "screenshot":
                         if len(con.split()) < 2:
                             print("Usage: screenshot <local_path>")
                         else:
+                            w = os.environ['OLDPWD']
+                            os.chdir(w)
                             if os.path.isdir(con.split()[1]):
                                 if os.path.exists(con.split()[1]):
                                     print(G+"Taking screenshot...")
@@ -246,10 +252,14 @@ def main():
                                         print(E+"Error: "+rp+": not a directory!")
                                 else:
                                     print(E+"Local directory: "+rp+": does not exists!")
+                            g = os.environ['HOME']
+                            os.chdir(g + "/ghost")
                     elif con[:9] == "screenrec":
                         if len(con.split()) < 2:
                             print("Usage: screenrec <local_path>")
                         else:
+                            w = os.environ['OLDPWD']
+                            os.chdir(w)
                             if os.path.isdir(con.split()[1]):
                                 if os.path.exists(con.split()[1]):
                                     print(G+"Recording screen...")
@@ -275,6 +285,8 @@ def main():
                                         print(E+"Error: "+rp+": not a directory!")
                                 else:
                                     print(E+"Local directory: "+rp+": does not exists!")
+                            g = os.environ['HOME']
+                            os.chdir(g + "/ghost")
                     elif con[:9] == "uninstall":
                         if con[10:] == "":
                             print("Usage: uninstall <application>")
@@ -317,6 +329,8 @@ def main():
                         if con[8:] == "":
                             print("Usage: install <local_path>")
                         else:
+                            w = os.environ['OLDPWD']
+                            os.chdir(w)
                             if os.path.exists(con[8:]):
                                 ext = os.path.splitext(con[8:])
                                 if os.path.isdir(con[8:]):
@@ -330,10 +344,14 @@ def main():
                                         print(E+"Error: "+con[8:]+": not an apk file!")
                             else:
                                 print(E+"Local file: "+con[8:]+": does not exist!")
+                            g = os.environ['HOME']
+                            os.chdir(g + "/ghost")
                     elif con[:8] == "download":
                         if len(con.split()) < 3:
                             print("Usage: download <remote_path> <local_path>")
                         else:
+                            w = os.environ['OLDPWD']
+                            os.chdir(w)
                             chk = os.popen("chmod +x data/check/check.sh && data/check/check.sh "+con.split()[1]).read()
                             if chk == "0\n":
                                 if os.path.isdir(con.split()[2]):
@@ -355,10 +373,14 @@ def main():
                                         print(E+"Local directory: "+rp+": does not exists!")
                             else:
                                 print(E+"Remote file: "+con.split()[1]+": does not exist!")
+                            g = os.environ['HOME']
+                            os.chdir(g + "/ghost")
                     elif con[:6] == "upload":
                         if len(con.split()) < 3:
                             print("Usage: upload <local_path> <remote_path>")
                         else:
+                            w = os.environ['OLDPWD']
+                            os.chdir(w)
                             if os.path.exists(con.split()[1]):
                                 if os.path.isdir(con.split()[1]):
                                     print(E+"Error: "+rp+": not a file!")
@@ -371,6 +393,8 @@ def main():
                                     os.system("chmod +x data/payloads/upload && data/payloads/upload "+con.split()[1]+" "+con.split()[2]+" "+rp+" "+pr+" "+lrp)
                             else:
                                 print(E+"Local file: "+con.split()[1]+": does not exist!")
+                            g = os.environ['HOME']
+                            os.chdir(g + "/ghost")
                     else:
                         print(E+"Unrecognized command!")
                     con = input('\033[4mghost\033[0m(\033[1;31m'+device+'\033[0m)> ').strip(" ")
