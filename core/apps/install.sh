@@ -27,8 +27,6 @@ echo "Usage: install.sh <application>"
 exit
 fi
 
-echo -e ""$G"Launching "$1"..."
-
 {
 adb install $1
 } &> /dev/null
