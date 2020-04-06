@@ -62,12 +62,6 @@ def get_input(prompt, auto_complete_fn=None, basefile_fn=None):
 readline.set_completer(autocomplete)
 readline.parse_and_bind("tab: complete")
 
-def locales():
-    if os.path.exists("downloads"):
-        pass
-    else:
-        os.system("mkdir downloads")
-
 def start_server():
     adb = os.popen("which adb").read()
     if adb.strip("\n") == "":
@@ -90,7 +84,7 @@ def main():
     while True:
         if ui == "exit":
             print(G+"Stoping Ghost Server...")
-            subprocess.Popen("adb kill-server".split(),stdout=open(os.devnull, 'wb'))
+            os.system("adb kill-server > /dev/null")
             sys.exit()
         elif ui == "clear":
             os.system("clear")
@@ -378,7 +372,6 @@ def main():
             print(E+"Unrecognized command!")
         ui = input('\033[4mghost\033[0m> ').strip(" ")
 
-locales()
 start_server()
 banner()
 main()
