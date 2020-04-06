@@ -28,7 +28,24 @@ remote_all=$2
 local_file=$5
 
 if [[ "$1" = "" ]]; then
-    echo "Usage: upload <local_path> <remote_path>"
+    echo "Usage: upload <local_path> <remote_path> <remote_file> <remote_dir> <local_file>"
+    exit
+
+if [[ "$2" = "" ]]; then
+    echo "Usage: upload <local_path> <remote_path> <remote_file> <remote_dir> <local_file>"
+    exit
+    
+if [[ "$3" = "" ]]; then
+    echo "Usage: upload <local_path> <remote_path> <remote_file> <remote_dir> <local_file>"
+    exit
+    
+if [[ "$4" = "" ]]; then
+    echo "Usage: upload <local_path> <remote_path> <remote_file> <remote_dir> <local_file>"
+    exit
+    
+if [[ "$5" = "" ]]; then
+    echo "Usage: upload <local_path> <remote_path> <remote_file> <remote_dir> <local_file>"
+    exit
 else
     if [[ "$2" = "" ]]; then
         echo "Usage: upload <local_path> <remote_path>"
