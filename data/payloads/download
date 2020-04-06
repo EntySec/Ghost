@@ -31,16 +31,20 @@ else
     if [[ "$check_remote_path_exists" = "stat: '"$1"': No such file or directory" ]]; then
         echo -e ""$E"Remote file: "$1": does not exist!"
     else
-        echo -e ""$G"Downloading "$3"..."
+        if [[ "$4" = "" ]]; then
+            echo -e ""$G"Downloading "$3"..."
+        else
+            echo -e ""$G"Downloading "$4"..."
+        fi
         {
         adb pull $1 $2
         } &> /dev/null
         if [[ "$4" = "" ]]; then
-            echo -e ""$G" Saving to "$2"/"$3"..."
+            echo -e ""$G"Saving to "$2"/"$3"..."
             sleep 1
             echo -e ""$S"Saved to "$2"/"$3"!"
         else
-            echo -e ""$G" Saving to "$2"..."
+            echo -e ""$G"Saving to "$2"..."
             sleep 1
             echo -e ""$S"Saved to "$2"!"
         fi
