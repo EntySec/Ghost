@@ -20,7 +20,14 @@
 
 if [[ "$1" == "on" ]]
 then
+{
 adb shell svc wifi enable
-else
+} &> /dev/null
+fi
+
+if [[ "$1" == "off" ]]
+then
+{
 adb shell svc wifi disable
+} &> /dev/null
 fi
