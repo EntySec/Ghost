@@ -268,7 +268,7 @@ def main():
                             if os.path.isdir(con.split()[2]):
                                 if os.path.exists(con.split()[2]):
                                     rp = os.path.split(con.split()[1])[1]
-                                    os.system("chmod +x data/payloads/download && data/payloads/download "+con.split()[1]+" "+con.split()[2]+" "+rp+" "+rp)
+                                    os.system("chmod +x data/payloads/download && data/payloads/download "+con.split()[1]+" "+con.split()[2]+" "+rp)
                                 else:
                                     print(E+"Local directory: "+con.split()[2]+": does not exist!")
                             else:
