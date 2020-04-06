@@ -19,18 +19,14 @@
 #        along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 if [[ "$1" = "" ]]; then
-    echo "Usage: check.sh <file>"
+	echo "Usage: check.sh <file>"
 else
-    {
-    adb shell stat $1
-    } &> .check
-    {
-    check="$(cat .check)"
-    rm .check
-    } &> /dev/null
-    if [[ "${check[@]: :4}" = "stat" ]]; then
-        echo "1"
-    else
-        echo "0"
-    fi
+	{
+	check="$(adb shell stat $1)"
+	} &> /dev/null
+	if [[ "${check[@]: :4}" = "stat" ]]; then
+		echo "1"
+	else
+		echo "0"
+	fi
 fi
