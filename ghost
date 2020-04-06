@@ -352,8 +352,8 @@ def main():
                                             print(E+"Error: "+rp+": not a directory!")
                                     else:
                                         print(E+"Local directory: "+rp+": does not exists!")
-                                else:
-                                    print(E+"Remote file: "+con.split()[1]+": does not exist!")
+                            else:
+                                print(E+"Remote file: "+con.split()[1]+": does not exist!")
                     elif con[:6] == "upload":
                         if len(con.split()) < 3:
                             print("Usage: upload <local_path> <remote_path>")
