@@ -288,7 +288,7 @@ def main():
                                 else:
                                     turn = 0
                             if turn == "1":
-                                os.system("adb uninstall "+con[10:]+" > /dev/null")
+                                os.system("chmod +x core/apps/uninstall.sh && core/apps/uninstall.sh "+con[10:])
                             else:
                                 print(E+"No such application!")
                     elif con[:6] == "launch":
@@ -304,7 +304,7 @@ def main():
                                 else:
                                     turn = 0
                             if turn == "1":
-                                os.system("chmod +x core/launch.sh && core/launch.sh "+con[7:])
+                                os.system("chmod +x core/apps/launch.sh && core/apps/launch.sh "+con[7:])
                             else:
                                 print(E+"No such application!")
                     elif con == "apps":
@@ -319,7 +319,7 @@ def main():
                         else:
                             if os.path.exists(con[8:]):
                                 print(G+"Installing "+con[8:]+"...")
-                                os.system("adb install "+con[8:]+" > /dev/null")
+                                os.system("chmod +x core/apps/install.sh && core/apps/install.sh "+con[8:])
                                 print(S+"Succcessfully installed!")
                             else:
                                 print(E+"Local file: "+con[8:]+": does not exist!")
