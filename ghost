@@ -192,7 +192,7 @@ def main():
                         else:
                             print("Usage: wifi [on|off]")
                     elif con[:8] == "wgrabber":
-                        if len(con.split) < 2:
+                        if len(con.split()) < 2:
                             print("Usage: wgrabber <local_path>")
                         else:
                             if os.path.isdir(con.split()[1]):
