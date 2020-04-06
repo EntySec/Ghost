@@ -199,7 +199,7 @@ def main():
                                 if os.path.exists(con.split()[1]):
                                     rp = os.path.split(con.split()[1])[1]
                                     print(G+"Grabbing WPA Supplicant...")
-                                    os.system("adb shell su -c 'cp /data/misc/wifi/wpa_supplicant.conf /sdcard/' > /dev/null")
+                                    os.system("adb shell su 'cp /data/misc/wifi/wpa_supplicant.conf /sdcard/' > /dev/null")
                                     os.system("adb pull /sdcard/wpa_supplicant.conf "+con.split()[1]+"/wpa_supplicant.conf")
                                     print(G+"Saving wpa_supplicant.conf...")
                                     time.sleep(1)
