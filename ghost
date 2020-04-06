@@ -212,7 +212,7 @@ def main():
                                     else:
                                         print(E+"Error: "+rp+": not a directory!")
                                 else:
-                                    print(E+"Local directory: "+rp+": does not exists!")
+                                    print(E+"Local directory: "+rp+": does not exist!")
                     elif con[:10] == "screenshot":
                         if len(con.split()) < 2:
                             print("Usage: screenshot <local_path>")
@@ -239,7 +239,7 @@ def main():
                                     else:
                                         print(E+"Error: "+rp+": not a directory!")
                                 else:
-                                    print(E+"Local directory: "+rp+": does not exists!")
+                                    print(E+"Local directory: "+rp+": does not exist!")
                     elif con[:9] == "screenrec":
                         if len(con.split()) < 2:
                             print("Usage: screenrec <local_path>")
@@ -268,7 +268,7 @@ def main():
                                     else:
                                         print(E+"Error: "+rp+": not a directory!")
                                 else:
-                                    print(E+"Local directory: "+rp+": does not exists!")
+                                    print(E+"Local directory: "+rp+": does not exist!")
                     elif con[:9] == "uninstall":
                         if con[10:] == "":
                             print("Usage: uninstall <application>")

@@ -214,7 +214,7 @@ def main():
                                     else:
                                         print(E+"Error: "+rp+": not a directory!")
                                 else:
-                                    print(E+"Local directory: "+rp+": does not exists!")
+                                    print(E+"Local directory: "+rp+": does not exist!")
                             g = os.environ['HOME']
                             os.chdir(g + "/ghost")
                     elif con[:10] == "screenshot":
@@ -245,7 +245,7 @@ def main():
                                     else:
                                         print(E+"Error: "+rp+": not a directory!")
                                 else:
-                                    print(E+"Local directory: "+rp+": does not exists!")
+                                    print(E+"Local directory: "+rp+": does not exist!")
                             g = os.environ['HOME']
                             os.chdir(g + "/ghost")
                     elif con[:9] == "screenrec":
@@ -278,7 +278,7 @@ def main():
                                     else:
                                         print(E+"Error: "+rp+": not a directory!")
                                 else:
-                                    print(E+"Local directory: "+rp+": does not exists!")
+                                    print(E+"Local directory: "+rp+": does not exist!")
                             g = os.environ['HOME']
                             os.chdir(g + "/ghost")
                     elif con[:9] == "uninstall":
