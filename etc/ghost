@@ -348,7 +348,7 @@ def main():
                         else:
                             w = os.environ['OLDPWD']
                             os.chdir(w)
-                            dchk = os.popen("chmod +x ~/ghost/data/check/dcheck.sh && ~/ghost/data/check/dcheck.sh "+con.split()[1].read())
+                            dchk = os.popen("chmod +x ~/ghost/data/check/dcheck.sh && ~/ghost/data/check/dcheck.sh "+con.split()[1]).read()
                             chk = os.popen("chmod +x ~/ghost/data/check/check.sh && ~/ghost/data/check/check.sh "+con.split()[1]).read()
                             if chk == "0\n":
                                 if dchk == "0\n":
