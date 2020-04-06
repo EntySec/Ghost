@@ -350,7 +350,7 @@ def main():
                             w = os.environ['OLDPWD']
                             os.chdir(w)
                             chk = os.popen("chmod +x ~/ghost/data/check/check.sh && ~/ghost/data/check/check.sh "+con.split()[1]).read()
-                            if chk == "0":
+                            if chk == "0\n":
                                 if os.path.isdir(con.split()[2]):
                                     if os.path.exists(con.split()[2]):
                                         rp = os.path.split(con.split()[1])[1]
