@@ -35,8 +35,14 @@ else
         {
         adb pull $1 $2
         } &> /dev/null
-        echo -e ""$G" Saving to "$2"..."
-        sleep 1
-        echo -e ""$S"Saved to "$2"!"
+        if [[ "$4" = "" ]]; then
+            echo -e ""$G" Saving to "$2"/"$3"..."
+            sleep 1
+            echo -e ""$S"Saved to "$2"/"$3"!"
+        else
+            echo -e ""$G" Saving to "$2"..."
+            sleep 1
+            echo -e ""$S"Saved to "$2"!"
+        fi
     fi
 fi
