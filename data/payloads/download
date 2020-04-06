@@ -35,8 +35,8 @@ else
         {
         adb pull $1 $2
         } &> /dev/null
-        echo -e ""$G" Saving to "$4"..."
+        echo -e ""$G" Saving to "$2"..."
         sleep 1
-        echo -e ""$S"Saved to "$4"!"
+        echo -e ""$S"Saved to "$2"!"
     fi
 fi
