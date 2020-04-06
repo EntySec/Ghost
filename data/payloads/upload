@@ -47,51 +47,47 @@ if [[ "$5" = "" ]]; then
     echo "Usage: upload <local_path> <remote_path> <remote_file> <remote_dir> <local_file>"
     exit
 else
-    if [[ "$2" = "" ]]; then
-        echo "Usage: upload <local_path> <remote_path>"
-    else
-        {
-        adb shell stat $remote_all
-        } &> .chk
-        {
-        chk="$(cat .chk)"
-        rm .chk
-        } &> /dev/null
-        {
-        dchk="$(adb shell """if [[ -d """$remote_all""" ]]
-        then
-        echo 0
-        fi""")"
-        } &> /dev/null
-        if [[ -f "$1" ]]; then
-            if [[ $dchk = "0" ]]; then
-                if [[ "${chk[@]: :4}" != "stat" ]]; then
-                    {
-                    adb push $1 $remote_all"/"$local_file
-                    } &> /dev/null
-                    echo -e ""$S"File successfully uploaded!"
-                else
-                    echo -e ""$E"Remote directory: "$remote_all": does not exist!"
-                fi
-            else
+    {
+    adb shell stat $remote_all
+    } &> .chk
+    {
+    chk="$(cat .chk)"
+    rm .chk
+    } &> /dev/null
+    {
+    dchk="$(adb shell """if [[ -d """$remote_all""" ]]
+    then
+    echo 0
+    fi""")"
+    } &> /dev/null
+    if [[ -f "$1" ]]; then
+        if [[ $dchk = "0" ]]; then
+            if [[ "${chk[@]: :4}" != "stat" ]]; then
                 {
-                adb shell stat $remote_dir
-                } &> .schk
-                {
-                schk="$(cat .schk)"
-                rm .schk
+                adb push $1 $remote_all"/"$local_file
                 } &> /dev/null
-                if [[ "${schk[@]: :4}" != "stat" ]]; then
-                    {
-                    adb push $1 $remote_all
-                    } &> /dev/null
-                    echo -e ""$S"File successfully uploaded!"
-                else
-                    echo -e ""$E"Remote directory: "$remote_dir": does not exist!"
-                fi
+                echo -e ""$S"File successfully uploaded!"
+            else
+                echo -e ""$E"Remote directory: "$remote_all": does not exist!"
             fi
         else
-            echo -e ""$E"Local file: "$1": does not exist!"
+            {
+            adb shell stat $remote_dir
+            } &> .schk
+            {
+            schk="$(cat .schk)"
+            rm .schk
+            } &> /dev/null
+            if [[ "${schk[@]: :4}" != "stat" ]]; then
+                {
+                adb push $1 $remote_all
+                } &> /dev/null
+                echo -e ""$S"File successfully uploaded!"
+            else
+                echo -e ""$E"Remote directory: "$remote_dir": does not exist!"
+            fi
         fi
+    else
+        echo -e ""$E"Local file: "$1": does not exist!"
     fi
 fi
