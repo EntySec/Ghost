@@ -34,7 +34,7 @@ else
         echo "Usage: upload <local_path> <remote_path>"
     else
         {
-        chk="$(adb shell stat "$remote_all")"
+        adb shell stat $remote_all
         } &> .chk
         {
         chk="$(cat .chk)"
