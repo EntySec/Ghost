@@ -262,11 +262,22 @@ def main():
                             else:
                                 print(E+"Local file: "+con[8:]+": does not exist!")
                     elif con[:8] == "download":
-                        if con[9:] == "":
-                            print("Usage: download <remote_path>")
+                        if con.split() < 3:
+                            print("Usage: download <remote_path> <local_path>")
                         else:
-                            rp = os.path.split(con[9:])[-1]
-                            os.system("chmod +x data/payloads/download && data/payloads/download "+con[9:]+" "+rp)
+                            if os.path.isdir(con.split()[2]):
+                                if os.path.exists(con.split()[2]):
+                                    rp = os.path.split(con.split()[1])[1]
+                                    os.system("chmod +x data/payloads/download && data/payloads/download "+con[9:]+" "+rp)
+                                else:
+                                    print(E+"Local directory: "+con.split()[2]+": does not exist!")
+                            else:
+                                rp = os.path.split(con.split()[2])[0]
+                                if os.path.exists(rp):
+                                    rp = os.path.split(con.split()[2])[1]
+                                    os.system("chmod +x data/payloads/download && data/payloads/download "+con[9:]+" "+rp)
+                                else:
+                                    print(E+"Local directory: "+rp+": does not exists!")
                     elif con[:6] == "upload":
                         if len(con.split()) < 2:
                             print("Usage: upload <local_path> <remote_path>")
