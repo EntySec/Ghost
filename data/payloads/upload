@@ -79,10 +79,23 @@ else
             rm .schk
             } &> /dev/null
             if [[ "${schk[@]: :4}" != "stat" ]]; then
+                echo -e ""$G"Uploading "$5"..."
                 {
                 adb push $1 $remote_all
                 } &> /dev/null
-                echo -e ""$S"File successfully uploaded!"
+                if [[ "$6" = "" ]]; then
+                    ci=$2
+                    if [[ "${ci[@]: (-1)}" = "/" ]]; then
+                        echo -e ""$G"Saving to "$2""$5"..."
+                        echo -e ""$S"Saved to "$2""$5"!"
+                    else
+                        echo -e ""$G"Saving to "$2"/"$5"..."
+                        echo -e ""$S"Saved to "$2"/"$5"!"
+                    fi
+                else
+                    echo -e ""$G"Saving to ..."
+                    echo -e ""$S"Saved to !"
+                fi
             else
                 echo -e ""$E"Remote directory: "$remote_dir": does not exist!"
             fi
