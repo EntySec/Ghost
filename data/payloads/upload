@@ -58,7 +58,7 @@ else
                 fi
             else
                 {
-                schk="$(adb shell stat "$remote_dir")"
+                adb shell stat $remote_dir
                 } &> .schk
                 {
                 schk="$(cat .schk)"
