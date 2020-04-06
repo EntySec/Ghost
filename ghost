@@ -262,7 +262,7 @@ def main():
                             else:
                                 print(E+"Local file: "+con[8:]+": does not exist!")
                     elif con[:8] == "download":
-                        if con.split() < 3:
+                        if len(con.split()) < 3:
                             print("Usage: download <remote_path> <local_path>")
                         else:
                             if os.path.isdir(con.split()[2]):
