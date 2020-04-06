@@ -23,7 +23,7 @@ E="\033[1;31m[-] \033[0m"
 S="\033[1;32m[+] \033[0m"
 
 if [[ "$1" = "" ]]; then
-    echo "Usage: download <remote_path>"
+    echo "Usage: download <remote_path> <local_path>"
 else
     {
     check_remote_path_exists="$(adb shell stat "$1")"
@@ -31,22 +31,12 @@ else
     if [[ "$check_remote_path_exists" = "stat: '"$1"': No such file or directory" ]]; then
         echo -e ""$E"Remote file: "$1": does not exist!"
     else
-        if [[ "$2" = "" ]]; then
-            echo -e ""$G"Downloading "$1"..."
-            {
-            adb pull $1 downloads 
-            } &> /dev/null
-            echo -e ""$G" Saving "$1"..."
-            sleep 1
-            echo -e ""$S"Saved to downloads/"$1"!"
-        else
-            echo -e ""$G"Downloading "$2"..."
-            {
-            adb pull $1 downloads 
-            } &> /dev/null
-            echo -e ""$G"Saving "$2"..."
-            sleep 1
-            echo -e ""$S"Saved to downloads/"$2"!"
-        fi
+        echo -e ""$G"Downloading "$3"..."
+        {
+        adb pull $1 $2
+        } &> /dev/null
+        echo -e ""$G" Saving to "$4"..."
+        sleep 1
+        echo -e ""$S"Saved to "$4"!"
     fi
 fi
