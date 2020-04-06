@@ -334,7 +334,7 @@ def main():
                             print("Usage: download <remote_path> <local_path>")
                         else:
                             chk = os.popen("chmod +x data/check/check.sh && data/check/check.sh "+con.split()[1]).read()
-                            if chk == "0":
+                            if chk == "0\n":
                                 if os.path.isdir(con.split()[2]):
                                     if os.path.exists(con.split()[2]):
                                         rp = os.path.split(con.split()[1])[1]
