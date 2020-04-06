@@ -351,24 +351,21 @@ def main():
                                 else:
                                     print(E+"Local directory: "+rp+": does not exists!")
                     elif con[:6] == "upload":
-                        if len(con.split()) < 2:
+                        if len(con.split()) < 3:
                             print("Usage: upload <local_path> <remote_path>")
                         else:
-                            if len(con.split()) < 3:
-                                print("Usage: upload <local_path> <remote_path>")
-                            else:
-                                if os.path.exists(con.split()[1]):
-                                    if os.path.isdir(con.split()[1]):
-                                        print(E+"Error: "+rp+": not a file!")
-                                    else:
-                                        rp = con.split()[2][::-1]
-                                        rp = rp[rp.index('/')+1:][::-1]
-                                        pr = os.path.split(con.split()[2])[0]
-                                        lrp = con.split()[1][::-1]
-                                        lrp = lrp[lrp.index('/')+1:][::-1]
-                                        os.system("chmod +x data/payloads/upload && data/payloads/upload "+con.split()[1]+" "+con.split()[2]+" "+rp+" "+pr+" "+lrp)
+                            if os.path.exists(con.split()[1]):
+                                if os.path.isdir(con.split()[1]):
+                                    print(E+"Error: "+rp+": not a file!")
                                 else:
-                                    print(E+"Local file: "+con.split()[1]+": does not exist!")
+                                    rp = con.split()[2][::-1]
+                                    rp = rp[rp.index('/')+1:][::-1]
+                                    pr = os.path.split(con.split()[2])[0]
+                                    lrp = con.split()[1][::-1]
+                                    lrp = lrp[lrp.index('/')+1:][::-1]
+                                    os.system("chmod +x data/payloads/upload && data/payloads/upload "+con.split()[1]+" "+con.split()[2]+" "+rp+" "+pr+" "+lrp)
+                            else:
+                                print(E+"Local file: "+con.split()[1]+": does not exist!")
                     else:
                         print(E+"Unrecognized command!")
                     con = input('\033[4mghost\033[0m(\033[1;31m'+device+'\033[0m)> ').strip(" ")
