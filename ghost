@@ -318,9 +318,16 @@ def main():
                             print("Usage: install <local_path>")
                         else:
                             if os.path.exists(con[8:]):
-                                print(G+"Installing "+con[8:]+"...")
-                                os.system("chmod +x core/apps/install.sh && core/apps/install.sh "+con[8:])
-                                print(S+"Succcessfully installed!")
+                                ext = os.path.splitext(con[8:])
+                                if os.path.isdir(con[8:]):
+                                    print(E+"Error: "+con[8:]+": not a file!")
+                                else:
+                                    if ext == ".apk":
+                                        print(G+"Installing "+con[8:]+"...")
+                                        os.system("chmod +x core/apps/install.sh && core/apps/install.sh "+con[8:])
+                                        print(S+"Succcessfully installed!")
+                                    else:
+                                        print(E+"Error: "+con[8:]+": not an apk file!")
                             else:
                                 print(E+"Local file: "+con[8:]+": does not exist!")
                     elif con[:8] == "download":
