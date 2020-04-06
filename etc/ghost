@@ -123,7 +123,7 @@ def main():
                 con = input('\033[4mghost\033[0m(\033[1;31m'+device+'\033[0m)> ').strip(" ")
                 while True:
                     if con == "exit":
-                        subprocess.Popen("adb disconnect".split(),stdout=open(os.devnull, 'wb'))
+                        os.system("adb disconnect > /dev/null")
                         break
                     elif con == "clear":
                         os.system("clear")
