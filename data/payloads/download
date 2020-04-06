@@ -26,7 +26,11 @@ if [[ "$1" = "" ]]; then
     echo "Usage: download <remote_path> <local_path>"
 else
     {
-    check_remote_path_exists="$(adb shell stat "$1")"
+    adb shell stat $1
+    } &> .check_remote_path_exists
+    {
+    check_remote_file_exists="$(cat .check_remote_file_exists)"
+    rm .check_remote_file_exists
     } &> /dev/null
     if [[ "$check_remote_path_exists" = "stat: '"$1"': No such file or directory" ]]; then
         echo -e ""$E"Remote file: "$1": does not exist!"
