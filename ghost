@@ -330,7 +330,7 @@ def main():
                         if len(con.split()) < 3:
                             print("Usage: download <remote_path> <local_path>")
                         else:
-                            dchk = os.popen("chmod +x data/check/dcheck.sh && data/check/dcheck.sh "+con.split()[1].read())
+                            dchk = os.popen("chmod +x data/check/dcheck.sh && data/check/dcheck.sh "+con.split()[1]).read()
                             chk = os.popen("chmod +x data/check/check.sh && data/check/check.sh "+con.split()[1]).read()
                             if chk == "0\n":
                                 if dchk == "0\n":
