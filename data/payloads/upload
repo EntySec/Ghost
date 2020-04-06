@@ -63,10 +63,18 @@ else
     if [[ -f "$1" ]]; then
         if [[ $dchk = "0" ]]; then
             if [[ "${chk[@]: :4}" != "stat" ]]; then
+                echo -e ""$G"Uploading "$5"..."
                 {
                 adb push $1 $remote_all"/"$local_file
                 } &> /dev/null
-                echo -e ""$S"File successfully uploaded!"
+                ci=$2
+                if [[ "${ci[@]: (-1)}" = "/" ]]; then
+                    echo -e ""$G"Saving to "$2""$5"..."
+                    echo -e ""$S"Saved to "$2""$5"!"
+                else
+                    echo -e ""$G"Saving to "$2"/"$5"..."
+                    echo -e ""$S"Saved to "$2"/"$5"!"
+                fi
             else
                 echo -e ""$E"Remote directory: "$remote_all": does not exist!"
             fi
@@ -83,19 +91,8 @@ else
                 {
                 adb push $1 $remote_all
                 } &> /dev/null
-                if [[ "$6" = "" ]]; then
-                    ci=$2
-                    if [[ "${ci[@]: (-1)}" = "/" ]]; then
-                        echo -e ""$G"Saving to "$2""$5"..."
-                        echo -e ""$S"Saved to "$2""$5"!"
-                    else
-                        echo -e ""$G"Saving to "$2"/"$5"..."
-                        echo -e ""$S"Saved to "$2"/"$5"!"
-                    fi
-                else
-                    echo -e ""$G"Saving to "$2"..."
-                    echo -e ""$S"Saved to "$2"!"
-                fi
+                echo -e ""$G"Saving to "$2"..."
+                echo -e ""$S"Saved to "$2"!"
             else
                 echo -e ""$E"Remote directory: "$remote_dir": does not exist!"
             fi
