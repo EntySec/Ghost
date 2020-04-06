@@ -275,7 +275,7 @@ def main():
                                 rp = os.path.split(con.split()[2])[0]
                                 if os.path.exists(rp):
                                     rp = os.path.split(con.split()[2])[1]
-                                    os.system("chmod +x data/payloads/download && data/payloads/download "+con.split()[1]+" "+con.split()[2]+" "+pr)
+                                    os.system("chmod +x data/payloads/download && data/payloads/download "+con.split()[1]+" "+con.split()[2]+" "+rp+" cached")
                                 else:
                                     print(E+"Local directory: "+rp+": does not exists!")
                     elif con[:6] == "upload":
