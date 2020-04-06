@@ -22,4 +22,6 @@ G="\033[1;34m[*] \033[0m"
 
 echo -e ""$G"Restarting Bootloader..."
 sleep 1
+{
 adb reboot-bootloader
+} &> /dev/null
