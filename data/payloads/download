@@ -53,7 +53,7 @@ else
         echo -e ""$E"Remote file: "$1": does not exist!"
     else
         if [[ "$dchk" = "0" ]]; then
-            echo -e ""$E"Error: "$1": not a file"
+            echo -e ""$E"Error: "$1": not a file!"
         else
             if [[ "$4" = "" ]]; then
                 echo -e ""$G"Downloading "$3"..."
