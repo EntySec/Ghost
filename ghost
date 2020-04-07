@@ -196,9 +196,14 @@ def main():
                                     if chk == "0\n":
                                         print(G+"Grabbing WPA Supplicant...")
                                         os.system("chmod +x data/grabber/grabber.sh && data/grabber/grabber.sh -w "+con.split()[1]+"/wpa_supplicant.conf")
-                                        print(G+"Saving to "+con.split()[1]+"/wpa_supplicant.conf...")
-                                        time.sleep(1)
-                                        print(S+"Saved to "+con.split()[1]+"/wpa_supplicant.conf!")
+                                        if con.split()[1][-1:] = "/":
+                                            print(G+"Saving to "+con.split()[1]+"wpa_supplicant.conf...")
+                                            time.sleep(1)
+                                            print(S+"Saved to "+con.split()[1]+"wpa_supplicant.conf!")
+                                        else:
+                                            print(G+"Saving to "+con.split()[1]+"/wpa_supplicant.conf...")
+                                            time.sleep(1)
+                                            print(S+"Saved to "+con.split()[1]+"/wpa_supplicant.conf!")
                                     else:
                                         print(E+"Target device is not rooted!")
                                 else:
@@ -229,9 +234,14 @@ def main():
                                 if os.path.exists(con.split()[1]):
                                     print(G+"Taking screenshot...")
                                     os.system("chmod +x data/grabber/grabber.sh && data/grabber/grabber.sh -s "+con.split()[1]+"/screen.png")
-                                    print(G+"Saving to "+con.split()[1]+"/screen.png...")
-                                    time.sleep(1)
-                                    print(S+"Saved to "+con.split()[1]+"/screen.png!")
+                                    if con.split()[1][-1:] = "/":
+                                        print(G+"Saving to "+con.split()[1]+"screen.png...")
+                                        time.sleep(1)
+                                        print(S+"Saved to "+con.split()[1]+"screen.png!")
+                                    else:
+                                        print(G+"Saving to "+con.split()[1]+"/screen.png...")
+                                        time.sleep(1)
+                                        print(S+"Saved to "+con.split()[1]+"/screen.png!")
                                 else:
                                     print(E+"Local directory: "+con.split()[1]+": does not exist!")
                             else:
@@ -257,9 +267,14 @@ def main():
                                     print(G+"Recording screen...")
                                     print(G+"Press Ctrl-C to stop.")
                                     os.system("chmod +x data/grabber/grabber.sh && data/grabber/grabber.sh -r "+con.split()[1]+"/screen.mp4")
-                                    print(G+"Saving to "+con.split()[1]+"/screen.mp4...")
-                                    time.sleep(1)
-                                    print(S+"Saved to "+con.split()[1]+"/screen.mp4!")
+                                    if con.split()[1][-1:] = "/":
+                                        print(G+"Saving to "+con.split()[1]+"screen.mp4...")
+                                        time.sleep(1)
+                                        print(S+"Saved to "+con.split()[1]+"screen.mp4!")
+                                    else:
+                                        print(G+"Saving to "+con.split()[1]+"/screen.mp4...")
+                                        time.sleep(1)
+                                        print(S+"Saved to "+con.split()[1]+"/screen.mp4!")
                                 else:
                                     print(E+"Local directory: "+con.split()[1]+": does not exist!")
                             else:
