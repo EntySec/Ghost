@@ -196,7 +196,7 @@ def main():
                                     rp = os.path.split(con.split()[1])[1]
                                     print(G+"Grabbing WPA Supplicant...")
                                     os.system("chmod +x ~/ghost/data/grabber/grabber.sh && ~/ghost/data/grabber/grabber.sh -w "+con.split()[1]+"/wpa_supplicant.conf")
-                                    print(G+"Saving wpa_supplicant.conf...")
+                                    print(G+"Saving to "+con.split()[1]+"/wpa_supplicant.conf...")
                                     time.sleep(1)
                                     print(S+"Saved to "+con.split()[1]+"/wpa_supplicant.conf!")
                                 else:
