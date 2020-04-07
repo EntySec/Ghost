@@ -83,7 +83,6 @@ def main():
     ui = input('\033[4mghost\033[0m> ').strip(" ")
     while True:
         if ui == "exit":
-            print(G+"Stoping Ghost Server...")
             os.system("adb kill-server > /dev/null")
             sys.exit()
         elif ui == "clear":
