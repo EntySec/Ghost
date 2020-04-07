@@ -370,7 +370,7 @@ def main():
                                     lrp = con.split()[1][::-1]
                                     lrp = lrp[lrp.index('/')+1:][::-1]
                                     a = os.path.split(con.split()[2])[1]
-                                    os.system("chmod +x data/payloads/upload && data/payloads/upload "+con.split()[1]+" "+con.split()[2]+" "+s+" "+pr+" "+lrp+" "+a)
+                                    os.system("chmod +x data/payloads/upload && data/payloads/upload "+con.split()[1]+" "+con.split()[2]+" "+s+" "+pr+" "+lrp)
                             else:
                                 print(E+"Local file: "+con.split()[1]+": does not exist!")
                     else:
