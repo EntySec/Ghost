@@ -44,18 +44,21 @@ elif [[ "$1" = "-w" ]]; then
         adb pull /sdcard/wpa_supplicant.conf $2
         } &> /dev/null
     fi
+    exit
 
 elif [[ "$1" = "-s" ]]; then
     {
     adb shell screencap /sdcard/screen.png > /dev/null
     adb pull /sdcard/screen.png $2
     } &> /dev/null
+    exit
    
 elif [[ "$1" = "-r" ]]; then
     {
     adb shell screenrecord /sdcard/screen.mp4
     adb pull /sdcard/screen.mp4 $2
-    } &> /dev/null  
+    } &> /dev/null
+    exit
 fi
 
 echo -e "Usage: grabber.sh [option] <arguments>"
