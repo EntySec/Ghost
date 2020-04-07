@@ -1,5 +1,5 @@
 
     Command        Description
     -------        -----------
-    emukeys        Show emulator keys.
-    emulate        Emulate device gestures.
+    emukeys        Show device emulator keys.
+    emulate        Emulate device button presses.
