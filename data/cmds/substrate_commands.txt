@@ -2,4 +2,4 @@
     Command        Description
     -------        -----------
     emukeys        Show device emulator keys.
-    emulate        Emulate device button presses.
+    emulate        Emulate device gestures.
