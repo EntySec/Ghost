@@ -163,11 +163,11 @@ def main():
                         os.system("chmod +x data/payloads/recovery && data/payloads/recovery")
                     elif con == "sush":
                         os.system("chmod +x data/payloads/sush && data/payloads/sush")
-                    elif con == "keys":
+                    elif con == "emukeys":
                         os.system("cat substrate/gsub.txt")
-                    elif con[:3] == "key":
+                    elif con[:3] == "emulate":
                         if con[4:] == "":
-                            print("Usage: key <key_number>")
+                            print("Usage: emulate <emukey_number>")
                         else:
                             nums = open("substrate/nums.txt").read()
                             for i in nums:
