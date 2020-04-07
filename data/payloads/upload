@@ -50,8 +50,6 @@ fi
 if [[ "$5" = "" ]]; then
     echo "Usage: upload <local_path> <remote_path> <remote_file> <remote_dir> <local_file>"
     exit
-fi
-
 else
     {
     adb shell stat $remote_all
