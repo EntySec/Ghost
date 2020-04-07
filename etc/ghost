@@ -194,11 +194,16 @@ def main():
                             if os.path.isdir(con.split()[1]):
                                 if os.path.exists(con.split()[1]):
                                     rp = os.path.split(con.split()[1])[1]
-                                    print(G+"Grabbing WPA Supplicant...")
-                                    os.system("chmod +x ~/ghost/data/grabber/grabber.sh && ~/ghost/data/grabber/grabber.sh -w "+con.split()[1]+"/wpa_supplicant.conf")
-                                    print(G+"Saving to "+con.split()[1]+"/wpa_supplicant.conf...")
-                                    time.sleep(1)
-                                    print(S+"Saved to "+con.split()[1]+"/wpa_supplicant.conf!")
+                                    rp = os.path.split(con.split()[1])[1]
+                                    chk = os.popen("chmod +x ~/ghost/data/check/rcheck.sh && ~/ghost/data/check/rcheck.sh")
+                                    if chk == "0\n":
+                                        print(G+"Grabbing WPA Supplicant...")
+                                        os.system("chmod +x ~/ghost/data/grabber/grabber.sh && ~/ghost/data/grabber/grabber.sh -w "+con.split()[1]+"/wpa_supplicant.conf")
+                                        print(G+"Saving to "+con.split()[1]+"/wpa_supplicant.conf...")
+                                        time.sleep(1)
+                                        print(S+"Saved to "+con.split()[1]+"/wpa_supplicant.conf!")
+                                    else:
+                                        print(E+"Device is not rooted!")
                                 else:
                                     print(E+"Local directory: "+con.split()[1]+": does not exist!")
                             else:
@@ -206,11 +211,15 @@ def main():
                                 if os.path.exists(rp):
                                     if os.path.isdir(rp):
                                         rp = os.path.split(con.split()[1])[1]
-                                        print(G+"Grabbing WPA Supplicant...")
-                                        os.system("chmod +x ~/ghost/data/grabber/grabber.sh && ~/ghost/data/grabber/grabber.sh -w "+con.split()[1])
-                                        print(G+"Saving wpa_supplicant.conf...")
-                                        time.sleep(1)
-                                        print(S+"Saved to "+con.split()[1]+"!")
+                                        chk = os.popen("chmod +x ~/ghost/data/check/rcheck.sh && ~/ghost/data/check/rcheck.sh")
+                                        if chk == "0\n":
+                                            print(G+"Grabbing WPA Supplicant...")
+                                            os.system("chmod +x ~/ghost/data/grabber/grabber.sh && ~/ghost/data/grabber/grabber.sh -w "+con.split()[1])
+                                            print(G+"Saving wpa_supplicant.conf...")
+                                            time.sleep(1)
+                                            print(S+"Saved to "+con.split()[1]+"!")
+                                        else:
+                                            print(E+"Device is not rooted!")
                                     else:
                                         print(E+"Error: "+rp+": not a directory!")
                                 else:
