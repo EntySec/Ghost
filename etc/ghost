@@ -194,7 +194,6 @@ def main():
                             if os.path.isdir(con.split()[1]):
                                 if os.path.exists(con.split()[1]):
                                     rp = os.path.split(con.split()[1])[1]
-                                    rp = os.path.split(con.split()[1])[1]
                                     chk = os.popen("chmod +x ~/ghost/data/check/rcheck.sh && ~/ghost/data/check/rcheck.sh")
                                     if chk == "0\n":
                                         print(G+"Grabbing WPA Supplicant...")
