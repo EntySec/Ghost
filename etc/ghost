@@ -391,9 +391,8 @@ def main():
                                     pr = os.path.split(con.split()[2])[0]
                                     lrp = con.split()[1][::-1]
                                     lrp = lrp[lrp.index('/')+1:][::-1]
-                                    os.system("echo f > ~/ghost/core/settings/upload.conf")
-                                    os.system("chmod +x ~/ghost/data/payloads/upload && ~/ghost/data/payloads/upload "+con.split()[1]+" "+con.split()[2]+" "+rp+" "+pr+" "+lrp+" "+s)
-                                    os.system("rm ~/ghost/core/settings/upload.conf && touch ~/ghost/core/settings/upload.conf")                            else:
+                                    os.system("chmod +x ~/ghost/data/payloads/upload && ~/ghost/data/payloads/upload "+con.split()[1]+" "+con.split()[2]+" "+s+" "+pr+" "+lrp)
+                            else:
                                 print(E+"Local file: "+con.split()[1]+": does not exist!")
                             g = os.environ['HOME']
                             os.chdir(g + "/ghost")
