@@ -100,4 +100,3 @@ fi
     else
         echo -e ""$E"Local file: "$1": does not exist!"
     fi
-fi
