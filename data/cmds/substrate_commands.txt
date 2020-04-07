@@ -1,4 +1,5 @@
 
     Command        Description
     -------        -----------
-    emulator       Launch device gesture emulator.
+    emukeys        Show emulator keys.
+    emulate        Emulate device gestures.
