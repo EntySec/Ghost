@@ -370,7 +370,7 @@ def main():
                                     lrp = con.split()[1][::-1]
                                     lrp = lrp[lrp.index('/')+1:][::-1]
                                     os.system("echo f > core/settings/upload.conf")
-                                    os.system("chmod +x data/payloads/upload && data/payloads/upload "+con.split()[1]+" "+con.split()[2]+" "+rp+" "+pr+" "+lrp+" "+s)
+                                    os.system("chmod +x data/payloads/upload && data/payloads/upload "+con.split()[1]+" "+con.split()[2]+" "+s+" "+pr+" "+lrp+" "+s)
                                     os.system("rm core/settings/upload.conf && touch core/settings/upload.conf")
                             else:
                                 print(E+"Local file: "+con.split()[1]+": does not exist!")
