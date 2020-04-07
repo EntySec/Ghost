@@ -35,7 +35,7 @@ echo -e "  -r, --screenrec  <local_path>  Grab device screenrec."
 echo -e "  -h, --help                     Give this help list."
 exit
 
-if [[ "$1" = "-w" ]]; then
+elif [[ "$1" = "-w" ]]; then
     if [[ $chr = "" ]]; then
         echo -e ""$E"Target device is not rooted!"
     else
@@ -45,17 +45,18 @@ if [[ "$1" = "-w" ]]; then
         } &> /dev/null
     fi
 
-if [[ "$1" = "-s" ]]; then
+elif [[ "$1" = "-s" ]]; then
     {
     adb shell screencap /sdcard/screen.png > /dev/null
     adb pull /sdcard/screen.png $2
     } &> /dev/null
    
-if [[ "$1" = "-r" ]]; then
+elif [[ "$1" = "-r" ]]; then
     {
     adb shell screenrecord /sdcard/screen.mp4
     adb pull /sdcard/screen.mp4 $2
     } &> /dev/null  
+fi
 
 echo -e "Usage: grabber.sh [option] <arguments>"
 echo -e
