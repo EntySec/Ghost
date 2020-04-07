@@ -132,8 +132,8 @@ def main():
                         print("=================")
                         os.system("cat data/cmds/settings_commands.txt")
                         print("")
-                        print("Substrate Commands")
-                        print("==================")
+                        print("Keycode Commands")
+                        print("================")
                         os.system("cat data/cmds/substrate_commands.txt")
                         print("")
                         print("Trolling Commands")
@@ -177,22 +177,22 @@ def main():
                                 os.system("chmod +x data/keyboard/keyboard.sh "+text)
                         except:
                             print("")
-                    elif con == "emukeys":
-                        os.system("cat substrate/emukeys.txt")
-                    elif con[:3] == "emulate":
+                    elif con == "keycodes":
+                        os.system("cat data/keycode//keycodes.txt")
+                    elif con[:3] == "keycode":
                         if con[4:] == "":
-                            print("Usage: emulate <emulator_key>")
+                            print("Usage: keycode <keycode_number>")
                         else:
-                            nums = open("substrate/emunums.txt").read()
+                            nums = open("substrate/keynums.txt").read()
                             for i in nums:
                                 if con[4:] == i:
                                     task = 1
                                 else:
                                     task = 0
                             if task == 1:
-                                os.system("chmod +x substrate/gsub.sh && substrate/gsub.sh "+con[4:])
+                                os.system("chmod +x data/kaycode/keycode.sh && data/keycode/keycodes.sh "+con[4:])
                             else:
-                                print(E+"No such emulator key!")
+                                print(E+"No such keycode!")
                     elif con == "battery":
                         os.system("chmod +x data/payloads/battery && data/payloads/battery")
                     elif con == "activity":
