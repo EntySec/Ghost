@@ -22,15 +22,8 @@
 chr=$(adb which su)
 } &> /dev/null
 
-if [[ "$1" = "" ]]; then
-    echo "Usage: rcheck.sh {hidden}"
-    echo
-    echo "Note: This file only for Ghost Framework, if you execute it without"
-    echo "Ghost Framework it will not work, this is only a part of main code."
+if [[ $chr != "" ]]; then
+    echo "0"
 else
-    if [[ $chr = "" ]]; then
-        echo "0"
-    else
-        echo "1"
-    fi
+    echo "1"
 fi
