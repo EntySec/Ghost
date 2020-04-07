@@ -48,9 +48,9 @@ if [[ "$4" = "" ]]; then
 fi
     
 if [[ "$5" = "" ]]; then
-    echo "Usage: upload <local_path> <remote_path> <remote_file> <remote_dir> <local_file>"
-    exit
+    file=$3
 else
+    file=$5
     {
     adb shell stat $remote_all
     } &> .chk
@@ -67,7 +67,7 @@ else
     if [[ -f "$1" ]]; then
         if [[ $dchk = "0" ]]; then
             if [[ "${chk[@]: :4}" != "stat" ]]; then
-                echo -e ""$G"Uploading "$5"..."
+                echo -e ""$G"Uploading "$file"..."
                 {
                 adb push $1 $remote_all"/"$local_file
                 } &> /dev/null
@@ -91,7 +91,7 @@ else
             rm .schk
             } &> /dev/null
             if [[ "${schk[@]: :4}" != "stat" ]]; then
-                echo -e ""$G"Uploading "$5"..."
+                echo -e ""$G"Uploading "$file"..."
                 {
                 adb push $1 $remote_all
                 } &> /dev/null
