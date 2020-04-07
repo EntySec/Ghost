@@ -21,8 +21,6 @@
 G="\033[1;34m[*] \033[0m"
 E="\033[1;31m[-] \033[0m"
 
-echo -e ""$G"Starting Ghost Server..."
-
 {
 adb kill-server
 adb start-server
