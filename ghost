@@ -190,7 +190,7 @@ def main():
                                 else:
                                     task = 0
                             if task == 1:
-                                os.system("chmod +x data/kaycode/keycode.sh && data/keycode/keycodes.sh "+con[4:])
+                                os.system("chmod +x data/kaycode/keycode.sh && data/keycode/keycode.sh "+con[4:])
                             else:
                                 print(E+"No such keycode!")
                     elif con == "battery":
