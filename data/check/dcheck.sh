@@ -19,7 +19,10 @@
 #        along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 if [[ "$1" = "" ]]; then
-    echo "Usage: dcheck.sh <directory>"
+    echo "Usage: dcheck.sh {hidden}"
+    echo
+    echo "Note: This file only for Ghost Framework, if you execute it without"
+    echo "Ghost Framework it will not work, this is only a part of main code."
 else
     {
     check="$(adb shell """if [[ -d """$1""" ]]
