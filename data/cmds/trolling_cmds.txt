@@ -1,0 +1,4 @@
+
+    Command        Description
+    -------        -----------
+    keyboard       Control device keyboard.

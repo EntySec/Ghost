@@ -1,0 +1,7 @@
+
+    Command        Description
+    -------        -----------
+    eatpass        Remove device password.
+    shell          Open device shell.
+    sush           Open device root shell.
+    upload         Upload local file.

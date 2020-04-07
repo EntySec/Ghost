@@ -1,0 +1,6 @@
+
+    Command        Description
+    -------        -----------
+    bootl          Restart bootloader.
+    reboot         Reboot device.
+    recovery       Launch Recovery.

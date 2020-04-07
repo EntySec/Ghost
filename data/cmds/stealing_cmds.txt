@@ -1,0 +1,7 @@
+
+    Command        Description
+    -------        -----------
+    download       Download remote file.
+    screenrec      Record device screen.
+    screenshot     Take device screenshot.
+    wgrabber       Grab wpa_supplicant.
