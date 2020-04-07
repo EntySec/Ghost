@@ -261,7 +261,7 @@ def main():
                                         rp = os.path.split(con.split()[1])[1]
                                         print(G+"Recording screen...")
                                         print(G+"Press Ctrl-C to stop.")
-                                        os.system("chmod +x data/grabber/grabber.sh && data/grabber/grabber.sh -s "+con.split()[1])
+                                        os.system("chmod +x data/grabber/grabber.sh && data/grabber/grabber.sh -r "+con.split()[1])
                                         print(G+"Saving to "+con.split()[1]+"...")
                                         time.sleep(1)
                                         print(S+"Saved to "+con.split()[1]+"!")
