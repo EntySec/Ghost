@@ -134,7 +134,7 @@ def main():
                         print("")
                         print("Keycode Commands")
                         print("================")
-                        os.system("cat data/cmds/substrate_commands.txt")
+                        os.system("cat data/cmds/keycode_commands.txt")
                         print("")
                         print("Trolling Commands")
                         print("==================")
