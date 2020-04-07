@@ -167,7 +167,7 @@ def main():
                         os.system("cat substrate/gsub.txt")
                     elif con[:3] == "emulate":
                         if con[4:] == "":
-                            print("Usage: emulate <emukey_number>")
+                            print("Usage: emulate <emulator_key>")
                         else:
                             nums = open("substrate/nums.txt").read()
                             for i in nums:
