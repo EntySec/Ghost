@@ -164,12 +164,12 @@ def main():
                     elif con == "sush":
                         os.system("chmod +x data/payloads/sush && data/payloads/sush")
                     elif con == "emukeys":
-                        os.system("cat substrate/gsub.txt")
+                        os.system("cat substrate/emukeys.txt")
                     elif con[:3] == "emulate":
                         if con[4:] == "":
                             print("Usage: emulate <emulator_key>")
                         else:
-                            nums = open("substrate/nums.txt").read()
+                            nums = open("substrate/emunums.txt").read()
                             for i in nums:
                                 if con[4:] == i:
                                     task = 1
