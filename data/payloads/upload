@@ -28,29 +28,25 @@ remote_all=$2
 local_file=$5
 
 if [[ "$1" = "" ]]; then
-    echo "Usage: upload <local_path> <remote_path> <remote_file> <remote_dir> <local_file>"
+    echo "Usage: upload <local_path> <remote_path> <remote_dir> <remote_dir> <local_file> <remote_file>"
     exit
 fi
 
 if [[ "$2" = "" ]]; then
-    echo "Usage: upload <local_path> <remote_path> <remote_file> <remote_dir> <local_file>"
+    echo "Usage: upload <local_path> <remote_path> <remote_dir> <remote_dir> <local_file> <remote_file>"
     exit
 fi
     
 if [[ "$3" = "" ]]; then
-    echo "Usage: upload <local_path> <remote_path> <remote_file> <remote_dir> <local_file>"
+    echo "Usage: upload <local_path> <remote_path> <remote_dir> <remote_dir> <local_file> <remote_file>"
     exit
 fi
     
 if [[ "$4" = "" ]]; then
-    echo "Usage: upload <local_path> <remote_path> <remote_file> <remote_dir> <local_file>"
+    echo "Usage: upload <local_path> <remote_path> <remote_dir> <remote_dir> <local_file> <remote_file>"
     exit
 fi
     
-if [[ "$5" = "" ]]; then
-    file=$3
-else
-    file=$5
     {
     adb shell stat $remote_all
     } &> .chk
@@ -67,17 +63,17 @@ else
     if [[ -f "$1" ]]; then
         if [[ $dchk = "0" ]]; then
             if [[ "${chk[@]: :4}" != "stat" ]]; then
-                echo -e ""$G"Uploading "$file"..."
+                echo -e ""$G"Uploading "$3"..."
                 {
                 adb push $1 $remote_all"/"$local_file
                 } &> /dev/null
                 ci=$2
                 if [[ "${ci[@]: (-1)}" = "/" ]]; then
-                    echo -e ""$G"Saving to "$2""$5"..."
-                    echo -e ""$S"Saved to "$2""$5"!"
+                    echo -e ""$G"Saving to "$2""$3"..."
+                    echo -e ""$S"Saved to "$2""$3"!"
                 else
-                    echo -e ""$G"Saving to "$2"/"$5"..."
-                    echo -e ""$S"Saved to "$2"/"$5"!"
+                    echo -e ""$G"Saving to "$2"/"$3"..."
+                    echo -e ""$S"Saved to "$2"/"$3"!"
                 fi
             else
                 echo -e ""$E"Remote directory: "$remote_all": does not exist!"
@@ -91,7 +87,7 @@ else
             rm .schk
             } &> /dev/null
             if [[ "${schk[@]: :4}" != "stat" ]]; then
-                echo -e ""$G"Uploading "$file"..."
+                echo -e ""$G"Uploading "$3"..."
                 {
                 adb push $1 $remote_all
                 } &> /dev/null
