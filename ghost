@@ -200,7 +200,7 @@ def main():
                                         time.sleep(1)
                                         print(S+"Saved to "+con.split()[1]+"/wpa_supplicant.conf!")
                                     else:
-                                        print(E+"Device is not rooted!")
+                                        print(E+"Target device is not rooted!")
                                 else:
                                     print(E+"Local directory: "+con.split()[1]+": does not exist!")
                             else:
@@ -216,7 +216,7 @@ def main():
                                             time.sleep(1)
                                             print(S+"Saved to "+con.split()[1]+"!")
                                         else:
-                                            print(E+"Device is not rooted!")
+                                            print(E+"Target device is not rooted!")
                                     else:
                                         print(E+"Error: "+rp+": not a directory!")
                                 else:
