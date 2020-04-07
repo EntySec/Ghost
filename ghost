@@ -361,14 +361,17 @@ def main():
                         else:
                             if os.path.exists(con.split()[1]):
                                 if os.path.isdir(con.split()[1]):
-                                    print(E+"Error: "+rp+": not a file!")
+                                    print(E+"Error: "+con.split()[1]+": not a file!")
                                 else:
                                     rp = con.split()[2][::-1]
                                     rp = rp[rp.index('/')+1:][::-1]
+                                    s = os.path.split(con.split()[1])[1]
                                     pr = os.path.split(con.split()[2])[0]
                                     lrp = con.split()[1][::-1]
                                     lrp = lrp[lrp.index('/')+1:][::-1]
-                                    os.system("chmod +x data/payloads/upload && data/payloads/upload "+con.split()[1]+" "+con.split()[2]+" "+rp+" "+pr+" "+lrp)
+                                    os.system("echo f > core/settings/upload.conf")
+                                    os.system("chmod +x data/payloads/upload && data/payloads/upload "+con.split()[1]+" "+con.split()[2]+" "+rp+" "+pr+" "+lrp+" "+s)
+                                    os.system("rm core/settings/upload.conf && touch core/settings/upload.conf")
                             else:
                                 print(E+"Local file: "+con.split()[1]+": does not exist!")
                     else:
