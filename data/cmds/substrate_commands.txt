@@ -1,5 +1,5 @@
 
     Command        Description
     -------        -----------
-    emukeys        Show device emulator keys.
-    emulate        Emulate device gestures.
+    keycode        Use device keycode.
+    keycodes       List device keycodes.
