@@ -109,6 +109,9 @@ print('''
  84  -->  KEYCODE_SEARCH
  85  -->  TAG_LAST_KEYCODE
 ''')
-print("Type CTRL + C to quit...")
-num = input('\033[1;77m[>] \033[0mKeyevent Number: ')
+print("\033[1;34m[*]\033[0m Press Ctrl-C to quit...")
+try:
+    num = input('\033[1;77m[>] \033[0mKeyevent Number: ')
+except:
+    sys.exit()
 os.system("adb shell input keyevent "+num)
