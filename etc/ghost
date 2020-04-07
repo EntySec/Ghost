@@ -163,8 +163,22 @@ def main():
                         os.system("chmod +x data/payloads/recovery && data/payloads/recovery")
                     elif con == "sush":
                         os.system("chmod +x data/payloads/sush && data/payloads/sush")
-                    elif con == "emulate":
-                        os.system("python3 substrate/gsub.py")
+                    elif con == "emukeys":
+                        os.system("cat substrate/emukeys.txt")
+                    elif con[:3] == "emulate":
+                        if con[4:] == "":
+                            print("Usage: emulate <emulator_key>")
+                        else:
+                            nums = open("substrate/emunums.txt").read()
+                            for i in nums:
+                                if con[4:] == i:
+                                    task = 1
+                                else:
+                                    task = 0
+                            if task == 1:
+                                os.system("adb shell input keyevent "+con[4:])
+                            else:
+                                print(E+"No such emulator key!")
                     elif con == "battery":
                         os.system("chmod +x data/payloads/battery && data/payloads/battery")
                     elif con == "activity":
