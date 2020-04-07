@@ -30,22 +30,28 @@ local_file=$5
 if [[ "$1" = "" ]]; then
     echo "Usage: upload <local_path> <remote_path> <remote_file> <remote_dir> <local_file>"
     exit
+fi
 
 if [[ "$2" = "" ]]; then
     echo "Usage: upload <local_path> <remote_path> <remote_file> <remote_dir> <local_file>"
     exit
+fi
     
 if [[ "$3" = "" ]]; then
     echo "Usage: upload <local_path> <remote_path> <remote_file> <remote_dir> <local_file>"
     exit
+fi
     
 if [[ "$4" = "" ]]; then
     echo "Usage: upload <local_path> <remote_path> <remote_file> <remote_dir> <local_file>"
     exit
+fi
     
 if [[ "$5" = "" ]]; then
     echo "Usage: upload <local_path> <remote_path> <remote_file> <remote_dir> <local_file>"
     exit
+fi
+
 else
     {
     adb shell stat $remote_all
@@ -100,5 +106,4 @@ else
     else
         echo -e ""$E"Local file: "$1": does not exist!"
     fi
-fi
 fi
