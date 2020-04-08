@@ -199,8 +199,8 @@ def main():
                         os.system("chmod +x data/payloads/activity && data/payloads/activity")
                     elif con == "netstat":
                         os.system("chmod +x data/payloads/netstat && data/payloads/netstat")
-                    elif con == "log":
-                        os.system("chmod +x data/payloads/log && data/payloads/log")
+                    elif con == "debug":
+                        os.system("chmod +x data/payloads/debug && data/payloads/debug")
                     elif con == "sysinfo":
                         os.system("chmod +x data/payloads/sysinfo && data/payloads/sysinfo")
                     elif con == "inet":
