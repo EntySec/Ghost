@@ -72,7 +72,6 @@ def start_server():
 
 def banner():
     os.system("clear")
-    print("")
     os.system("cat banner/banner.txt")
     print("")
     print("Ghost Framework v5.0")
