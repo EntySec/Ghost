@@ -241,7 +241,7 @@ def main():
                                         rp = os.path.split(con.split()[1])[1]
                                         chk = os.popen("chmod +x data/check/rcheck.sh && data/check/rcheck.sh")
                                         if chk == "0\n":
-                                            print(G+"Grabbing WPA Supplicant...")
+                                            print(G+"Grabbing wpa_supplicant...")
                                             os.system("chmod +x data/grabber/grabber.sh && data/grabber/grabber.sh -w "+con.split()[1])
                                             print(G+"Saving to "+con.split()[1]+"...")
                                             time.sleep(1)
