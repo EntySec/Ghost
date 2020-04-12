@@ -177,7 +177,7 @@ def main():
                         except:
                             print("")
                     elif con == "keycodes":
-                        os.system("cat data/keycode//keycodes.txt")
+                        os.system("cat data/keycode/keycodes.txt")
                     elif con[:3] == "keycode":
                         if con[4:] == "":
                             print("Usage: keycode <keycode_number>")
@@ -372,7 +372,7 @@ def main():
                                         os.system("chmod +x core/apps/install.sh && core/apps/install.sh "+con[8:])
                                         print(S+"Succcessfully installed!")
                                     else:
-                                        print(E+"Error: "+con[8:]+": not an apk file!")
+                                        print(E+"Local file: "+con[8:]+": not an apk file!")
                             else:
                                 print(E+"Local file: "+con[8:]+": does not exist!")
                     elif con[:8] == "download":
