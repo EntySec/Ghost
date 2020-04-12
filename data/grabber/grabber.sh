@@ -29,9 +29,9 @@ if [[ "$1" = "-h" || "$1" = "--help" ]]
 then
 echo -e "Usage: grabber.sh [option] <arguments>"
 echo -e
-echo -e "  -w, --wgrabber   <local_path>  Grab WPA Supplicant."
-echo -e "  -s, --screenshot <local_path>  Grab device screenshot."
-echo -e "  -r, --screenrec  <local_path>  Grab device screenrec."
+echo -e "  -w, --wgrabber   <local_path>  Grab wpa_supplicant."
+echo -e "  -s, --screenshot <local_path>  Take device screenshot."
+echo -e "  -r, --screenrec  <local_path>  Record device screen."
 echo -e "  -h, --help                     Give this help list."
 exit
 
@@ -63,8 +63,8 @@ fi
 
 echo -e "Usage: grabber.sh [option] <arguments>"
 echo -e
-echo -e "  -w, --wgrabber   <local_path>  Grab WPA Supplicant."
-echo -e "  -s, --screenshot <local_path>  Grab device screenshot."
-echo -e "  -r, --screenrec  <local_path>  Grab device screenrec."
+echo -e "  -w, --wgrabber   <local_path>  Grab wpa_supplicant."
+echo -e "  -s, --screenshot <local_path>  Take device screenshot."
+echo -e "  -r, --screenrec  <local_path>  Record device screen."
 echo -e "  -h, --help                     Give this help list."
 exit
