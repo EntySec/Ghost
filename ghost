@@ -104,7 +104,7 @@ def main():
                 os.system("adb connect "+ui[8:]+" > /dev/null")
                 str = os.popen("adb devices | grep :5555").read()
                 if str == "":
-                    print(E+"Failed to connect to "+ui[8:])
+                    print(E+"Failed to connect to "+ui[8:]+"!")
                     main()
                 time.sleep(0.5)
                 print(G+"Sending payload to "+ui[8:]+"...")
