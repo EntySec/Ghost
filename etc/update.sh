@@ -66,8 +66,6 @@ fi
 sleep 1
 echo -e ""$BS"[*]"$CE" Installing update..."$CE""
 {
-mkdir ~/.ghost
-cp -r ~/ghost/downloads ~/.ghost
 rm -rf ~/ghost
 rm /bin/ghost
 rm /usr/local/bin/ghost
@@ -82,8 +80,6 @@ cd ghost
 chmod +x install.sh
 ./install.sh
 fi
-cp -r ~/.ghost/downloads ~/ghost
-rm -rf ~/.ghost
 } &> /dev/null
 echo -e ""$GN"[+]"$CE" Successfully updated!"$CE""
 cd .
