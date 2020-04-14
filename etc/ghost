@@ -81,16 +81,16 @@ def banner():
 def main():
     ui = input('\033[4mghost\033[0m> ').strip(" ")
     while True:
-        if ui == "exit":
+        if ui[:4] == "exit":
             os.system("adb kill-server > /dev/null")
             sys.exit()
-        elif ui == "clear":
+        elif ui[:5] == "clear":
             os.system("clear")
         elif ui == "":
             pass
-        elif ui == "update":
+        elif ui[:6] == "update":
             os.system("chmod +x etc/update.sh && etc/update.sh")
-        elif ui == "help":
+        elif ui[:4] == "help":
             print("")
             print("Core Commands")
             print("=============")
@@ -112,16 +112,16 @@ def main():
                 device = ui[8:]
                 con = input('\033[4mghost\033[0m(\033[1;31m'+device+'\033[0m)> ').strip(" ")
                 while True:
-                    if con == "exit":
+                    if con[:4] == "exit":
                         os.system("adb disconnect > /dev/null")
                         break
-                    elif con == "clear":
+                    elif con[:5] == "clear":
                         os.system("clear")
                     elif con == "":
                         pass
-                    elif con == "update":
+                    elif con[:6] == "update":
                         os.system("chmod +x etc/update.sh && etc/update.sh")
-                    elif con == "help":
+                    elif con[:4] == "help":
                         print("")
                         print("Core Commands")
                         print("=============")
@@ -151,22 +151,22 @@ def main():
                         print("==============")
                         os.system("cat data/cmds/other_cmds.txt")
                         print("")
-                    elif con == "connect":
+                    elif con[:7] == "connect":
                         print(W+"Already connected to "+device+".")
-                    elif con == "eatpass":
+                    elif con[:7] == "eatpass":
                         os.system("chmod +x data/payloads/eatpass && data/payloads/eatpass")
                         print(S+"Password successfully removed!")
-                    elif con == "shell":
+                    elif con[:5] == "shell":
                         os.system("chmod +x data/payloads/shell && data/payloads/shell")
-                    elif con == "reboot":
+                    elif con[:6] == "reboot":
                         os.system("chmod +x data/payloads/reboot && data/payloads/reboot")
-                    elif con == "bootl":
+                    elif con[:5] == "bootl":
                         os.system("chmod +x data/payloads/bootl && data/payloads/bootl")
-                    elif con == "recovery":
+                    elif con[:8] == "recovery":
                         os.system("chmod +x data/payloads/recovery && data/payloads/recovery")
-                    elif con == "sush":
+                    elif con[:4] == "sush":
                         os.system("chmod +x data/payloads/sush && data/payloads/sush")
-                    elif con == "keyboard":
+                    elif con[:8] == "keyboard":
                         print("Press Ctrl-C to stop.")
                         print("Device keyboard:")
                         try:
@@ -176,7 +176,7 @@ def main():
                                 os.system("chmod +x data/keyboard/keyboard.sh "+text)
                         except:
                             print("")
-                    elif con == "keycodes":
+                    elif con[:8] == "keycodes":
                         os.system("cat data/keycode/keycodes.txt")
                     elif con[:3] == "keycode":
                         if con[4:] == "":
@@ -192,17 +192,17 @@ def main():
                                 os.system("chmod +x data/kaycode/keycode.sh && data/keycode/keycode.sh "+con[4:])
                             else:
                                 print(E+"No such keycode!")
-                    elif con == "battery":
+                    elif con[:7] == "battery":
                         os.system("chmod +x data/payloads/battery && data/payloads/battery")
-                    elif con == "activity":
+                    elif con[:8] == "activity":
                         os.system("chmod +x data/payloads/activity && data/payloads/activity")
-                    elif con == "netstat":
+                    elif con[:7] == "netstat":
                         os.system("chmod +x data/payloads/netstat && data/payloads/netstat")
-                    elif con == "debug":
+                    elif con[:5] == "debug":
                         os.system("chmod +x data/payloads/debug && data/payloads/debug")
-                    elif con == "sysinfo":
+                    elif con[:7] == "sysinfo":
                         os.system("chmod +x data/payloads/sysinfo && data/payloads/sysinfo")
-                    elif con == "inet":
+                    elif con[:4] == "inet":
                         os.system("chmod +x data/payloads/inet && data/payloads/inet")
                     elif con[:4] == "wifi":
                         if con[5:] == "on":
@@ -364,7 +364,7 @@ def main():
                                 os.system("chmod +x core/apps/launch.sh && core/apps/launch.sh "+con[7:])
                             else:
                                 print(E+"No such application!")
-                    elif con == "apps":
+                    elif con[:4] == "apps":
                         apps = os.popen("adb shell pm list packages -f | grep package:").read()
                         cache = apps.split("\n")
                         apps = [i[i.index("=")+1:] for i in cache if "=" in i]
