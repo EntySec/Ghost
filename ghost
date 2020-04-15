@@ -191,7 +191,7 @@ def main():
                             if task == 1:
                                 os.system("chmod +x data/kaycode/keycode.sh && data/keycode/keycode.sh "+con[4:])
                             else:
-                                print(E+"No such keycode!")
+                                print(E+"Keycode is not found!")
                     elif con[:7] == "battery":
                         os.system("chmod +x data/payloads/battery && data/payloads/battery")
                     elif con[:8] == "activity":
@@ -335,7 +335,7 @@ def main():
                                 os.system("chmod +x core/apps/uninstall.sh && core/apps/uninstall.sh "+con[10:])
                                 print(S+"Successfully uninstalled!")
                             else:
-                                print(E+"No such application!")
+                                print(E+"Application is not found!")
                     elif con[:6] == "launch":
                         if con[7:] == "":
                             print("Usage: launch <application>")
@@ -351,7 +351,7 @@ def main():
                             if turn == "1":
                                 os.system("chmod +x core/apps/launch.sh && core/apps/launch.sh "+con[7:])
                             else:
-                                print(E+"No such application!")
+                                print(E+"Application is not found!")
                     elif con[:4] == "apps":
                         apps = os.popen("adb shell pm list packages -f | grep package:").read()
                         cache = apps.split("\n")
