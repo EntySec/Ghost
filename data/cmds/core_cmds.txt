@@ -4,5 +4,5 @@
     clear          Clear terminal window.
     connect        Connect target device.
     exit           Exit Ghost Framework.
-    help           Show help information.
+    help           Show available commands.
     update         Update Ghost Framework.
