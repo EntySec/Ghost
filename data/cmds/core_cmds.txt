@@ -2,6 +2,7 @@
     Command        Description
     -------        -----------
     clear          Clear terminal window.
+    disconnect     Disconnect target device.
     connect        Connect target device.
     exit           Exit Ghost Framework.
     help           Show available commands.
