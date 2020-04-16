@@ -114,7 +114,8 @@ def main():
                 while True:
                     if con == "exit":
                         os.system("adb disconnect > /dev/null")
-                        break
+                        os.system("adb kill-server > /dev/null")
+                        sys.exit()
                     elif con[:5] == "clear":
                         os.system("clear")
                     elif con == "":
