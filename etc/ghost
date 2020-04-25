@@ -86,7 +86,7 @@ def main():
             os.system("adb kill-server > /dev/null")
             sys.exit()
         elif ui[:10] == "disconnect":
-            print(E+"Target device is not connected!")
+            print(E+"Not connected to target device!")
         elif ui[:5] == "clear":
             os.system("clear")
         elif ui == "":
