@@ -162,7 +162,6 @@ def main():
                         print(W+"Already connected to "+device+".")
                     elif con[:7] == "eatpass":
                         os.system("chmod +x data/payloads/eatpass && data/payloads/eatpass")
-                        print(S+"Password successfully removed!")
                     elif con[:5] == "shell":
                         os.system("chmod +x data/payloads/shell && data/payloads/shell")
                     elif con[:6] == "reboot":
