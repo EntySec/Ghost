@@ -19,11 +19,11 @@
 #        along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 {
-chr=$(adb which su)
+chr=$(adb shell which su)
 } &> /dev/null
 
-if [[ $chr != "" ]]; then
-    echo "0"
-else
+if [[ $chr = "" ]]; then
     echo "1"
+else
+    echo "0"
 fi
