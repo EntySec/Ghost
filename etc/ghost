@@ -244,6 +244,10 @@ def main():
                                     print(E+"Local directory: "+con.split()[1]+": does not exist!")
                             else:
                                 rp = os.path.split(con.split()[1])[0]
+                                if rp == "":
+                                    rp = "."
+                                else:
+                                    pass
                                 if os.path.exists(rp):
                                     if os.path.isdir(rp):
                                         rp = os.path.split(con.split()[1])[1]
@@ -284,6 +288,10 @@ def main():
                                     print(E+"Local directory: "+con.split()[1]+": does not exist!")
                             else:
                                 rp = os.path.split(con.split()[1])[0]
+                                if rp == "":
+                                    rp = "."
+                                else:
+                                    pass
                                 if os.path.exists(rp):
                                     if os.path.isdir(rp):
                                         rp = os.path.split(con.split()[1])[1]
@@ -321,6 +329,10 @@ def main():
                                     print(E+"Local directory: "+con.split()[1]+": does not exist!")
                             else:
                                 rp = os.path.split(con.split()[1])[0]
+                                if rp == "":
+                                    rp = "."
+                                else:
+                                    pass
                                 if os.path.exists(rp):
                                     if os.path.isdir(rp):
                                         rp = os.path.split(con.split()[1])[1]
