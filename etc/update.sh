@@ -51,10 +51,10 @@ ASESR="$( ping -c 1 -q google.com >&/dev/null; echo $? )"
 } &> /dev/null
 if [[ "$ASESR" != 0 ]]
 then 
-sleep 1
-echo -e ""$RS"[-]"$CE" Download failed!"$CE""
-sleep 1
-exit
+   sleep 1
+   echo -e ""$RS"[-] "$WHS"No Internet connection!"$CE""
+   sleep 1
+   exit
 fi
 if [[ $EUID -ne 0 ]]
 then
