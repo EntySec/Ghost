@@ -366,7 +366,7 @@ def main():
                                     turn = 1
                                 else:
                                     turn = 0
-                            if turn == "1":
+                            if turn == 1:
                                 os.system("chmod +x core/apps/launch.sh && core/apps/launch.sh "+con[7:])
                             else:
                                 print(E+"Application is not found!")
