@@ -33,33 +33,6 @@ S = '\033[1;32m[+] \033[0m'
 W = '\033[1;33m[!] \033[0m'
 E = '\033[1;31m[-] \033[0m'
 
-def autocomplete(text, state):
-    import readline
-    line = readline.get_line_buffer()
-    splitted = line.lstrip().split(" ")
-
-    # no space, autocomplete will be the basic commands:
-    options = [x + " " for x in actions if x.startswith(text)]
-    options.extend([x + " " for x in remap if x.startswith(text)])
-    try:
-        return options[state]
-    except:
-        return None
-
-def get_input(prompt, auto_complete_fn=None, basefile_fn=None):
-    try:
-        if auto_complete_fn != None:
-            import readline
-            readline.set_completer_delims(' \t\n;/')
-            readline.parse_and_bind("tab: complete")
-            readline.set_completer(auto_complete_fn)
-    except Exception as e:
-        pass
-
-    cmd = input("%s" % prompt)
-    return cmd.strip()
-
-readline.set_completer(autocomplete)
 readline.parse_and_bind("tab: complete")
 
 def start_server():
