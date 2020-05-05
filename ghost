@@ -385,7 +385,7 @@ def main():
                                 if os.path.isdir(con[8:]):
                                     print(E+"Error: "+con[8:]+": not a file!")
                                 else:
-                                    if ext == ".apk":
+                                    if ext[1] == ".apk":
                                         print(G+"Installing "+con[8:]+"...")
                                         os.system("chmod +x core/apps/install.sh && core/apps/install.sh "+con[8:])
                                         print(S+"Succcessfully installed!")
