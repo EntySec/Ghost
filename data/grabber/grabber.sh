@@ -49,9 +49,9 @@ elif [[ "$1" = "-w" ]]; then
 
 elif [[ "$1" = "-s" ]]; then
     {
-    adb shell screencap /sdcard/screen.png
-    adb pull /sdcard/screen.png $2
-    adb shell rm /sdcard/screen.png
+    adb shell screencap /sdcard/screenshot.png
+    adb pull /sdcard/screenshot.png $2
+    adb shell rm /sdcard/screenshot.png
     } &> /dev/null
     exit
    
