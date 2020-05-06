@@ -370,7 +370,7 @@ def main():
                                 print(E+"Local file: "+con[1]+": does not exist!")
                     elif con[0] == "download":
                         if len(con) < 3:
-                            print("Usage: download <remote_path> <local_path>")
+                            print("Usage: download <remote_file> <local_path>")
                         else:
                             dchk = os.popen("chmod +x data/check/dcheck.sh && data/check/dcheck.sh "+con[1]).read()
                             chk = os.popen("chmod +x data/check/check.sh && data/check/check.sh "+con[1]).read()
@@ -403,7 +403,7 @@ def main():
                                 print(E+"Remote file: "+con[1]+": does not exist!")
                     elif con[0] == "upload":
                         if len(con) < 3:
-                            print("Usage: upload <local_path> <remote_path>")
+                            print("Usage: upload <local_file> <remote_path>")
                         else:
                             if os.path.exists(con[1]):
                                 if os.path.isdir(con[1]):
