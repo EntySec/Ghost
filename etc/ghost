@@ -191,46 +191,46 @@ def main():
                         else:
                             print("Usage: wifi [on|off]")
                     elif con[:8] == "wgrabber":
-                        if len(con.split()) < 2:
+                        if len(con) < 2:
                             print("Usage: wgrabber <local_path>")
                         else:
                             w = os.environ['OLDPWD']
                             os.chdir(w)
-                            if os.path.isdir(con.split()[1]):
-                                if os.path.exists(con.split()[1]):
-                                    rp = os.path.split(con.split()[1])[1]
+                            if os.path.isdir(con[1]):
+                                if os.path.exists(con[1]):
+                                    rp = os.path.split(con[1])[1]
                                     chk = os.popen("chmod +x ~/ghost/data/check/rcheck.sh && ~/ghost/data/check/rcheck.sh").read()
                                     if chk == "0\n":
                                         print(G+"Grabbing wpa_supplicant...")
-                                        os.system("chmod +x ~/ghost/data/grabber/grabber.sh && ~/ghost/data/grabber/grabber.sh -w "+con.split()[1]+"/wpa_supplicant.conf")
-                                        if con.split()[1][-1:] == "/":
-                                            print(G+"Saving to "+con.split()[1]+"wpa_supplicant.conf...")
+                                        os.system("chmod +x ~/ghost/data/grabber/grabber.sh && ~/ghost/data/grabber/grabber.sh -w "+con[1]+"/wpa_supplicant.conf")
+                                        if con[1][-1:] == "/":
+                                            print(G+"Saving to "+con[1]+"wpa_supplicant.conf...")
                                             time.sleep(1)
-                                            print(S+"Saved to "+con.split()[1]+"wpa_supplicant.conf!")
+                                            print(S+"Saved to "+con[1]+"wpa_supplicant.conf!")
                                         else:
-                                            print(G+"Saving to "+con.split()[1]+"/wpa_supplicant.conf...")
+                                            print(G+"Saving to "+con[1]+"/wpa_supplicant.conf...")
                                             time.sleep(1)
-                                            print(S+"Saved to "+con.split()[1]+"/wpa_supplicant.conf!")
+                                            print(S+"Saved to "+con[1]+"/wpa_supplicant.conf!")
                                     else:
                                         print(E+"Target device is not rooted!")
                                 else:
-                                    print(E+"Local directory: "+con.split()[1]+": does not exist!")
+                                    print(E+"Local directory: "+con[1]+": does not exist!")
                             else:
-                                rp = os.path.split(con.split()[1])[0]
+                                rp = os.path.split(con[1])[0]
                                 if rp == "":
                                     rp = "."
                                 else:
                                     pass
                                 if os.path.exists(rp):
                                     if os.path.isdir(rp):
-                                        rp = os.path.split(con.split()[1])[1]
+                                        rp = os.path.split(con[1])[1]
                                         chk = os.popen("chmod +x ~/ghost/data/check/rcheck.sh && ~/ghost/data/check/rcheck.sh").read()
                                         if chk == "0\n":
                                             print(G+"Grabbing WPA Supplicant...")
-                                            os.system("chmod +x ~/ghost/data/grabber/grabber.sh && ~/ghost/data/grabber/grabber.sh -w "+con.split()[1])
-                                            print(G+"Saving to "+con.split()[1]+"...")
+                                            os.system("chmod +x ~/ghost/data/grabber/grabber.sh && ~/ghost/data/grabber/grabber.sh -w "+con[1])
+                                            print(G+"Saving to "+con[1]+"...")
                                             time.sleep(1)
-                                            print(S+"Saved to "+con.split()[1]+"!")
+                                            print(S+"Saved to "+con[1]+"!")
                                         else:
                                             print(E+"Target device is not rooted!")
                                     else:
@@ -240,39 +240,39 @@ def main():
                             g = os.environ['HOME']
                             os.chdir(g + "/ghost")
                     elif con[:10] == "screenshot":
-                        if len(con.split()) < 2:
+                        if len(con) < 2:
                             print("Usage: screenshot <local_path>")
                         else:
                             w = os.environ['OLDPWD']
                             os.chdir(w)
-                            if os.path.isdir(con.split()[1]):
-                                if os.path.exists(con.split()[1]):
+                            if os.path.isdir(con[1]):
+                                if os.path.exists(con[1]):
                                     print(G+"Taking screenshot...")
-                                    os.system("chmod +x ~/ghost/data/grabber/grabber.sh && ~/ghost/data/grabber/grabber.sh -s "+con.split()[1]+"/screen.png")
-                                    if con.split()[1][-1:] == "/":
-                                        print(G+"Saving to "+con.split()[1]+"screen.png...")
+                                    os.system("chmod +x ~/ghost/data/grabber/grabber.sh && ~/ghost/data/grabber/grabber.sh -s "+con[1]+"/screen.png")
+                                    if con[1][-1:] == "/":
+                                        print(G+"Saving to "+con[1]+"screen.png...")
                                         time.sleep(1)
-                                        print(S+"Saved to "+con.split()[1]+"screen.png!")
+                                        print(S+"Saved to "+con[1]+"screen.png!")
                                     else:
-                                        print(G+"Saving to "+con.split()[1]+"/screen.png...")
+                                        print(G+"Saving to "+con[1]+"/screen.png...")
                                         time.sleep(1)
-                                        print(S+"Saved to "+con.split()[1]+"/screen.png!")
+                                        print(S+"Saved to "+con[1]+"/screen.png!")
                                 else:
-                                    print(E+"Local directory: "+con.split()[1]+": does not exist!")
+                                    print(E+"Local directory: "+con[1]+": does not exist!")
                             else:
-                                rp = os.path.split(con.split()[1])[0]
+                                rp = os.path.split(con[1])[0]
                                 if rp == "":
                                     rp = "."
                                 else:
                                     pass
                                 if os.path.exists(rp):
                                     if os.path.isdir(rp):
-                                        rp = os.path.split(con.split()[1])[1]
+                                        rp = os.path.split(con[1])[1]
                                         print(G+"Taking screenshot...")
-                                        os.system("chmod +x ~/ghost/data/grabber/grabber.sh && ~/ghost/data/grabber/grabber.sh -s "+con.split()[1])
-                                        print(G+"Saving to "+con.split()[1]+"...")
+                                        os.system("chmod +x ~/ghost/data/grabber/grabber.sh && ~/ghost/data/grabber/grabber.sh -s "+con[1])
+                                        print(G+"Saving to "+con[1]+"...")
                                         time.sleep(1)
-                                        print(S+"Saved to "+con.split()[1]+"!")
+                                        print(S+"Saved to "+con[1]+"!")
                                     else:
                                         print(E+"Error: "+rp+": not a directory!")
                                 else:
@@ -280,41 +280,41 @@ def main():
                             g = os.environ['HOME']
                             os.chdir(g + "/ghost")
                     elif con[:9] == "screenrec":
-                        if len(con.split()) < 2:
+                        if len(con) < 2:
                             print("Usage: screenrec <local_path>")
                         else:
                             w = os.environ['OLDPWD']
                             os.chdir(w)
-                            if os.path.isdir(con.split()[1]):
-                                if os.path.exists(con.split()[1]):
+                            if os.path.isdir(con[1]):
+                                if os.path.exists(con[1]):
                                     print(G+"Recording screen...")
                                     print(G+"Press Ctrl-C to stop.")
-                                    os.system("chmod +x ~/ghost/data/grabber/grabber.sh && ~/ghost/data/grabber/grabber.sh -r "+con.split()[1]+"/screen.mp4")
-                                    if con.split()[1][-1:] == "/":
-                                        print(G+"Saving to "+con.split()[1]+"screen.mp4...")
+                                    os.system("chmod +x ~/ghost/data/grabber/grabber.sh && ~/ghost/data/grabber/grabber.sh -r "+con[1]+"/screen.mp4")
+                                    if con[1][-1:] == "/":
+                                        print(G+"Saving to "+con[1]+"screen.mp4...")
                                         time.sleep(1)
-                                        print(S+"Saved to "+con.split()[1]+"screen.mp4!")
+                                        print(S+"Saved to "+con[1]+"screen.mp4!")
                                     else:
-                                        print(G+"Saving to "+con.split()[1]+"/screen.mp4...")
+                                        print(G+"Saving to "+con[1]+"/screen.mp4...")
                                         time.sleep(1)
-                                        print(S+"Saved to "+con.split()[1]+"/screen.mp4!")
+                                        print(S+"Saved to "+con[1]+"/screen.mp4!")
                                 else:
-                                    print(E+"Local directory: "+con.split()[1]+": does not exist!")
+                                    print(E+"Local directory: "+con[1]+": does not exist!")
                             else:
-                                rp = os.path.split(con.split()[1])[0]
+                                rp = os.path.split(con[1])[0]
                                 if rp == "":
                                     rp = "."
                                 else:
                                     pass
                                 if os.path.exists(rp):
                                     if os.path.isdir(rp):
-                                        rp = os.path.split(con.split()[1])[1]
+                                        rp = os.path.split(con[1])[1]
                                         print(G+"Recording screen...")
                                         print(G+"Press Ctrl-C to stop.")
-                                        os.system("chmod +x ~/ghost/data/grabber/grabber.sh && ~/ghost/data/grabber/grabber.sh -r "+con.split()[1])
-                                        print(G+"Saving to "+con.split()[1]+"...")
+                                        os.system("chmod +x ~/ghost/data/grabber/grabber.sh && ~/ghost/data/grabber/grabber.sh -r "+con[1])
+                                        print(G+"Saving to "+con[1]+"...")
                                         time.sleep(1)
-                                        print(S+"Saved to "+con.split()[1]+"!")
+                                        print(S+"Saved to "+con[1]+"!")
                                     else:
                                         print(E+"Error: "+rp+": not a directory!")
                                 else:
@@ -383,61 +383,61 @@ def main():
                             g = os.environ['HOME']
                             os.chdir(g + "/ghost")
                     elif con[:8] == "download":
-                        if len(con.split()) < 3:
+                        if len(con) < 3:
                             print("Usage: download <remote_path> <local_path>")
                         else:
                             w = os.environ['OLDPWD']
                             os.chdir(w)
-                            dchk = os.popen("chmod +x ~/ghost/data/check/dcheck.sh && ~/ghost/data/check/dcheck.sh "+con.split()[1]).read()
-                            chk = os.popen("chmod +x ~/ghost/data/check/check.sh && ~/ghost/data/check/check.sh "+con.split()[1]).read()
+                            dchk = os.popen("chmod +x ~/ghost/data/check/dcheck.sh && ~/ghost/data/check/dcheck.sh "+con[1]).read()
+                            chk = os.popen("chmod +x ~/ghost/data/check/check.sh && ~/ghost/data/check/check.sh "+con[1]).read()
                             if chk == "0\n":
                                 if dchk == "0\n":
-                                    print(E+"Error: "+con.split()[1]+": not a file!")
+                                    print(E+"Error: "+con[1]+": not a file!")
                                 else:
-                                    if os.path.isdir(con.split()[2]):
-                                        if os.path.exists(con.split()[2]):
-                                            rp = os.path.split(con.split()[1])[1]
-                                            os.system("chmod +x ~/ghost/data/payloads/download && ~/ghost/data/payloads/download "+con.split()[1]+" "+con.split()[2]+" "+rp)
+                                    if os.path.isdir(con[2]):
+                                        if os.path.exists(con[2]):
+                                            rp = os.path.split(con[1])[1]
+                                            os.system("chmod +x ~/ghost/data/payloads/download && ~/ghost/data/payloads/download "+con[1]+" "+con[2]+" "+rp)
                                         else:
-                                            print(E+"Local directory: "+con.split()[2]+": does not exist!")
+                                            print(E+"Local directory: "+con[2]+": does not exist!")
                                     else:
-                                        rp = os.path.split(con.split()[2])[0]
+                                        rp = os.path.split(con[2])[0]
                                         if rp == "":
                                             rp = "."
                                         else:
                                             pass
                                         if os.path.exists(rp):
                                             if os.path.isdir(rp):
-                                                rp = os.path.split(con.split()[2])[1]
-                                                pr = os.path.split(con.split()[1])[1]
-                                                os.system("chmod +x ~/ghost/data/payloads/download && ~/ghost/data/payloads/download "+con.split()[1]+" "+con.split()[2]+" "+rp+" "+pr)
+                                                rp = os.path.split(con[2])[1]
+                                                pr = os.path.split(con[1])[1]
+                                                os.system("chmod +x ~/ghost/data/payloads/download && ~/ghost/data/payloads/download "+con[1]+" "+con[2]+" "+rp+" "+pr)
                                             else:
                                                 print(E+"Error: "+rp+": not a directory!")
                                         else:
                                             print(E+"Local directory: "+rp+": does not exist!")
                             else:
-                                print(E+"Remote file: "+con.split()[1]+": does not exist!")
+                                print(E+"Remote file: "+con[1]+": does not exist!")
                             g = os.environ['HOME']
                             os.chdir(g + "/ghost")
                     elif con[:6] == "upload":
-                        if len(con.split()) < 3:
+                        if len(con) < 3:
                             print("Usage: upload <local_path> <remote_path>")
                         else:
                             w = os.environ['OLDPWD']
                             os.chdir(w)
-                            if os.path.exists(con.split()[1]):
-                                if os.path.isdir(con.split()[1]):
-                                    print(E+"Error: "+con.split()[1]+": not a file!")
+                            if os.path.exists(con[1]):
+                                if os.path.isdir(con[1]):
+                                    print(E+"Error: "+con[1]+": not a file!")
                                 else:
-                                    rp = con.split()[2][::-1]
+                                    rp = con[2][::-1]
                                     rp = rp[rp.index('/')+1:][::-1]
-                                    s = os.path.split(con.split()[1])[1]
-                                    pr = os.path.split(con.split()[2])[0]
-                                    lrp = con.split()[1][::-1]
+                                    s = os.path.split(con[1])[1]
+                                    pr = os.path.split(con[2])[0]
+                                    lrp = con[1][::-1]
                                     lrp = lrp[lrp.index('/')+1:][::-1]
-                                    os.system("chmod +x ~/ghost/data/payloads/upload && ~/ghost/data/payloads/upload "+con.split()[1]+" "+con.split()[2]+" "+s+" "+pr+" "+lrp)
+                                    os.system("chmod +x ~/ghost/data/payloads/upload && ~/ghost/data/payloads/upload "+con[1]+" "+con[2]+" "+s+" "+pr+" "+lrp)
                             else:
-                                print(E+"Local file: "+con.split()[1]+": does not exist!")
+                                print(E+"Local file: "+con[1]+": does not exist!")
                             g = os.environ['HOME']
                             os.chdir(g + "/ghost")
                     else:
