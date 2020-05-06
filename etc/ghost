@@ -386,7 +386,7 @@ def main():
                             os.chdir(g + "/ghost")
                     elif con[0] == "download":
                         if len(con) < 3:
-                            print("Usage: download <remote_path> <local_path>")
+                            print("Usage: download <remote_file> <local_path>")
                         else:
                             w = os.environ['OLDPWD']
                             os.chdir(w)
@@ -423,7 +423,7 @@ def main():
                             os.chdir(g + "/ghost")
                     elif con[0] == "upload":
                         if len(con) < 3:
-                            print("Usage: upload <local_path> <remote_path>")
+                            print("Usage: upload <local_file> <remote_path>")
                         else:
                             w = os.environ['OLDPWD']
                             os.chdir(w)
