@@ -53,55 +53,57 @@ def banner():
 
 def main():
     ui = input('\033[4mghost\033[0m> ').strip(" ")
+    ui = ui.split()
     while True:
-        if ui[:4] == "exit":
+        if ui[0] == "exit":
             os.system("adb disconnect > /dev/null")
             os.system("adb kill-server > /dev/null")
             sys.exit()
-        elif ui[:10] == "disconnect":
+        elif ui[0] == "disconnect":
             print(E+"Not connected to target device!")
-        elif ui[:5] == "clear":
+        elif ui[0] == "clear":
             os.system("clear")
         elif ui == "":
             pass
-        elif ui[:6] == "update":
+        elif ui[0] == "update":
             os.system("chmod +x etc/update.sh && etc/update.sh")
-        elif ui[:4] == "help":
+        elif ui[0] == "help":
             print("")
             print("Core Commands")
             print("=============")
             os.system("cat data/cmds/core_cmds.txt")
             print("")
-        elif ui[:7] == "connect":
-            if ui[8:] == "":
+        elif ui[0] == "connect":
+            if ui[1] == "":
                 print("Usage: connect <device>")
             else:
-                print(G+"Connecting to "+ui[8:]+"...")
-                os.system("adb connect "+ui[8:]+" > /dev/null")
+                print(G+"Connecting to "+ui[1]+"...")
+                os.system("adb connect "+ui[1]+" > /dev/null")
                 str = os.popen("adb devices | grep :5555").read()
                 if str == "":
-                    print(E+"Failed to connect to "+ui[8:]+"!")
+                    print(E+"Failed to connect to "+ui[1]+"!")
                     main()
                 time.sleep(0.5)
-                print(G+"Sending payload to "+ui[8:]+"...")
+                print(G+"Sending payload to "+ui[1]+"...")
                 time.sleep(1)
-                device = ui[8:]
+                device = ui[1]
                 con = input('\033[4mghost\033[0m(\033[1;31m'+device+'\033[0m)> ').strip(" ")
+                con = con.split()
                 while True:
-                    if con[:4] == "exit":
+                    if con[0] == "exit":
                         os.system("adb disconnect > /dev/null")
                         os.system("adb kill-server > /dev/null")
                         sys.exit()
-                    elif con[:10] == "disconnect":
+                    elif con[0] == "disconnect":
                         os.system("adb disconnect > /dev/null")
                         break
-                    elif con[:5] == "clear":
+                    elif con[0] == "clear":
                         os.system("clear")
                     elif con == "":
                         pass
-                    elif con[:6] == "update":
+                    elif con[0] == "update":
                         os.system("chmod +x etc/update.sh && etc/update.sh")
-                    elif con[:4] == "help":
+                    elif con[0] == "help":
                         print("")
                         print("Core Commands")
                         print("=============")
@@ -131,21 +133,21 @@ def main():
                         print("==============")
                         os.system("cat data/cmds/other_cmds.txt")
                         print("")
-                    elif con[:7] == "connect":
+                    elif con[0] == "connect":
                         print(W+"Already connected to "+device+".")
-                    elif con[:7] == "eatpass":
+                    elif con[0] == "eatpass":
                         os.system("chmod +x data/payloads/eatpass && data/payloads/eatpass")
-                    elif con[:5] == "shell":
+                    elif con[0] == "shell":
                         os.system("chmod +x data/payloads/shell && data/payloads/shell")
-                    elif con[:6] == "reboot":
+                    elif con[0] == "reboot":
                         os.system("chmod +x data/payloads/reboot && data/payloads/reboot")
-                    elif con[:5] == "bootl":
+                    elif con[0] == "bootl":
                         os.system("chmod +x data/payloads/bootl && data/payloads/bootl")
-                    elif con[:8] == "recovery":
+                    elif con[0] == "recovery":
                         os.system("chmod +x data/payloads/recovery && data/payloads/recovery")
-                    elif con[:4] == "sush":
+                    elif con[0] == "sush":
                         os.system("chmod +x data/payloads/sush && data/payloads/sush")
-                    elif con[:8] == "keyboard":
+                    elif con[0] == "keyboard":
                         print("Press Ctrl-C to stop.")
                         print("Device keyboard:")
                         try:
@@ -155,80 +157,80 @@ def main():
                                 os.system("chmod +x data/keyboard/keyboard.sh "+text)
                         except:
                             print("")
-                    elif con[:8] == "keycodes":
+                    elif con[0] == "keycodes":
                         os.system("cat data/keycode/keycodes.txt")
-                    elif con[:3] == "keycode":
-                        if con[4:] == "":
+                    elif con[0] == "keycode":
+                        if con[1] == "":
                             print("Usage: keycode <keycode_number>")
                         else:
                             nums = open("substrate/keynums.txt").read()
                             for i in nums:
-                                if con[4:] == i:
+                                if con[1] == i:
                                     task = 1
                                 else:
                                     task = 0
                             if task == 1:
-                                os.system("chmod +x data/kaycode/keycode.sh && data/keycode/keycode.sh "+con[4:])
+                                os.system("chmod +x data/kaycode/keycode.sh && data/keycode/keycode.sh "+con[1])
                             else:
                                 print(E+"Keycode is not found!")
-                    elif con[:7] == "battery":
+                    elif con[0] == "battery":
                         os.system("chmod +x data/payloads/battery && data/payloads/battery")
-                    elif con[:8] == "activity":
+                    elif con[0] == "activity":
                         os.system("chmod +x data/payloads/activity && data/payloads/activity")
-                    elif con[:7] == "netstat":
+                    elif con[0] == "netstat":
                         os.system("chmod +x data/payloads/netstat && data/payloads/netstat")
-                    elif con[:5] == "debug":
+                    elif con[0] == "debug":
                         os.system("chmod +x data/payloads/debug && data/payloads/debug")
-                    elif con[:7] == "sysinfo":
+                    elif con[0] == "sysinfo":
                         os.system("chmod +x data/payloads/sysinfo && data/payloads/sysinfo")
-                    elif con[:4] == "inet":
+                    elif con[0] == "inet":
                         os.system("chmod +x data/payloads/inet && data/payloads/inet")
-                    elif con[:4] == "wifi":
-                        if con[5:] == "on":
+                    elif con[0] == "wifi":
+                        if con[1] == "on":
                             os.system("chmod +x data/payloads/wifi && data/payloads/wifi on")
-                        elif con[5:] == "off":
+                        elif con[1] == "off":
                             os.system("chmod +x data/payloads/wifi && data/payloads/wifi off")
                         else:
                             print("Usage: wifi [on|off]")
-                    elif con[:8] == "wgrabber":
-                        if len(con.split()) < 2:
+                    elif con[0] == "wgrabber":
+                        if len(con) < 2:
                             print("Usage: wgrabber <local_path>")
                         else:
-                            if os.path.isdir(con.split()[1]):
-                                if os.path.exists(con.split()[1]):
-                                    rp = os.path.split(con.split()[1])[1]
+                            if os.path.isdir(con[1]):
+                                if os.path.exists(con[1]):
+                                    rp = os.path.split(con[1])[1]
                                     chk = os.popen("chmod +x data/check/rcheck.sh && data/check/rcheck.sh").read()
                                     if chk == "0\n":
                                         print(G+"Grabbing WPA Supplicant...")
-                                        os.system("chmod +x data/grabber/grabber.sh && data/grabber/grabber.sh -w "+con.split()[1]+"/wpa_supplicant.conf")
-                                        if con.split()[1][-1:] == "/":
-                                            print(G+"Saving to "+con.split()[1]+"wpa_supplicant.conf...")
+                                        os.system("chmod +x data/grabber/grabber.sh && data/grabber/grabber.sh -w "+con[1]+"/wpa_supplicant.conf")
+                                        if con[1][-1:] == "/":
+                                            print(G+"Saving to "+con[1]+"wpa_supplicant.conf...")
                                             time.sleep(1)
-                                            print(S+"Saved to "+con.split()[1]+"wpa_supplicant.conf!")
+                                            print(S+"Saved to "+con[1]+"wpa_supplicant.conf!")
                                         else:
-                                            print(G+"Saving to "+con.split()[1]+"/wpa_supplicant.conf...")
+                                            print(G+"Saving to "+con[1]+"/wpa_supplicant.conf...")
                                             time.sleep(1)
-                                            print(S+"Saved to "+con.split()[1]+"/wpa_supplicant.conf!")
+                                            print(S+"Saved to "+con[1]+"/wpa_supplicant.conf!")
                                     else:
                                         print(E+"Target device is not rooted!")
                                 else:
-                                    print(E+"Local directory: "+con.split()[1]+": does not exist!")
+                                    print(E+"Local directory: "+con[1]+": does not exist!")
                             else:
-                                rp = os.path.split(con.split()[1])[0]
+                                rp = os.path.split(con[1])[0]
                                 if rp == "":
                                     rp = "."
                                 else:
                                     pass
                                 if os.path.exists(rp):
                                     if os.path.isdir(rp):
-                                        rp = os.path.split(con.split()[1])[1]
+                                        rp = os.path.split(con[1])[1]
                                         chk = os.popen("chmod +x data/check/rcheck.sh && data/check/rcheck.sh").read()
                                         if chk == "0\n":
                                             print(G+"Grabbing wpa_supplicant...")
-                                            os.system("chmod +x data/grabber/grabber.sh && data/grabber/grabber.sh -w "+con.split()[1])
-                                            print(G+"Saving to "+con.split()[1]+"...")
+                                            os.system("chmod +x data/grabber/grabber.sh && data/grabber/grabber.sh -w "+con[1])
+                                            print(G+"Saving to "+con[1]+"...")
                                             time.sleep(1)
-                                            print(S+"Saved to "+con.split()[1]+"!")
+                                            print(S+"Saved to "+con[1]+"!")
                                         else:
                                             print(E+"Target device is not rooted!")
                                     else:
