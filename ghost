@@ -422,9 +422,11 @@ def main():
                     else:
                         print(E+"Unrecognized command!")
                     con = input('\033[4mghost\033[0m(\033[1;31m'+device+'\033[0m)> ').strip(" ")
+                    con = con.split()
         else:
             print(E+"Unrecognized command!")
         ui = input('\033[4mghost\033[0m> ').strip(" ")
+        ui = ui.split()
 
 start_server()
 banner()
