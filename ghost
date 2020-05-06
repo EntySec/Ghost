@@ -237,7 +237,7 @@ def main():
                                         print(E+"Error: "+rp+": not a directory!")
                                 else:
                                     print(E+"Local directory: "+rp+": does not exist!")
-                    elif con[:10] == "screenshot":
+                    elif con[0] == "screenshot":
                         if len(con) < 2:
                             print("Usage: screenshot <local_path>")
                         else:
@@ -273,7 +273,7 @@ def main():
                                         print(E+"Error: "+rp+": not a directory!")
                                 else:
                                     print(E+"Local directory: "+rp+": does not exist!")
-                    elif con[:9] == "screenrec":
+                    elif con[0] == "screenrec":
                         if len(con) < 2:
                             print("Usage: screenrec <local_path>")
                         else:
@@ -311,64 +311,64 @@ def main():
                                         print(E+"Error: "+rp+": not a directory!")
                                 else:
                                     print(E+"Local directory: "+rp+": does not exist!")
-                    elif con[:9] == "uninstall":
-                        if con[10:] == "":
+                    elif con[0] == "uninstall":
+                        if con[1] == "":
                             print("Usage: uninstall <application>")
                         else:
                             apps = os.popen("adb shell pm list packages -f | grep package:").read()
                             cache = apps.split("\n")
                             apps = [i[i.index("=")+1:] for i in cache if "=" in i]
                             for i in apps:
-                                if con[10:] == i:
+                                if con[1] == i:
                                     turn = 1
                                 else:
                                     turn = 0
                             if turn == "1":
-                                print(G+"Uninstalling "+con[10:]+"...")
-                                os.system("chmod +x core/apps/uninstall.sh && core/apps/uninstall.sh "+con[10:])
+                                print(G+"Uninstalling "+con[1]+"...")
+                                os.system("chmod +x core/apps/uninstall.sh && core/apps/uninstall.sh "+con[1])
                                 print(S+"Successfully uninstalled!")
                             else:
                                 print(E+"Application is not found!")
-                    elif con[:6] == "launch":
-                        if con[7:] == "":
+                    elif con[0] == "launch":
+                        if con[1] == "":
                             print("Usage: launch <application>")
                         else:
                             apps = os.popen("adb shell pm list packages -f | grep package:").read()
                             cache = apps.split("\n")
                             apps = [i[i.index("=")+1:] for i in cache if "=" in i]
                             for i in apps:
-                                if con[7:] == i:
+                                if con[1] == i:
                                     turn = 1
                                 else:
                                     turn = 0
                             if turn == 1:
-                                os.system("chmod +x core/apps/launch.sh && core/apps/launch.sh "+con[7:])
+                                os.system("chmod +x core/apps/launch.sh && core/apps/launch.sh "+con[1])
                             else:
                                 print(E+"Application is not found!")
-                    elif con[:4] == "apps":
+                    elif con[0] == "apps":
                         apps = os.popen("adb shell pm list packages -f | grep package:").read()
                         cache = apps.split("\n")
                         apps = [i[i.index("=")+1:] for i in cache if "=" in i]
                         for i in apps:
                             print(i)
-                    elif con[:7] == "install":
-                        if con[8:] == "":
+                    elif con[0] == "install":
+                        if con[1] == "":
                             print("Usage: install <local_path>")
                         else:
-                            if os.path.exists(con[8:]):
-                                ext = os.path.splitext(con[8:])
-                                if os.path.isdir(con[8:]):
-                                    print(E+"Error: "+con[8:]+": not a file!")
+                            if os.path.exists(con[1]):
+                                ext = os.path.splitext(con[1])
+                                if os.path.isdir(con[1]):
+                                    print(E+"Error: "+con[1]+": not a file!")
                                 else:
                                     if ext[1] == ".apk":
-                                        print(G+"Installing "+con[8:]+"...")
-                                        os.system("chmod +x core/apps/install.sh && core/apps/install.sh "+con[8:])
+                                        print(G+"Installing "+con[1]+"...")
+                                        os.system("chmod +x core/apps/install.sh && core/apps/install.sh "+con[1])
                                         print(S+"Succcessfully installed!")
                                     else:
-                                        print(E+"Local file: "+con[8:]+": not an apk file!")
+                                        print(E+"Local file: "+con[1]+": not an apk file!")
                             else:
-                                print(E+"Local file: "+con[8:]+": does not exist!")
-                    elif con[:8] == "download":
+                                print(E+"Local file: "+con[1]+": does not exist!")
+                    elif con[0] == "download":
                         if len(con) < 3:
                             print("Usage: download <remote_path> <local_path>")
                         else:
@@ -401,7 +401,7 @@ def main():
                                             print(E+"Local directory: "+rp+": does not exist!")
                             else:
                                 print(E+"Remote file: "+con[1]+": does not exist!")
-                    elif con[:6] == "upload":
+                    elif con[0] == "upload":
                         if len(con) < 3:
                             print("Usage: upload <local_path> <remote_path>")
                         else:
