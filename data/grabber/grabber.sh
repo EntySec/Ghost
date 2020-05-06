@@ -42,14 +42,16 @@ elif [[ "$1" = "-w" ]]; then
         {
         adb shell su 0 'cp /data/misc/wifi/wpa_supplicant.conf /sdcard/'
         adb pull /sdcard/wpa_supplicant.conf $2
+        adb shell rm /sdcard/wpa_supplicant.conf
         } &> /dev/null
     fi
     exit
 
 elif [[ "$1" = "-s" ]]; then
     {
-    adb shell screencap /sdcard/screen.png > /dev/null
+    adb shell screencap /sdcard/screen.png
     adb pull /sdcard/screen.png $2
+    adb shell rm /sdcard/screen.png
     } &> /dev/null
     exit
    
@@ -57,6 +59,7 @@ elif [[ "$1" = "-r" ]]; then
     {
     adb shell screenrecord /sdcard/screen.mp4
     adb pull /sdcard/screen.mp4 $2
+    adb shell rm /sdcard/screen.mp4
     } &> /dev/null
     exit
 fi
