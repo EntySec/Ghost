@@ -74,7 +74,7 @@ def main():
             os.system("cat data/cmds/core_cmds.txt")
             print("")
         elif ui[0] == "connect":
-            if ui[1] == "":
+            if len(ui) < 2:
                 print("Usage: connect <device>")
             else:
                 print(G+"Connecting to "+ui[1]+"...")
@@ -160,7 +160,7 @@ def main():
                     elif con[0] == "keycodes":
                         os.system("cat data/keycode/keycodes.txt")
                     elif con[0] == "keycode":
-                        if con[1] == "":
+                        if len(con) < 2:
                             print("Usage: keycode <keycode_number>")
                         else:
                             nums = open("substrate/keynums.txt").read()
@@ -324,7 +324,7 @@ def main():
                             g = os.environ['HOME']
                             os.chdir(g + "/ghost")
                     elif con[0] == "uninstall":
-                        if con[1] == "":
+                        if len(con) < 2:
                             print("Usage: uninstall <application>")
                         else:
                             apps = os.popen("adb shell pm list packages -f | grep package:").read()
@@ -342,7 +342,7 @@ def main():
                             else:
                                 print(E+"Application is not found!")
                     elif con[0] == "launch":
-                        if con[1] == "":
+                        if len(con) < 2:
                             print("Usage: launch <application>")
                         else:
                             apps = os.popen("adb shell pm list packages -f | grep package:").read()
@@ -364,7 +364,7 @@ def main():
                         for i in apps:
                             print(i)
                     elif con[0] == "install":
-                        if con[1] == "":
+                        if len(con) < 2:
                             print("Usage: install <local_path>")
                         else:
                             w = os.environ['OLDPWD']
