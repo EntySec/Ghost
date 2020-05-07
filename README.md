@@ -39,10 +39,6 @@ gives you the power and convenience of remote Android device administration.
 
 # Getting started
 
-## Prerequisite
-
-> Install ADB
-
 ## Ghost installation
 
 > cd ghost

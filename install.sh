@@ -82,6 +82,7 @@ apt-get update
 apt-get -y install git
 apt-get -y install python3
 apt-get -y install adb
+apt-get -y install android-tools-adb
 apk update
 apk add git
 apk add python3
