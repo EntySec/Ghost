@@ -90,9 +90,9 @@ def main():
                 con = input('\033[4mghost\033[0m(\033[1;31m'+device+'\033[0m)> ').strip(" ")
                 con = con.split()
                 while True:
-                    elif con == []:
+                    if con == []:
                         pass
-                    if con[0] == "exit":
+                    elif con[0] == "exit":
                         os.system("adb disconnect > /dev/null")
                         os.system("adb kill-server > /dev/null")
                         sys.exit()
