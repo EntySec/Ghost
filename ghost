@@ -55,7 +55,9 @@ def main():
     ui = input('\033[4mghost\033[0m> ').strip(" ")
     ui = ui.split()
     while True:
-        if ui[0] == "exit":
+        if ui == []:
+            pass
+        elif ui[0] == "exit":
             os.system("adb disconnect > /dev/null")
             os.system("adb kill-server > /dev/null")
             sys.exit()
@@ -63,8 +65,6 @@ def main():
             print(E+"Not connected to target device!")
         elif ui[0] == "clear":
             os.system("clear")
-        elif ui == "":
-            pass
         elif ui[0] == "update":
             os.system("chmod +x etc/update.sh && etc/update.sh")
         elif ui[0] == "help":
@@ -90,6 +90,8 @@ def main():
                 con = input('\033[4mghost\033[0m(\033[1;31m'+device+'\033[0m)> ').strip(" ")
                 con = con.split()
                 while True:
+                    elif con == []:
+                        pass
                     if con[0] == "exit":
                         os.system("adb disconnect > /dev/null")
                         os.system("adb kill-server > /dev/null")
@@ -99,8 +101,6 @@ def main():
                         break
                     elif con[0] == "clear":
                         os.system("clear")
-                    elif con == "":
-                        pass
                     elif con[0] == "update":
                         os.system("chmod +x etc/update.sh && etc/update.sh")
                     elif con[0] == "help":
