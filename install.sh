@@ -53,6 +53,25 @@ then
    exit
 fi
 
+{
+pkg update
+pkg -y install git
+apt-get update
+apt-get -y install git
+apk update
+apk add git
+pacman -Sy
+pacman -S --noconfirm git
+zypper refresh
+zypper install -y git
+yum -y install git
+dnf -y install git
+eopkg update-repo
+eopkg -y install git
+xbps-install -S
+xbps-install -y git
+} &> /dev/null
+
 if [[ -d ~/ghost ]]
 then
 sleep 0
