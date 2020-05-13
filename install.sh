@@ -53,38 +53,9 @@ then
    exit
 fi
 
-{
-pkg update
-pkg -y install git
-apt-get update
-apt-get -y install git
-apk update
-apk add git
-pacman -Sy
-pacman -S --noconfirm git
-zypper refresh
-zypper install -y git
-yum -y install git
-dnf -y install git
-eopkg update-repo
-eopkg -y install git
-xbps-install -S
-xbps-install -y git
-} &> /dev/null
-
-if [[ -d ~/ghost ]]
-then
-sleep 0
-else
-cd ~
-{
-git clone https://github.com/entynetproject/ghost.git
-} &> /dev/null
-fi
 sleep 0.5
 clear
 sleep 0.5
-cd ~/ghost
 cat banner/banner.txt
 echo
 
@@ -129,8 +100,18 @@ xbps-install -y python3
 xbps-install -y android-tools
 } &> /dev/null
 
+if [[ -d ~/ghost ]]
+then
+sleep 0
+else
+cd ~
 {
-cd ~/ghost/bin
+git clone https://github.com/entynetproject/ghost.git
+} &> /dev/null
+fi
+
+{
+cd bin
 cp ghost /usr/local/bin
 chmod +x /usr/local/bin/ghost
 cp ghost /bin
