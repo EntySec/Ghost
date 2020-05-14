@@ -45,7 +45,7 @@ ASESR="$(ping -c 1 -q www.google.com >&/dev/null; echo $?)"
 } &> /dev/null
 if [[ "$ASESR" != 0 ]]
 then 
-   echo -e ""$RS"[-] "$WHS"No Internet connection!"$CE""
+   echo -e ""$RS"[-]"$CE" No Internet connection!"$CE""
    exit
 fi
 
@@ -104,6 +104,14 @@ cd ~
 {
 git clone https://github.com/entynetproject/ghost.git
 } &> /dev/null
+fi
+
+if [[ -d ~/ghost ]]
+then
+cd ~/ghost
+else
+echo -e ""$RS"[-]"$CE" Installation failed!"$CE""
+exit
 fi
 
 {
