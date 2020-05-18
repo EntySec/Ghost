@@ -78,11 +78,11 @@ It is easy to understand and it will be easier
 for you to master the Ghost Framework.
 ```
 
-* Device password removal.
+* Device passcode removal.
 
 ```
-Ghost Framework can be used to remove the remote 
-Android device password if it was forgotten.
+Ghost Framework can be used to remotely remove the 
+passcode of an Android device if it has been forgotten.
 ```
 
 * Device shell access.
