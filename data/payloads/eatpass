@@ -29,7 +29,7 @@ if [[ $chr = "" ]]
 then
 echo -e ""$E"Target device is not rooted!"
 else
-echo -e ""$G"Removing device password..."
+echo -e ""$G"Removing device passcode..."
 sleep 0.5
 echo -e ""$G"Removing /data/system/gesture.key..."
 {
@@ -47,5 +47,5 @@ echo -e ""$G"Removing /data/system/locksettings.db-shm..."
 {
 adb shell su 0 'rm /data/system/locksettings.db-shm' 
 } &> /dev/null
-echo -e ""$G"Device password successfully removed!"
+echo -e ""$G"Device passcode successfully removed!"
 fi
