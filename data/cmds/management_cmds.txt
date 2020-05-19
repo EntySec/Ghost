@@ -2,6 +2,8 @@
     Command        Description
     -------        -----------
     eatpass        Remove device passcode.
+    install        Install an apk.
     keyboard       Control device keyboard.
+    launch         Launch an application.
     shell          Open device shell.
     upload         Upload local file.
