@@ -311,6 +311,7 @@ def main():
                             for i in apps:
                                 if con[1] == i:
                                     turn = 1
+                                    break
                                 else:
                                     turn = 0
                             if turn == 1:
@@ -329,6 +330,7 @@ def main():
                             for i in apps:
                                 if con[1] == i:
                                     turn = 1
+                                    break
                                 else:
                                     turn = 0
                             if turn == 1:
