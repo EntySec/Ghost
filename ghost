@@ -157,6 +157,7 @@ def main():
                             for i in nums:
                                 if con[1] == i:
                                     task = 1
+                                    return
                                 else:
                                     task = 0
                             if task == 1:
