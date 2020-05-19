@@ -6,4 +6,5 @@
     keyboard       Control device keyboard.
     launch         Launch an application.
     shell          Open device shell.
+    uninstall      Uninstall an application.
     upload         Upload local file.
