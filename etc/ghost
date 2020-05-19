@@ -154,12 +154,10 @@ def main():
                             print("Usage: keycode <keycode_number>")
                         else:
                             nums = open("substrate/keynums.txt").read()
+                            task = 0
                             for i in nums:
                                 if con[1] == i:
                                     task = 1
-                                    break
-                                else:
-                                    task = 0
                             if task == 1:
                                 os.system("chmod +x data/kaycode/keycode.sh && data/keycode/keycode.sh "+con[1])
                             else:
@@ -321,12 +319,10 @@ def main():
                             apps = os.popen("adb shell pm list packages -f | grep package:").read()
                             cache = apps.split("\n")
                             apps = [i[i.index("=")+1:] for i in cache if "=" in i]
+                            turn = 0
                             for i in apps:
                                 if con[1] == i:
                                     turn = 1
-                                    break
-                                else:
-                                    turn = 0
                             if turn == 1:
                                 print(G+"Uninstalling "+con[1]+"...")
                                 os.system("chmod +x core/apps/uninstall.sh && core/apps/uninstall.sh "+con[1])
@@ -340,12 +336,10 @@ def main():
                             apps = os.popen("adb shell pm list packages -f | grep package:").read()
                             cache = apps.split("\n")
                             apps = [i[i.index("=")+1:] for i in cache if "=" in i]
+                            turn = 0
                             for i in apps:
                                 if con[1] == i:
                                     turn = 1
-                                    break
-                                else:
-                                    turn = 0
                             if turn == 1:
                                 os.system("chmod +x core/apps/launch.sh && core/apps/launch.sh "+con[1])
                             else:
