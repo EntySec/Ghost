@@ -157,6 +157,7 @@ def main():
                             for i in nums:
                                 if con[1] == i:
                                     task = 1
+                                    break
                                 else:
                                     task = 0
                             if task == 1:
@@ -323,6 +324,7 @@ def main():
                             for i in apps:
                                 if con[1] == i:
                                     turn = 1
+                                    break
                                 else:
                                     turn = 0
                             if turn == 1:
@@ -341,6 +343,7 @@ def main():
                             for i in apps:
                                 if con[1] == i:
                                     turn = 1
+                                    break
                                 else:
                                     turn = 0
                             if turn == 1:
