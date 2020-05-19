@@ -6,8 +6,6 @@
     battery        Show battery status.
     debug          Debug device.
     inet           Show inet status.
-    install        Install an apk.
-    launch         Launch an application.
     netstat        Show network status.
     sysinfo        Show system information.
     uninstall      Uninstall an application.
