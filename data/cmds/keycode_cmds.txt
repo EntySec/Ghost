@@ -1,5 +1,2 @@
 
-    Command        Description
-    -------        -----------
-    keycode        Use device keycode.
-    keycodes       List device keycodes.
+
