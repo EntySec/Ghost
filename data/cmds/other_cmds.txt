@@ -1,5 +1,0 @@
-
-    Command        Description
-    -------        -----------
-    shell          Open device shell.
-    sush           Open device root shell.
