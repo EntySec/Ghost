@@ -1,4 +1,6 @@
 
     Command        Description
     -------        -----------
+    eatpass        Remove device passcode.
     keyboard       Control device keyboard.
+    upload         Upload local file.
