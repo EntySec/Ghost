@@ -115,7 +115,7 @@ def main():
                         print("")
                         print("Managing Commands")
                         print("=================")
-                        os.system("cat data/cmds/management_cmds.txt")
+                        os.system("cat data/cmds/managing_cmds.txt")
                         print("")
                         print("Stealing Commands")
                         print("=================")
