@@ -26,7 +26,7 @@ E="\033[1;31m[-] \033[0m"
 
 if [[ $EUID -ne 0 ]]
 then
-   echo -e ""$R"This script must be run as root!"
+   echo -e ""$E"This script must be run as root!"
    exit
 fi
 
