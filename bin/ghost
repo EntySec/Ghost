@@ -47,9 +47,9 @@ fi
 } &> /dev/null
 else
 {
-ASESR="$( curl -s checkip.dyndns.org | sed -e 's/.*Current IP Address: //' -e 's/<.*$//' )"
+ASESR="$(ping -c 1 -q www.google.com >&/dev/null; echo $?)"
 } &> /dev/null
-if [[ "$ASESR" != "" ]]
+if [[ "$ASESR" = 0 ]]
 then 
 cd ~
 {
