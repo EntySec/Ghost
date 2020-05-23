@@ -18,9 +18,6 @@
 #        You should have received a copy of the GNU General Public License
 #        along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-G="\033[1;34m[*] \033[0m"
-E="\033[1;31m[-] \033[0m"
-
 if [[ "$1" = "" ]] 
 then
     echo -e "Usage: server.sh [start|stop]"
