@@ -22,6 +22,7 @@ G="\033[1;34m[*] \033[0m"
 E="\033[1;31m[-] \033[0m"
 
 {
+adb disconnect
 adb kill-server
 adb start-server
 } &> /dev/null
