@@ -79,7 +79,7 @@ def main():
             else:
                 target = ui[1].split(':')[0]
                 print(G+"Connecting to "+target+"...")
-                os.system("adb connect "+target+" > /dev/null")
+                os.system("chmod +x core/dctl.sh && core/dctl.sh connect "+target+"")
                 str = os.popen("adb devices | grep "+target+"").read()
                 if str == "":
                     print(E+"Failed to connect to "+target+"!")
