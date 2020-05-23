@@ -21,8 +21,22 @@
 G="\033[1;34m[*] \033[0m"
 E="\033[1;31m[-] \033[0m"
 
-{
-adb disconnect
-adb kill-server
-adb start-server
-} &> /dev/null
+if [[ "$1" = "" ]] 
+then
+    echo -e "Usage: server.sh [start|stop]"
+else
+    if [[ "$1" = "start" ]]
+    then
+        {
+        adb start-server
+        } &> /dev/null
+    elif [[ "$1" = "stop" ]]
+    then
+        {
+        adb disconnect
+        adb kill-server
+        } &> /dev/null
+    else
+        echo -e "Usage: server.sh [start|stop]"
+    fi
+fi
