@@ -41,7 +41,8 @@ def start_server():
         print(E+"Failed to start Ghost Server!")
         sys.exit()
     else:
-        os.system("chmod +x core/server.sh && core/server.sh")
+        os.system("chmod +x core/server.sh && core/server.sh stop")
+        os.system("chmod +x core/server.sh && core/server.sh start")
 
 def banner():
     os.system("clear")
@@ -58,8 +59,7 @@ def main():
         if ui == []:
             pass
         elif ui[0] == "exit":
-            os.system("adb disconnect > /dev/null")
-            os.system("adb kill-server > /dev/null")
+            os.system("chmod +x core/server.sh && core/server.sh stop")
             sys.exit()
         elif ui[0] == "disconnect":
             print(E+"Not connected to target device!")
@@ -94,11 +94,10 @@ def main():
                     if con == []:
                         pass
                     elif con[0] == "exit":
-                        os.system("adb disconnect > /dev/null")
-                        os.system("adb kill-server > /dev/null")
+                        os.system("chmod +x core/server.sh && core/server.sh stop")
                         sys.exit()
                     elif con[0] == "disconnect":
-                        os.system("adb disconnect > /dev/null")
+                        os.system("chmod +x core/dctl.sh && core/dctl.sh disconnect "+target+"")
                         break
                     elif con[0] == "clear":
                         os.system("clear")
