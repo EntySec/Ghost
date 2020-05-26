@@ -7,6 +7,8 @@
     keycode        Use device keycode.
     keycodes       List device keycodes.
     launch         Launch an application.
+    screenrec      Record device screen.
+    screenshot     Take device screenshot.
     shell          Open device shell.
     uninstall      Uninstall an application.
     upload         Upload local file.
