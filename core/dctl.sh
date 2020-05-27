@@ -30,6 +30,7 @@ else
         else
             {
             adb connect $2
+            sleep 1
             } &> /dev/null
         fi
     elif [[ "$1" = "disconnect" ]]
