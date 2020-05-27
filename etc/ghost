@@ -79,19 +79,19 @@ def main():
             else:
                 target = ui[1].split(':')[0]
                 print(G+"Connecting to "+target+"...")
-                os.system("chmod +x core/dctl.sh && core/dctl.sh connect "+target+"")
-                is_connected = os.popen("adb devices | grep "+target+"").read()
+                os.system("chmod +x core/dctl.sh && core/dctl.sh connect "+target)
+                is_connected = os.popen("adb devices | grep "+target).read()
                 is_offline = os.popen("adb devices | grep offline").read()
                 if is_connected == "":
                     print(E+"Failed to connect to "+target+"!")
-                    os.system("chmod +x core/dctl.sh && core/dctl.sh disconnect "+target+"")
+                    os.system("chmod +x core/dctl.sh && core/dctl.sh disconnect "+target)
                     main()  
                 else:
                     if is_offline == "":
                         pass
                     else:
                         print(E+"Failed to connect to "+target+"!")
-                        os.system("chmod +x core/dctl.sh && core/dctl.sh disconnect "+target+"")
+                        os.system("chmod +x core/dctl.sh && core/dctl.sh disconnect "+target)
                         main()
                 time.sleep(0.5)
                 print(G+"Sending payload to "+target+"...")
@@ -106,7 +106,7 @@ def main():
                         os.system("chmod +x core/server.sh && core/server.sh stop")
                         sys.exit()
                     elif con[0] == "disconnect":
-                        os.system("chmod +x core/dctl.sh && core/dctl.sh disconnect "+target+"")
+                        os.system("chmod +x core/dctl.sh && core/dctl.sh disconnect "+target)
                         break
                     elif con[0] == "clear":
                         os.system("clear")
