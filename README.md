@@ -40,20 +40,23 @@ gives you the power and convenience of remote Android device administration.
 # Getting started
 
 ## Ghost installation
+```bash
+$ git clone https://github.com/entynetproject/ghost.git
+$ cd ghost
+$ chmod +x install.sh
+$ ./install.sh
 
-> cd ghost
-
-> chmod +x install.sh
-
-> ./install.sh
+```
 
 ## Ghost uninstallation
 
-> cd ghost
+```bash
+$ cd ghost
 
-> chmod +x uninstall.sh
+$ chmod +x uninstall.sh
 
-> ./uninstall.sh
+$ ./uninstall.sh
+```
 
 ***
 
