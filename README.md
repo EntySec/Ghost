@@ -60,8 +60,8 @@ gives you the power and convenience of remote Android device administration.
 # Ghost Framework execution
 
 ```
-To execute Ghost Framework you
-should execute the following command.
+To run Ghost Framework you should 
+execute the following command.
 ```
 
 > ghost
