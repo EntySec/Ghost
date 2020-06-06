@@ -26,7 +26,7 @@ E="\033[1;31m[-] \033[0m"
 
 if [[ $(id -u) != 0 ]]
 then
-   echo -e ""$E"This script must be run as root!"
+   echo -e ""$E"Permission denied!"
    exit
 fi
 
