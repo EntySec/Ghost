@@ -66,6 +66,11 @@ mv etc/ghost ~/ghost
 cp etc/.disabled/ghost etc
 rm -rf etc/.disabled
 } &> /dev/null
+if [[ ! -d ~/ghost ]]
+then
+   echo -e ""$E"Execution failed!"
+   exit
+fi
 chmod +x ghost
 ./ghost
 {
