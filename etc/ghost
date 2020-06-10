@@ -27,6 +27,7 @@ import subprocess
 import readline
 import time
 
+I = '\033[1;77m[i] \033[0m'
 Q = '\033[1;77m[?] \033[0m'
 G = '\033[1;34m[*] \033[0m'
 S = '\033[1;32m[+] \033[0m'
@@ -206,11 +207,11 @@ def main():
                                         if con[1][-1] == "/":
                                             print(G+"Saving to "+con[1]+"wpa_supplicant.conf...")
                                             time.sleep(1)
-                                            print(S+"Saved to "+con[1]+"wpa_supplicant.conf!")
+                                            print(I+"Saved to "+con[1]+"wpa_supplicant.conf.")
                                         else:
                                             print(G+"Saving to "+con[1]+"/wpa_supplicant.conf...")
                                             time.sleep(1)
-                                            print(S+"Saved to "+con[1]+"/wpa_supplicant.conf!")
+                                            print(I+"Saved to "+con[1]+"/wpa_supplicant.conf.")
                                     else:
                                         print(E+"Target device is not rooted!")
                                 else:
@@ -230,7 +231,7 @@ def main():
                                             os.system("chmod +x ~/ghost/data/grabber/grabber.sh && ~/ghost/data/grabber/grabber.sh -w "+con[1])
                                             print(G+"Saving to "+con[1]+"...")
                                             time.sleep(1)
-                                            print(S+"Saved to "+con[1]+"!")
+                                            print(I+"Saved to "+con[1]+".")
                                         else:
                                             print(E+"Target device is not rooted!")
                                     else:
@@ -252,11 +253,11 @@ def main():
                                     if con[1][-1] == "/":
                                         print(G+"Saving to "+con[1]+"screen.png...")
                                         time.sleep(1)
-                                        print(S+"Saved to "+con[1]+"screen.png!")
+                                        print(I+"Saved to "+con[1]+"screen.png.")
                                     else:
                                         print(G+"Saving to "+con[1]+"/screen.png...")
                                         time.sleep(1)
-                                        print(S+"Saved to "+con[1]+"/screen.png!")
+                                        print(I+"Saved to "+con[1]+"/screen.png.")
                                 else:
                                     print(E+"Local directory: "+con[1]+": does not exist!")
                             else:
@@ -272,7 +273,7 @@ def main():
                                         os.system("chmod +x ~/ghost/data/grabber/grabber.sh && ~/ghost/data/grabber/grabber.sh -s "+con[1])
                                         print(G+"Saving to "+con[1]+"...")
                                         time.sleep(1)
-                                        print(S+"Saved to "+con[1]+"!")
+                                        print(I+"Saved to "+con[1]+".")
                                     else:
                                         print(E+"Error: "+rp+": not a directory!")
                                 else:
@@ -293,11 +294,11 @@ def main():
                                     if con[1][-1] == "/":
                                         print(G+"Saving to "+con[1]+"screen.mp4...")
                                         time.sleep(1)
-                                        print(S+"Saved to "+con[1]+"screen.mp4!")
+                                        print(I+"Saved to "+con[1]+"screen.mp4.")
                                     else:
                                         print(G+"Saving to "+con[1]+"/screen.mp4...")
                                         time.sleep(1)
-                                        print(S+"Saved to "+con[1]+"/screen.mp4!")
+                                        print(I+"Saved to "+con[1]+"/screen.mp4.")
                                 else:
                                     print(E+"Local directory: "+con[1]+": does not exist!")
                             else:
@@ -314,7 +315,7 @@ def main():
                                         os.system("chmod +x ~/ghost/data/grabber/grabber.sh && ~/ghost/data/grabber/grabber.sh -r "+con[1])
                                         print(G+"Saving to "+con[1]+"...")
                                         time.sleep(1)
-                                        print(S+"Saved to "+con[1]+"!")
+                                        print(I+"Saved to "+con[1]+".")
                                     else:
                                         print(E+"Error: "+rp+": not a directory!")
                                 else:

@@ -21,6 +21,7 @@
 G="\033[1;34m[*] \033[0m"
 E="\033[1;31m[-] \033[0m"
 S="\033[1;32m[+] \033[0m"
+I="\033[1;77m[i] \033[0m"
 
 if [[ "$1" = "" ]]; then
     echo "Usage: download {hidden}"
@@ -77,16 +78,16 @@ else
                 if [[ "${ci[@]: (-1)}" = "/" ]]; then
                     echo -e ""$G"Saving to "$2""$3"..."
                     sleep 1
-                    echo -e ""$S"Saved to "$2""$3"!"
+                    echo -e ""$I"Saved to "$2""$3"."
                 else
                     echo -e ""$G"Saving to "$2"/"$3"..."
                     sleep 1
-                    echo -e ""$S"Saved to "$2"/"$3"!"
+                    echo -e ""$I"Saved to "$2"/"$3"."
                 fi
             else
                 echo -e ""$G"Saving to "$2"..."
                 sleep 1
-                echo -e ""$S"Saved to "$2"!"
+                echo -e ""$I"Saved to "$2"."
             fi
         fi
     fi
