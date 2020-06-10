@@ -82,8 +82,7 @@ rm -rf etc/.disabled
 fi
 } &> /dev/null
 else
-cd ~
-sleep 1
+echo -e ""$E"No Internet connection!"
 exit
 fi
 fi
