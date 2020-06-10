@@ -249,15 +249,15 @@ def main():
                             if os.path.isdir(con[1]):
                                 if os.path.exists(con[1]):
                                     print(G+"Taking screenshot...")
-                                    os.system("chmod +x ~/ghost/data/grabber/grabber.sh && ~/ghost/data/grabber/grabber.sh -s "+con[1]+"/screen.png")
+                                    os.system("chmod +x ~/ghost/data/grabber/grabber.sh && ~/ghost/data/grabber/grabber.sh -s "+con[1]+"/screenshot.png")
                                     if con[1][-1] == "/":
-                                        print(G+"Saving to "+con[1]+"screen.png...")
+                                        print(G+"Saving to "+con[1]+"screenshot.png...")
                                         time.sleep(1)
-                                        print(I+"Saved to "+con[1]+"screen.png.")
+                                        print(I+"Saved to "+con[1]+"screenshot.png.")
                                     else:
-                                        print(G+"Saving to "+con[1]+"/screen.png...")
+                                        print(G+"Saving to "+con[1]+"/screenshot.png...")
                                         time.sleep(1)
-                                        print(I+"Saved to "+con[1]+"/screen.png.")
+                                        print(I+"Saved to "+con[1]+"/screenshot.png.")
                                 else:
                                     print(E+"Local directory: "+con[1]+": does not exist!")
                             else:
