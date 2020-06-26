@@ -78,16 +78,16 @@ else
                 if [[ "${ci[@]: (-1)}" = "/" ]]; then
                     echo -e ""$G"Saving to "$2""$3"..."
                     sleep 1
-                    echo -e ""$I"Saved to "$2""$3"."
+                    echo -e ""$S"Saved to "$2""$3"!"
                 else
                     echo -e ""$G"Saving to "$2"/"$3"..."
                     sleep 1
-                    echo -e ""$I"Saved to "$2"/"$3"."
+                    echo -e ""$S"Saved to "$2"/"$3"!"
                 fi
             else
                 echo -e ""$G"Saving to "$2"..."
                 sleep 1
-                echo -e ""$I"Saved to "$2"."
+                echo -e ""$S"Saved to "$2"!"
             fi
         fi
     fi

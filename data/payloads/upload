@@ -84,11 +84,11 @@ fi
                 if [[ "${ci[@]: (-1)}" = "/" ]]; then
                     echo -e ""$G"Saving to "$2""$3"..."
                     sleep 1
-                    echo -e ""$I"Saved to "$2""$3"."
+                    echo -e ""$S"Saved to "$2""$3"!"
                 else
                     echo -e ""$G"Saving to "$2"/"$3"..."
                     sleep 1
-                    echo -e ""$I"Saved to "$2"/"$3"."
+                    echo -e ""$S"Saved to "$2"/"$3"!"
                 fi
             else
                 echo -e ""$E"Remote directory: "$remote_all": does not exist!"
@@ -108,7 +108,7 @@ fi
                 } &> /dev/null
                 echo -e ""$G"Saving to "$2"..."
                 sleep 1
-                echo -e ""$I"Saved to "$2"."
+                echo -e ""$S"Saved to "$2"!"
             else
                 echo -e ""$E"Remote directory: "$remote_dir": does not exist!"
             fi
