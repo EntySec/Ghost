@@ -1,0 +1,2 @@
+gnureadline==8.0.0
+readline==6.2.4.1
