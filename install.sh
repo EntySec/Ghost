@@ -116,8 +116,12 @@ exit
 fi
 
 {
-python3 -m pip install setuptools
-python3 -m pip install -r requirements.txt
+if [[ "$OSTYPE" == "linux-gnu"* ]]; then
+pip3 uninstall readline
+pip3 install gnureadline
+elif [[ "$OSTYPE" == "darwin"* ]]; then
+pip3 install readline
+fi
 } &> /dev/null
 
 {
