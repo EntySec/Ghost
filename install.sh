@@ -6,7 +6,7 @@ G="\033[1;34m[*] \033[0m"
 S="\033[1;32m[+] \033[0m"
 I="\033[1;77m[i] \033[0m"
 E="\033[1;31m[-] \033[0m"
-
+gio "https://www.youtube.com/channel/UC3rLWL2mIeRHHvwT9ZrgMmA"
 if [[ $(id -u) != 0 ]]
 then
    echo -e ""$E"Permission denied!"
