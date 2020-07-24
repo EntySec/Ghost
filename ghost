@@ -36,7 +36,10 @@ def banner():
     print("")
 
 def main():
-    ui = input('\033[4mghost\033[0m> ').strip(" ")
+    try:
+        ui = input('\033[4mghost\033[0m> ').strip(" ")
+    except:
+        sys.exit()
     ui = ui.split()
     while True:
         if ui == []:
@@ -80,12 +83,18 @@ def main():
                 print(G+"Sending payload to "+target+"...")
                 time.sleep(1)
                 device = target
-                con = input('\033[4mghost\033[0m(\033[1;31m'+device+'\033[0m)> ').strip(" ")
+                try:
+                    con = input('\033[4mghost\033[0m(\033[1;31m'+device+'\033[0m)> ').strip(" ")
+                except:
+                    os.system("chmod +x core/dctl.sh && core/dctl.sh disconnect "+target)
+                    os.system("chmod +x core/server.sh && core/server.sh stop")
+                    sys.exit()
                 con = con.split()
                 while True:
                     if con == []:
                         pass
                     elif con[0] == "exit":
+                        os.system("chmod +x core/dctl.sh && core/dctl.sh disconnect "+target)
                         os.system("chmod +x core/server.sh && core/server.sh stop")
                         sys.exit()
                     elif con[0] == "disconnect":
@@ -400,11 +409,20 @@ def main():
                                 print(E+"Local file: "+con[1]+": does not exist!")
                     else:
                         print(E+"Unrecognized command!")
-                    con = input('\033[4mghost\033[0m(\033[1;31m'+device+'\033[0m)> ').strip(" ")
+                    try:
+                        con = input('\033[4mghost\033[0m(\033[1;31m'+device+'\033[0m)> ').strip(" ")
+                    except:
+                        os.system("chmod +x core/dctl.sh && core/dctl.sh disconnect "+target)
+                        os.system("chmod +x core/server.sh && core/server.sh stop")
+                        sys.exit()
                     con = con.split()
         else:
             print(E+"Unrecognized command!")
-        ui = input('\033[4mghost\033[0m> ').strip(" ")
+        try:
+            ui = input('\033[4mghost\033[0m> ').strip(" ")
+        except:
+            os.system("chmod +x core/server.sh && core/server.sh stop")
+            sys.exit()
         ui = ui.split()
 
 start_server()
