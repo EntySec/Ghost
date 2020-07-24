@@ -101,4 +101,4 @@ chmod +x /data/data/com.termux/files/usr/bin/ghost
 
 sleep 1
 echo -e ""$S"Successfully installed!"
-sleep 1
+sleep 0
