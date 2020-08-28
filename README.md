@@ -1,6 +1,6 @@
 # Ghost Framework
 
-![ghost](https://user-images.githubusercontent.com/54115104/74161285-c0339000-4c2f-11ea-8c8a-5673cc70a786.jpeg)
+<h3 align="center"><img src="https://user-images.githubusercontent.com/54115104/91619948-3c58af80-e997-11ea-8147-c2e841198945.png" alt="logo" height="250px"></h3>
 
 <p align="center">
   <a href="http://entynetproject.simplesite.com/">
