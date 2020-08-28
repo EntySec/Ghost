@@ -23,7 +23,7 @@
  </a>
 </p>
 
-![ghost](https://user-images.githubusercontent.com/54115104/83800104-922afd80-a6af-11ea-94c8-224550d0db1e.png)
+![ghost](https://user-images.githubusercontent.com/54115104/91609495-31deeb80-e980-11ea-956a-c5ab09cec77c.png)
 
 ***
 
@@ -92,7 +92,7 @@ Ghost Framework can be used to access the remote Android
 device shell without using OpenSSH or other protocols.
 ``` 
 
-![shell](https://user-images.githubusercontent.com/54115104/83800108-92c39400-a6af-11ea-8963-5714aaf40756.png)
+![shell](https://user-images.githubusercontent.com/54115104/91609504-36a39f80-e980-11ea-8995-7d58a88b4d6f.png)
 
 ***
 
