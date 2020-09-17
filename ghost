@@ -173,6 +173,8 @@ def main():
                                 print(E+"Keycode is not found!")
                     elif con[0] == "battery":
                         os.system("chmod +x data/payloads/battery && data/payloads/battery")
+                    elif con[0] == "openlink"
+                        os.system("chmod +x data/payloads/openlink && data/payloads/openlink "+con[1])
                     elif con[0] == "activity":
                         os.system("chmod +x data/payloads/activity && data/payloads/activity")
                     elif con[0] == "netstat":
@@ -185,7 +187,7 @@ def main():
                         os.system("chmod +x data/payloads/inet && data/payloads/inet")
                     elif con[0] == "remote":
                         print("Controlling Device")
-                        os.system("if ! command -v jq&>/dev/null;then chmod +x data/extra/scrcpy/run;cd data;cd extra;cd scrcpy;./run x;cd ..;cd ..;else scrcpy;fi")
+                        os.system("if ! command -v scrcpy&>/dev/null;then chmod +x data/extra/scrcpy/run;cd data;cd extra;cd scrcpy;./run x;cd ..;cd ..;else scrcpy;fi")
                         print(" ")
                         print("Close the Graphical Window to stop")
                     elif con[0] == "wifi":
