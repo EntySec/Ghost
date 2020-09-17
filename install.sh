@@ -54,6 +54,7 @@ pkg update
 pkg -y install git
 pkg -y install python
 pkg -y install android-tools
+pkg -y install scrcpy
 apt-get update
 apt-get -y install git
 apt-get -y install python3
@@ -63,28 +64,35 @@ apk update
 apk add git
 apk add python3
 apk add android-tools
+apk add scrcpy
 pacman -Sy
 pacman -S --noconfirm git
 pacman -S --noconfirm python3
 pacman -S --noconfirm android-tools
+pacman -S --noconfirm scrcpy
 zypper refresh
 zypper install -y git
 zypper install -y python3
 zypper install -y android-tools
+zypper install -y scrcpy
 yum -y install git
 yum -y install python3
 yum -y install android-tools
+yum -y install scrcpy
 dnf -y install git
 dnf -y install python3
 dnf -y install android-tools
+dnf -y install scrcpy
 eopkg update-repo
 eopkg -y install git
 eopkg -y install python3
 eopkg -y install android-tools
+eopkg -y install scrcpy
 xbps-install -S
 xbps-install -y git
 xbps-install -y python3
 xbps-install -y android-tools
+xbps-install -y scrcpy
 } &> /dev/null
 
 if [[ -d ~/ghost ]]
