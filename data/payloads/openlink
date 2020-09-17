@@ -23,6 +23,12 @@ if [[ -z $1 ]];then
 echo "Input a valid link/url"
 exit
 else
+
+if [[ "$1" == *"http"* ]]; then
 adb shell "am start -a android.intent.action.VIEW -d $1"
+else
+adb shell "am start -a android.intent.action.VIEW -d https://${1}"
 fi
+fi
+
 exit
