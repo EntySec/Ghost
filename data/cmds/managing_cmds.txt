@@ -13,3 +13,4 @@
     uninstall      Uninstall an application.
     upload         Upload local file.
     remote         Remotely Control device
+    openlink       To open a url on Target device.
