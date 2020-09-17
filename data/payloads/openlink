@@ -21,6 +21,7 @@
 
 if [[ -z $1 ]];then
 echo "Input a valid link/url"
+echo "Usage: openlink {url}"
 exit
 else
 
