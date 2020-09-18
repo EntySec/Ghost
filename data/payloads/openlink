@@ -29,6 +29,8 @@ adb shell "am start -a android.intent.action.VIEW -d $1"
 else
 adb shell "am start -a android.intent.action.VIEW -d https://${1}"
 fi
+
+
 fi
 
 exit
