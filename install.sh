@@ -24,9 +24,9 @@ G="\033[1;34m[*] \033[0m"
 S="\033[1;32m[+] \033[0m"
 E="\033[1;31m[-] \033[0m"
 
-if [[ $EUID -ne 0 ]]
+if [[ $(id -u) != 0 ]]
 then
-   echo -e ""$E"This script must be run as root!"
+   echo -e ""$E"Permission denied!"
    exit
 fi
 
