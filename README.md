@@ -1,3 +1,11 @@
+# `Ghost Framework v6.0 coming soon`
+
+* Bug fixes
+* More features
+* Screen control support
+
+# `Release date: 20/09/2020`
+
 # Ghost Framework
 
 <h3 align="center"><img src="https://user-images.githubusercontent.com/54115104/91632566-45bf3780-e9ea-11ea-9b85-1ee4f451ae39.png" alt="logo" height="250px"></h3>
