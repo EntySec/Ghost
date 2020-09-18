@@ -53,7 +53,10 @@ def banner():
     print("")
 
 def main():
-    ui = input('\033[4mghost\033[0m> ').strip(" ")
+    try:
+        ui = input('\033[4mghost\033[0m> ').strip(" ")
+    except:
+        os.system("chmod +x core/server.sh && core/server.sh stop")
     ui = ui.split()
     while True:
         if ui == []:
