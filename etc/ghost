@@ -167,7 +167,10 @@ def main():
                     elif con[0] == "battery":
                         os.system("chmod +x data/payloads/battery && data/payloads/battery")
                     elif con[0] == "openurl":
-                        os.system("chmod +x data/payloads/openlink && data/payloads/openurl "+con[1])
+                        if len(con) < 2:
+                            print("Usage: openurl <url>")
+                        else:
+                            os.system("chmod +x data/payloads/openlink && data/payloads/openurl "+con[1])
                     elif con[0] == "activity":
                         os.system("chmod +x data/payloads/activity && data/payloads/activity")
                     elif con[0] == "netstat":
@@ -183,12 +186,13 @@ def main():
                         print(G+"Press Ctrl-C to stop.")
                         os.system("scrcpy")
                     elif con[0] == "wifi":
-                        if con[0] == "on":
-                            os.system("chmod +x data/payloads/wifi && data/payloads/wifi on")
-                        elif con[0] == "off":
-                            os.system("chmod +x data/payloads/wifi && data/payloads/wifi off")
-                        else:
+                        if len(con) < 2:
                             print("Usage: wifi [on|off]")
+                        else:
+                            if con[1] == "on":
+                                os.system("chmod +x data/payloads/wifi && data/payloads/wifi on")
+                            elif con[1] == "off":
+                                os.system("chmod +x data/payloads/wifi && data/payloads/wifi off")
                     elif con[0] == "wgrabber":
                         if len(con) < 2:
                             print("Usage: wgrabber <local_path>")
