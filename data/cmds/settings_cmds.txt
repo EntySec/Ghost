@@ -1,7 +1,7 @@
 
     Command        Description
     -------        -----------
-    activity       Show user activity.
+    activity      Show user activity.
     apps           List all applications.
     battery        Show battery status.
     debug          Debug device.

