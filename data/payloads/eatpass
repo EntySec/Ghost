@@ -25,7 +25,7 @@ E="\033[1;31m[-] \033[0m"
 chr=$(adb shell which su)
 } &> /dev/null
 
-if [[ $chr = "" ]]
+if [[ -z $chr ]]
 then
 echo -e ""$E"Target device is not rooted!"
 else
