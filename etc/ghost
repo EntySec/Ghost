@@ -40,6 +40,7 @@ def main():
         ui = input('\033[4mghost\033[0m> ').strip(" ")
     except:
         os.system("chmod +x core/server.sh && core/server.sh stop")
+        sys.exit()
     ui = ui.split()
     while True:
         if ui == []:
@@ -175,6 +176,11 @@ def main():
                         os.system("chmod +x data/payloads/sysinfo && data/payloads/sysinfo")
                     elif con[0] == "inet":
                         os.system("chmod +x data/payloads/inet && data/payloads/inet")
+                    elif con[0] == "remote":
+                        print("Controlling Device")
+                        os.system("if ! command -v scrcpy&>/dev/null;then chmod +x data/extra/scrcpy/run;cd data;cd extra;cd scrcpy;./run x;cd ..;cd ..;else scrcpy;fi")
+                        print(" ")
+                        print("Close the Graphical Window to stop")
                     elif con[0] == "wifi":
                         if con[0] == "on":
                             os.system("chmod +x data/payloads/wifi && data/payloads/wifi on")
@@ -445,7 +451,7 @@ def main():
             ui = input('\033[4mghost\033[0m> ').strip(" ")
         except:
             os.system("chmod +x core/server.sh && core/server.sh stop")
-            sys.exit
+            sys.exit()
         ui = ui.split()
 
 start_server()
