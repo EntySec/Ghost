@@ -200,7 +200,7 @@ def main():
                     elif con[0] == "screen":
                         print(G+"Opening screen...")
                         print(G+"Press Ctrl-C to stop.")
-                        os.system("scrcpy")
+                        os.system("scrcpy &>/dev/null")
                     elif con[0] == "wifi":
                         if len(con) < 2:
                             print("Usage: wifi [on|off]")
