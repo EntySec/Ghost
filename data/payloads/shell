@@ -20,8 +20,6 @@
 
 G="\033[1;34m[*] \033[0m"
 
-echo -e ""$G"Connecting to device..."
-sleep 0.5
 echo -e ""$G"Opening device shell..."
 sleep 1
 adb shell

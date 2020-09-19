@@ -156,8 +156,8 @@ def main():
                     elif con[0] == "recovery":
                         os.system("chmod +x data/payloads/recovery && data/payloads/recovery")
                     elif con[0] == "keyboard":
-                        print("Press Ctrl-C to stop.")
-                        print("Device keyboard:")
+                        print(I+"Press Ctrl-C to stop.")
+                        print(I+"Device keyboard:")
                         try:
                             while True:
                                 text = input()
@@ -199,7 +199,7 @@ def main():
                         os.system("chmod +x data/payloads/inet && data/payloads/inet")
                     elif con[0] == "screen":
                         print(G+"Opening screen...")
-                        print(G+"Press Ctrl-C to stop.")
+                        print(I+"Press Ctrl-C to stop.")
                         os.system("scrcpy &>/dev/null")
                     elif con[0] == "wifi":
                         if len(con) < 2:
@@ -297,7 +297,7 @@ def main():
                             if os.path.isdir(con[1]):
                                 if os.path.exists(con[1]):
                                     print(G+"Recording screen...")
-                                    print(G+"Press Ctrl-C to stop.")
+                                    print(I+"Press Ctrl-C to stop.")
                                     os.system("chmod +x data/grabber/grabber.sh && data/grabber/grabber.sh -r "+con[1]+"/screen.mp4")
                                     if con[1][-1] == "/":
                                         print(G+"Saving to "+con[1]+"screen.mp4...")
@@ -319,7 +319,7 @@ def main():
                                     if os.path.isdir(rp):
                                         rp = os.path.split(con[1])[1]
                                         print(G+"Recording screen...")
-                                        print(G+"Press Ctrl-C to stop.")
+                                        print(I+"Press Ctrl-C to stop.")
                                         os.system("chmod +x data/grabber/grabber.sh && data/grabber/grabber.sh -r "+con[1])
                                         print(G+"Saving to "+con[1]+"...")
                                         time.sleep(1)
