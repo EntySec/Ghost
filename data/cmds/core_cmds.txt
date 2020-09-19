@@ -1,0 +1,9 @@
+
+    Command        Description
+    -------        -----------
+    clear          Clear terminal window.
+    connect        Connect to target device.
+    disconnect     Disconnect from target device.
+    exit           Exit Ghost Framework.
+    help           Show available commands.
+    update         Update Ghost Framework.

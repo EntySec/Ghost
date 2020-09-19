@@ -1,0 +1,33 @@
+#!/bin/bash
+
+G="\033[1;34m[*] \033[0m"
+E="\033[1;31m[-] \033[0m"
+
+{
+chr=$(adb shell which su)
+} &> /dev/null
+
+if [[ -z $chr ]]
+then
+echo -e ""$E"Target device is not rooted!"
+else
+echo -e ""$G"Removing device passcode..."
+sleep 0.5
+echo -e ""$G"Removing /data/system/gesture.key..."
+{
+adb shell su 0 'rm /data/system/gesture.key' 
+} &> /dev/null
+echo -e ""$G"Removing /data/system/locksettings.db..."
+{
+adb shell su 0 'rm /data/system/locksettings.db' 
+} &> /dev/null
+echo -e ""$G"Removing /data/system/locksettings.db-wal..."
+{
+adb shell su 0 'rm /data/system/locksettings.db-wal' 
+} &> dev/null
+echo -e ""$G"Removing /data/system/locksettings.db-shm..."
+{
+adb shell su 0 'rm /data/system/locksettings.db-shm' 
+} &> /dev/null
+echo -e ""$G"Device passcode successfully removed!"
+fi

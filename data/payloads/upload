@@ -1,0 +1,99 @@
+#!/bin/bash
+
+G="\033[1;34m[*] \033[0m"
+E="\033[1;31m[-] \033[0m"
+S="\033[1;32m[+] \033[0m"
+
+remote_dir=$4
+remote_file=$3
+remote_all=$2
+local_file=$5
+
+if [[ "$1" = "" ]]; then
+    echo "Usage: upload {hidden}"
+    echo
+    echo "Note: This file only for Ghost Framework, if you execute it without"
+    echo "Ghost Framework it will not work, this is only a part of main code."
+    exit
+fi
+
+if [[ "$2" = "" ]]; then
+    echo "Usage: upload {hidden}"
+    echo
+    echo "Note: This file only for Ghost Framework, if you execute it without"
+    echo "Ghost Framework it will not work, this is only a part of main code."
+    exit
+fi
+    
+if [[ "$3" = "" ]]; then
+    echo "Usage: upload {hidden}"
+    echo
+    echo "Note: This file only for Ghost Framework, if you execute it without"
+    echo "Ghost Framework it will not work, this is only a part of main code."
+    exit
+fi
+    
+if [[ "$4" = "" ]]; then
+    echo "Usage: upload {hidden}"
+    echo
+    echo "Note: This file only for Ghost Framework, if you execute it without"
+    echo "Ghost Framework it will not work, this is only a part of main code."
+    exit
+fi
+    
+    {
+    adb shell stat $remote_all
+    } &> .chk
+    {
+    chk="$(cat .chk)"
+    rm .chk
+    } &> /dev/null
+    {
+    dchk="$(adb shell """if [[ -d """$remote_all""" ]]
+    then
+    echo 0
+    fi""")"
+    } &> /dev/null
+    if [[ -f "$1" ]]; then
+        if [[ $dchk = "0" ]]; then
+            if [[ "${chk[@]: :4}" != "stat" ]]; then
+                echo -e ""$G"Uploading "$3"..."
+                {
+                adb push $1 $remote_all"/"$local_file
+                } &> /dev/null
+                ci=$2
+                if [[ "${ci[@]: (-1)}" = "/" ]]; then
+                    echo -e ""$G"Saving to "$2""$3"..."
+                    sleep 1
+                    echo -e ""$S"Saved to "$2""$3"!"
+                else
+                    echo -e ""$G"Saving to "$2"/"$3"..."
+                    sleep 1
+                    echo -e ""$S"Saved to "$2"/"$3"!"
+                fi
+            else
+                echo -e ""$E"Remote directory: "$remote_all": does not exist!"
+            fi
+        else
+            {
+            adb shell stat $remote_dir
+            } &> .schk
+            {
+            schk="$(cat .schk)"
+            rm .schk
+            } &> /dev/null
+            if [[ "${schk[@]: :4}" != "stat" ]]; then
+                echo -e ""$G"Uploading "$3"..."
+                {
+                adb push $1 $remote_all
+                } &> /dev/null
+                echo -e ""$G"Saving to "$2"..."
+                sleep 1
+                echo -e ""$S"Saved to "$2"!"
+            else
+                echo -e ""$E"Remote directory: "$remote_dir": does not exist!"
+            fi
+        fi
+    else
+        echo -e ""$E"Local file: "$1": does not exist!"
+    fi

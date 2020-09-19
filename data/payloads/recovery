@@ -1,0 +1,9 @@
+#!/bin/bash
+
+G="\033[1;34m[*] \033[0m"
+
+echo -e ""$G"Launching Recovery..."
+sleep 1
+{
+adb reboot recovery
+} &> /dev/null
