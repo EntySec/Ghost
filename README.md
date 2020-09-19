@@ -1,12 +1,16 @@
 # `Someone add Streaming Webcam option to Ghost please, I do not know how to do this`
 
+**what should be added:**
+
+* Streaming webcam (frontal)
+* Recording webcam (frontal)
+* Making photos (frontal)
+
 # `Ghost Framework v6.0 coming soon`
 
 * Bug fixes
 * More features
 * Screen control support
-
-# `Release date: 20/09/2020`
 
 # Ghost Framework
 
