@@ -1,3 +1,5 @@
+# `Someone add Streaming Webcam option to Ghost please, I do not know how to do this`
+
 # `Ghost Framework v6.0 coming soon`
 
 * Bug fixes
