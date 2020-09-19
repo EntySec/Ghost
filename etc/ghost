@@ -40,6 +40,7 @@ def main():
         ui = input('\033[4mghost\033[0m> ').strip(" ")
     except:
         os.system("chmod +x core/server.sh && core/server.sh stop")
+        sys.exit()
     ui = ui.split()
     while True:
         if ui == []:
@@ -165,6 +166,11 @@ def main():
                                 print(E+"Keycode is not found!")
                     elif con[0] == "battery":
                         os.system("chmod +x data/payloads/battery && data/payloads/battery")
+                    elif con[0] == "openurl":
+                        if len(con) < 2:
+                            print("Usage: openurl <url>")
+                        else:
+                            os.system("chmod +x data/payloads/openlink && data/payloads/openurl "+con[1])
                     elif con[0] == "activity":
                         os.system("chmod +x data/payloads/activity && data/payloads/activity")
                     elif con[0] == "netstat":
@@ -175,13 +181,18 @@ def main():
                         os.system("chmod +x data/payloads/sysinfo && data/payloads/sysinfo")
                     elif con[0] == "inet":
                         os.system("chmod +x data/payloads/inet && data/payloads/inet")
+                    elif con[0] == "screen":
+                        print(G+"Opening screen...")
+                        print(G+"Press Ctrl-C to stop.")
+                        os.system("scrcpy")
                     elif con[0] == "wifi":
-                        if con[0] == "on":
-                            os.system("chmod +x data/payloads/wifi && data/payloads/wifi on")
-                        elif con[0] == "off":
-                            os.system("chmod +x data/payloads/wifi && data/payloads/wifi off")
-                        else:
+                        if len(con) < 2:
                             print("Usage: wifi [on|off]")
+                        else:
+                            if con[1] == "on":
+                                os.system("chmod +x data/payloads/wifi && data/payloads/wifi on")
+                            elif con[1] == "off":
+                                os.system("chmod +x data/payloads/wifi && data/payloads/wifi off")
                     elif con[0] == "wgrabber":
                         if len(con) < 2:
                             print("Usage: wgrabber <local_path>")
@@ -445,7 +456,7 @@ def main():
             ui = input('\033[4mghost\033[0m> ').strip(" ")
         except:
             os.system("chmod +x core/server.sh && core/server.sh stop")
-            sys.exit
+            sys.exit()
         ui = ui.split()
 
 start_server()
