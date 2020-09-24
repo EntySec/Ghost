@@ -1,3 +1,5 @@
+#!/usr/bin/bash
+
 if [[ "$1" = "" ]]; then
     echo "Usage: screen {hidden}"
     echo
