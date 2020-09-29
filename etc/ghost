@@ -1,5 +1,8 @@
 #!/usr/bin/env python3
 
+
+from __future__ import print_function
+
 import os
 
 os.system("printf '\033]2;Ghost Framework\a'")
@@ -11,6 +14,72 @@ import sys
 import subprocess
 import readline
 import time
+
+
+from os import environ
+
+# Auto Complete input snippet
+
+class MyCompleter(object):
+
+    def __init__(self, options):
+        self.options = sorted(options)
+
+    def complete(self, text, state):
+        if state == 0:
+            if not text:
+                self.matches = self.options[:]
+            else:
+                self.matches = [s for s in self.options
+                                if s and s.startswith(text)]
+
+        try:
+            return self.matches[state]
+        except IndexError:
+            return None
+
+    def display_matches(self, substitution, matches, longest_match_length):
+        line_buffer = readline.get_line_buffer()
+        columns = environ.get("COLUMNS", 80)
+
+        print()
+
+        tpl = "{:<" + str(int(max(map(len, matches)) * 1.2)) + "}"
+
+        buffer = ""
+        for match in matches:
+            match = tpl.format(match[len(substitution):])
+            if len(buffer + match) > columns:
+                print(buffer)
+                buffer = ""
+            buffer += match
+
+        if buffer:
+            print(buffer)
+
+        print("> ", end="")
+        print(line_buffer, end="")
+        sys.stdout.flush()
+
+
+# Core Commands Autocomplete
+
+core = [
+    'clear',
+    'connect',
+    'disconnect',
+    'exit',
+    'help',
+    'update'
+    ]
+
+core = [x.split(' ')[0] for x in core]
+
+completer = MyCompleter(list(set(core)))
+readline.set_completer_delims(' \t\n;')
+readline.set_completer(completer.complete)
+readline.parse_and_bind('tab: complete')
+readline.set_completion_display_matches_hook(completer.display_matches)
 
 I = '\033[1;77m[i] \033[0m'
 Q = '\033[1;77m[?] \033[0m'
@@ -84,6 +153,52 @@ def main():
                         main()
                 time.sleep(0.5)
                 print(G+"Sending payload to "+target+"...")
+
+# Commands when connected to a device
+
+                commands = [
+                    'bootl',
+                    'reboot',
+                    'recovery',
+                    'eatpass',
+                    'install',
+                    'keyboard',
+                    'keycode',
+                    'keycodes',
+                    'launch',
+                    'openurl',
+                    'screen',
+                    'screenrec',
+                    'screenshot',
+                    'shell',
+                    'uninstall',
+                    'upload',
+                    'activity',
+                    'apps',
+                    'battery',
+                    'debug',
+                    'inet',
+                    'netstat',
+                    'sysinfo',
+                    'wifi',
+                    'download',
+                    'wgrabber',
+                    'clear',
+                    'connect',
+                    'disconnect',
+                    'exit',
+                    'help',
+                    'update'
+                    ]
+
+                commands = [x.split(' ')[0] for x in commands]
+
+                completer = MyCompleter(list(set(commands)))
+                readline.set_completer_delims(' \t\n;')
+                readline.set_completer(completer.complete)
+                readline.parse_and_bind('tab: complete')
+                readline.set_completion_display_matches_hook(completer.display_matches)
+                
                 time.sleep(1)
                 device = target
                 try:
