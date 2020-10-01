@@ -287,7 +287,7 @@ def main():
                         if len(con) < 2:
                             print("Usage: openurl <url>")
                         else:
-                            os.system("chmod +x data/payloads/openlink && data/payloads/openurl "+con[1])
+                            os.system("chmod +x data/payloads/openurl && data/payloads/openurl "+con[1])
                     elif con[0] == "activity":
                         os.system("chmod +x data/payloads/activity && data/payloads/activity")
                     elif con[0] == "netstat":
