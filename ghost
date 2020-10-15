@@ -10,7 +10,6 @@ import subprocess
 import readline
 import time
 
-
 from os import environ
 
 # Auto Complete input snippet
