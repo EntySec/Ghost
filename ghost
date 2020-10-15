@@ -4,8 +4,6 @@ from __future__ import print_function
 import os
 
 os.system("printf '\033]2;Ghost Framework\a'")
-G = '\033[1;34m[*] \033[0m'
-print(G+'Starting Ghost Framework')
 
 import sys
 import subprocess
