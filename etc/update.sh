@@ -42,7 +42,7 @@ rm /bin/ghost
 rm /usr/local/bin/ghost
 rm /data/data/com.termux/files/usr/bin/ghost
 cd ~
-git clone https://github.com/entynetproject/ghost.git
+git clone https://github.com/EntySec/ghost.git
 if [[ "$UPD" != "true" ]]
 then
 sleep 0

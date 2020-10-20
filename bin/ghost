@@ -39,7 +39,7 @@ if [[ "$ASESR" = 0 ]]
 then 
 cd ~
 {
-git clone https://github.com/entynetproject/ghost.git
+git clone https://github.com/EntySec/ghost.git
 cd $OLDPWD
 cd ~/ghost
 mkdir etc/.disabled
