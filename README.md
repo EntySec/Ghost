@@ -29,11 +29,7 @@
 
 # About Ghost Framework
 
-```
-Ghost Framework is an Android post-exploitation framework that exploits the
-Android Debug Bridge to remotely access an Android device. Ghost Framework
-gives you the power and convenience of remote Android device administration.
-```
+Ghost Framework is an Android post-exploitation framework that exploits the Android Debug Bridge to remotely access an Android device. Ghost Framework gives you the power and convenience of remote Android device administration.
 
 ***
 
@@ -59,10 +55,7 @@ gives you the power and convenience of remote Android device administration.
 
 # Ghost Framework execution
 
-```
-To run Ghost Framework you should 
-execute the following command.
-```
+To run Ghost Framework you should execute the following command.
 
 > ghost
 
@@ -72,32 +65,18 @@ execute the following command.
 
 * Simple and clear UX/UI.
 
-```
-Ghost Framework has a simple and clear UX/UI. 
-It is easy to understand and it will be easier 
-for you to master the Ghost Framework.
-```
+Ghost Framework has a simple and clear UX/UI. It is easy to understand and it will be easier for you to master the Ghost Framework.
 
 * Device shell access.
 
-```
-Ghost Framework has the ability to access the remote Android 
-device shell without using OpenSSH or other protocols.
-``` 
+Ghost Framework has the ability to access the remote Android device shell without using OpenSSH or other protocols.
 
 * Controlling device screen
 
-```
-Ghost Framework has the ability to access device screen 
-and control it remotely using mouse and keyboard.
-```
+Ghost Framework has the ability to access device screen and control it remotely using mouse and keyboard.
 
 ***
 
 # Ghost Framework disclaimer
 
-```
-Usage of the Ghost Framework for attacking targets without prior mutual consent is illegal.
-It is the end user's responsibility to obey all applicable local, state, federal, and international laws.
-Developers assume no liability and are not responsible for any misuse or damage caused by this program.
-```
+Usage of the Ghost Framework for attacking targets without prior mutual consent is illegal. It is the end user's responsibility to obey all applicable local, state, federal, and international laws. Developers assume no liability and are not responsible for any misuse or damage caused by this program.
