@@ -3,7 +3,7 @@
 <h3 align="center"><img src="https://user-images.githubusercontent.com/54115104/91632566-45bf3780-e9ea-11ea-9b85-1ee4f451ae39.png" alt="logo" height="250px"></h3>
 
 <p align="center">
-  <a href="http://entysec.netlify.app/">
+  <a href="http://EntySec.simplesite.com/">
     <img src="https://img.shields.io/badge/EntySec-Ivan%20Nikolsky-blue.svg">
   </a> 
   <a href="https://github.com/EntySec/ghost/releases">
@@ -29,7 +29,11 @@
 
 # About Ghost Framework
 
-Ghost Framework is an Android post-exploitation framework that exploits the Android Debug Bridge to remotely access an Android device. Ghost Framework gives you the power and convenience of remote Android device administration.
+```
+Ghost Framework is an Android post-exploitation framework that exploits the
+Android Debug Bridge to remotely access an Android device. Ghost Framework
+gives you the power and convenience of remote Android device administration.
+```
 
 ***
 
@@ -55,7 +59,10 @@ Ghost Framework is an Android post-exploitation framework that exploits the Andr
 
 # Ghost Framework execution
 
-To run Ghost Framework you should execute the following command.
+```
+To run Ghost Framework you should 
+execute the following command.
+```
 
 > ghost
 
@@ -65,18 +72,32 @@ To run Ghost Framework you should execute the following command.
 
 * Simple and clear UX/UI.
 
-Ghost Framework has a simple and clear UX/UI. It is easy to understand and it will be easier for you to master the Ghost Framework.
+```
+Ghost Framework has a simple and clear UX/UI. 
+It is easy to understand and it will be easier 
+for you to master the Ghost Framework.
+```
 
 * Device shell access.
 
-Ghost Framework has the ability to access the remote Android device shell without using OpenSSH or other protocols.
+```
+Ghost Framework has the ability to access the remote Android 
+device shell without using OpenSSH or other protocols.
+``` 
 
 * Controlling device screen
 
-Ghost Framework has the ability to access device screen and control it remotely using mouse and keyboard.
+```
+Ghost Framework has the ability to access device screen 
+and control it remotely using mouse and keyboard.
+```
 
 ***
 
 # Ghost Framework disclaimer
 
-Usage of the Ghost Framework for attacking targets without prior mutual consent is illegal. It is the end user's responsibility to obey all applicable local, state, federal, and international laws. Developers assume no liability and are not responsible for any misuse or damage caused by this program.
+```
+Usage of the Ghost Framework for attacking targets without prior mutual consent is illegal.
+It is the end user's responsibility to obey all applicable local, state, federal, and international laws.
+Developers assume no liability and are not responsible for any misuse or damage caused by this program.
+```
