@@ -73,8 +73,8 @@ core = [x.split(' ')[0] for x in core]
 completer = MyCompleter(list(set(core)))
 readline.set_completer_delims(' \t\n;')
 readline.set_completer(completer.complete)
-readline.parse_and_bind('tab: complete')
 readline.set_completion_display_matches_hook(completer.display_matches)
+readline.parse_and_bind('tab: complete')
 
 I = '\033[1;77m[i] \033[0m'
 Q = '\033[1;77m[?] \033[0m'
@@ -82,8 +82,6 @@ S = '\033[1;32m[+] \033[0m'
 W = '\033[1;33m[!] \033[0m'
 E = '\033[1;31m[-] \033[0m'
 G = '\033[1;34m[*] \033[0m'
-
-readline.parse_and_bind("tab: complete")
 
 def start_server():
     adb = os.popen("which adb").read()
@@ -192,8 +190,8 @@ def main():
                 completer = MyCompleter(list(set(commands)))
                 readline.set_completer_delims(' \t\n;')
                 readline.set_completer(completer.complete)
-                readline.parse_and_bind('tab: complete')
                 readline.set_completion_display_matches_hook(completer.display_matches)
+                readline.parse_and_bind('tab: complete')
                 
                 time.sleep(1)
                 device = target
