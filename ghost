@@ -83,8 +83,6 @@ W = '\033[1;33m[!] \033[0m'
 E = '\033[1;31m[-] \033[0m'
 G = '\033[1;34m[*] \033[0m'
 
-readline.parse_and_bind("tab: complete")
-
 def start_server():
     adb = os.popen("which adb").read()
     if adb.strip("\n") == "":
