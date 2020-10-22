@@ -73,8 +73,8 @@ core = [x.split(' ')[0] for x in core]
 completer = MyCompleter(list(set(core)))
 readline.set_completer_delims(' \t\n;')
 readline.set_completer(completer.complete)
-readline.parse_and_bind('tab: complete')
 readline.set_completion_display_matches_hook(completer.display_matches)
+readline.parse_and_bind('tab: complete')
 
 I = '\033[1;77m[i] \033[0m'
 Q = '\033[1;77m[?] \033[0m'
@@ -190,9 +190,8 @@ def main():
                 completer = MyCompleter(list(set(commands)))
                 readline.set_completer_delims(' \t\n;')
                 readline.set_completer(completer.complete)
-                readline.parse_and_bind('tab: complete')
                 readline.set_completion_display_matches_hook(completer.display_matches)
-
+                readline.parse_and_bind('tab: complete')
 
                 time.sleep(1)
                 device = target
