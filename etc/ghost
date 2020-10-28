@@ -272,7 +272,7 @@ def main():
                                 if con[1] == i:
                                     task = 1
                             if task == 1:
-                                os.system("chmod +x data/kaycode/keycode.sh && data/keycode/keycode.sh "+con[1])
+                                os.system("chmod +x data/keycode/keycode.sh && data/keycode/keycode.sh "+con[1])
                             else:
                                 print(E+"Keycode is not found!")
                     elif con[0] == "battery":
