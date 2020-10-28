@@ -265,7 +265,7 @@ def main():
                         if len(con) < 2:
                             print("Usage: keycode <keycode_number>")
                         else:
-                            nums = open("substrate/keynums.txt").read()
+                            nums = open("data/keycode/keynums.txt").read()
                             task = 0
                             for i in nums:
                                 if con[1] == i:
