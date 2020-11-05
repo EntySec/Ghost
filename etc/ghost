@@ -162,7 +162,6 @@ def main():
                     'launch',
                     'openurl',
                     'screen',
-                    'screenrec',
                     'screenshot',
                     'shell',
                     'uninstall',
@@ -384,48 +383,6 @@ def main():
                                         rp = os.path.split(con[1])[1]
                                         print(G+"Taking screenshot...")
                                         os.system("chmod +x ~/ghost/data/grabber/grabber.sh && ~/ghost/data/grabber/grabber.sh -s "+con[1])
-                                        print(G+"Saving to "+con[1]+"...")
-                                        time.sleep(1)
-                                        print(S+"Saved to "+con[1]+"!")
-                                    else:
-                                        print(E+"Error: "+rp+": not a directory!")
-                                else:
-                                    print(E+"Local directory: "+rp+": does not exist!")
-                            g = os.environ['HOME']
-                            os.chdir(g + "/ghost")
-                    elif con[0] == "screenrec":
-                        if len(con) < 2:
-                            print("Usage: screenrec <local_path>")
-                        else:
-                            w = os.environ['OLDPWD']
-                            os.chdir(w)
-                            if os.path.isdir(con[1]):
-                                if os.path.exists(con[1]):
-                                    print(G+"Recording screen...")
-                                    print(I+"Press Ctrl-C to stop.")
-                                    os.system("chmod +x ~/ghost/data/grabber/grabber.sh && ~/ghost/data/grabber/grabber.sh -r "+con[1]+"/screen.mp4")
-                                    if con[1][-1] == "/":
-                                        print(G+"Saving to "+con[1]+"screen.mp4...")
-                                        time.sleep(1)
-                                        print(S+"Saved to "+con[1]+"screen.mp4!")
-                                    else:
-                                        print(G+"Saving to "+con[1]+"/screen.mp4...")
-                                        time.sleep(1)
-                                        print(S+"Saved to "+con[1]+"/screen.mp4!")
-                                else:
-                                    print(E+"Local directory: "+con[1]+": does not exist!")
-                            else:
-                                rp = os.path.split(con[1])[0]
-                                if rp == "":
-                                    rp = "."
-                                else:
-                                    pass
-                                if os.path.exists(rp):
-                                    if os.path.isdir(rp):
-                                        rp = os.path.split(con[1])[1]
-                                        print(G+"Recording screen...")
-                                        print(I+"Press Ctrl-C to stop.")
-                                        os.system("chmod +x ~/ghost/data/grabber/grabber.sh && ~/ghost/data/grabber/grabber.sh -r "+con[1])
                                         print(G+"Saving to "+con[1]+"...")
                                         time.sleep(1)
                                         print(S+"Saved to "+con[1]+"!")
