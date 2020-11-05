@@ -13,7 +13,6 @@ echo -e "Usage: grabber.sh [option] <arguments>"
 echo -e
 echo -e "  -w, --wgrabber   <local_path>  Grab wpa_supplicant."
 echo -e "  -s, --screenshot <local_path>  Take device screenshot."
-echo -e "  -r, --screenrec  <local_path>  Record device screen."
 echo -e "  -h, --help                     Give this help list."
 exit
 
@@ -36,20 +35,11 @@ elif [[ "$1" = "-s" ]]; then
     adb shell rm /sdcard/screenshot.png
     } &> /dev/null
     exit
-   
-elif [[ "$1" = "-r" ]]; then
-    {
-    adb shell screenrecord /sdcard/screen.mp4
-    adb pull /sdcard/screen.mp4 $2
-    adb shell rm /sdcard/screen.mp4
-    } &> /dev/null
-    exit
 fi
 
 echo -e "Usage: grabber.sh [option] <arguments>"
 echo -e
 echo -e "  -w, --wgrabber   <local_path>  Grab wpa_supplicant."
 echo -e "  -s, --screenshot <local_path>  Take device screenshot."
-echo -e "  -r, --screenrec  <local_path>  Record device screen."
 echo -e "  -h, --help                     Give this help list."
 exit
