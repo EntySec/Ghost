@@ -23,7 +23,7 @@
  </a>
 </p>
 
-<h3 align="center"><img src="https://user-images.githubusercontent.com/54115104/98336514-23fcb500-2018-11eb-9c7a-f8fc8753f37b.png" alt="ghost_1" height="460px"></h3>
+<h3 align="center"><img src="https://user-images.githubusercontent.com/54115104/98336858-bc933500-2018-11eb-9037-604bfd0c49e4.png" alt="ghost_1" height="460px"></h3>
 <h3 align="center"><img src="https://user-images.githubusercontent.com/54115104/98336509-219a5b00-2018-11eb-980f-2c6425f6b3eb.png" alt="ghost_2" height="550px"></h3>
 
 ***
