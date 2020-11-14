@@ -13,9 +13,8 @@ if [[ $(id -u) != 0 ]]; then
 fi
 
 {
-    rm /usr/bin/ghost
-   rm /usr/local/bin/ghost
-   rm -rf ~/ghost
-   rm /etc/ghost.conf
-   rm /data/data/com.termux/files/usr/bin/ghost
+    rm -rf ~/thoron
+    rm /usr/bin/thoron
+    rm /usr/local/bin/thoron
+    rm /data/data/com.termux/files/usr/bin/thoron
 } &> /dev/null
