@@ -6,70 +6,65 @@ G="\033[1;34m[*] \033[0m"
 S="\033[1;32m[+] \033[0m"
 E="\033[1;31m[-] \033[0m"
 
-if [[ -d ~/ghost ]]
-then
-{
-cd ~/ghost
-mkdir etc/.disabled
-mv ghost etc/.disabled
-mv etc/ghost ~/ghost
-cp etc/.disabled/ghost etc
-rm -rf etc/.disabled
-} &> /dev/null
-chmod +x ghost
-./ghost
-{
-if [[ -f ~/ghost/.updated ]]
-then
-rm ~/ghost/.updated
+if [[ -d ~/ghost ]]; then
+    {
+        cd ~/ghost
+        mkdir etc/.disabled
+        mv ghost etc/.disabled
+        mv etc/ghost ~/ghost
+        cp etc/.disabled/ghost etc
+        rm -rf etc/.disabled
+    } &> /dev/null
+    chmod +x ghost
+    ./ghost
+    {
+        if [[ -f ~/ghost/.updated ]]; then
+            rm ~/ghost/.updated
+        else
+            cd ~/ghost
+            mkdir etc/.disabled
+            mv ghost etc/.disabled
+            mv etc/ghost ~/ghost
+            cp etc/.disabled/ghost etc
+            rm -rf etc/.disabled
+        fi
+    } &> /dev/null
 else
-cd ~/ghost
-mkdir etc/.disabled
-mv ghost etc/.disabled
-mv etc/ghost ~/ghost
-cp etc/.disabled/ghost etc
-rm -rf etc/.disabled
-fi
-} &> /dev/null
-else
-{
-ASESR="$(ping -c 1 -q www.google.com >&/dev/null; echo $?)"
-} &> /dev/null
-if [[ "$ASESR" = 0 ]]
-then 
-cd ~
-{
-git clone https://github.com/EntySec/ghost.git
-cd $OLDPWD
-cd ~/ghost
-mkdir etc/.disabled
-mv ghost etc/.disabled
-mv etc/ghost ~/ghost
-cp etc/.disabled/ghost etc
-rm -rf etc/.disabled
-} &> /dev/null
-if [[ ! -d ~/ghost ]]
-then
-   echo -e ""$E"Execution failed!"
-   exit
-fi
-chmod +x ghost
-./ghost
-{
-if [[ -f ~/ghost/.updated ]]
-then
-rm ~/ghost/.updated
-else
-cd ~/ghost
-mkdir etc/.disabled
-mv entropy etc/.disabled
-mv etc/ghost ~/ghost
-cp etc/.disabled/ghost etc
-rm -rf etc/.disabled
-fi
-} &> /dev/null
-else
-echo -e ""$E"Execution failed!"
-exit
-fi
+    {
+        CHECK="$(ping -c 1 -q www.google.com >&/dev/null; echo $?)"
+    } &> /dev/null
+    if [[ "$CHECK" = 0 ]]; then 
+        cd ~
+        {
+            git clone https://github.com/EntySec/ghost.git
+            cd $OLDPWD
+            cd ~/ghost
+            mkdir etc/.disabled
+            mv ghost etc/.disabled
+            mv etc/ghost ~/ghost
+            cp etc/.disabled/ghost etc
+            rm -rf etc/.disabled
+        } &> /dev/null
+        if [[ ! -d ~/ghost ]]; then
+            echo -e ""$E"Execution failed!"
+            exit
+        fi
+        chmod +x ghost
+        ./ghost
+        {
+            if [[ -f ~/ghost/.updated ]]; then
+                rm ~/ghost/.updated
+            else
+                cd ~/ghost
+                mkdir etc/.disabled
+                mv entropy etc/.disabled
+                mv etc/ghost ~/ghost
+                cp etc/.disabled/ghost etc
+                rm -rf etc/.disabled
+            fi
+        } &> /dev/null
+    else
+        echo -e ""$E"Execution failed!"
+        exit
+    fi
 fi
