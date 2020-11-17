@@ -124,7 +124,7 @@ class GhostCat:
         else:
             if is_offline != "":
                 print(self.badges.E + "Failed to connect to " + target_addr + "!")
-                self.ghost.disconnect(rhost, rport)
+                self.ghost.disconnect(target_addr)
                 sys.exit()
         time.sleep(0.5)
         print(self.badges.G + "Sending payload to " + target_addr + "...")
