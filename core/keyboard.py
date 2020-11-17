@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env python3
 
 #
 # MIT License
@@ -24,21 +24,24 @@
 # SOFTWARE.
 #
 
-printf '\033]2;uninstall.sh\a'
+import sys
+import tty
+import termios
 
-G="\033[1;34m[*] \033[0m"
-S="\033[1;32m[+] \033[0m"
-I="\033[1;77m[i] \033[0m"
-E="\033[1;31m[-] \033[0m"
+from core.ghost import ghost
 
-if [[ $(id -u) != 0 ]]; then
-    echo -e ""$E"Permission denied!"
-    exit
-fi
+class keyboard:
+    def __init__(self):
+        self.ghost = ghost()
 
-{
-    rm -rf ~/ghost
-    rm /usr/bin/ghost
-    rm /usr/local/bin/ghost
-    rm /data/data/com.termux/files/usr/bin/ghost
-} &> /dev/null
+    def get_char(self):
+        fd = sys.stdin.fileno()
+        old = termios.tcgetattr(fd)
+        try:
+            tty.setraw(fd)
+            return sys.stdin.read(1)
+        finally:
+            termios.tcsetattr(fd, termios.TCSADRAIN, old)
+
+    def send_char(self, char):
+        self.ghost.send_command("shell", "input text " + char, False, False)
