@@ -42,7 +42,7 @@ class GhostModule:
         self.args = 2
 
     def run(self, cmd_data):
-        screenshot_filename = "/sdcard/" + binascii.hexlify(os.urandom(5)) + ".png"
+        screenshot_filename = "/sdcard/" + str(binascii.hexlify(os.urandom(5))) + ".png"
         print(self.badges.G + "Taking screenshot...")
         self.ghost.send_command("shell", "screencap " + screenshot_filename, False, False)
         self.ghost.download(screenshot_filename, cmd_data)
