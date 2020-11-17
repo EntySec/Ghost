@@ -2,8 +2,9 @@
     Command        Description
     -------        -----------
     clear          Clear terminal window.
-    connect        Connect to target device.
-    disconnect     Disconnect from target device.
     exit           Exit Ghost Framework.
     help           Show available commands.
+    options        Show available options.
+    run            Start attack handler.
+    set            Set an option value.
     update         Update Ghost Framework.

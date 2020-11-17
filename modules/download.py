@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env python3
 
 #
 # MIT License
@@ -24,21 +24,19 @@
 # SOFTWARE.
 #
 
-printf '\033]2;uninstall.sh\a'
+from core.badges import badges
+from core.ghost import ghost
 
-G="\033[1;34m[*] \033[0m"
-S="\033[1;32m[+] \033[0m"
-I="\033[1;77m[i] \033[0m"
-E="\033[1;31m[-] \033[0m"
+class GhostModule:
+    def __init__(self):
+        self.badges = badges()
+        self.ghost = ghost()
 
-if [[ $(id -u) != 0 ]]; then
-    echo -e ""$E"Permission denied!"
-    exit
-fi
+        self.name = "download"
+        self.description = "Download remote file."
+        self.usage = "Usage: download <remote_file> <local_path>"
+        self.type = "stealing"
+        self.args = 3
 
-{
-    rm -rf ~/ghost
-    rm /usr/bin/ghost
-    rm /usr/local/bin/ghost
-    rm /data/data/com.termux/files/usr/bin/ghost
-} &> /dev/null
+    def run(self, cmd_data):
+        self.ghost.download(cmd_data.split(" ")[0], cmd_data.split(" ")[1])

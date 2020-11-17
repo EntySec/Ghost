@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env python3
 
 #
 # MIT License
@@ -24,21 +24,25 @@
 # SOFTWARE.
 #
 
-printf '\033]2;uninstall.sh\a'
+from core.badges import badges
+from core.ghost import ghost
+from core.keyboard import keyboard
 
-G="\033[1;34m[*] \033[0m"
-S="\033[1;32m[+] \033[0m"
-I="\033[1;77m[i] \033[0m"
-E="\033[1;31m[-] \033[0m"
+class GhostModule:
+    def __init__(self):
+        self.badges = badges()
+        self.ghost = ghost()
+        self.keyboard = keyboard()
 
-if [[ $(id -u) != 0 ]]; then
-    echo -e ""$E"Permission denied!"
-    exit
-fi
+        self.name = "keyboard"
+        self.description = "Control target keyboard."
+        self.usage = "Usage: keyboard"
+        self.type = "managing"
+        self.args = 1
 
-{
-    rm -rf ~/ghost
-    rm /usr/bin/ghost
-    rm /usr/local/bin/ghost
-    rm /data/data/com.termux/files/usr/bin/ghost
-} &> /dev/null
+    def run(self, cmd_data):
+        print(self.badges.G + "Connecting to keyboard...")
+        print(self.badges.I + "Press Ctrl-C to stop.")
+        while True:
+            char = self.keyboard.get_char()
+            self.keyboard.send_char(char)

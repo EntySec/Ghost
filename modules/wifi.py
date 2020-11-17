@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env python3
 
 #
 # MIT License
@@ -24,21 +24,25 @@
 # SOFTWARE.
 #
 
-printf '\033]2;uninstall.sh\a'
+from core.badges import badges
+from core.ghost import ghost
 
-G="\033[1;34m[*] \033[0m"
-S="\033[1;32m[+] \033[0m"
-I="\033[1;77m[i] \033[0m"
-E="\033[1;31m[-] \033[0m"
+class GhostModule:
+    def __init__(self):
+        self.badges = badges()
+        self.ghost = ghost()
 
-if [[ $(id -u) != 0 ]]; then
-    echo -e ""$E"Permission denied!"
-    exit
-fi
+        self.name = "wifi"
+        self.description = "Control device wifi service."
+        self.usage = "Usage: wifi [on|off]"
+        self.type = "settings"
+        self.args = 2
 
-{
-    rm -rf ~/ghost
-    rm /usr/bin/ghost
-    rm /usr/local/bin/ghost
-    rm /data/data/com.termux/files/usr/bin/ghost
-} &> /dev/null
+    def run(self, cmd_data):
+        if cmd_data in ['on', 'off']:
+            if cmd_data == "on":
+                self.ghost.send_command("shell", "svc wifi enable", False, False)
+            else:
+                self.ghost.send_command("shell", "svc wifi disable", False, False)
+        else:
+            print(self.usage)
