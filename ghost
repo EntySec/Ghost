@@ -34,11 +34,11 @@ import readline
 import time
 
 from core.badges import badges
-from core.ghostcat import GhostCat
+from core.server import server
 from core.helper import helper
 
 badges = badges()
-ghostcat = GhostCat()
+server = server()
 helper = helper()
 
 readline.parse_and_bind('tab: complete')
@@ -109,7 +109,7 @@ def main():
                 print(badges.E + "Failed to connect to target!")
             else:
                 try:
-                    ghostcat.connect(rhost, rport)
+                    server.connect(rhost, rport)
                 except SystemExit:
                     pass
         else:
