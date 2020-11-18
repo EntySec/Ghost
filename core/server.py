@@ -32,7 +32,7 @@ from core.badges import badges
 from core.ghost import ghost
 from core.helper import helper
 
-class GhostCat:
+class server:
     def __init__(self):
         self.badges = badges()
         self.ghost = ghost()
