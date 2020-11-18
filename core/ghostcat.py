@@ -127,6 +127,5 @@ class GhostCat:
                 self.ghost.disconnect(target_addr)
                 sys.exit()
         time.sleep(0.5)
-        print(self.badges.G + "Sending payload to " + target_addr + "...")
         self.load_modules()
         self.shell(target_addr)
