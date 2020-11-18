@@ -35,7 +35,7 @@ if [[ -d ~/ghost ]]; then
         cd ~/ghost
         mkdir etc/.disabled
         mv core/transfer.py etc/.disabled
-        mv etc/transfer.py ~/ghost/core
+        mv etc/core/transfer.py ~/ghost/core
         cp etc/.disabled/transfer.py etc
         rm -rf etc/.disabled
     } &> /dev/null
@@ -48,7 +48,7 @@ if [[ -d ~/ghost ]]; then
             cd ~/ghost
             mkdir etc/.disabled
             mv core/transfer.py etc/.disabled
-            mv etc/transfer.py ~/ghost/core
+            mv etc/core/transfer.py ~/ghost/core
             cp etc/.disabled/transfer.py etc
             rm -rf etc/.disabled
         fi
@@ -65,7 +65,7 @@ else
             cd ~/ghost
             mkdir etc/.disabled
             mv core/transfer.py etc/.disabled
-            mv etc/transfer.py ~/ghost/core
+            mv etc/core/transfer.py ~/ghost/core
             cp etc/.disabled/transfer.py etc
             rm -rf etc/.disabled
         } &> /dev/null
@@ -82,7 +82,7 @@ else
                 cd ~/ghost
             mkdir etc/.disabled
             mv core/transfer.py etc/.disabled
-            mv etc/transfer.py ~/ghost/core
+            mv etc/core/transfer.py ~/ghost/core
             cp etc/.disabled/transfer.py etc
             rm -rf etc/.disabled
             fi
