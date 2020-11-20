@@ -42,15 +42,6 @@ else
     fi
 fi
 
-{
-    CHECK="$(ping -c 1 -q www.google.com >&/dev/null; echo $?)"
-} &> /dev/null
-
-if [[ "$CHECK" != 0 ]]; then 
-    echo -e ""$E"No Internet connection!"
-    exit
-fi
-
 if [[ $(id -u) != 0 ]]; then
     echo -e ""$E"Permission denied!"
     exit
