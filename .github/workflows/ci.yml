@@ -1,0 +1,24 @@
+name: CI
+on: [push, pull_request]
+
+jobs:
+  build_linux:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+      - name: Download adb
+        run: sudo apt-get install android-platform-tools
+      - name: Install ghost
+        run: sudo bash install.sh
+      - name: Run ghost
+        run: ghost
+  build_macOS:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v1
+      - name: Download adb
+        run: brew install android-platform-tools
+      - name: Install ghost
+        run: bash install.sh
+      - name: Run ghost
+        run: ghost
