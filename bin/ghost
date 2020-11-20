@@ -42,16 +42,12 @@ if [[ -d ~/ghost ]]; then
     chmod +x ghost
     ./ghost
     {
-        if [[ -f ~/ghost/.updated ]]; then
-            rm ~/ghost/.updated
-        else
-            cd ~/ghost
-            mkdir etc/.disabled
-            mv core/transfer.py etc/.disabled
-            mv etc/core/transfer.py ~/ghost/core
-            cp etc/.disabled/transfer.py etc
-            rm -rf etc/.disabled
-        fi
+        cd ~/ghost
+        mkdir etc/.disabled
+        mv core/transfer.py etc/.disabled
+        mv etc/core/transfer.py ~/ghost/core
+        cp etc/.disabled/transfer.py etc
+        rm -rf etc/.disabled
     } &> /dev/null
 else
     {
@@ -72,15 +68,11 @@ else
     chmod +x ghost
     ./ghost
     {
-        if [[ -f ~/ghost/.updated ]]; then
-            rm ~/ghost/.updated
-        else
-            cd ~/ghost
-            mkdir etc/.disabled
-            mv core/transfer.py etc/.disabled
-            mv etc/core/transfer.py ~/ghost/core
-            cp etc/.disabled/transfer.py etc
-            rm -rf etc/.disabled
-        fi
+        cd ~/ghost
+        mkdir etc/.disabled
+        mv core/transfer.py etc/.disabled
+        mv etc/core/transfer.py ~/ghost/core
+        cp etc/.disabled/transfer.py etc
+        rm -rf etc/.disabled
     } &> /dev/null
 fi
