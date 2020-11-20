@@ -54,41 +54,33 @@ if [[ -d ~/ghost ]]; then
         fi
     } &> /dev/null
 else
+    cd ~
     {
-        CHECK="$(ping -c 1 -q www.google.com >&/dev/null; echo $?)"
+        git clone https://github.com/EntySec/ghost.git
+        cd $OLDPWD
+        cd ~/ghost
+        mkdir etc/.disabled
+        mv core/transfer.py etc/.disabled
+        mv etc/core/transfer.py ~/ghost/core
+        cp etc/.disabled/transfer.py etc
+        rm -rf etc/.disabled
     } &> /dev/null
-    if [[ "$CHECK" = 0 ]]; then 
-        cd ~
-        {
-            git clone https://github.com/EntySec/ghost.git
-            cd $OLDPWD
+    if [[ ! -d ~/ghost ]]; then
+        echo -e ""$E"Execution failed!"
+        exit
+    fi
+    chmod +x ghost
+    ./ghost
+    {
+        if [[ -f ~/ghost/.updated ]]; then
+            rm ~/ghost/.updated
+        else
             cd ~/ghost
             mkdir etc/.disabled
             mv core/transfer.py etc/.disabled
             mv etc/core/transfer.py ~/ghost/core
             cp etc/.disabled/transfer.py etc
             rm -rf etc/.disabled
-        } &> /dev/null
-        if [[ ! -d ~/ghost ]]; then
-            echo -e ""$E"Execution failed!"
-            exit
         fi
-        chmod +x ghost
-        ./ghost
-        {
-            if [[ -f ~/ghost/.updated ]]; then
-                rm ~/ghost/.updated
-            else
-                cd ~/ghost
-            mkdir etc/.disabled
-            mv core/transfer.py etc/.disabled
-            mv etc/core/transfer.py ~/ghost/core
-            cp etc/.disabled/transfer.py etc
-            rm -rf etc/.disabled
-            fi
-        } &> /dev/null
-    else
-        echo -e ""$E"Execution failed!"
-        exit
-    fi
+    } &> /dev/null
 fi
