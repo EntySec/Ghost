@@ -9,7 +9,7 @@ jobs:
       - name: Install ghost
         run: sudo bash install.sh
       - name: Run ghost
-        run: ghost
+        run: sudo ghost
   build_macOS:
     runs-on: macos-latest
     steps:
@@ -17,4 +17,4 @@ jobs:
       - name: Install ghost
         run: sudo bash install.sh
       - name: Run ghost
-        run: ghost
+        run: sudo ghost
