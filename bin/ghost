@@ -54,8 +54,8 @@ if [[ -d ~/ghost ]]; then
         fi
     } &> /dev/null
 else
-    cd ~
     {
+        cd ~
         git clone https://github.com/EntySec/ghost.git
         cd $OLDPWD
         cd ~/ghost
