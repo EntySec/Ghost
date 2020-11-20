@@ -7,7 +7,7 @@ jobs:
     steps:
       - uses: actions/checkout@v1
       - name: Download adb
-        run: sudo apt-get install android-platform-tools
+        run: sudo apt-get install adb
       - name: Install ghost
         run: sudo bash install.sh
       - name: Run ghost
