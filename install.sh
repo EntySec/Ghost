@@ -35,15 +35,6 @@ if [[ $(id -u) != 0 ]]; then
     exit
 fi
 
-{
-    CHECK="$(ping -c 1 -q www.google.com >&/dev/null; echo $?)"
-} &> /dev/null
-
-if [[ "$CHECK" != 0 ]]; then 
-    echo -e ""$E"No Internet connection!"
-    exit
-fi
-
 sleep 0.5
 clear
 sleep 0.5
