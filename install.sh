@@ -24,7 +24,7 @@
 # SOFTWARE.
 #
 
-printf '\033]2;install.sh\a'
+echo -n "\033]0;install.sh\007"
 
 G="\033[1;34m[*] \033[0m"
 S="\033[1;32m[+] \033[0m"
