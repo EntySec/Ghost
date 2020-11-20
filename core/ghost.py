@@ -35,13 +35,6 @@ class ghost:
     def __init__(self):
         self.badges = badges()
         self.transfer = transfer(self)
-
-    def check_adb_installation():
-        command_output = subprocess.getoutput("command -v adb")
-        if command_output.strip() == "":
-            print(self.badges.E + "Failed to execute adb!")
-            return False
-        return True
         
     def send_command(self, command, arguments="", multi_output=False, output=True):
         if multi_output:
