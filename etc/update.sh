@@ -34,15 +34,15 @@ if [[ $(id -u) != 0 ]]; then
 fi
 
 if [[ -f /data/data/com.termux/files/usr/bin/ghost ]]; then
-    UPDATE="true"
+    update=true
 else
     if [[ -f /usr/local/bin/ghost ]]; then
-        UPDATE="true"
+        update=true
     else
         if [[ -f /usr/bin/ghost ]]; then
-            UPDATE="true"
+            update=true
         else
-            UPDATE="false"
+            update=false
         fi
     fi
 fi
@@ -56,9 +56,7 @@ echo -e ""$G"Installing update..."
     rm /data/data/com.termux/files/usr/bin/ghost
     cd ~
     git clone https://github.com/EntySec/ghost.git
-    if [[ "$UPDATE" != "true" ]]; then
-        sleep 0
-    else
+    if [[ $update ]]; then
         cd ghost
         chmod +x install.sh
         ./install.sh
