@@ -28,6 +28,11 @@ G="\033[1;34m[*] \033[0m"
 S="\033[1;32m[+] \033[0m"
 E="\033[1;31m[-] \033[0m"
 
+if [[ $(id -u) != 0 ]]; then
+    echo -e ""$E"Permission denied!"
+    exit
+fi
+
 if [[ -f /data/data/com.termux/files/usr/bin/ghost ]]; then
     UPDATE="true"
 else
@@ -40,11 +45,6 @@ else
             UPDATE="false"
         fi
     fi
-fi
-
-if [[ $(id -u) != 0 ]]; then
-    echo -e ""$E"Permission denied!"
-    exit
 fi
 
 sleep 1
