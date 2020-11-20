@@ -5,5 +5,5 @@
     exit           Exit Ghost Framework.
     help           Show available commands.
     options        Show available options.
-    run            Start attack handler.
+    run            Run Ghost Framework.
     set            Set an option value.
