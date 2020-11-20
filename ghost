@@ -121,5 +121,8 @@ def main():
         ui = ui.split()
 
 
-banner()
-main()
+if check_adb_installation:
+    banner()
+    main()
+else:
+    sys.exit()
