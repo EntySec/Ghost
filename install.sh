@@ -91,9 +91,7 @@ sleep 1
     xbps-install -y scrcpy
 } &> /dev/null
 
-if [[ -d ~/ghost ]]; then
-    sleep 0
-else
+if [[ ! -d ~/ghost ]]; then
     cd ~
     {
         git clone https://github.com/EntySec/ghost.git
@@ -108,12 +106,12 @@ else
 fi
 
 {
-cp bin/ghost /usr/bin
-chmod +x /usr/bin/ghost
-cp bin/ghost /usr/local/bin
-chmod +x /usr/local/bin/ghost
-cp bin/ghost /data/data/com.termux/files/usr/bin
-chmod +x /data/data/com.termux/files/usr/bin/ghost
+    cp bin/ghost /usr/bin
+    chmod +x /usr/bin/ghost
+    cp bin/ghost /usr/local/bin
+    chmod +x /usr/local/bin/ghost
+    cp bin/ghost /data/data/com.termux/files/usr/bin
+    chmod +x /data/data/com.termux/files/usr/bin/ghost
 } &> /dev/null
 
 sleep 1
