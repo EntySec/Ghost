@@ -6,8 +6,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1
-      - name: Download adb
-        run: sudo apt-get install adb
+      #- name: Download adb
+      #  run: sudo apt-get install adb
       - name: Install ghost
         run: sudo bash install.sh
       - name: Run ghost
@@ -16,8 +16,8 @@ jobs:
     runs-on: macos-latest
     steps:
       - uses: actions/checkout@v1
-      - name: Download adb
-        run: brew install android-platform-tools
+      #- name: Download adb
+      #  run: brew install android-platform-tools
       - name: Install ghost
         run: sudo bash install.sh
       - name: Run ghost
