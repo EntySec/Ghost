@@ -67,8 +67,6 @@ def main():
             sys.exit()
         elif ui[0] == "clear":
             os.system("clear")
-        elif ui[0] == "update":
-            os.system("chmod +x etc/update.sh && etc/update.sh")
         elif ui[0] == "help":
             print("")
             print("Core Commands")
