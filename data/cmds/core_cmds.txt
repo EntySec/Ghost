@@ -7,4 +7,3 @@
     options        Show available options.
     run            Start attack handler.
     set            Set an option value.
-    update         Update Ghost Framework.
