@@ -33,7 +33,11 @@ clear
 cat banner/banner.txt
 echo
 
-sudo -v -p "$(echo -e -n $P)Password for $(whoami): "
+while [[ $(sudo -n id -u 2>&1) != 0 ]]; do
+    {
+        sudo -v -p "$(echo -e -n $P)Password for $(whoami): " 
+    } &> /dev/null
+done
 
 echo -e ""$G"Updating Ghost Framework..."
 
