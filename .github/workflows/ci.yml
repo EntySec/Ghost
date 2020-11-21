@@ -2,7 +2,7 @@ name: CI
 on: [push, pull_request]
 
 jobs:
-  build_linux:
+  Linux:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1
@@ -10,7 +10,7 @@ jobs:
         run: bash install.sh
       - name: Run ghost
         run: ghost
-  build_macOS:
+  macOS:
     runs-on: macos-latest
     steps:
       - uses: actions/checkout@v1
