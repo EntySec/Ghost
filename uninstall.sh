@@ -26,17 +26,23 @@
 
 G="\033[1;34m[*] \033[0m"
 S="\033[1;32m[+] \033[0m"
-I="\033[1;77m[i] \033[0m"
 E="\033[1;31m[-] \033[0m"
+P="\033[1;77m[>] \033[0m"
 
-if [[ $(id -u) != 0 ]]; then
-    echo -e ""$E"Permission denied!"
-    exit
-fi
+clear
+cat banner/banner.txt
+echo
+
+sudo -v -p "$(echo -e -n $P)Password for $(whoami): "
+
+echo -e ""$G"Uninstalling Ghost Framework..."
 
 {
-    rm -rf ~/ghost
-    rm /usr/bin/ghost
-    rm /usr/local/bin/ghost
-    rm /data/data/com.termux/files/usr/bin/ghost
+    rm -rf ~/.ghost
+    sudo rm /usr/bin/ghost
+    sudo rm /usr/local/bin/ghost
+    sudo rm /data/data/com.termux/files/usr/bin/ghost
 } &> /dev/null
+
+echo -e ""$S"Successfully uninstalled!"
+exit 0

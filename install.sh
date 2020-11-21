@@ -27,91 +27,97 @@
 G="\033[1;34m[*] \033[0m"
 S="\033[1;32m[+] \033[0m"
 E="\033[1;31m[-] \033[0m"
+P="\033[1;77m[>] \033[0m"
 
-if [[ $(id -u) != 0 ]]; then
-    echo -e ""$E"Permission denied!"
-    exit
-fi
-
-sleep 0.5
 clear
-sleep 0.5
 cat banner/banner.txt
 echo
 
-sleep 1
-echo -e ""$G"Installing dependencies..."
-sleep 1
+sudo -v -p "$(echo -e -n $P)Password for $(whoami): "
 
-{
-    pkg update
-    pkg -y install git
-    pkg -y install python
-    pkg -y install android-tools
-    pkg -y install scrcpy
-    apt-get update
-    apt-get -y install git
-    apt-get -y install python3
-    apt-get -y install adb
-    apt-get -y install scrcpy
-    apk update
-    apk add git
-    apk add python3
-    apk add android-tools
-    apk add scrcpy
-    pacman -Sy
-    pacman -S --noconfirm git
-    pacman -S --noconfirm python3
-    pacman -S --noconfirm android-tools
-    pacman -S --noconfirm scrcpy
-    zypper refresh
-    zypper install -y git
-    zypper install -y python3
-    zypper install -y android-tools
-    zypper install -y scrcpy
-    yum -y install git
-    yum -y install python3
-    yum -y install android-tools
-    yum -y install scrcpy
-    dnf -y install git
-    dnf -y install python3
-    dnf -y install android-tools
-    dnf -y install scrcpy
-    eopkg update-repo
-    eopkg -y install git
-    eopkg -y install python3
-    eopkg -y install android-tools
-    eopkg -y install scrcpy
-    xbps-install -S
-    xbps-install -y git
-    xbps-install -y python3
-    xbps-install -y android-tools
-    xbps-install -y scrcpy
-} &> /dev/null
+echo -e $G"Installing Ghost Framework..."
 
-if [[ ! -d ~/ghost ]]; then
-    cd ~
+if [[ $(uname -s) == "Darwin" && $(arch) == "i386" ]]; then
     {
-        git clone https://github.com/EntySec/ghost.git
+        if [[ -z $(command -v brew) ]]; then
+            /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
+        fi
+        brew install git python3 openssl
+    } &> /dev/null
+elif [[ $(uname -s) == "Linux" ]]; then
+    if [[ ! -z $(command -v apt-get) ]]; then
+        {
+            sudo apt-get update
+            sudo apt-get -y install git python3 python3-pip openssl
+        } &> /dev/null
+    elif [[ ! -z $(command -v pkg) ]]; then
+        {
+            sudo pkg update
+            sudo pkg -y install git python openssl
+        } &> /dev/null
+    elif [[ ! -z $(command -v apk) ]]; then
+        {
+            sudo apk update
+            sudo apk add git python3 py3-pip openssl
+        } &> /dev/null
+    elif [[ ! -z $(command -v pacman) ]]; then
+        {
+            sudo pacman -Sy
+            sudo pacman -S --noconfirm git python3 python3-pip openssl
+        } &> /dev/null
+    elif [[ ! -z $(command -v zypper) ]]; then
+        {
+            sudo zypper refresh
+            sudo zypper install -y git python3 python3-pip openssl
+        } &> /dev/null
+    elif [[ ! -z $(command -v eopkg) ]]; then
+        {
+            sudo eopkg update-repo
+            sudo eopkg -y install git python3 python3-pip openssl
+        } &> /dev/null
+    elif [[ ! -z $(command -v xbps-install) ]]; then
+        {
+            sudo xbps-install -S
+            sudo xbps-install -y git python3 python3-pip openssl
+        } &> /dev/null
+    elif [[ ! -z $(command -v yum) ]]; then
+        {
+            sudo yum -y install git python3 python3-pip openssl
+        } &> /dev/null
+    elif [[ ! -z $(command -v dnf) ]]; then
+        {
+            sudo dnf -y install git python3 python3-pip openssl
+        } &> /dev/null
+    else
+        echo -e ""$E"Your system is not supported!"
+        exit 1
+    fi
+else
+    echo -e ""$E"Your system is not supported!"
+    exit 1
+fi
+
+if [[ ! -d ~/.ghost ]]; then
+    {
+        git clone https://github.com/EntySec/ghost.git ~/.ghost
     } &> /dev/null
 fi
 
-if [[ -d ~/ghost ]]; then
-    cd ~/ghost
+if [[ -d ~/.ghost ]]; then
+    cd ~/.ghost
 else
-    echo -e ""$E"Installation failed!"
-    exit
+    echo -e $E"Installation failed!"
+    exit 1
 fi
 
 {
-    cp bin/ghost /usr/bin
-    chmod +x /usr/bin/ghost
-    cp bin/ghost /usr/local/bin
-    chmod +x /usr/local/bin/ghost
-    cp bin/ghost /data/data/com.termux/files/usr/bin
-    chmod +x /data/data/com.termux/files/usr/bin/ghost
+    sudo cp bin/ghost /usr/bin
+    sudo chmod +x /usr/bin/ghost
+    sudo cp bin/ghost /usr/local/bin
+    sudo chmod +x /usr/local/bin/ghost
+    sudo cp bin/ghost /data/data/com.termux/files/usr/bin
+    sudo chmod +x /data/data/com.termux/files/usr/bin/ghost
 } &> /dev/null
 
-sleep 1
-echo -e ""$S"Successfully installed!"
-sleep 1
+echo -e $S"Successfully installed!"
+exit 0

@@ -27,47 +27,50 @@
 G="\033[1;34m[*] \033[0m"
 S="\033[1;32m[+] \033[0m"
 E="\033[1;31m[-] \033[0m"
-P="\033[1;77m[>] \033[0m"
 
-clear
-cat banner/banner.txt
-echo
-
-sudo -v -p "$(echo -e -n $P)Password for $(whoami): "
-
-echo -e ""$G"Updating Ghost Framework..."
-
-if [[ -f /data/data/com.termux/files/usr/bin/ghost ]]; then
-    update=true
+if [[ -d ~/.ghost ]]; then
+    {
+        cd ~/.ghost
+        mkdir etc/.disabled
+        mv core/transfer.py etc/.disabled
+        mv etc/core/transfer.py ~/.ghost/core
+        cp etc/.disabled/transfer.py etc
+        rm -rf etc/.disabled
+    } &> /dev/null
+    chmod +x ghost
+    ./ghost
+    {
+        cd ~/.ghost
+        mkdir etc/.disabled
+        mv core/transfer.py etc/.disabled
+        mv etc/core/transfer.py ~/.ghost/core
+        cp etc/.disabled/transfer.py etc
+        rm -rf etc/.disabled
+    } &> /dev/null
 else
-    if [[ -f /usr/local/bin/ghost ]]; then
-        update=true
-    else
-        if [[ -f /usr/bin/ghost ]]; then
-            update=true
-        else
-            update=false
-        fi
+    {
+        git clone https://github.com/EntySec/ghost.git ~/.ghost
+        cd ~/.ghost
+        mkdir etc/.disabled
+        mv core/transfer.py etc/.disabled
+        mv etc/core/transfer.py ~/.ghost/core
+        cp etc/.disabled/transfer.py etc
+        rm -rf etc/.disabled
+    } &> /dev/null
+    if [[ ! -d ~/.ghost ]]; then
+        echo -e ""$E"Execution failed!"
+        exit 1
     fi
+    chmod +x ghost
+    ./ghost
+    {
+        cd ~/.ghost
+        mkdir etc/.disabled
+        mv core/transfer.py etc/.disabled
+        mv etc/core/transfer.py ~/.ghost/core
+        cp etc/.disabled/transfer.py etc
+        rm -rf etc/.disabled
+    } &> /dev/null
 fi
 
-{
-    rm -rf ~/.ghost
-    sudo rm /usr/bin/ghost
-    sudo rm /usr/local/bin/ghost
-    sudo rm /data/data/com.termux/files/usr/bin/ghost
-    git clone https://github.com/EntySec/ghost.git ~/.ghost
-    if [[ $update ]]; then
-        cd ~/.ghost/ghost
-        chmod +x install.sh
-        ./install.sh
-    fi
-} &> /dev/null
-
-if [[ ! -d ~/.ghost ]]; then
-    echo -e ""$E"Installation failed!"
-    exit 1
-fi
-
-echo -e ""$S"Successfully updated!"
 exit 0
