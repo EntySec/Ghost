@@ -39,7 +39,7 @@ while [[ $(sudo -n id -u 2>&1) != 0 ]]; do
     } &> /dev/null
 done
 
-echo -e ""$G"Uninstalling Ghost Framework..."
+echo -e $G"Uninstalling Ghost Framework..."
 
 {
     rm -rf ~/.ghost
@@ -48,5 +48,5 @@ echo -e ""$G"Uninstalling Ghost Framework..."
     sudo rm /data/data/com.termux/files/usr/bin/ghost
 } &> /dev/null
 
-echo -e ""$S"Successfully uninstalled!"
+echo -e $S"Successfully uninstalled!"
 exit 0
