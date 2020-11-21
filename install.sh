@@ -93,11 +93,11 @@ elif [[ $(uname -s) == "Linux" ]]; then
             sudo dnf -y install git python3 python3-pip openssl
         } &> /dev/null
     else
-        echo -e ""$E"Your system is not supported!"
+        echo -e $E"Your system is not supported!"
         exit 1
     fi
 else
-    echo -e ""$E"Your system is not supported!"
+    echo -e $E"Your system is not supported!"
     exit 1
 fi
 
