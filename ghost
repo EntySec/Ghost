@@ -24,11 +24,11 @@
 # SOFTWARE.
 #
 
-import os
-
-os.system("printf '\033]2;Ghost Framework\a'")
-
 import sys
+
+sys.stdout.write("\033]0;Ghost Framework\007")
+
+import os
 import subprocess
 import readline
 import time
