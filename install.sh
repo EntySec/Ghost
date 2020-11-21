@@ -34,7 +34,7 @@ cat banner/banner.txt
 echo
 
 while [[ $(sudo -n id -u 2>&1) != 0 ]]; do
-    sudo -v -p "$(echo -e -n $P)Password for $(whoami): "
+    sudo -v -p "$(echo -e -n $P)Password for $(whoami): " &> /dev/null
 done
 
 echo -e $G"Installing Ghost Framework..."
