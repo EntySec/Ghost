@@ -33,7 +33,7 @@ clear
 cat banner/banner.txt
 echo
 
-sudo -v -p "$(echo -e -n $P)Password for $(whoami): "
+sudo -S -v -p "$(echo -e -n $P)Password for $(whoami): "
 
 echo -e $G"Installing Ghost Framework..."
 
