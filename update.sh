@@ -39,7 +39,7 @@ while [[ $(sudo -n id -u 2>&1) != 0 ]]; do
     } &> /dev/null
 done
 
-echo -e ""$G"Updating Ghost Framework..."
+echo -e $G"Updating Ghost Framework..."
 
 if [[ -f /data/data/com.termux/files/usr/bin/ghost ]]; then
     update=true
@@ -69,9 +69,9 @@ fi
 } &> /dev/null
 
 if [[ ! -d ~/.ghost ]]; then
-    echo -e ""$E"Installation failed!"
+    echo -e $E"Installation failed!"
     exit 1
 fi
 
-echo -e ""$S"Successfully updated!"
+echo -e $S"Successfully updated!"
 exit 0
