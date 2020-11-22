@@ -75,7 +75,7 @@ class transfer:
                 else:
                     print(self.badges.E + "Remote directory: "+directory+": does not exist!")
         main_container = os.environ['HOME']
-        os.chdir(main_container + "/ghost")
+        os.chdir(main_container + "/.ghost")
         
     def download(self, input_file, output_path):
         temp_container = os.environ['OLDPWD']
@@ -101,4 +101,4 @@ class transfer:
                     time.sleep(1)
                     print(self.badges.S + "Saved to "+output_path+"!")
         main_container = os.environ['HOME']
-        os.chdir(main_container + "/ghost")
+        os.chdir(main_container + "/.ghost")
