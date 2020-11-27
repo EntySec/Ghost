@@ -39,21 +39,19 @@ gives you the power and convenience of remote Android device administration.
 
 # Getting started
 
-## Ghost installation
+<details>
+  <summary>Ghost installation</summary>
+  > cd ghost
+  > chmod +x install.sh
+  > ./install.sh
+</details>
 
-> cd ghost
-
-> chmod +x install.sh
-
-> ./install.sh
-
-## Ghost uninstallation
-
-> cd ghost
-
-> chmod +x uninstall.sh
-
-> ./uninstall.sh
+<details>
+  <summary>Ghost uninstallation</summary>
+  > cd ghost
+  > chmod +x uninstall.sh
+  > ./uninstall.sh
+</details>
 
 ***
 
