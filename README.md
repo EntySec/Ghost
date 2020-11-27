@@ -43,7 +43,9 @@ gives you the power and convenience of remote Android device administration.
 <summary>Ghost installation</summary>
   
 > cd ghost
+
 > chmod +x install.sh
+
 > ./install.sh
   
 </details>
@@ -52,7 +54,9 @@ gives you the power and convenience of remote Android device administration.
 <summary>Ghost uninstallation</summary>
 
 > cd ghost
+
 > chmod +x uninstall.sh
+
 > ./uninstall.sh
 
 </details>
