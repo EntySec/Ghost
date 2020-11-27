@@ -48,9 +48,9 @@ gives you the power and convenience of remote Android device administration.
 
 <details>
   <summary>Ghost uninstallation</summary>
-  > cd ghost
-  > chmod +x uninstall.sh
-  > ./uninstall.sh
+> cd ghost
+> chmod +x uninstall.sh
+> ./uninstall.sh
 </details>
 
 ***
