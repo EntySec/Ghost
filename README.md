@@ -40,19 +40,21 @@ gives you the power and convenience of remote Android device administration.
 # Getting started
 
 <details>
-  <summary>Ghost installation</summary>
-  > cd ghost
-  > chmod +x install.sh
-  > ./install.sh
+<summary>Ghost installation</summary>
+  
+> cd ghost
+> chmod +x install.sh
+> ./install.sh
+  
 </details>
 
 <details>
-  <summary>Ghost uninstallation</summary>
-<p>
+<summary>Ghost uninstallation</summary>
+
 > cd ghost
 > chmod +x uninstall.sh
 > ./uninstall.sh
-  </p>
+
 </details>
 
 ***
