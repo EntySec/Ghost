@@ -42,6 +42,11 @@ gives you the power and convenience of remote Android device administration.
 <details>
 <summary>Ghost installation</summary>
   
+```
+To install Ghost Framework you should
+execute the following commands.
+```
+  
 > cd ghost
 
 > chmod +x install.sh
@@ -52,6 +57,11 @@ gives you the power and convenience of remote Android device administration.
 
 <details>
 <summary>Ghost uninstallation</summary>
+
+```
+To uninstall Ghost Framework you should
+execute the following commands.
+```
 
 > cd ghost
 
