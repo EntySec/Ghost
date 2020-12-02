@@ -39,7 +39,7 @@ class GhostModule:
             'type': "managing",
             'args': 2,
             'needs_args': True,
-            'needs_admin': False,
+            'needs_root': False,
             'comments': ""
         }
 

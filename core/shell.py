@@ -84,7 +84,7 @@ class shell:
                             if (len(command) - 1) < int(target_commands[command[0]].details['args']):
                                 print("Usage: " + target_commands[command[0]].details['usage'])
                             else:
-                                if target_commands[command[0]].details['needs_admin']:
+                                if target_commands[command[0]].details['needs_root']:
                                     if self.check_root():
                                         target_commands[command[0]].run(arguments)
                                     else:
@@ -92,7 +92,7 @@ class shell:
                                 else:
                                     target_commands[command[0]].run(arguments)
                         else:
-                            if target_commands[command[0]].details['needs_admin']:
+                            if target_commands[command[0]].details['needs_root']:
                                 if self.check_root():
                                     target_commands[command[0]].run()
                                 else:
