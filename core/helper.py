@@ -26,12 +26,16 @@
 
 import subprocess
 
+from core.badges import badges
+
 class helper:
     def __init__(self):
+        self.badges = badges()
+
         self.rport = 5555
         self.version = "v6.0"
 
-    def check_adb_installation():
+    def check_adb_installation(self):
         command_output = subprocess.getoutput("command -v adb")
         if command_output.strip() == "":
             print(self.badges.E + "Failed to execute adb!")
@@ -49,11 +53,11 @@ class helper:
         commands.update(target_commands)
 
         for i in sorted(commands):
-            if commands[i].type == "settings": settings_commands.append(commands[i])
-            if commands[i].type == "managing": managing_commands.append(commands[i])
-            if commands[i].type == "stealing": stealing_commands.append(commands[i])
-            if commands[i].type == "trolling": trolling_commands.append(commands[i])
-            if commands[i].type == "boot": boot_commands.append(commands[i])
+            if commands[i].details['type'] == "settings": settings_commands.append(commands[i])
+            if commands[i].details['type'] == "managing": managing_commands.append(commands[i])
+            if commands[i].details['type'] == "stealing": stealing_commands.append(commands[i])
+            if commands[i].details['type'] == "trolling": trolling_commands.append(commands[i])
+            if commands[i].details['type'] == "boot": boot_commands.append(commands[i])
 
         print("")
         print("Core Commands")
@@ -62,16 +66,17 @@ class helper:
         print("    Command        Description")
         print("    -------        -----------")
         print("    clear          Clear terminal window.")
+        print("    details        Show module command details.")
         print("    exec           Execute local system command.")
         print("    exit           Exit and close current session.")
         print("    help           Show available session commands.")
         print("")
 
         if len(settings_commands) > 0:
-            bigger = len(settings_commands[0].name)
+            bigger = len(settings_commands[0].details['name'])
             for i in settings_commands:
-                if len(i.name) > bigger:
-                    bigger = len(i.name)
+                if len(i.details['name']) > bigger:
+                    bigger = len(i.details['name'])
 
             if bigger >= 14:
                 bigger = bigger - 5
@@ -84,14 +89,14 @@ class helper:
             print("    Command" + " " * (bigger) + "Description")
             print("    -------" + " " * (bigger) + "-----------")
             for i in settings_commands:
-                print("    " + i.name + " " * (7 - len(i.name) + bigger) + i.description)
+                print("    " + i.details['name'] + " " * (7 - len(i.details['name']) + bigger) + i.details['description'])
             print("")
 
         if len(managing_commands) > 0:
-            bigger = len(managing_commands[0].name)
+            bigger = len(managing_commands[0].details['name'])
             for i in managing_commands:
-                if len(i.name) > bigger:
-                    bigger = len(i.name)
+                if len(i.details['name']) > bigger:
+                    bigger = len(i.details['name'])
 
             if bigger >= 14:
                 bigger = bigger - 5
@@ -104,14 +109,14 @@ class helper:
             print("    Command" + " " * (bigger) + "Description")
             print("    -------" + " " * (bigger) + "-----------")
             for i in managing_commands:
-                print("    " + i.name + " " * (7 - len(i.name) + bigger) + i.description)
+                print("    " + i.details['name'] + " " * (7 - len(i.details['name']) + bigger) + i.details['description'])
             print("")
 
         if len(stealing_commands) > 0:
-            bigger = len(stealing_commands[0].name)
+            bigger = len(stealing_commands[0].details['name'])
             for i in stealing_commands:
-                if len(i.name) > bigger:
-                    bigger = len(i.name)
+                if len(i.details['name']) > bigger:
+                    bigger = len(i.details['name'])
 
             if bigger >= 14:
                 bigger = bigger - 5
@@ -124,14 +129,14 @@ class helper:
             print("    Command" + " " * (bigger) + "Description")
             print("    -------" + " " * (bigger) + "-----------")
             for i in stealing_commands:
-                print("    " + i.name + " " * (7 - len(i.name) + bigger) + i.description)
+                print("    " + i.details['name'] + " " * (7 - len(i.details['name']) + bigger) + i.details['description'])
             print("")
 
         if len(trolling_commands) > 0:
-            bigger = len(trolling_commands[0].name)
+            bigger = len(trolling_commands[0].details['name'])
             for i in trolling_commands:
-                if len(i.name) > bigger:
-                    bigger = len(i.name)
+                if len(i.details['name']) > bigger:
+                    bigger = len(i.details['name'])
 
             if bigger >= 14:
                 bigger = bigger - 5
@@ -144,14 +149,14 @@ class helper:
             print("    Command" + " " * (bigger) + "Description")
             print("    -------" + " " * (bigger) + "-----------")
             for i in trolling_commands:
-                print("    " + i.name + " " * (7 - len(i.name) + bigger) + i.description)
+                print("    " + i.details['name'] + " " * (7 - len(i.details['name']) + bigger) + i.details['description'])
             print("")
 
         if len(boot_commands) > 0:
-            bigger = len(boot_commands[0].name)
+            bigger = len(boot_commands[0].details['name'])
             for i in boot_commands:
-                if len(i.name) > bigger:
-                    bigger = len(i.name)
+                if len(i.details['name']) > bigger:
+                    bigger = len(i.details['name'])
 
             if bigger >= 14:
                 bigger = bigger - 5
@@ -164,5 +169,5 @@ class helper:
             print("    Command" + " " * (bigger) + "Description")
             print("    -------" + " " * (bigger) + "-----------")
             for i in boot_commands:
-                print("    " + i.name + " " * (7 - len(i.name) + bigger) + i.description)
+                print("    " + i.details['name'] + " " * (7 - len(i.details['name']) + bigger) + i.details['description'])
             print("")

@@ -28,22 +28,27 @@ import os
 import binascii
 
 from core.badges import badges
-from core.ghost import ghost
 
 class GhostModule:
-    def __init__(self):
+    def __init__(self, ghost):
+        self.ghost = ghost
         self.badges = badges()
-        self.ghost = ghost()
 
-        self.name = "screenshot"
-        self.description = "Take device screenshot."
-        self.usage = "Usage: screenshot <local_path>"
-        self.type = "managing"
-        self.args = 2
+        self.details = {
+            'name': "screenshot",
+            'authors': ['enty8080'],
+            'description': "Take device screenshot.",
+            'usage': "screenshot <local_path>",
+            'type': "managing",
+            'args': 1,
+            'needs_args': True,
+            'needs_admin': False,
+            'comments': ""
+        }
 
-    def run(self, cmd_data):
+    def run(self, args):
         screenshot_filename = "/sdcard/" + str(binascii.hexlify(os.urandom(5))) + ".png"
         print(self.badges.G + "Taking screenshot...")
         self.ghost.send_command("shell", "screencap " + screenshot_filename, False, False)
-        self.ghost.download(screenshot_filename, cmd_data)
+        self.ghost.download(screenshot_filename, args)
         self.ghost.send_command("shell", "rm " + screenshot_filename, False, False)

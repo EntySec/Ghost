@@ -25,21 +25,26 @@
 #
 
 from core.badges import badges
-from core.ghost import ghost
 
 class GhostModule:
-    def __init__(self):
+    def __init__(self, ghost):
+        self.ghost = ghost
         self.badges = badges()
-        self.ghost = ghost()
 
-        self.name = "openurl"
-        self.description = "Open URL on device."
-        self.usage = "Usage: openurl <url>"
-        self.type = "managing"
-        self.args = 2
+        self.details = {
+            'name': "openurl",
+            'authors': ['enty8080'],
+            'description': "Open URL on device.",
+            'usage': "openurl <url>",
+            'type': "managing",
+            'args': 1,
+            'needs_args': True,
+            'needs_admin': False,
+            'comments': ""
+        }
 
-    def run(self, cmd_data):
-        if not cmd_data.startswith(("http://", "https://")):
-            cmd_data = "http://" + cmd_data
+    def run(self, args):
+        if not args.startswith(("http://", "https://")):
+            args = "http://" + args
 
-        self.ghost.send_command("shell", "\"am start -a android.intent.action.VIEW -d "+cmd_data+"\"", True)
+        self.ghost.send_command("shell", "\"am start -a android.intent.action.VIEW -d "+args+"\"", True)

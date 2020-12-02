@@ -25,24 +25,29 @@
 #
 
 from core.badges import badges
-from core.ghost import ghost
 
 class GhostModule:
-    def __init__(self):
+    def __init__(self, ghost):
+        self.ghost = ghost
         self.badges = badges()
-        self.ghost = ghost()
 
-        self.name = "wifi"
-        self.description = "Control device wifi service."
-        self.usage = "Usage: wifi [on|off]"
-        self.type = "settings"
-        self.args = 2
+        self.details = {
+            'name': "wifi",
+            'authors': ['enty8080'],
+            'description': "Control device wifi service.",
+            'usage': "wifi [on|off]",
+            'type': "settings",
+            'args': 1,
+            'needs_args': True,
+            'needs_admin': False,
+            'comments': ""
+        }
 
-    def run(self, cmd_data):
-        if cmd_data in ['on', 'off']:
-            if cmd_data == "on":
+    def run(self, args):
+        if args in ['on', 'off']:
+            if args == "on":
                 self.ghost.send_command("shell", "svc wifi enable", False, False)
             else:
                 self.ghost.send_command("shell", "svc wifi disable", False, False)
         else:
-            print(self.usage)
+            print("Usage: " + self.usage)

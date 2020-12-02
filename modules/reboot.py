@@ -25,19 +25,24 @@
 #
 
 from core.badges import badges
-from core.ghost import ghost
 
 class GhostModule:
-    def __init__(self):
+    def __init__(self, ghost):
+        self.ghost = ghost
         self.badges = badges()
-        self.ghost = ghost()
 
-        self.name = "reboot"
-        self.description = "Reboot device."
-        self.usage = "Usage: reboot"
-        self.type = "boot"
-        self.args = 1
+        self.details = {
+            'name': "reboot",
+            'authors': ['enty8080'],
+            'description': "Reboot device.",
+            'usage': "reboot",
+            'type': "boot",
+            'args': 0,
+            'needs_args': False,
+            'needs_admin': False,
+            'comments': ""
+        }
 
-    def run(self, cmd_data):
+    def run(self):
         print(self.badges.G + "Rebooting device...")
         self.ghost.send_command("reboot", "", True)

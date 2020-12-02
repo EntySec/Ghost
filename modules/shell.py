@@ -25,19 +25,24 @@
 #
 
 from core.badges import badges
-from core.ghost import ghost
 
 class GhostModule:
-    def __init__(self):
+    def __init__(self, ghost):
+        self.ghost = ghost
         self.badges = badges()
-        self.ghost = ghost()
 
-        self.name = "shell"
-        self.description = "Open device shell."
-        self.usage = "Usage: shell"
-        self.type = "managing"
-        self.args = 1
+        self.details = {
+            'name': "shell",
+            'authors': ['enty8080'],
+            'description': "Open device shell.",
+            'usage': "shell",
+            'type': "managing",
+            'args': 0,
+            'needs_args': False,
+            'needs_admin': False,
+            'comments': ""
+        }
 
-    def run(self, cmd_data):
+    def run(self):
         print(self.badges.G + "Opening device shell...")
         self.ghost.send_command("shell", "", True)

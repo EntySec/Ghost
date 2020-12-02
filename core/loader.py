@@ -26,25 +26,40 @@
 
 import os
 
-from core.badges import badges
-
-class GhostModule:
+class loader:
     def __init__(self, ghost):
         self.ghost = ghost
-        self.badges = badges()
 
-        self.details = {
-            'name': "screen",
-            'authors': ['enty8080'],
-            'description': "Control device screen.",
-            'usage': "screen",
-            'type': "managing",
-            'args': 0,
-            'needs_args': False,
-            'needs_admin': False,
-            'comments': ""
-        }
+    def get_module(self, mu, name, folderpath):
+        folderpath_list = folderpath.split(".")
+        for i in dir(mu):
+            if i == name:
+                pass
+                return getattr(mu, name)
+            else:
+                if i in folderpath_list:
+                    i = getattr(mu, i)
+                    return self.get_module(i, name, folderpath)
 
-    def run(self):
-        print(self.badges.G + "Opening device screen...")
-        os.system("scrcpy &> /dev/null")
+    def import_modules(self, path):
+        modules = dict()
+
+        for mod in os.listdir(path):
+            if mod == '__init__.py' or mod[-3:] != '.py':
+                continue
+            else:
+                try:
+                    md = path.replace("/", ".").replace("\\", ".") + "." + mod[:-3]
+                    mt = __import__(md)
+
+                    m = self.get_module(mt, mod[:-3], md)
+                    m = m.GhostModule(self.ghost)
+
+                    modules[m.details['name']] = m
+                except:
+                    pass
+        return modules
+
+    def load_modules(self):
+        target_commands = self.import_modules("modules")
+        return target_commands

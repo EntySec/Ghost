@@ -25,20 +25,25 @@
 #
 
 from core.badges import badges
-from core.ghost import ghost
 
 class GhostModule:
-    def __init__(self):
+    def __init__(self, ghost):
+        self.ghost = ghost
         self.badges = badges()
-        self.ghost = ghost()
 
-        self.name = "battery"
-        self.description = "Get device battery information."
-        self.usage = "Usage: battery"
-        self.type = "settings"
-        self.args = 1
+        self.details = {
+            'name': "battery",
+            'authors': ['enty8080'],
+            'description': "Show device battery state.",
+            'usage': "battery",
+            'type': "settings",
+            'args': 0,
+            'needs_args': False,
+            'needs_admin': False,
+            'comments': ""
+        }
 
-    def run(self, cmd_data):
+    def run(self):
         output = self.ghost.send_command("shell", "dumpsys battery")
         print(self.badges.I + "Device Battery Information:")
         print(output)
