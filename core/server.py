@@ -29,13 +29,11 @@ import sys
 import os
 
 from core.badges import badges
-from core.ghost import ghost
 from core.helper import helper
 
 class server:
     def __init__(self):
         self.badges = badges()
-        self.ghost = ghost()
         self.helper = helper()
 
     def connect(self, rhost, rport):
@@ -57,6 +55,9 @@ class server:
         time.sleep(0.5)
         
         from core.shell import shell
-        shell = shell(self.ghost)
+        from core.ghost import ghost
+        
+        ghost = ghost(rhost, rport)
+        shell = shell(ghost)
         
         shell.shell(target_addr)
