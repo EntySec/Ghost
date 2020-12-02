@@ -25,20 +25,25 @@
 #
 
 from core.badges import badges
-from core.ghost import ghost
 
 class GhostModule:
-    def __init__(self):
+    def __init__(self, ghost):
+        self.ghost = ghost
         self.badges = badges()
-        self.ghost = ghost()
 
-        self.name = "sysinfo"
-        self.description = "Get device system information."
-        self.usage = "Usage: sysinfo"
-        self.type = "settings"
-        self.args = 1
+        self.details = {
+            'name': "sysinfo",
+            'authors': ['enty8080'],
+            'description': "Show device system information.",
+            'usage': "sysinfo",
+            'type': "settings",
+            'args': 0,
+            'needs_args': False,
+            'needs_admin': False,
+            'comments': ""
+        }
 
-    def run(self, cmd_data):
+    def run(self):
         system = "Android"
         hostname = self.ghost.send_command("shell", "getprop net.hostname")
         username = self.ghost.send_command("shell", "getprop ro.product.name")

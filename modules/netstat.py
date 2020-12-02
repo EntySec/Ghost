@@ -25,20 +25,25 @@
 #
 
 from core.badges import badges
-from core.ghost import ghost
 
 class GhostModule:
-    def __init__(self):
+    def __init__(self, ghost):
+        self.ghost = ghost
         self.badges = badges()
-        self.ghost = ghost()
 
-        self.name = "netstat"
-        self.description = "Get device network information."
-        self.usage = "Usage: netstat"
-        self.type = "settings"
-        self.args = 1
+        self.details = {
+            'name': "netstat",
+            'authors': ['enty8080'],
+            'description': "Show device network information.",
+            'usage': "netstat",
+            'type': "settings",
+            'args': 0,
+            'needs_args': False,
+            'needs_admin': False,
+            'comments': ""
+        }
 
-    def run(self, cmd_data):
+    def run(self):
         print(self.badges.G + "Getting network information...")
         output = self.ghost.send_command("shell", "netstat")
         print(output)

@@ -25,22 +25,27 @@
 #
 
 from core.badges import badges
-from core.ghost import ghost
 from core.keyboard import keyboard
 
 class GhostModule:
-    def __init__(self):
+    def __init__(self, ghost):
+        self.ghost = ghost
         self.badges = badges()
-        self.ghost = ghost()
         self.keyboard = keyboard()
 
-        self.name = "keyboard"
-        self.description = "Control target keyboard."
-        self.usage = "Usage: keyboard"
-        self.type = "managing"
-        self.args = 1
+        self.details = {
+            'name': "keyboard",
+            'authors': ['enty8080'],
+            'description': "Control device keyboard.",
+            'usage': "keyboard",
+            'type': "managing",
+            'args': 0,
+            'needs_args': False,
+            'needs_admin': False,
+            'comments': ""
+        }
 
-    def run(self, cmd_data):
+    def run(self):
         print(self.badges.G + "Connecting to keyboard...")
         print(self.badges.I + "Press Ctrl-C to stop.")
         while True:

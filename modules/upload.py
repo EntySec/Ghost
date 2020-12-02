@@ -25,18 +25,23 @@
 #
 
 from core.badges import badges
-from core.ghost import ghost
 
 class GhostModule:
-    def __init__(self):
+    def __init__(self, ghost):
+        self.ghost = ghost
         self.badges = badges()
-        self.ghost = ghost()
 
-        self.name = "upload"
-        self.description = "Upload local file."
-        self.usage = "Usage: download <local_file> <remote_path>"
-        self.type = "managing"
-        self.args = 3
+        self.details = {
+            'name': "upload",
+            'authors': ['enty8080'],
+            'description': "Upload local file.",
+            'usage': "upload <local_file> <remote_path>",
+            'type': "managing",
+            'args': 2,
+            'needs_args': True,
+            'needs_admin': False,
+            'comments': ""
+        }
 
-    def run(self, cmd_data):
-        self.ghost.upload(cmd_data.split(" ")[0], cmd_data.split(" ")[1])
+    def run(self, args):
+        self.ghost.upload(args.split()[0], args.split()[1])

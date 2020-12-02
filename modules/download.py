@@ -25,18 +25,23 @@
 #
 
 from core.badges import badges
-from core.ghost import ghost
 
 class GhostModule:
-    def __init__(self):
+    def __init__(self, ghost):
+        self.ghost = ghost
         self.badges = badges()
-        self.ghost = ghost()
 
-        self.name = "download"
-        self.description = "Download remote file."
-        self.usage = "Usage: download <remote_file> <local_path>"
-        self.type = "stealing"
-        self.args = 3
+        self.details = {
+            'name': "download",
+            'authors': ['enty8080'],
+            'description': "Download remote file.",
+            'usage': "download <remote_file> <local_path>",
+            'type': "stealing",
+            'args': 2,
+            'needs_args': True,
+            'needs_admin': False,
+            'comments': ""
+        }
 
-    def run(self, cmd_data):
-        self.ghost.download(cmd_data.split(" ")[0], cmd_data.split(" ")[1])
+    def run(self, args):
+        self.ghost.download(args.split()[0], args.split()[1])
