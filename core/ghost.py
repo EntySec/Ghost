@@ -32,9 +32,12 @@ from core.badges import badges
 from core.transfer import transfer
 
 class ghost:
-    def __init__(self):
+    def __init__(self, rhost, rport):
         self.badges = badges()
         self.transfer = transfer(self)
+        
+        self.remote_host = rhost
+        self.remote_port = rport
         
     def send_command(self, command, arguments="", multi_output=False, output=True):
         if multi_output:
