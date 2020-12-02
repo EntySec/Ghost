@@ -23,7 +23,7 @@
  </a>
 </p>
 
-<h3 align="center"><img src="https://user-images.githubusercontent.com/54115104/99542419-1a356300-29c3-11eb-93e6-68bc54b31b5f.png" alt="ghost_1" height="540px"></h3>
+<h3 align="center"><img src="https://user-images.githubusercontent.com/54115104/91632566-45bf3780-e9ea-11ea-9b85-1ee4f451ae39.png" alt="ghost_1" height="540px"></h3>
 
 ***
 
@@ -108,7 +108,7 @@ Ghost Framework has the ability to access device screen
 and control it remotely using mouse and keyboard.
 ```
 
-<h3 align="center"><img src="https://user-images.githubusercontent.com/54115104/99542424-1d305380-29c3-11eb-919c-3f683feac366.png" alt="ghost_2" height="540px"></h3>
+<h3 align="center"><img src="https://user-images.githubusercontent.com/54115104/91632566-45bf3780-e9ea-11ea-9b85-1ee4f451ae39.png" alt="ghost_2" height="540px"></h3>
 
 ***
 
