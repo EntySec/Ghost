@@ -31,7 +31,6 @@ import os
 from core.badges import badges
 from core.ghost import ghost
 from core.helper import helper
-from core.shell import shell
 
 class server:
     def __init__(self):
@@ -40,7 +39,6 @@ class server:
         self.helper = helper()
 
     def connect(self, rhost, rport):
-        global shell
         target_addr = rhost + ":" + rport
         print(self.badges.G + "Connecting to "+target_addr+"...")
         self.ghost.start_server()
@@ -57,6 +55,8 @@ class server:
                 self.ghost.disconnect(target_addr)
                 sys.exit()
         time.sleep(0.5)
+        
+        from core.shell import shell
         shell = shell(self.ghost)
+        
         shell.shell(target_addr)
-        del shell
