@@ -35,6 +35,9 @@ class shell:
         self.helper = helper()
         self.loader = loader(ghost)
 
+    def check_root(self):
+        return False
+        
     def shell(self, target_addr):
         target_commands = self.loader.load_modules()
         while True:
@@ -81,9 +84,21 @@ class shell:
                             if (len(command) - 1) < int(target_commands[command[0]].details['args']):
                                 print("Usage: " + target_commands[command[0]].details['usage'])
                             else:
-                                target_commands[command[0]].run(arguments)
+                                if target_commands[command[0]].details['needs_admin']:
+                                    if self.check_root():
+                                        target_commands[command[0]].run(arguments)
+                                    else:
+                                        print(self.badges.E + "Target device is not rooted!")
+                                else:
+                                    target_commands[command[0]].run(arguments)
                         else:
-                            target_commands[command[0]].run()
+                            if target_commands[command[0]].details['needs_admin']:
+                                if self.check_root():
+                                    target_commands[command[0]].run()
+                                else:
+                                    print(self.badges.E + "Target device is not rooted!")
+                            else:
+                                target_commands[command[0]].run()
                     else:
                         print(self.badges.E + "Unrecognized command!")
             except (KeyboardInterrupt, EOFError):
