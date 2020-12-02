@@ -48,13 +48,16 @@ class loader:
             if mod == '__init__.py' or mod[-3:] != '.py':
                 continue
             else:
-                md = path.replace("/", ".").replace("\\", ".") + "." + mod[:-3]
-                mt = __import__(md)
+                try:
+                    md = path.replace("/", ".").replace("\\", ".") + "." + mod[:-3]
+                    mt = __import__(md)
 
-                m = self.get_module(mt, mod[:-3], md)
-                m = m.GhostModule(self.ghost)
+                    m = self.get_module(mt, mod[:-3], md)
+                    m = m.GhostModule(self.ghost)
 
-                modules[m.details['name']] = m
+                    modules[m.details['name']] = m
+                except:
+                    pass
         return modules
 
     def load_modules(self):
