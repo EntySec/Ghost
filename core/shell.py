@@ -28,6 +28,8 @@ from core.badges import badges
 from core.helper import helper
 from core.loader import loader
 
+from os import system
+
 class shell:
     def __init__(self, ghost):
         self.ghost = ghost
@@ -74,10 +76,10 @@ class shell:
                         print("Usage: exec <command>")
                     else:
                         print(self.badges.I + "exec:")
-                        os.system(arguments)
+                        system(arguments)
                         print("")
                 elif command[0] == "clear":
-                    os.system("clear")
+                    system("clear")
                 else:
                     if command[0] in target_commands.keys():
                         if target_commands[command[0]].details['needs_args']:
