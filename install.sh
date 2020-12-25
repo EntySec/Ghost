@@ -41,7 +41,7 @@ done
 
 echo -e $G"Installing Ghost Framework..."
 
-if [[ $(uname -s) == "Darwin" && $(arch) == "i386" ]]; then
+if [[ $(uname -s) == "Darwin" && $(uname -m) == "x86_64" || $(uname -m) == "arm64" ]]; then
     {
         if [[ -z $(command -v brew) ]]; then
             /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
@@ -99,6 +99,12 @@ elif [[ $(uname -s) == "Linux" ]]; then
 else
     echo -e $E"Your system is not supported!"
     exit 1
+fi
+
+if [[ ! -d /usr/local/bin ]]; then
+    {
+        mkdir /usr/local/bin
+    } &> /dev/null
 fi
 
 if [[ ! -d ~/.ghost ]]; then
