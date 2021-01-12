@@ -119,7 +119,7 @@ def main():
         ui = ui.split()
 
 
-if helper.check_adb_installation:
+if helper.check_adb_installation():
     banner()
     main()
 else:
