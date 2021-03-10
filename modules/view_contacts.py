@@ -34,7 +34,7 @@ class GhostModule:
         self.details = {
             'name': "view_contacts",
             'authors': ['jaxparrow07'],
-            'description': "Show Contcacts Saved on Device.",
+            'description': "Show Contacts Saved on Device.",
             'usage': "view_contacts",
             'type': "stealing",
             'args': 0,
