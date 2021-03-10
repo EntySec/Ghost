@@ -32,21 +32,20 @@ class GhostModule:
         self.badges = badges()
 
         self.details = {
-            'name': "view_contacts",
+            'name': "type",
             'authors': ['jaxparrow07'],
-            'description': "Show Contacts Saved on Device.",
-            'usage': "view_contacts",
-            'type': "stealing",
-            'args': 0,
-            'needs_args': False,
+            'description': "Types the specified text on the device.",
+            'usage': "type <text> or '<text>'",
+            'type': "managing",
+            'args': 1,
+            'needs_args': True,
             'needs_root': False,
-            'comments': ""
+            'comments': "This supports list of strings and a string closed with quotes"
         }
 
-    def run(self):
-        print(self.badges.G + "Getting Contacts information...")
-        output = self.ghost.send_command("shell", "content query --uri content://contacts/phones/  --projection display_name:number")
-        output = output.replace('Row: ','')
-        output = output.replace(' display_name=',' ')
-        output = output.replace(', number=', ' : ')
-        print(output)
+    def run(self, args):
+        text = str(args[0])
+        if text[0] != "'":
+            self.ghost.send_command("shell", "\"input text "+"'"+str(args)+"'"+"\"", True)
+        else:
+            self.ghost.send_command("shell", "\"input text "+args+"\"", True)

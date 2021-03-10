@@ -32,21 +32,16 @@ class GhostModule:
         self.badges = badges()
 
         self.details = {
-            'name': "view_contacts",
+            'name': "click",
             'authors': ['jaxparrow07'],
-            'description': "Show Contacts Saved on Device.",
-            'usage': "view_contacts",
-            'type': "stealing",
-            'args': 0,
-            'needs_args': False,
+            'description': "Clicks the specified x and y axis.",
+            'usage': "click <x> <y>",
+            'type': "managing",
+            'args': 2,
+            'needs_args': True,
             'needs_root': False,
             'comments': ""
         }
 
-    def run(self):
-        print(self.badges.G + "Getting Contacts information...")
-        output = self.ghost.send_command("shell", "content query --uri content://contacts/phones/  --projection display_name:number")
-        output = output.replace('Row: ','')
-        output = output.replace(' display_name=',' ')
-        output = output.replace(', number=', ' : ')
-        print(output)
+    def run(self, args):
+        self.ghost.send_command("shell", "\"input tap "+args+"\"", True)
