@@ -1,4 +1,4 @@
-# `FOR NORMAL RCE USE`: `exploit/android/adb/remote_code_execution` at [HatSploit Framework](https://github.com/EntySec/HatSploit)
+# `FOR NORMAL RCE USE`: `exploit/android/adb/remote_code_execution` at [HatSploit Framework](https://github.com/EntySec/HatSploit), `TAP AT STAR ON IT IF YOU WANT TO SUPPORT!`
 
 # Ghost Framework
 
