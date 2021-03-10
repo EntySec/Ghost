@@ -77,7 +77,7 @@ class shell:
                     else:
                         print(self.badges.I + "exec:")
                         if arguments[0] == "cd":
-                            chdir(arguments[0])
+                            chdir(arguments[1])
                         else:
                             system(arguments)
                         print("")
