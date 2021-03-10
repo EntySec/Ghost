@@ -29,6 +29,7 @@ from core.helper import helper
 from core.loader import loader
 
 from os import system, chdir
+from subprocess import CalledProcessError, check_output
 
 class shell:
     def __init__(self, ghost):
@@ -38,8 +39,17 @@ class shell:
         self.loader = loader(ghost)
 
     def check_root(self):
-        return False
-        
+        try:
+            output = check_output(["adb","shell","which","su"])
+            returncode = 0
+        except CalledProcessError as e:
+            output = e.output
+            returncode = e.returncode
+        if returncode != 0:
+            False
+        else:
+            True
+
     def shell(self, target_addr):
         target_commands = self.loader.load_modules()
         while True:
