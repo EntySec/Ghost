@@ -33,8 +33,7 @@
 
 ```
 Ghost Framework is an Android post-exploitation framework that exploits the
-Android Debug Bridge to remotely access an Android device. Ghost Framework
-gives you the power and convenience of remote Android device administration.
+Android Debug Bridge to remotely access an Android device.
 ```
 
 ***
