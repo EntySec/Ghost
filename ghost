@@ -121,6 +121,9 @@ def main():
 
 if helper.check_adb_installation():
     banner()
-    main()
+    try:
+        main()
+    except KeyboardInterrupt:
+        print("Keyboard Interrupt received! Exiting...")
 else:
     sys.exit()
