@@ -1,6 +1,6 @@
 # Ghost Framework
 
-<h3 align="center"><img src="" alt="logo" height="250px"></h3>
+<h3 align="center"><img src="https://user-images.githubusercontent.com/54115104/116759598-5f060100-aa1b-11eb-8402-ae88c8052483.png" alt="logo" height="250px"></h3>
 
 <p align="center">
   <a href="http://entysec.netlify.app/">
