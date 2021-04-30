@@ -1,4 +1,4 @@
-<h3 align="center"><img src="https://user-images.githubusercontent.com/54115104/91632566-45bf3780-e9ea-11ea-9b85-1ee4f451ae39.png" alt="logo" height="250px"></h3>
+<h3 align="center"><img src="https://user-images.githubusercontent.com/54115104/116759780-d6d42b80-aa1b-11eb-8976-ec855c70c0fa.png" alt="logo" height="250px"></h3>
 
 <p align="center">
     <b>Ghost Framework</b><br>
