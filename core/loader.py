@@ -26,7 +26,8 @@
 
 import os
 
-class loader:
+
+class Loader:
     def __init__(self, ghost):
         self.ghost = ghost
 
@@ -56,7 +57,7 @@ class loader:
                     m = m.GhostModule(self.ghost)
 
                     modules[m.details['name']] = m
-                except:
+                except Exception:
                     pass
         return modules
 

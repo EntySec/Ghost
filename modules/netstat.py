@@ -26,10 +26,11 @@
 
 from core.badges import badges
 
+
 class GhostModule:
     def __init__(self, ghost):
         self.ghost = ghost
-        self.badges = badges()
+        self.badges = Badges()
 
         self.details = {
             'name': "netstat",

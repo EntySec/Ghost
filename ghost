@@ -38,12 +38,13 @@ from core.server import server
 from core.helper import helper
 from core.ghost import ghost
 
-badges = badges()
-server = server()
-helper = helper()
-ghost = ghost()
+badges = Badges()
+server = Server()
+helper = Helper()
+ghost = Ghost()
 
 readline.parse_and_bind('tab: complete')
+
 
 def banner():
     os.system("clear")
@@ -60,7 +61,7 @@ def main():
         rhost = ""
         try:
             ui = input('\033[4mghost\033[0m> ').strip(" ")
-        except:
+        except Exception:
             sys.exit()
         ui = ui.split()
         while True:
@@ -74,7 +75,14 @@ def main():
                 print("")
                 print("Core Commands")
                 print("=============")
-                os.system("cat data/cmds/core_cmds.txt")
+                print("")
+                print("    Command        Description")
+                print("    -------        -----------")
+                print("    clear          Clear terminal window.")
+                print("    details        Show module command details.")
+                print("    exec           Execute local system command.")
+                print("    exit           Exit and close current session.")
+                print("    help           Show available session commands.")
                 print("")
             elif ui[0] == "options":
                 if len(rhost) >= 12 or len(rport) >= 12:
@@ -117,20 +125,20 @@ def main():
                 print(badges.E + "Unrecognized command!")
             try:
                 ui = input('\033[4mghost\033[0m> ').strip(" ")
-            except:
+            except Exception:
                 sys.exit()
             ui = ui.split()
 
     except KeyboardInterrupt:
         print(badges.G + "Cleaning up...")
         ghost.disconnect(rhost)
-        ghost.stop_server()       
-        print(badges.G + "Exiting...") 
+        ghost.stop_server()
+        print(badges.G + "Exiting...")
 
 
 if helper.check_adb_installation():
     banner()
     main()
-    
+
 else:
     sys.exit()

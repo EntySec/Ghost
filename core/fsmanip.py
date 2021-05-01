@@ -26,7 +26,8 @@
 
 import os
 
-class fsmanip:
+
+class FSManip:
     def __init__(self):
         self.error = '\033[1;31m[-] \033[0m'
 

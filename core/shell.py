@@ -24,23 +24,24 @@
 # SOFTWARE.
 #
 
+from os import system, chdir
+from subprocess import CalledProcessError, check_output
+
 from core.badges import badges
 from core.helper import helper
 from core.loader import loader
 
-from os import system, chdir
-from subprocess import CalledProcessError, check_output
 
-class shell:
+class Shell:
     def __init__(self, ghost):
         self.ghost = ghost
-        self.badges = badges()
-        self.helper = helper()
-        self.loader = loader(ghost)
+        self.badges = Badges()
+        self.helper = Helper()
+        self.loader = Loader(ghost)
 
     def check_root(self):
         try:
-            output = check_output(["adb","shell","which","su"])
+            output = check_output(["adb", "shell", "which", "su"])
             returncode = 0
         except CalledProcessError as e:
             output = e.output
@@ -77,7 +78,8 @@ class shell:
                             for author in target_commands[command[1]].details['authors']:
                                 authors += author + " "
                             print(self.badges.I + "Module Authors: " + authors.strip())
-                            print(self.badges.I + "Module Description: " + target_commands[command[1]].details['description'])
+                            print(self.badges.I + "Module Description: " + target_commands[command[1]].details[
+                                'description'])
                             print(self.badges.I + "Module Usage: " + target_commands[command[1]].details['usage'])
                         else:
                             print(self.badges.E + "No such module command!")

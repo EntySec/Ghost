@@ -27,11 +27,12 @@
 from core.badges import badges
 from core.keyboard import keyboard
 
+
 class GhostModule:
     def __init__(self, ghost):
         self.ghost = ghost
-        self.badges = badges()
-        self.keyboard = keyboard()
+        self.badges = Badges()
+        self.keyboard = Keyboard()
 
         self.details = {
             'name': "keyboard",

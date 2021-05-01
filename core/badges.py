@@ -24,7 +24,8 @@
 # SOFTWARE.
 #
 
-class badges:
+
+class Badges:
     def __init__(self):
         self.I = '\033[1;77m[i] \033[0m'
         self.Q = '\033[1;77m[?] \033[0m'

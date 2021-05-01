@@ -26,10 +26,11 @@
 
 from core.badges import badges
 
+
 class GhostModule:
     def __init__(self, ghost):
         self.ghost = ghost
-        self.badges = badges()
+        self.badges = Badges()
 
         self.details = {
             'name': "click",
@@ -44,4 +45,4 @@ class GhostModule:
         }
 
     def run(self, args):
-        self.ghost.send_command("shell", "\"input tap "+args+"\"", True)
+        self.ghost.send_command("shell", "\"input tap " + args + "\"", True)

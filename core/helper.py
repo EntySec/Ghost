@@ -28,9 +28,10 @@ import subprocess
 
 from core.badges import badges
 
-class helper:
+
+class Helper:
     def __init__(self):
-        self.badges = badges()
+        self.badges = Badges()
 
         self.rport = 5555
         self.version = "v6.0"
@@ -41,7 +42,7 @@ class helper:
             print(self.badges.E + "Failed to execute adb!")
             return False
         return True
-        
+
     def show_commands(self, target_commands):
         settings_commands = []
         managing_commands = []
@@ -89,7 +90,8 @@ class helper:
             print("    Command" + " " * (bigger) + "Description")
             print("    -------" + " " * (bigger) + "-----------")
             for i in settings_commands:
-                print("    " + i.details['name'] + " " * (7 - len(i.details['name']) + bigger) + i.details['description'])
+                print(
+                    "    " + i.details['name'] + " " * (7 - len(i.details['name']) + bigger) + i.details['description'])
             print("")
 
         if len(managing_commands) > 0:
@@ -109,7 +111,8 @@ class helper:
             print("    Command" + " " * (bigger) + "Description")
             print("    -------" + " " * (bigger) + "-----------")
             for i in managing_commands:
-                print("    " + i.details['name'] + " " * (7 - len(i.details['name']) + bigger) + i.details['description'])
+                print(
+                    "    " + i.details['name'] + " " * (7 - len(i.details['name']) + bigger) + i.details['description'])
             print("")
 
         if len(stealing_commands) > 0:
@@ -129,7 +132,8 @@ class helper:
             print("    Command" + " " * (bigger) + "Description")
             print("    -------" + " " * (bigger) + "-----------")
             for i in stealing_commands:
-                print("    " + i.details['name'] + " " * (7 - len(i.details['name']) + bigger) + i.details['description'])
+                print(
+                    "    " + i.details['name'] + " " * (7 - len(i.details['name']) + bigger) + i.details['description'])
             print("")
 
         if len(trolling_commands) > 0:
@@ -149,7 +153,8 @@ class helper:
             print("    Command" + " " * (bigger) + "Description")
             print("    -------" + " " * (bigger) + "-----------")
             for i in trolling_commands:
-                print("    " + i.details['name'] + " " * (7 - len(i.details['name']) + bigger) + i.details['description'])
+                print(
+                    "    " + i.details['name'] + " " * (7 - len(i.details['name']) + bigger) + i.details['description'])
             print("")
 
         if len(boot_commands) > 0:
@@ -169,5 +174,6 @@ class helper:
             print("    Command" + " " * (bigger) + "Description")
             print("    -------" + " " * (bigger) + "-----------")
             for i in boot_commands:
-                print("    " + i.details['name'] + " " * (7 - len(i.details['name']) + bigger) + i.details['description'])
+                print(
+                    "    " + i.details['name'] + " " * (7 - len(i.details['name']) + bigger) + i.details['description'])
             print("")
