@@ -78,47 +78,25 @@ def main():
                 print("    Command        Description")
                 print("    -------        -----------")
                 print("    clear          Clear terminal window.")
+                print("    connect        Connect to the specified device.")
+                print("    disconnect     Disconnect specified device.")
                 print("    exit           Exit Ghost Framework.")
                 print("    help           Show available commands.")
-                print("    options        Show available options.")
-                print("    run            Run Ghost Framework.")
-                print("    set            Set an option value.")
                 print("")
-            elif ui[0] == "options":
-                if len(rhost) >= 12 or len(rport) >= 12:
-                    if len(rhost) > len(rport):
-                        bigger = len(rhost) - 3
-                    else:
-                        bigger = len(rport) - 3
-                else:
-                    bigger = 8
-                print("")
-                print("Ghost Options")
-                print("=============")
-                print("")
-                print("    Option        Value" + " " * bigger + "Description")
-                print("    ------        -----" + " " * bigger + "-----------")
-                print("    RHOST         " + rhost + " " * (5 - len(rhost) + bigger) + "Remote host.")
-                print("    RPORT         " + rport + " " * (5 - len(rport) + bigger) + "Remote port.")
-                print("")
-            elif ui[0] == "set":
-                if len(ui) < 3:
-                    print("Usage: set <option> <value>")
-                else:
-                    if ui[1].lower() == "rhost":
-                        rhost = ui[2]
-                        print(badges.I + "RHOST ==> " + ui[2])
-                    elif ui[1].lower() == "rport":
-                        rport = ui[2]
-                        print(badges.I + "RPORT ==> " + ui[2])
-                    else:
-                        print(badges.E + "Option is not found!")
-            elif ui[0] == "run":
-                if rhost == "" or rport == "":
-                    print(badges.E + "Failed to connect to target!")
+            elif ui[0] == "connect":
+                if len(ui) < 2:
+                    print("Usage: connect <address>")
                 else:
                     try:
-                        server.connect(rhost, rport)
+                        server.connect(rhost.split(':')[0], 5555)
+                    except SystemExit:
+                        pass
+            elif ui[0] == "disconnect":
+                if len(ui) < 2:
+                    print("Usage: disconnect <address>")
+                else:
+                    try:
+                        server.connect(rhost.split(':')[0], 5555)
                     except SystemExit:
                         pass
             else:
@@ -134,7 +112,6 @@ def main():
         ghost.disconnect(rhost)
         ghost.stop_server()
         print(badges.G + "Exiting...")
-
 
 if helper.check_adb_installation():
     banner()
