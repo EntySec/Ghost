@@ -54,7 +54,6 @@ def banner():
     print("--------------------")
     print("")
 
-
 def main():
     try:
         rport = str(helper.rport)
