@@ -33,10 +33,10 @@ import subprocess
 import readline
 import time
 
-from core.badges import badges
-from core.server import server
-from core.helper import helper
-from core.ghost import ghost
+from core.badges import Badges
+from core.server import Server
+from core.helper import Helper
+from core.ghost import Hhost
 
 badges = Badges()
 server = Server()
