@@ -40,7 +40,7 @@ class Server:
         self.ghost = Ghost()
 
     def connect(self, rhost, rport):
-        target_addr = rhost + ":" + rport
+        target_addr = rhost + ":" + str(rport)
         print(self.badges.G + "Connecting to " + target_addr + "...")
         self.ghost.start_server()
         self.ghost.connect(target_addr)
