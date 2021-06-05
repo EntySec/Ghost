@@ -56,8 +56,6 @@ def banner():
 
 def main():
     try:
-        rport = str(helper.rport)
-        rhost = ""
         try:
             ui = input('\033[4mghost\033[0m> ').strip(" ")
         except Exception:
@@ -88,10 +86,10 @@ def main():
                     print("Usage: connect <address>")
                 else:
                     try:
-                        if len(rhost.split(':')) < 2:
-                            server.connect(rhost, 5555)
+                        if len(ui[1].split(':')) < 2:
+                            server.connect(ui[1], 5555)
                         else:
-                            server.connect(rhost.split(':')[0], rhost.split(':')[1])
+                            server.connect(ui[1].split(':')[0], ui[1].split(':')[1])
                     except SystemExit:
                         pass
             elif ui[0] == "disconnect":
@@ -99,7 +97,7 @@ def main():
                     print("Usage: disconnect <address>")
                 else:
                     try:
-                        ghost.disconnect(rhost.split(':')[0])
+                        ghost.disconnect(ui[1].split(':')[0])
                     except SystemExit:
                         pass
             else:
