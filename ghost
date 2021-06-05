@@ -88,7 +88,10 @@ def main():
                     print("Usage: connect <address>")
                 else:
                     try:
-                        server.connect(rhost.split(':')[0], 5555)
+                        if len(rhost.split(':')) < 2:
+                            server.connect(rhost, 5555)
+                        else:
+                            server.connect(rhost.split(':')[0], rhost.split(':')[1])
                     except SystemExit:
                         pass
             elif ui[0] == "disconnect":
@@ -96,7 +99,7 @@ def main():
                     print("Usage: disconnect <address>")
                 else:
                     try:
-                        server.connect(rhost.split(':')[0], 5555)
+                        ghost.disconnect(rhost.split(':')[0])
                     except SystemExit:
                         pass
             else:
@@ -106,12 +109,8 @@ def main():
             except Exception:
                 sys.exit()
             ui = ui.split()
-
     except KeyboardInterrupt:
-        print(badges.G + "Cleaning up...")
-        ghost.disconnect(rhost)
-        ghost.stop_server()
-        print(badges.G + "Exiting...")
+        pass
 
 if helper.check_adb_installation():
     banner()
