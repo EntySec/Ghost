@@ -54,11 +54,16 @@ class Helper:
         commands.update(target_commands)
 
         for i in sorted(commands):
-            if commands[i].details['type'] == "settings": settings_commands.append(commands[i])
-            if commands[i].details['type'] == "managing": managing_commands.append(commands[i])
-            if commands[i].details['type'] == "stealing": stealing_commands.append(commands[i])
-            if commands[i].details['type'] == "trolling": trolling_commands.append(commands[i])
-            if commands[i].details['type'] == "boot": boot_commands.append(commands[i])
+            if commands[i].details['type'] == "settings":
+                settings_commands.append(commands[i])
+            if commands[i].details['type'] == "managing":
+                managing_commands.append(commands[i])
+            if commands[i].details['type'] == "stealing":
+                stealing_commands.append(commands[i])
+            if commands[i].details['type'] == "trolling":
+                trolling_commands.append(commands[i])
+            if commands[i].details['type'] == "boot":
+                boot_commands.append(commands[i])
 
         print("")
         print("Core Commands")
