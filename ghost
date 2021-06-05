@@ -36,7 +36,7 @@ import time
 from core.badges import Badges
 from core.server import Server
 from core.helper import Helper
-from core.ghost import Hhost
+from core.ghost import Ghost
 
 badges = Badges()
 server = Server()

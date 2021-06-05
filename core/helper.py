@@ -26,7 +26,7 @@
 
 import subprocess
 
-from core.badges import badges
+from core.badges import Badges
 
 
 class Helper:

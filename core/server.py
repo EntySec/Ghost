@@ -28,9 +28,9 @@ import os
 import sys
 import time
 
-from core.badges import badges
-from core.ghost import ghost
-from core.helper import helper
+from core.badges import Badges
+from core.ghost import Ghost
+from core.helper import Helper
 
 
 class Server:
@@ -57,7 +57,7 @@ class Server:
                 sys.exit()
         time.sleep(0.5)
 
-        from core.shell import shell
+        from core.shell import Shell
         shell = Shell(self.ghost)
 
         shell.shell(target_addr)

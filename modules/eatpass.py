@@ -24,8 +24,8 @@
 # SOFTWARE.
 #
 
-from core.badges import badges
-from core.ghost import ghost
+from core.badges import Badges
+from core.ghost import Ghost
 
 
 class GhostModule:

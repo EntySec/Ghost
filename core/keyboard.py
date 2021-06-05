@@ -28,7 +28,7 @@ import sys
 import termios
 import tty
 
-from core.ghost import ghost
+from core.ghost import Ghost
 
 
 class Keyboard:

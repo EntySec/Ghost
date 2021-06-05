@@ -27,9 +27,9 @@
 from os import system, chdir
 from subprocess import CalledProcessError, check_output
 
-from core.badges import badges
-from core.helper import helper
-from core.loader import loader
+from core.badges import Badges
+from core.helper import Helper
+from core.loader import Loader
 
 
 class Shell:

@@ -27,11 +27,11 @@
 import os
 import time
 
-from core.badges import badges
-from core.fsmanip import fsmanip
+from core.badges import Badges
+from core.fsmanip import FSManip
 
 
-class transfer:
+class Transfer:
     def __init__(self, ghost):
         self.badges = Badges()
         self.ghost = ghost

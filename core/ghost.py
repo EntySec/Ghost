@@ -28,8 +28,8 @@ import os
 import subprocess
 import sys
 
-from core.badges import badges
-from core.transfer import transfer
+from core.badges import Badges
+from core.transfer import Transfer
 
 
 class Ghost:
