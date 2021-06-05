@@ -24,98 +24,54 @@
 # SOFTWARE.
 #
 
-G = "\033[1;34m[*] \033[0m"
-S = "\033[1;32m[+] \033[0m"
-E = "\033[1;31m[-] \033[0m"
-P = "\033[1;77m[>] \033[0m"
+G="\033[1;34m[*] \033[0m"
+S="\033[1;32m[+] \033[0m"
+E="\033[1;31m[-] \033[0m"
+P="\033[1;77m[>] \033[0m"
 
-if [[-d ~ /.ghost]]; then
-{
-    cd
-~ /.ghost
-mkdir
-etc /.disabled
-mv
-core / transfer.py
-etc /.disabled
-mv
-etc / core / transfer.py
-~ /.ghost / core
-cp
-etc /.disabled / transfer.py
-etc / core
-rm - rf
-etc /.disabled
-} & > / dev / null
-chmod + x
-ghost
-./ ghost
-{
-    cd
-~ /.ghost
-mkdir
-etc /.disabled
-mv
-core / transfer.py
-etc /.disabled
-mv
-etc / core / transfer.py
-~ /.ghost / core
-cp
-etc /.disabled / transfer.py
-etc / core
-rm - rf
-etc /.disabled
-} & > / dev / null
+if [[ -d ~/.ghost ]]; then
+    {
+        cd ~/.ghost
+        mkdir etc/.disabled
+        mv core/transfer.py etc/.disabled
+        mv etc/core/transfer.py ~/.ghost/core
+        cp etc/.disabled/transfer.py etc/core
+        rm -rf etc/.disabled
+    } &> /dev/null
+    chmod +x ghost
+    ./ghost
+    {
+        cd ~/.ghost
+        mkdir etc/.disabled
+        mv core/transfer.py etc/.disabled
+        mv etc/core/transfer.py ~/.ghost/core
+        cp etc/.disabled/transfer.py etc/core
+        rm -rf etc/.disabled
+    } &> /dev/null
 else
-{
-    git
-clone
-https: // github.com / EntySec / ghost.git
-~ /.ghost
-cd
-~ /.ghost
-mkdir
-etc /.disabled
-mv
-core / transfer.py
-etc /.disabled
-mv
-etc / core / transfer.py
-~ /.ghost / core
-cp
-etc /.disabled / transfer.py
-etc / core
-rm - rf
-etc /.disabled
-} & > / dev / null
-if [[ ! -d ~ /.ghost]]; then
-echo - e $E
-"Execution failed!"
-exit
-1
-fi
-chmod + x
-ghost
-./ ghost
-{
-    cd
-~ /.ghost
-mkdir
-etc /.disabled
-mv
-core / transfer.py
-etc /.disabled
-mv
-etc / core / transfer.py
-~ /.ghost / core
-cp
-etc /.disabled / transfer.py
-etc / core
-rm - rf
-etc /.disabled
-} & > / dev / null
+    {
+        git clone https://github.com/EntySec/ghost.git ~/.ghost
+        cd ~/.ghost
+        mkdir etc/.disabled
+        mv core/transfer.py etc/.disabled
+        mv etc/core/transfer.py ~/.ghost/core
+        cp etc/.disabled/transfer.py etc/core
+        rm -rf etc/.disabled
+    } &> /dev/null
+    if [[ ! -d ~/.ghost ]]; then
+        echo -e $E"Execution failed!"
+        exit 1
+    fi
+    chmod +x ghost
+    ./ghost
+    {
+        cd ~/.ghost
+        mkdir etc/.disabled
+        mv core/transfer.py etc/.disabled
+        mv etc/core/transfer.py ~/.ghost/core
+        cp etc/.disabled/transfer.py etc/core
+        rm -rf etc/.disabled
+    } &> /dev/null
 fi
 
-exit
-0
+exit 0
