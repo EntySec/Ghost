@@ -79,10 +79,11 @@ def main():
                 print("    Command        Description")
                 print("    -------        -----------")
                 print("    clear          Clear terminal window.")
-                print("    details        Show module command details.")
-                print("    exec           Execute local system command.")
-                print("    exit           Exit and close current session.")
-                print("    help           Show available session commands.")
+                print("    exit           Exit Ghost Framework.")
+                print("    help           Show available commands.")
+                print("    options        Show available options.")
+                print("    run            Run Ghost Framework.")
+                print("    set            Set an option value.")
                 print("")
             elif ui[0] == "options":
                 if len(rhost) >= 12 or len(rport) >= 12:
