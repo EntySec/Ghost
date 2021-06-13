@@ -25,14 +25,15 @@
 #
 
 import sys
-import tty
 import termios
+import tty
 
-from core.ghost import ghost
+from core.ghost import Ghost
 
-class keyboard:
+
+class Keyboard:
     def __init__(self):
-        self.ghost = ghost()
+        self.ghost = Ghost()
 
     def get_char(self):
         fd = sys.stdin.fileno()

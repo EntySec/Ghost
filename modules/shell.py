@@ -24,12 +24,13 @@
 # SOFTWARE.
 #
 
-from core.badges import badges
+from core.badges import Badges
+
 
 class GhostModule:
     def __init__(self, ghost):
         self.ghost = ghost
-        self.badges = badges()
+        self.badges = Badges()
 
         self.details = {
             'name': "shell",

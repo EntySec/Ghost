@@ -25,17 +25,18 @@
 #
 
 import os
-import sys
 import subprocess
+import sys
 
-from core.badges import badges
-from core.transfer import transfer
+from core.badges import Badges
+from core.transfer import Transfer
 
-class ghost:
+
+class Ghost:
     def __init__(self):
-        self.badges = badges()
-        self.transfer = transfer(self)
-        
+        self.badges = Badges()
+        self.transfer = Transfer(self)
+
     def send_command(self, command, arguments="", multi_output=False, output=True):
         if multi_output:
             os.system("adb " + command + " " + arguments)

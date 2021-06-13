@@ -33,17 +33,18 @@ import subprocess
 import readline
 import time
 
-from core.badges import badges
-from core.server import server
-from core.helper import helper
-from core.ghost import ghost
+from core.badges import Badges
+from core.server import Server
+from core.helper import Helper
+from core.ghost import Ghost
 
-badges = badges()
-server = server()
-helper = helper()
-ghost = ghost()
+badges = Badges()
+server = Server()
+helper = Helper()
+ghost = Ghost()
 
 readline.parse_and_bind('tab: complete')
+
 
 def banner():
     os.system("clear")
@@ -53,14 +54,11 @@ def banner():
     print("--------------------")
     print("")
 
-
 def main():
     try:
-        rport = str(helper.rport)
-        rhost = ""
         try:
             ui = input('\033[4mghost\033[0m> ').strip(" ")
-        except:
+        except Exception:
             sys.exit()
         ui = ui.split()
         while True:
@@ -74,63 +72,47 @@ def main():
                 print("")
                 print("Core Commands")
                 print("=============")
-                os.system("cat data/cmds/core_cmds.txt")
                 print("")
-            elif ui[0] == "options":
-                if len(rhost) >= 12 or len(rport) >= 12:
-                    if len(rhost) > len(rport):
-                        bigger = len(rhost) - 3
-                    else:
-                        bigger = len(rport) - 3
-                else:
-                    bigger = 8
+                print("    Command        Description")
+                print("    -------        -----------")
+                print("    clear          Clear terminal window.")
+                print("    connect        Connect to the specified device.")
+                print("    disconnect     Disconnect specified device.")
+                print("    exit           Exit Ghost Framework.")
+                print("    help           Show available commands.")
                 print("")
-                print("Ghost Options")
-                print("=============")
-                print("")
-                print("    Option        Value" + " " * bigger + "Description")
-                print("    ------        -----" + " " * bigger + "-----------")
-                print("    RHOST         " + rhost + " " * (5 - len(rhost) + bigger) + "Remote host.")
-                print("    RPORT         " + rport + " " * (5 - len(rport) + bigger) + "Remote port.")
-                print("")
-            elif ui[0] == "set":
-                if len(ui) < 3:
-                    print("Usage: set <option> <value>")
-                else:
-                    if ui[1].lower() == "rhost":
-                        rhost = ui[2]
-                        print(badges.I + "RHOST ==> " + ui[2])
-                    elif ui[1].lower() == "rport":
-                        rport = ui[2]
-                        print(badges.I + "RPORT ==> " + ui[2])
-                    else:
-                        print(badges.E + "Option is not found!")
-            elif ui[0] == "run":
-                if rhost == "" or rport == "":
-                    print(badges.E + "Failed to connect to target!")
+            elif ui[0] == "connect":
+                if len(ui) < 2:
+                    print("Usage: connect <address>")
                 else:
                     try:
-                        server.connect(rhost, rport)
+                        if len(ui[1].split(':')) < 2:
+                            server.connect(ui[1], 5555)
+                        else:
+                            server.connect(ui[1].split(':')[0], ui[1].split(':')[1])
+                    except SystemExit:
+                        pass
+            elif ui[0] == "disconnect":
+                if len(ui) < 2:
+                    print("Usage: disconnect <address>")
+                else:
+                    try:
+                        ghost.disconnect(ui[1].split(':')[0])
                     except SystemExit:
                         pass
             else:
                 print(badges.E + "Unrecognized command!")
             try:
                 ui = input('\033[4mghost\033[0m> ').strip(" ")
-            except:
+            except Exception:
                 sys.exit()
             ui = ui.split()
-
     except KeyboardInterrupt:
-        print(badges.G + "Cleaning up...")
-        ghost.disconnect(rhost)
-        ghost.stop_server()       
-        print(badges.G + "Exiting...") 
-
+        pass
 
 if helper.check_adb_installation():
     banner()
     main()
-    
+
 else:
     sys.exit()

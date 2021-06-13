@@ -24,12 +24,13 @@
 # SOFTWARE.
 #
 
-from core.badges import badges
+from core.badges import Badges
+
 
 class GhostModule:
     def __init__(self, ghost):
         self.ghost = ghost
-        self.badges = badges()
+        self.badges = Badges()
 
         self.details = {
             'name': "type",
@@ -46,6 +47,6 @@ class GhostModule:
     def run(self, args):
         text = str(args[0])
         if text[0] != "'":
-            self.ghost.send_command("shell", "\"input text "+"'"+str(args)+"'"+"\"", True)
+            self.ghost.send_command("shell", "\"input text " + "'" + str(args) + "'" + "\"", True)
         else:
-            self.ghost.send_command("shell", "\"input text "+args+"\"", True)
+            self.ghost.send_command("shell", "\"input text " + args + "\"", True)

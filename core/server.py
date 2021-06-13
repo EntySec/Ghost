@@ -24,29 +24,30 @@
 # SOFTWARE.
 #
 
-import time
-import sys
 import os
+import sys
+import time
 
-from core.badges import badges
-from core.helper import helper
-from core.ghost import ghost
+from core.badges import Badges
+from core.ghost import Ghost
+from core.helper import Helper
 
-class server:
+
+class Server:
     def __init__(self):
-        self.badges = badges()
-        self.helper = helper()
-        self.ghost = ghost()
+        self.badges = Badges()
+        self.helper = Helper()
+        self.ghost = Ghost()
 
     def connect(self, rhost, rport):
-        target_addr = rhost + ":" + rport
-        print(self.badges.G + "Connecting to "+target_addr+"...")
+        target_addr = rhost + ":" + str(rport)
+        print(self.badges.G + "Connecting to " + target_addr + "...")
         self.ghost.start_server()
         self.ghost.connect(target_addr)
-        is_connected = self.ghost.send_command("devices", "| grep "+target_addr)
+        is_connected = self.ghost.send_command("devices", "| grep " + target_addr)
         is_offline = self.ghost.send_command("devices", "| grep offline")
         if is_connected == "":
-            print(self.badges.E + "Failed to connect to "+target_addr+"!")
+            print(self.badges.E + "Failed to connect to " + target_addr + "!")
             self.ghost.disconnect(target_addr)
             sys.exit()
         else:
@@ -55,8 +56,8 @@ class server:
                 self.ghost.disconnect(target_addr)
                 sys.exit()
         time.sleep(0.5)
-        
-        from core.shell import shell
-        shell = shell(self.ghost)
-        
+
+        from core.shell import Shell
+        shell = Shell(self.ghost)
+
         shell.shell(target_addr)

@@ -24,13 +24,14 @@
 # SOFTWARE.
 #
 
-from core.badges import badges
-from core.ghost import ghost
+from core.badges import Badges
+from core.ghost import Ghost
+
 
 class GhostModule:
     def __init__(self):
-        self.badges = badges()
-        self.ghost = ghost()
+        self.badges = Badges()
+        self.ghost = Ghost()
 
         self.name = "eatpass"
         self.description = "Eat device passcode."
@@ -41,6 +42,6 @@ class GhostModule:
     def run(self, cmd_data):
         if self.ghost.is_root:
             print(self.badges.G + "Eating device passcode...")
-            pass # todo
+            pass  # todo
         else:
             print(self.badges.E + "Target device is not rooted!")

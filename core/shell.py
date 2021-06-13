@@ -24,42 +24,45 @@
 # SOFTWARE.
 #
 
-from core.badges import badges
-from core.helper import helper
-from core.loader import loader
-
 from os import system, chdir
 from subprocess import CalledProcessError, check_output
 
-class shell:
+from core.badges import Badges
+from core.helper import Helper
+from core.loader import Loader
+
+
+class Shell:
     def __init__(self, ghost):
         self.ghost = ghost
-        self.badges = badges()
-        self.helper = helper()
-        self.loader = loader(ghost)
+        self.badges = Badges()
+        self.helper = Helper()
+        self.loader = Loader(ghost)
 
     def check_root(self):
         try:
-            output = check_output(["adb","shell","which","su"])
-            returncode = 0
+            output = check_output(["adb", "shell", "which", "su"])
+            return_code = 0
         except CalledProcessError as e:
-            output = e.output
-            returncode = e.returncode
-        if returncode != 0:
-            False
-        else:
-            True
+            return_code = e.returncode
+
+        if not return_code:
+            return False
+        return True
 
     def shell(self, target_addr):
         target_commands = self.loader.load_modules()
+
         while True:
             try:
                 command = str(input('\033[4mghost\033[0m(\033[1;31m' + target_addr + '\033[0m)> '))
                 while not command.strip():
                     command = str(input('\033[4mghost\033[0m(\033[1;31m' + target_addr + '\033[0m)> '))
+
                 command = command.strip()
                 arguments = "".join(command.split(command.split()[0])).strip()
                 command = command.split()
+
                 if command[0] == "help":
                     self.helper.show_commands(target_commands)
                 elif command[0] == "exit":
@@ -77,7 +80,8 @@ class shell:
                             for author in target_commands[command[1]].details['authors']:
                                 authors += author + " "
                             print(self.badges.I + "Module Authors: " + authors.strip())
-                            print(self.badges.I + "Module Description: " + target_commands[command[1]].details['description'])
+                            print(self.badges.I + "Module Description: " + target_commands[command[1]].details[
+                                'description'])
                             print(self.badges.I + "Module Usage: " + target_commands[command[1]].details['usage'])
                         else:
                             print(self.badges.E + "No such module command!")

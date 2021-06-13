@@ -24,12 +24,13 @@
 # SOFTWARE.
 #
 
-from core.badges import badges
+from core.badges import Badges
+
 
 class GhostModule:
     def __init__(self, ghost):
         self.ghost = ghost
-        self.badges = badges()
+        self.badges = Badges()
 
         self.details = {
             'name': "openurl",
@@ -47,4 +48,4 @@ class GhostModule:
         if not args.startswith(("http://", "https://")):
             args = "http://" + args
 
-        self.ghost.send_command("shell", "\"am start -a android.intent.action.VIEW -d "+args+"\"", True)
+        self.ghost.send_command("shell", "\"am start -a android.intent.action.VIEW -d " + args + "\"", True)

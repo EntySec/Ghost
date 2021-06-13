@@ -24,12 +24,13 @@
 # SOFTWARE.
 #
 
-from core.badges import badges
+from core.badges import Badges
+
 
 class GhostModule:
     def __init__(self, ghost):
         self.ghost = ghost
-        self.badges = badges()
+        self.badges = Badges()
 
         self.details = {
             'name': "view_contacts",
@@ -45,8 +46,9 @@ class GhostModule:
 
     def run(self):
         print(self.badges.G + "Getting Contacts information...")
-        output = self.ghost.send_command("shell", "content query --uri content://contacts/phones/  --projection display_name:number")
-        output = output.replace('Row: ','')
-        output = output.replace(' display_name=',' ')
+        output = self.ghost.send_command("shell",
+                                         "content query --uri content://contacts/phones/  --projection display_name:number")
+        output = output.replace('Row: ', '')
+        output = output.replace(' display_name=', ' ')
         output = output.replace(', number=', ' : ')
         print(output)

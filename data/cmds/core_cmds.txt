@@ -1,9 +1,0 @@
-
-    Command        Description
-    -------        -----------
-    clear          Clear terminal window.
-    exit           Exit Ghost Framework.
-    help           Show available commands.
-    options        Show available options.
-    run            Run Ghost Framework.
-    set            Set an option value.

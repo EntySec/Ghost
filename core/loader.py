@@ -26,7 +26,8 @@
 
 import os
 
-class loader:
+
+class Loader:
     def __init__(self, ghost):
         self.ghost = ghost
 
@@ -34,12 +35,10 @@ class loader:
         folderpath_list = folderpath.split(".")
         for i in dir(mu):
             if i == name:
-                pass
                 return getattr(mu, name)
-            else:
-                if i in folderpath_list:
-                    i = getattr(mu, i)
-                    return self.get_module(i, name, folderpath)
+            if i in folderpath_list:
+                i = getattr(mu, i)
+                return self.get_module(i, name, folderpath)
 
     def import_modules(self, path):
         modules = dict()
@@ -56,7 +55,7 @@ class loader:
                     m = m.GhostModule(self.ghost)
 
                     modules[m.details['name']] = m
-                except:
+                except Exception:
                     pass
         return modules
 

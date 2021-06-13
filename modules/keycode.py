@@ -24,12 +24,13 @@
 # SOFTWARE.
 #
 
-from core.badges import badges
+from core.badges import Badges
+
 
 class GhostModule:
     def __init__(self, ghost):
         self.ghost = ghost
-        self.badges = badges()
+        self.badges = Badges()
 
         self.details = {
             'name': "keycode",
@@ -43,10 +44,9 @@ class GhostModule:
             'comments': "'keycode view' to list all keycodes"
         }
 
-
     def run(self, args):
 
-        keylist='''
+        keylist = '''
 0 -->  "KEYCODE_0" 
 1 -->  "KEYCODE_SOFT_LEFT" 
 2 -->  "KEYCODE_SOFT_RIGHT" 
@@ -149,6 +149,6 @@ class GhostModule:
             print(keylist)
         else:
             if int(args) < 124:
-                self.ghost.send_command("shell", "\"input keyevent "+args+"\"", True)
+                self.ghost.send_command("shell", "\"input keyevent " + args + "\"", True)
             else:
                 print("Invalid Keycode : Use keycode view to list all keycodes")
