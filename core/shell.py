@@ -85,16 +85,6 @@ class Shell:
                             print(self.badges.I + "Module Usage: " + target_commands[command[1]].details['usage'])
                         else:
                             print(self.badges.E + "No such module command!")
-                elif command[0] == "exec":
-                    if len(command) < 2:
-                        print("Usage: exec <command>")
-                    else:
-                        print(self.badges.I + "exec:")
-                        if arguments[0] == "cd":
-                            chdir(arguments[1])
-                        else:
-                            system(arguments)
-                        print("")
                 elif command[0] == "clear":
                     system("clear")
                 else:
