@@ -42,25 +42,27 @@ class Shell:
     def check_root(self):
         try:
             output = check_output(["adb", "shell", "which", "su"])
-            returncode = 0
+            return_code = 0
         except CalledProcessError as e:
-            output = e.output
-            returncode = e.returncode
-        if returncode != 0:
-            False
-        else:
-            True
+            return_code = e.returncode
+
+        if not return_code:
+            return False
+        return True
 
     def shell(self, target_addr):
         target_commands = self.loader.load_modules()
+
         while True:
             try:
                 command = str(input('\033[4mghost\033[0m(\033[1;31m' + target_addr + '\033[0m)> '))
                 while not command.strip():
                     command = str(input('\033[4mghost\033[0m(\033[1;31m' + target_addr + '\033[0m)> '))
+
                 command = command.strip()
                 arguments = "".join(command.split(command.split()[0])).strip()
                 command = command.split()
+
                 if command[0] == "help":
                     self.helper.show_commands(target_commands)
                 elif command[0] == "exit":
