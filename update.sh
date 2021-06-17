@@ -60,7 +60,7 @@ fi
     sudo rm /usr/bin/ghost
     sudo rm /usr/local/bin/ghost
     sudo rm /data/data/com.termux/files/usr/bin/ghost
-    git clone https://github.com/EntySec/ghost.git ~/.ghost
+    git clone https://github.com/EntySec/Ghost.git ~/.ghost
     if [[ $update ]]; then
         cd ~/.ghost/ghost
         chmod +x install.sh
