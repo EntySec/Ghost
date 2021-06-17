@@ -9,7 +9,8 @@
     <br>exploits the Android Debug Bridge to remotely access an Android device.
     <br>
     <br>
-    <b>Other tools</b>
+    <b>Other tools</b><br>
+    <br>
     <a href="https://github.com/EntySec/HatSploit">
         <img src="https://img.shields.io/badge/EntySec-%20HatSploit-blue.svg">
     </a>
