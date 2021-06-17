@@ -109,7 +109,7 @@ fi
 
 if [[ ! -d ~/.ghost ]]; then
     {
-        git clone https://github.com/EntySec/ghost.git ~/.ghost
+        git clone https://github.com/EntySec/Ghost.git ~/.ghost
     } &> /dev/null
 fi
 
