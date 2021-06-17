@@ -7,8 +7,9 @@
     <br>
     Ghost Framework is an Android post-exploitation framework that
     <br>exploits the Android Debug Bridge to remotely access an Android device.
+    <br>
+    [![HatSploit](https://github-readme-stats.vercel.app/api/pin/?username=entysec&repo=hatsploit&show_icons=true&include_all_commits=true&theme=react&cache_seconds=3200&hide_border=true&layout=compact)](https://github.com/entysec/hatsploit)
+[![HatSploit](https://github-readme-stats.vercel.app/api/pin/?username=entysec&repo=hatsploit&show_icons=true&include_all_commits=true&theme=react&cache_seconds=3200&hide_border=true&layout=compact)](https://github.com/entysec/hatsploit)
+[![HatSploit](https://github-readme-stats.vercel.app/api/pin/?username=entysec&repo=hatsploit&show_icons=true&include_all_commits=true&theme=react&cache_seconds=3200&hide_border=true&layout=compact)](https://github.com/entysec/hatsploit)
+[![HatSploit](https://github-readme-stats.vercel.app/api/pin/?username=entysec&repo=hatsploit&show_icons=true&include_all_commits=true&theme=react&cache_seconds=3200&hide_border=true&layout=compact)](https://github.com/entysec/hatsploit)
 </p>
-
-[![HatSploit](https://github-readme-stats.vercel.app/api/pin/?username=entysec&repo=hatsploit&show_icons=true&include_all_commits=true&theme=react&cache_seconds=3200&hide_border=true&layout=compact)](https://github.com/entysec/hatsploit)
-[![HatSploit](https://github-readme-stats.vercel.app/api/pin/?username=entysec&repo=hatsploit&show_icons=true&include_all_commits=true&theme=react&cache_seconds=3200&hide_border=true&layout=compact)](https://github.com/entysec/hatsploit)
-[![HatSploit](https://github-readme-stats.vercel.app/api/pin/?username=entysec&repo=hatsploit&show_icons=true&include_all_commits=true&theme=react&cache_seconds=3200&hide_border=true&layout=compact)](https://github.com/entysec/hatsploit)
