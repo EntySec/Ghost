@@ -9,6 +9,6 @@
     <br>exploits the Android Debug Bridge to remotely access an Android device.
     <br>
     <a href="https://github.com/EntySec/HatSploit">
-        <img src="https://img.shields.io/badge/EntySec%20HatSploit-blue.svg">
+        <img src="https://img.shields.io/badge/EntySec-%20HatSploit-blue.svg">
     </a>
 </p>
