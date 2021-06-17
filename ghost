@@ -52,7 +52,16 @@ def banner():
     print("")
     print("Ghost Framework " + helper.version)
     print("--------------------")
-    print("")
+    print("""
+[*] Also explore our last projects:
+    * HatSploit (https://github.com/EntySec/HatSploit) - Modular exploitation
+    * HatVenom  (https://github.com/EntySec/HatVenom)  - Binary exploitation
+    * Shreder   (https://github.com/EntySec/Shreder)   - SSH bruteforce
+    * RomBuster (https://github.com/EntySec/RomBuster) - Router hacking
+    * CamOver   (https://github.com/EntySec/CamOver)   - Camera hacking
+    * CamRaptor (https://github.com/EntySec/CamRaptor) - Camera hacking
+[i] Please rate my work by star :)
+    """)
 
 def main():
     try:
