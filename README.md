@@ -8,6 +8,7 @@
     Ghost Framework is an Android post-exploitation framework that
     <br>exploits the Android Debug Bridge to remotely access an Android device.
     <br>
+    <br>
     <a href="https://github.com/EntySec/HatSploit">
         <img src="https://img.shields.io/badge/EntySec-%20HatSploit-blue.svg">
     </a>
