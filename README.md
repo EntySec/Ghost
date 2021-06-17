@@ -9,8 +9,3 @@
     <br>exploits the Android Debug Bridge to remotely access an Android device.
     <br>
 </p>
-
-[![HatSploit](https://github-readme-stats.vercel.app/api/pin/?username=entysec&repo=hatsploit&show_icons=true&include_all_commits=true&theme=react&cache_seconds=3200&hide_border=true&layout=compact)](https://github.com/entysec/hatsploit)
-[![HatSploit](https://github-readme-stats.vercel.app/api/pin/?username=entysec&repo=hatsploit&show_icons=true&include_all_commits=true&theme=react&cache_seconds=3200&hide_border=true&layout=compact)](https://github.com/entysec/hatsploit)
-[![HatSploit](https://github-readme-stats.vercel.app/api/pin/?username=entysec&repo=hatsploit&show_icons=true&include_all_commits=true&theme=react&cache_seconds=3200&hide_border=true&layout=compact)](https://github.com/entysec/hatsploit)
-[![HatSploit](https://github-readme-stats.vercel.app/api/pin/?username=entysec&repo=hatsploit&show_icons=true&include_all_commits=true&theme=react&cache_seconds=3200&hide_border=true&layout=compact)](https://github.com/entysec/hatsploit)
