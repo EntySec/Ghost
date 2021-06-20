@@ -61,6 +61,9 @@ def banner():
     * CamOver   (https://github.com/EntySec/CamOver)   - Camera hacking
     * CamRaptor (https://github.com/EntySec/CamRaptor) - Camera hacking
 [i] Please rate my work by star :)
+
+    Our Twitter: @entysec
+    CEO Twitter: @enty8080
     """)
 
 def main():
