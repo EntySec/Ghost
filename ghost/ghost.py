@@ -24,41 +24,20 @@
 # SOFTWARE.
 #
 
-import os
+import sys
 
+sys.stdout.write("\033]0;Ghost Framework\007")
 
-class Loader:
-    def __init__(self, ghost):
-        self.ghost = ghost
+from ghost.core.console import Console
+from ghost.core.helper import Helper
 
-    def get_module(self, mu, name, folderpath):
-        folderpath_list = folderpath.split(".")
-        for i in dir(mu):
-            if i == name:
-                return getattr(mu, name)
-            if i in folderpath_list:
-                i = getattr(mu, i)
-                return self.get_module(i, name, folderpath)
+console = Console()
+helper = Helper()
 
-    def import_modules(self, path):
-        modules = dict()
+def main():
+    if helper.check_adb_installation():
+        console.banner()
+        console.shell()
 
-        for mod in os.listdir(path):
-            if mod == '__init__.py' or mod[-3:] != '.py':
-                continue
-            else:
-                try:
-                    md = path.replace("/", ".").replace("\\", ".") + "." + mod[:-3]
-                    mt = __import__(md)
-
-                    m = self.get_module(mt, mod[:-3], md)
-                    m = m.GhostModule(self.ghost)
-
-                    modules[m.details['name']] = m
-                except Exception:
-                    pass
-        return modules
-
-    def load_modules(self):
-        target_commands = self.import_modules("modules")
-        return target_commands
+    else:
+        sys.exit()

@@ -3,7 +3,7 @@
 #
 # MIT License
 #
-# Copyright (c) 2020 EntySec
+# Copyright (c) 2020-2021 EntySec
 #
 # Permission is hereby granted, free of charge, to any person obtaining a copy
 # of this software and associated documentation files (the "Software"), to deal
@@ -24,25 +24,37 @@
 # SOFTWARE.
 #
 
-import sys
-import termios
-import tty
+import os
+import shutil
 
-from core.ghost import Ghost
+from pathlib import Path
+from setuptools import setup, find_packages
 
+home = str(Path.home()) + '/.ghost'
+if os.path.exists(home):
+    shutil.rmtree(home)
 
-class Keyboard:
-    def __init__(self):
-        self.ghost = Ghost()
+os.mkdir(home)
+shutil.copytree('modules', f'{home}/modules')
 
-    def get_char(self):
-        fd = sys.stdin.fileno()
-        old = termios.tcgetattr(fd)
-        try:
-            tty.setraw(fd)
-            return sys.stdin.read(1)
-        finally:
-            termios.tcsetattr(fd, termios.TCSADRAIN, old)
-
-    def send_char(self, char):
-        self.ghost.send_command("shell", "input text " + char, False, False)
+setup(name='ghost',
+      version='7.0.0',
+      description='',
+      url='http://github.com/EntySec/Ghost',
+      author='EntySec',
+      author_email='entysec@gmail.com',
+      license='MIT',
+      python_requires='>=3.7.0',
+      packages=find_packages(),
+      entry_points={
+          "console_scripts": [
+                "ghost = ghost.ghost:main"
+          ]
+      },
+      classifiers=[
+          "Programming Language :: Python",
+          "Programming Language :: Python :: 3",
+          "Programming Language :: Python :: 3.8",
+      ],
+      zip_safe=False
+)

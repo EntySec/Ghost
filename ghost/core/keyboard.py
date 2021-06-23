@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env python3
 
 #
 # MIT License
@@ -24,54 +24,25 @@
 # SOFTWARE.
 #
 
-G="\033[1;34m[*] \033[0m"
-S="\033[1;32m[+] \033[0m"
-E="\033[1;31m[-] \033[0m"
-P="\033[1;77m[>] \033[0m"
+import sys
+import termios
+import tty
 
-clear
-cat banner/banner.txt
-echo
+from ghost.core.ghost import Ghost
 
-while [[ $(sudo -n id -u 2>&1) != 0 ]]; do
-    {
-        sudo -v -p "$(echo -e -n $P)Password for $(whoami): " 
-    } &> /dev/null
-done
 
-echo -e $G"Updating Ghost Framework..."
+class Keyboard:
+    def __init__(self):
+        self.ghost = Ghost()
 
-if [[ -f /data/data/com.termux/files/usr/bin/ghost ]]; then
-    update=true
-else
-    if [[ -f /usr/local/bin/ghost ]]; then
-        update=true
-    else
-        if [[ -f /usr/bin/ghost ]]; then
-            update=true
-        else
-            update=false
-        fi
-    fi
-fi
+    def get_char(self):
+        fd = sys.stdin.fileno()
+        old = termios.tcgetattr(fd)
+        try:
+            tty.setraw(fd)
+            return sys.stdin.read(1)
+        finally:
+            termios.tcsetattr(fd, termios.TCSADRAIN, old)
 
-{
-    rm -rf ~/.ghost
-    sudo rm /usr/bin/ghost
-    sudo rm /usr/local/bin/ghost
-    sudo rm /data/data/com.termux/files/usr/bin/ghost
-    git clone https://github.com/EntySec/Ghost.git ~/.ghost
-    if [[ $update ]]; then
-        cd ~/.ghost/ghost
-        chmod +x install.sh
-        ./install.sh
-    fi
-} &> /dev/null
-
-if [[ ! -d ~/.ghost ]]; then
-    echo -e $E"Installation failed!"
-    exit 1
-fi
-
-echo -e $S"Successfully updated!"
-exit 0
+    def send_char(self, char):
+        self.ghost.send_command("shell", "input text " + char, False, False)

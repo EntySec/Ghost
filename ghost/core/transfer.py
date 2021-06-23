@@ -27,8 +27,8 @@
 import os
 import time
 
-from core.badges import Badges
-from core.fsmanip import FSManip
+from ghost.core.badges import Badges
+from ghost.core.fsmanip import FSManip
 
 
 class Transfer:

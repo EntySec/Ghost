@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env python3
 
 #
 # MIT License
@@ -24,29 +24,35 @@
 # SOFTWARE.
 #
 
-G="\033[1;34m[*] \033[0m"
-S="\033[1;32m[+] \033[0m"
-E="\033[1;31m[-] \033[0m"
-P="\033[1;77m[>] \033[0m"
+import os
 
-clear
-cat banner/banner.txt
-echo
+import importlib.util
 
-while [[ $(sudo -n id -u 2>&1) != 0 ]]; do
-    {
-        sudo -v -p "$(echo -e -n $P)Password for $(whoami): " 
-    } &> /dev/null
-done
+from pathlib import Path
 
-echo -e $G"Uninstalling Ghost Framework..."
 
-{
-    rm -rf ~/.ghost
-    sudo rm /usr/bin/ghost
-    sudo rm /usr/local/bin/ghost
-    sudo rm /data/data/com.termux/files/usr/bin/ghost
-} &> /dev/null
+class Loader:
+    def __init__(self, ghost):
+        self.ghost = ghost
 
-echo -e $S"Successfully uninstalled!"
-exit 0
+    def import_modules(self, path):
+        modules = dict()
+
+        for mod in os.listdir(path):
+            if mod == '__init__.py' or mod[-3:] != '.py':
+                continue
+            else:
+                try:
+                    spec = importlib.util.spec_from_file_location(path + '/' + mod, path + '/' + mod)
+                    module = importlib.util.module_from_spec(spec)
+                    spec.loader.exec_module(module)
+                    module = module.GhostModule(self.ghost)
+
+                    modules[module.details['name']] = module
+                except Exception:
+                    pass
+        return modules
+
+    def load_modules(self):
+        target_commands = self.import_modules(str(Path.home()) + '/.ghost/modules')
+        return target_commands

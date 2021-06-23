@@ -24,8 +24,8 @@
 # SOFTWARE.
 #
 
-from core.badges import Badges
-from core.keyboard import Keyboard
+from ghost.core.badges import Badges
+from ghost.core.keyboard import Keyboard
 
 
 class GhostModule:

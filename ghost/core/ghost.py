@@ -25,39 +25,46 @@
 #
 
 import os
+import subprocess
 import sys
-import time
 
-from core.badges import Badges
-from core.ghost import Ghost
-from core.helper import Helper
+from ghost.core.badges import Badges
+from ghost.core.transfer import Transfer
 
 
-class Server:
+class Ghost:
     def __init__(self):
         self.badges = Badges()
-        self.helper = Helper()
-        self.ghost = Ghost()
+        self.transfer = Transfer(self)
 
-    def connect(self, rhost, rport):
-        target_addr = rhost + ":" + str(rport)
-        print(self.badges.G + "Connecting to " + target_addr + "...")
-        self.ghost.start_server()
-        self.ghost.connect(target_addr)
-        is_connected = self.ghost.send_command("devices", "| grep " + target_addr)
-        is_offline = self.ghost.send_command("devices", "| grep offline")
-        if is_connected == "":
-            print(self.badges.E + "Failed to connect to " + target_addr + "!")
-            self.ghost.disconnect(target_addr)
-            sys.exit()
+    def send_command(self, command, arguments="", multi_output=False, output=True):
+        if multi_output:
+            os.system("adb " + command + " " + arguments)
         else:
-            if is_offline != "":
-                print(self.badges.E + "Failed to connect to " + target_addr + "!")
-                self.ghost.disconnect(target_addr)
-                sys.exit()
-        time.sleep(0.5)
+            command_output = subprocess.getoutput("adb " + command + " " + arguments)
+            if output:
+                return command_output.strip()
 
-        from core.shell import Shell
-        shell = Shell(self.ghost)
+    def start_server(self):
+        self.send_command("start-server", "", False, False)
 
-        shell.shell(target_addr)
+    def stop_server(self):
+        self.send_command("kill-server", "", False, False)
+
+    def connect(self, target_addr):
+        self.send_command("connect", target_addr, False, False)
+
+    def disconnect(self, target_addr):
+        self.send_command("disconnect", target_addr, False, False)
+
+    def download(self, input_file, output_path):
+        self.transfer.download(input_file, output_path)
+
+    def upload(self, input_file, output_path):
+        self.transfer.upload(input_file, output_path)
+
+    def is_root(self):
+        check_root = self.send_command("shell", "which su")
+        if check_root == "":
+            return False
+        return True

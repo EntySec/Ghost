@@ -27,7 +27,7 @@
 import binascii
 import os
 
-from core.badges import Badges
+from ghost.core.badges import Badges
 
 
 class GhostModule:
