@@ -24,18 +24,7 @@
 # SOFTWARE.
 #
 
-import os
-import shutil
-
-from pathlib import Path
 from setuptools import setup, find_packages
-
-home = str(Path.home()) + '/.ghost'
-if os.path.exists(home):
-    shutil.rmtree(home)
-
-os.mkdir(home)
-shutil.copytree('modules', f'{home}/modules')
 
 setup(name='ghost',
       version='7.0.0',
@@ -46,6 +35,7 @@ setup(name='ghost',
       license='MIT',
       python_requires='>=3.7.0',
       packages=find_packages(),
+      include_package_data=True,
       entry_points={
           "console_scripts": [
                 "ghost = ghost.ghost:main"
