@@ -9,6 +9,11 @@
     <br>exploits the Android Debug Bridge to remotely access an Android device.
     <br>
     <br>
+    <b>Installation</b><br>
+    <br>
+    <code>pip3 install git+https://github.com/EntySec/Ghost</code>
+    <br>
+    <br>
     <b>Other tools</b><br>
     <br>
     <a href="https://github.com/EntySec/HatSploit">
