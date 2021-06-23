@@ -54,5 +54,5 @@ class Loader:
         return modules
 
     def load_modules(self):
-        target_commands = self.import_modules(str(Path.home()) + '/.ghost/modules')
+        target_commands = self.import_modules(f'{__path__}/modules')
         return target_commands
