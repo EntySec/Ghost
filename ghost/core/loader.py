@@ -28,8 +28,6 @@ import os
 
 import importlib.util
 
-from pathlib import Path
-
 
 class Loader:
     def __init__(self, ghost):
@@ -54,5 +52,5 @@ class Loader:
         return modules
 
     def load_modules(self):
-        target_commands = self.import_modules(f'{__path__}/modules')
+        target_commands = self.import_modules(f'{os.path.dirname(__file__)}/../modules')
         return target_commands
