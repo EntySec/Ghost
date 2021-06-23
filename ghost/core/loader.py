@@ -26,21 +26,14 @@
 
 import os
 
+import importlib.util
+
 from pathlib import Path
 
 
 class Loader:
     def __init__(self, ghost):
         self.ghost = ghost
-
-    def get_module(self, mu, name, folderpath):
-        folderpath_list = folderpath.split(".")
-        for i in dir(mu):
-            if i == name:
-                return getattr(mu, name)
-            if i in folderpath_list:
-                i = getattr(mu, i)
-                return self.get_module(i, name, folderpath)
 
     def import_modules(self, path):
         modules = dict()
@@ -50,17 +43,16 @@ class Loader:
                 continue
             else:
                 try:
-                    md = path.replace("/", ".").replace("\\", ".") + "." + mod[:-3]
-                    mt = __import__(md)
+                    spec = importlib.util.spec_from_file_location(path + '/' + mod, path + '/' + mod)
+                    module = importlib.util.module_from_spec(spec)
+                    spec.loader.exec_module(module)
+                    module = module.GhostModule(self.ghost)
 
-                    m = self.get_module(mt, mod[:-3], md)
-                    m = m.GhostModule(self.ghost)
-
-                    modules[m.details['name']] = m
+                    modules[module.details['name']] = module
                 except Exception:
                     pass
         return modules
 
     def load_modules(self):
-        target_commands = self.import_modules(str(Path.home()) + '/.ghost' + "/modules")
+        target_commands = self.import_modules(str(Path.home()) + '/.ghost/modules")
         return target_commands
