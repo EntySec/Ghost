@@ -34,7 +34,7 @@ class Helper:
         self.badges = Badges()
 
         self.rport = 5555
-        self.version = "v6.0"
+        self.version = "v7.0.0"
 
     def check_adb_installation(self):
         command_output = subprocess.getoutput("command -v adb")
