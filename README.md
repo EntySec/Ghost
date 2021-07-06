@@ -17,27 +17,27 @@
     <b>Other tools</b><br>
     <br>
     <a href="https://github.com/EntySec/HatSploit">
-        <img src="https://img.shields.io/badge/EntySec-%20HatSploit-blue.svg">
+        <img src="https://img.shields.io/badge/EntySec-HatSploit-blue.svg">
     </a>
     <a href="https://github.com/EntySec/HatVenom">
-        <img src="https://img.shields.io/badge/EntySec-%20HatVenom-blue.svg">
+        <img src="https://img.shields.io/badge/EntySec-HatVenom-blue.svg">
     </a>
     <a href="https://github.com/EntySec/Shreder">
-        <img src="https://img.shields.io/badge/EntySec-%20Shreder-blue.svg">
+        <img src="https://img.shields.io/badge/EntySec-Shreder-blue.svg">
     </a>
     <a href="https://github.com/EntySec/RomBuster">
-        <img src="https://img.shields.io/badge/EntySec-%20RomBuster-blue.svg">
+        <img src="https://img.shields.io/badge/EntySec-RomBuster-blue.svg">
     </a>
     <a href="https://github.com/EntySec/CamOver">
-        <img src="https://img.shields.io/badge/EntySec-%20CamOver-blue.svg">
+        <img src="https://img.shields.io/badge/EntySec-CamOver-blue.svg">
     </a>
     <a href="https://github.com/EntySec/CamRaptor">
-        <img src="https://img.shields.io/badge/EntySec-%20CamRaptor-blue.svg">
+        <img src="https://img.shields.io/badge/EntySec-CamRaptor-blue.svg">
     </a>
     <a href="https://github.com/EntySec/membrane">
-        <img src="https://img.shields.io/badge/EntySec-%20membrane-f34c79.svg">
+        <img src="https://img.shields.io/badge/EntySec-membrane-f34c79.svg">
     </a>
     <a href="https://github.com/EntySec/pwny">
-        <img src="https://img.shields.io/badge/EntySec-%20pwny-448eff.svg">
+        <img src="https://img.shields.io/badge/EntySec-pwny-448eff.svg">
     </a>
 </p>
