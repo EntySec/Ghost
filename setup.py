@@ -28,7 +28,7 @@ from setuptools import setup, find_packages
 
 setup(name='ghost',
       version='7.0.0',
-      description='',
+      description='Ghost Framework is an Android post-exploitation framework that exploits the Android Debug Bridge to remotely access an Android device.',
       url='http://github.com/EntySec/Ghost',
       author='EntySec',
       author_email='entysec@gmail.com',
