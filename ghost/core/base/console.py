@@ -58,10 +58,15 @@ class Console:
         readline.parse_and_bind('tab: complete')
         while True:
             try:
-                command = input('(ghost)> ').strip()
+                command = input(
+                    f'{self.colors.REMOVE}(ghost)> '
+                ).strip()
                 command = command.split()
 
-                if command[0] == 'help':
+                if not len(command):
+                    continue
+
+                elif command[0] == 'help':
                     self.tables.print_table("Core Commands", ('Command', 'Description'), *[
                         ('connect', 'Connect device.'),
                         ('devices', 'Show connected devices.'),
