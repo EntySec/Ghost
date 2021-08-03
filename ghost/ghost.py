@@ -32,5 +32,4 @@ from ghost.core.base.console import Console
 console = Console()
 
 def main():
-    console.banner()
     console.shell()
