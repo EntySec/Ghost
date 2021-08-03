@@ -39,19 +39,18 @@ class Console:
         self.tables = Tables()
 
         self.devices = dict()
+        self.banner = """
+ .--. .-.               .-.
+: .--': :              .' `.
+: : _ : `-.  .--.  .--.`. .'
+: :; :: .. :' .; :`._-.': :
+`.__.':_;:_;`.__.'`.__.':_;
+
+\033[1;77mYou has been ghosted!\033[0m
+"""
 
     def banner(self):
-        print("""
-  ________.__                    __        ,
- /  _____/|  |__   ____  _______/  |_       \\`-,      ,     =-
-/   \\  ___|  |  \\ /  _ \\/  ___/\\   __\\  .-._/   \\_____)\\
-\\    \\_\\  \\   Y  (  <_> )___ \\  |  |   ("              / =-
- \\______  /___|  /\\____/____  > |__|    '-;   ,_____.-'       =-
-        \\/     \\/           \\/            /__.'
-""")
-
-        print("Ghost Framework " + self.helper.version)
-        print("--------------------")
+        print(self.banner)
 
     def shell(self):
          readline.parse_and_bind('tab: complete')
