@@ -29,7 +29,8 @@ import readline
 
 from ghost.core.cli.badges import Badges
 from ghost.core.cli.tables import Tables
-from ghost.core.cli.ghost import Ghost
+
+from ghost.core.cli.device import Device
 
 
 class Console:
@@ -67,10 +68,10 @@ class Console:
                         args = command[1].split(':')
 
                         if len(args) == 2:
-                            device = Ghost(args[0], args[1])
+                            device = Device(args[0], args[1])
                             connected = device.connect()
                         else:
-                            device = Ghost(args[0])
+                            device = Device(args[0])
                             connected = device.connect()
 
                         if connected:
