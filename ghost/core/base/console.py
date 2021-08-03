@@ -63,7 +63,7 @@ class Console:
                 ).strip()
                 command = command.split()
 
-                if not len(command):
+                if not command:
                     continue
 
                 if command[0] == 'help':
