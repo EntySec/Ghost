@@ -120,7 +120,7 @@ class Console:
                             self.badges.print_error("Invalid device id!")
                 else:
                     self.badges.print_error("Unrecognized command!")
-             except (EOFError, KeyboardInterrupt):
-                 pass
-             except Exception as e:
-                 self.badges.print_error("An error occurred: " + str(e) + "!")
+            except (EOFError, KeyboardInterrupt):
+                pass
+            except Exception as e:
+                self.badges.print_error("An error occurred: " + str(e) + "!")
