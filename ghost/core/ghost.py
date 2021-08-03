@@ -44,14 +44,14 @@ class Ghost:
         try:
             cmd_output = self.device.shell(command)
         except Exception:
-            self.badges.output_error("Socket is not connected!")
+            self.badges.print_error("Socket is not connected!")
         if output:
             return cmd_output
         return None
             
     def connect(self):
         if not self.device.connect():
-            self.badges.output_error("Failed to connect!")
+            self.badges.print_error("Failed to connect!")
 
     def disconnect(self, target_addr):
         self.device.close()
@@ -60,10 +60,10 @@ class Ghost:
         try:
             self.device.pull(input_file, output_path)
         except Exception:
-            self.badges.output_error("Failed to download!")
+            self.badges.print_error("Failed to download!")
 
     def upload(self, input_file, output_path):
         try:
             self.device.push(input_file, output_path)
         except Exception:
-            self.badges.output_error("Failed to upload!")
+            self.badges.print_error("Failed to upload!")
