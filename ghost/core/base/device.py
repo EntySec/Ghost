@@ -54,7 +54,10 @@ class Device:
 
     def connect(self):
         self.badges.print_process(f"Connecting to {self.address}...")
-        if not self.device.connect():
+        try:
+            self.device.connect()
+            self.badges.print_success(f"Successfully connected to {self.address}!")
+        except Exception:
             self.badges.print_error(f"Failed to connect to {self.address}!")
 
     def disconnect(self, target_addr):
