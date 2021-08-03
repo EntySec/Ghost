@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 
 #
-# This module requires HatSploit: https://hatsploit.netlify.app
-# Current source: https://github.com/EntySec/HatSploit
+# This module requires Ghost: https://github.com/EntySec/Ghost
+# Current source: https://github.com/EntySec/Ghost
 #
 
 from ghost.core.cli.badges import Badges
