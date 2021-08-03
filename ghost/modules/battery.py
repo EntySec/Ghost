@@ -29,7 +29,7 @@ class GhostModule:
         }
 
     def run(self):
-        output = self.ghost.send_command("dumpsys battery")
+        output = self.device.send_command("dumpsys battery")
 
         self.badges.print_information("Device Battery Information:")
         self.badges.print_empty(output)
