@@ -41,5 +41,8 @@ setup(name='ghost',
                 "ghost = ghost.ghost:main"
           ]
       },
+      install_requires=[
+          'adb-shell'
+      ],
       zip_safe=False
 )
