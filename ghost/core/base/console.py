@@ -66,7 +66,7 @@ class Console:
                 if not len(command):
                     continue
 
-                elif command[0] == 'help':
+                if command[0] == 'help':
                     self.tables.print_table("Core Commands", ('Command', 'Description'), *[
                         ('connect', 'Connect device.'),
                         ('devices', 'Show connected devices.'),
