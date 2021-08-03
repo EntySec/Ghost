@@ -49,7 +49,6 @@ class Console:
 `.__.':_;:_;`.__.'`.__.':_;
 
 {}You has been ghosted!{}
-
 """.format(self.colors.BOLD + self.colors.WHITE,
            self.colors.END)
 
