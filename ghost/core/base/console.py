@@ -31,7 +31,7 @@ from ghost.core.cli.badges import Badges
 from ghost.core.cli.colors import Colors
 from ghost.core.cli.tables import Tables
 
-from ghost.core.cli.device import Device
+from ghost.core.base.device import Device
 
 
 class Console:
