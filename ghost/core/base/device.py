@@ -27,12 +27,14 @@
 from adb_shell.adb_device import AdbDeviceTcp
 
 from ghost.core.cli.badges import Badges
+from ghost.core.cli.colors import Colors
 from ghost.core.base.loader import Loader
 
 
 class Device:
     def __init__(self, host, port=5555, timeout=10):
         self.badges = Badges()
+        self.colors = Colors()
         self.loader = Loader(self)
 
         self.host = host
@@ -81,7 +83,9 @@ class Device:
 
         while True:
             try:
-                command = input(f'ghost({self.address})> ').strip()
+                command = input(
+                    f'(ghost: {self.colors.RED}{self.address}{self.colors.END})> '
+                ).strip()
                 command = command.split()
 
                 if command[0] == 'help':
