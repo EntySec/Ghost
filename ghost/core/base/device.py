@@ -27,6 +27,7 @@
 from adb_shell.adb_device import AdbDeviceTcp
 
 from ghost.core.cli.badges import Badges
+from ghost.core.cli.tables import Tables
 from ghost.core.cli.colors import Colors
 from ghost.core.base.loader import Loader
 
@@ -34,6 +35,7 @@ from ghost.core.base.loader import Loader
 class Device:
     def __init__(self, host, port=5555, timeout=10):
         self.badges = Badges()
+        self.tables = Tables()
         self.colors = Colors()
         self.loader = Loader(self)
 
@@ -56,7 +58,7 @@ class Device:
         self.badges.print_process(f"Connecting to {self.address}...")
         try:
             self.device.connect()
-            self.badges.print_success(f"Successfully connected to {self.address}!")
+            self.badges.print_success(f"Connected to {self.address}!")
             return True
         except Exception:
             self.badges.print_error(f"Failed to connect to {self.address}!")
