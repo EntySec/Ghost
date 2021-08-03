@@ -27,7 +27,7 @@
 from adb_shell.adb_device import AdbDeviceTcp
 
 from ghost.core.cli.badges import Badges
-from ghost.core.cli.loader import Loader
+from ghost.core.base.loader import Loader
 
 
 class Device:
