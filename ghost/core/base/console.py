@@ -28,13 +28,16 @@ import os
 import readline
 
 from ghost.core.cli.badges import Badges
+from ghost.core.cli.tables import Tables
 from ghost.core.cli.ghost import Ghost
 
 
 class Console:
     def __init__(self):
         self.badges = Badges()
-        self.devices = list()
+        self.tables = Tables()
+
+        self.devices = dict()
 
     def banner(self):
         print("""
@@ -71,17 +74,35 @@ class Console:
                             connected = device.connect()
 
                         if connected:
-                            self.devices.append(args[0])
+                            self.devices.update({
+                                len(self.devices): {
+                                    'address': args[0],
+                                    'device': device
+                                }
+                            })
                             self.badges.print_success("Connection succeed!")
                         else:
                             self.badges.print_error("Connection failed!")
+
+                elif command[0] == 'devices':
+                    if self.devices:
+                        devices = list()
+                        for device in self.devices:
+                            devices.append((device, self.devices[device]['address']))
+
+                        self.tables.print_table("Connected Devices", ("ID", "Address"), devices)
+                    else:
+                        self.badges.print_warning("No devices connected.")
 
                 elif command[0] == 'interact':
                     if len(command) < 2:
                         self.badges.print_empty("Usage: interact <id>")
                     else:
-                        if int(command[1]) < len(self.devices):
-                            pass
+                        if int(command[1]) in self.devices:
+                            device = self.devices[int(command[1])]['device']
+                            device.interact()
+                        else:
+                            self.badges.print_error("Invalid device id!")
                 else:
                     self.badges.print_error("Unrecognized command!")
              except (EOFError, KeyboardInterrupt):
