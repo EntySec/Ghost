@@ -30,8 +30,8 @@ import importlib.util
 
 
 class Loader:
-    def __init__(self, ghost):
-        self.ghost = ghost
+    def __init__(self, device):
+        self.device = device
 
     def import_modules(self, path):
         modules = dict()
@@ -44,7 +44,7 @@ class Loader:
                     spec = importlib.util.spec_from_file_location(path + '/' + mod, path + '/' + mod)
                     module = importlib.util.module_from_spec(spec)
                     spec.loader.exec_module(module)
-                    module = module.GhostModule(self.ghost)
+                    module = module.GhostModule(self.device)
 
                     modules[module.details['name']] = module
                 except Exception:
@@ -52,5 +52,5 @@ class Loader:
         return modules
 
     def load_modules(self):
-        target_commands = self.import_modules(f'{os.path.dirname(__file__)}/../modules')
-        return target_commands
+        commands = self.import_modules(f'{os.path.dirname(__file__)}/../modules')
+        return commands
