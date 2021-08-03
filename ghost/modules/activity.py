@@ -32,4 +32,4 @@ class GhostModule:
         self.badges.output_process("Getting activity information...")
 
         output = self.device.send_command("dumpsys activity")
-        self.badges.output_empty(output)
+        self.badges.print_empty(output)
