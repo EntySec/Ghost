@@ -29,7 +29,7 @@ from adb_shell.adb_device import AdbDeviceTcp
 from ghost.core.cli.badges import Badges
 
 
-class Ghost:
+class Device:
     def __init__(self, host, port, timeout=10):
         self.badges = Badges()
 
