@@ -77,7 +77,6 @@ class Console:
                     if len(command) < 2:
                         self.badges.print_empty("Usage: connect <address>")
                     else:
-                        self.badges.print_process("Connecting to device...")
                         args = command[1].split(':')
 
                         if len(args) == 2:
@@ -94,9 +93,6 @@ class Console:
                                     'device': device
                                 }
                             })
-                            self.badges.print_success("Connection succeed!")
-                        else:
-                            self.badges.print_error("Connection failed!")
 
                 elif command[0] == 'devices':
                     if self.devices:
