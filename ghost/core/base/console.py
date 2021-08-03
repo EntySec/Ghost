@@ -28,6 +28,7 @@ import sys
 import readline
 
 from ghost.core.cli.badges import Badges
+from ghost.core.cli.colors import Colors
 from ghost.core.cli.tables import Tables
 
 from ghost.core.cli.device import Device
@@ -36,6 +37,7 @@ from ghost.core.cli.device import Device
 class Console:
     def __init__(self):
         self.badges = Badges()
+        self.colors = Colors()
         self.tables = Tables()
 
         self.devices = dict()
@@ -46,8 +48,9 @@ class Console:
 : :; :: .. :' .; :`._-.': :
 `.__.':_;:_;`.__.'`.__.':_;
 
-\033[1;77mYou has been ghosted!\033[0m
-"""
+{}You has been ghosted!{}
+""".format(self.colors.BOLD + self.colors.WHITE,
+           self.colors.END)
 
     def banner(self):
         print(self.banner)
