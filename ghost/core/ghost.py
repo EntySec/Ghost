@@ -28,43 +28,42 @@ import os
 import subprocess
 import sys
 
+from adb_shell.adb_device import AdbDeviceTcp
+
 from ghost.core.badges import Badges
 from ghost.core.transfer import Transfer
 
 
 class Ghost:
-    def __init__(self):
+    def __init__(self, host, port, timeout=10):
         self.badges = Badges()
-        self.transfer = Transfer(self)
 
-    def send_command(self, command, arguments="", multi_output=False, output=True):
-        if multi_output:
-            os.system("adb " + command + " " + arguments)
-        else:
-            command_output = subprocess.getoutput("adb " + command + " " + arguments)
-            if output:
-                return command_output.strip()
+        self.device = AdbDeviceTcp(host, int(port), default_transport_timeout_s=10)
 
-    def start_server(self):
-        self.send_command("start-server", "", False, False)
-
-    def stop_server(self):
-        self.send_command("kill-server", "", False, False)
-
-    def connect(self, target_addr):
-        self.send_command("connect", target_addr, False, False)
+    def send_command(self, command, output=True):
+        try:
+            cmd_output = self.device.shell(command)
+        except Exception:
+            self.badges.output_error("Socket is not connected!")
+        if output:
+            return cmd_output
+        return None
+            
+    def connect(self):
+        if not self.device.connect():
+            self.badges.output_error("Failed to connect!")
 
     def disconnect(self, target_addr):
-        self.send_command("disconnect", target_addr, False, False)
+        self.device.close()
 
     def download(self, input_file, output_path):
-        self.transfer.download(input_file, output_path)
+        try:
+            self.device.pull(input_file, output_path)
+        except Exception:
+            self.badges.output_error("Failed to download!")
 
     def upload(self, input_file, output_path):
-        self.transfer.upload(input_file, output_path)
-
-    def is_root(self):
-        check_root = self.send_command("shell", "which su")
-        if check_root == "":
-            return False
-        return True
+        try:
+            self.device.push(input_file, output_path)
+        except Exception:
+            self.badges.output_error("Failed to upload!")
