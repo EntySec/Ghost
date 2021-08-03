@@ -57,23 +57,30 @@ class Device:
         try:
             self.device.connect()
             self.badges.print_success(f"Successfully connected to {self.address}!")
+            return True
         except Exception:
             self.badges.print_error(f"Failed to connect to {self.address}!")
+        return False
 
     def disconnect(self, target_addr):
         self.device.close()
+        return True
 
     def download(self, input_file, output_path):
         try:
             self.device.pull(input_file, output_path)
+            return True
         except Exception:
             self.badges.print_error(f"Failed to download from {self.address}!")
+        return False
 
     def upload(self, input_file, output_path):
         try:
             self.device.push(input_file, output_path)
+            return True
         except Exception:
             self.badges.print_error(f"Failed to upload to {self.address}!")
+        return False
 
     def is_rooted(self):
         responder = self.send_command('which su')
