@@ -104,7 +104,7 @@ class Device:
                 if not len(command):
                     continue
 
-                elif command[0] == 'help':
+                if command[0] == 'help':
                     self.tables.print_table("Core Commands", ('Command', 'Description'), *[
                         ('exit', 'Exit current device.'),
                         ('help', 'Show available commands.')
