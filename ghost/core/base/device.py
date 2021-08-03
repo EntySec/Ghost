@@ -96,11 +96,15 @@ class Device:
         while True:
             try:
                 command = input(
-                    f'(ghost: {self.colors.RED}{self.address}{self.colors.END})> '
+                    f'{self.colors.REMOVE}(ghost: {self.colors.RED}'
+                    f'{self.address}{self.colors.END})> '
                 ).strip()
                 command = command.split()
 
-                if command[0] == 'help':
+                if not len(command):
+                    continue
+
+                elif command[0] == 'help':
                     self.tables.print_table("Core Commands", ('Command', 'Description'), *[
                         ('exit', 'Exit current device.'),
                         ('help', 'Show available commands.')
@@ -110,10 +114,10 @@ class Device:
                         commands_data = dict()
                         headers = ("Command", "Description")
                         for cmd in commands:
-                            label = commands[cmd].details['category']
+                            label = commands[cmd].details['type']
                             commands_data[label] = list()
                         for cmd in commands:
-                            label = commands[cmd].details['category']
+                            label = commands[cmd].details['type']
                             commands_data[label].append((cmd, commands[cmd].details['description']))
                         for label in commands_data:
                             self.print_table(label.title() + " Commands", headers, *commands_data[label])
