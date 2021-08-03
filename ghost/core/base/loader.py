@@ -47,7 +47,8 @@ class Loader:
                     module = module.GhostModule(self.device)
 
                     modules[module.details['name']] = module
-                except Exception:
+                except Exception as e:
+                    print(e)
                     pass
         return modules
 
