@@ -60,7 +60,15 @@ class Console:
                 command = input('ghost> ').strip()
                 command = command.split()
 
-                if command[0] == 'connect':
+                if command[0] == 'help':
+                    self.tables.print_table("Core Commands", ('Command', 'Description'), [
+                        ('connect', 'Connect device.'),
+                        ('devices', 'Show connected devices.'),
+                        ('help', 'Show available commands.'),
+                        ('interact', 'Interact with device.')
+                    ])
+
+                elif command[0] == 'connect':
                     if len(command) < 2:
                         self.badges.print_empty("Usage: connect <address>")
                     else:
@@ -91,7 +99,7 @@ class Console:
                         for device in self.devices:
                             devices.append((device, self.devices[device]['address']))
 
-                        self.tables.print_table("Connected Devices", ("ID", "Address"), devices)
+                        self.tables.print_table("Connected Devices", ('ID', 'Address'), devices)
                     else:
                         self.badges.print_warning("No devices connected.")
 
