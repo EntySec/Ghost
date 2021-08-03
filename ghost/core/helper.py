@@ -36,13 +36,6 @@ class Helper:
         self.rport = 5555
         self.version = "v7.0.0"
 
-    def check_adb_installation(self):
-        command_output = subprocess.getoutput("command -v adb")
-        if command_output.strip() == "":
-            print(self.badges.E + "Failed to execute adb!")
-            return False
-        return True
-
     def show_commands(self, target_commands):
         settings_commands = []
         managing_commands = []
