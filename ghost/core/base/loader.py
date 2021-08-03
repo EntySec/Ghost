@@ -52,5 +52,5 @@ class Loader:
         return modules
 
     def load_modules(self):
-        commands = self.import_modules(f'{os.path.dirname(__file__)}/../../../modules')
+        commands = self.import_modules(f'{os.path.dirname(__file__)}/../../modules')
         return commands
