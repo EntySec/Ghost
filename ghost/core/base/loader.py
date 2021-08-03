@@ -46,7 +46,7 @@ class Loader:
                     spec.loader.exec_module(module)
                     module = module.GhostModule(self.device)
 
-                    modules[module.details['name']] = module
+                    modules[module.details['Name']] = module
                 except Exception as e:
                     print(e)
                     pass
