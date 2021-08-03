@@ -49,14 +49,17 @@ class Console:
 `.__.':_;:_;`.__.'`.__.':_;
 
 {}You has been ghosted!{}
+
 """.format(self.colors.BOLD + self.colors.WHITE,
            self.colors.END)
 
     def shell(self):
-         readline.parse_and_bind('tab: complete')
-         while True:
+        self.badges.output_empty(self.banner)
+
+        readline.parse_and_bind('tab: complete')
+        while True:
             try:
-                command = input('ghost> ').strip()
+                command = input('(ghost)> ').strip()
                 command = command.split()
 
                 if command[0] == 'help':
