@@ -28,7 +28,7 @@ import sys
 
 sys.stdout.write("\033]0;Ghost Framework\007")
 
-from ghost.core.console import Console
+from ghost.core.base.console import Console
 console = Console()
 
 def main():
