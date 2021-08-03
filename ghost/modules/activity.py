@@ -8,10 +8,9 @@
 from ghost.core.cli.badges import Badges
 
 
-class GhostModule:
+class GhostModule(Badges):
     def __init__(self, device):
         self.device = device
-        self.badges = Badges()
 
         self.details = {
             'Category': "settings",
@@ -28,8 +27,8 @@ class GhostModule:
             'NeedsRoot': False
         }
 
-    def run(self):
-        self.badges.output_process("Getting activity information...")
+    def run(self, argc, argv):
+        self.print_process("Getting activity information...")
 
         output = self.device.send_command("dumpsys activity")
-        self.badges.print_empty(output)
+        self.print_empty(output)
