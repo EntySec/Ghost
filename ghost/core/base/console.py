@@ -52,9 +52,6 @@ class Console:
 """.format(self.colors.BOLD + self.colors.WHITE,
            self.colors.END)
 
-    def banner(self):
-        print(self.banner)
-
     def shell(self):
          readline.parse_and_bind('tab: complete')
          while True:
