@@ -27,9 +27,8 @@
 import os
 import readline
 
-from ghost.core.badges import Badges
-from ghost.core.helper import Helper
-from ghost.core.ghost import Ghost
+from ghost.core.cli.badges import Badges
+from ghost.core.cli.ghost import Ghost
 
 
 class Console:
