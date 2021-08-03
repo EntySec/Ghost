@@ -24,27 +24,31 @@
 # SOFTWARE.
 #
 
-from ghost.core.badges import Badges
+from ghost.core.cli.badges import Badges
 
 
 class GhostModule:
-    def __init__(self, ghost):
-        self.ghost = ghost
+    def __init__(self, device):
+        self.device = device
         self.badges = Badges()
 
         self.details = {
-            'name': "activity",
-            'authors': ['enty8080'],
-            'description': "Show device activity information.",
-            'usage': "activity",
-            'type': "settings",
-            'args': 0,
-            'needs_args': False,
-            'needs_root': False,
-            'comments': ""
+            'Category': "settings",
+            'Name': "activity",
+            'Authors': [
+                'enty8080'
+            ],
+            'Description': "Show device activity information.",
+            'Comments': [
+                ''
+            ],
+            'Usage': "activity",
+            'MinArgs': 0,
+            'NeedsRoot': False
         }
 
     def run(self):
-        print(self.badges.G + "Getting activity information...")
-        output = self.ghost.send_command("shell", "dumpsys activity")
-        print(output)
+        self.badges.output_process("Getting activity information...")
+
+        output = self.device.send_command("dumpsys activity")
+        self.badges.output_empty(output)
