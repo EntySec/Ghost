@@ -24,7 +24,7 @@
 # SOFTWARE.
 #
 
-import os
+import sys
 import readline
 
 from ghost.core.cli.badges import Badges
@@ -64,9 +64,13 @@ class Console:
                     self.tables.print_table("Core Commands", ('Command', 'Description'), [
                         ('connect', 'Connect device.'),
                         ('devices', 'Show connected devices.'),
+                        ('exit', 'Exit Ghost Framework.'),
                         ('help', 'Show available commands.'),
                         ('interact', 'Interact with device.')
                     ])
+
+                elif command[0] == 'exit':
+                    sys.exit(0)
 
                 elif command[0] == 'connect':
                     if len(command) < 2:
