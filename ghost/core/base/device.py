@@ -128,7 +128,7 @@ class Device:
                                 commands[command[0]].run()
                     else:
                         self.badges.print_error("Unrecognized command!")
-             except (EOFError, KeyboardInterrupt):
-                 pass
-             except Exception as e:
-                 self.badges.print_error("An error occurred: " + str(e) + "!")
+            except (EOFError, KeyboardInterrupt):
+                pass
+            except Exception as e:
+                self.badges.print_error("An error occurred: " + str(e) + "!")
