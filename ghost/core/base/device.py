@@ -89,7 +89,7 @@ class Device:
                 command = command.split()
 
                 if command[0] == 'help':
-                    self.tables.print_table("Core Commands", ('Command', 'Description'), [
+                    self.tables.print_table("Core Commands", ('Command', 'Description'), *[
                         ('exit', 'Exit current device.'),
                         ('help', 'Show available commands.')
                     ])
