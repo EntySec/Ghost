@@ -114,11 +114,11 @@ class Device:
                         commands_data = dict()
                         headers = ("Command", "Description")
                         for cmd in commands:
-                            label = commands[cmd].details['type']
+                            label = commands[cmd].details['Category']
                             commands_data[label] = list()
                         for cmd in commands:
-                            label = commands[cmd].details['type']
-                            commands_data[label].append((cmd, commands[cmd].details['description']))
+                            label = commands[cmd].details['Category']
+                            commands_data[label].append((cmd, commands[cmd].details['Description']))
                         for label in commands_data:
                             self.print_table(label.title() + " Commands", headers, *commands_data[label])
 
@@ -127,11 +127,11 @@ class Device:
 
                 else:
                     if command[0] in commands:
-                        if commands[command[0]].details['needs_args']:
-                            if (len(command) - 1) < int(commands[command[0]].details['args']):
-                                self.badges.print_empty("Usage: " + commands[command[0]].details['usage'])
+                        if commands[command[0]].details['MinArgs'] > 0:
+                            if (len(command) - 1) < int(commands[command[0]].details['MinArgs']):
+                                self.badges.print_empty("Usage: " + commands[command[0]].details['Usage'])
                             else:
-                                if commands[command[0]].details['needs_root']:
+                                if commands[command[0]].details['NeedsRoot']:
                                     if self.is_rooted():
                                         commands[command[0]].run(arguments)
                                     else:
@@ -139,7 +139,7 @@ class Device:
                                 else:
                                     commands[command[0]].run(arguments)
                         else:
-                            if commands[command[0]].details['needs_root']:
+                            if commands[command[0]].details['NeedsRoot']:
                                 if self.is_rooted():
                                     commands[command[0]].run()
                                 else:
