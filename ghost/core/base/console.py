@@ -34,7 +34,7 @@ from ghost.core.cli.ghost import Ghost
 class Console:
     def __init__(self):
         self.badges = Badges()
-        self.helper = Helper()
+        self.devices = list()
 
     def banner(self):
         print("""
@@ -58,11 +58,33 @@ class Console:
 
                 if command[0] == 'connect':
                     if len(command) < 2:
-                        self.badges.output_empty("Usage: connect <>")
+                        self.badges.print_empty("Usage: connect <address>")
+                    else:
+                        self.badges.print_process("Connecting to device...")
+                        args = command[1].split(':')
 
+                        if len(args) == 2:
+                            device = Ghost(args[0], args[1])
+                            connected = device.connect()
+                        else:
+                            device = Ghost(args[0])
+                            connected = device.connect()
+
+                        if connected:
+                            self.devices.append(args[0])
+                            self.badges.print_success("Connection succeed!")
+                        else:
+                            self.badges.print_error("Connection failed!")
+
+                elif command[0] == 'interact':
+                    if len(command) < 2:
+                        self.badges.print_empty("Usage: interact <id>")
+                    else:
+                        if int(command[1]) < len(self.devices):
+                            pass
                 else:
-                    print(self.badges.E + "Unrecognized command!")
+                    self.badges.print_error("Unrecognized command!")
              except (EOFError, KeyboardInterrupt):
                  pass
              except Exception as e:
-                 print("An error occurred: " + str(e) + "!")
+                 self.badges.print_error("An error occurred: " + str(e) + "!")
