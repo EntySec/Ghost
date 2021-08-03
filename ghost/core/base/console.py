@@ -54,7 +54,7 @@ class Console:
            self.colors.END)
 
     def shell(self):
-        self.badges.output_empty(self.banner)
+        self.badges.print_empty(self.banner)
 
         readline.parse_and_bind('tab: complete')
         while True:
