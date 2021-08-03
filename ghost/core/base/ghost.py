@@ -24,14 +24,9 @@
 # SOFTWARE.
 #
 
-import os
-import subprocess
-import sys
-
 from adb_shell.adb_device import AdbDeviceTcp
 
-from ghost.core.badges import Badges
-from ghost.core.transfer import Transfer
+from ghost.core.cli.badges import Badges
 
 
 class Ghost:
