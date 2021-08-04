@@ -8,7 +8,7 @@
 from ghost.lib.module import Module
 
 
-class Module(Module):
+class GhostModule(Module):
     details = {
         'Category': "settings",
         'Name': "activity",
