@@ -70,6 +70,7 @@ class Console:
                     self.tables.print_table("Core Commands", ('Command', 'Description'), *[
                         ('connect', 'Connect device.'),
                         ('devices', 'Show connected devices.'),
+                        ('disconnect', 'Disconnect device.'),
                         ('exit', 'Exit Ghost Framework.'),
                         ('help', 'Show available commands.'),
                         ('interact', 'Interact with device.')
