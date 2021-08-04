@@ -30,5 +30,23 @@ from ghost.core.cli.tables import Tables
 
 
 class Module(Badges, Colors, Tables):
+    def __init__(self, device):
+        self.device = device
+
+        self.details = {
+            'Category': "",
+            'Name': "",
+            'Authors': [
+                ''
+            ],
+            'Description': "",
+            'Comments': [
+                ''
+            ],
+            'Usage': "",
+            'MinArgs': 0,
+            'NeedsRoot': False
+        }
+
     def run(self, argc, argv):
         pass
