@@ -91,8 +91,10 @@ class Device:
         return True
 
     def interact(self):
+        self.badges.print_process("Loading device modules...")
         commands = self.loader.load_modules(self)
 
+        self.badges.print_information(f"Modules loaded: {str(len(commands))}")
         while True:
             try:
                 command = input(
