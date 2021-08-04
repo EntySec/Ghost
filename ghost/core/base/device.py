@@ -64,7 +64,7 @@ class Device:
             self.badges.print_error(f"Failed to connect to {self.address}!")
         return False
 
-    def disconnect(self, target_addr):
+    def disconnect(self):
         self.device.close()
         return True
 
