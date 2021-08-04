@@ -41,8 +41,9 @@ class Loader:
                     spec = importlib.util.spec_from_file_location(path + '/' + mod, path + '/' + mod)
                     module = importlib.util.module_from_spec(spec)
                     spec.loader.exec_module(module)
-                    module = module.GhostModule(device)
+                    module = module.GhostModule()
 
+                    module.device = device
                     modules[module.details['Name']] = module
                 except Exception as e:
                     print(e)
