@@ -134,7 +134,7 @@ class Device:
                         else:
                             if commands[command[0]].details['NeedsRoot']:
                                 if self.is_rooted():
-                                    commands[command[0]].run(len(arguments), arguments))
+                                    commands[command[0]].run(len(arguments), arguments)
                                 else:
                                     self.badges.print_error("Target device is not rooted!")
                             else:
