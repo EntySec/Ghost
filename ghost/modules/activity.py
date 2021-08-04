@@ -5,27 +5,24 @@
 # Current source: https://github.com/EntySec/Ghost
 #
 
-from ghost.core.cli.badges import Badges
+from ghost.lib.module import Module
 
 
-class GhostModule(Badges):
-    def __init__(self, device):
-        self.device = device
-
-        self.details = {
-            'Category': "settings",
-            'Name': "activity",
-            'Authors': [
-                'enty8080'
-            ],
-            'Description': "Show device activity information.",
-            'Comments': [
-                ''
-            ],
-            'Usage': "activity",
-            'MinArgs': 0,
-            'NeedsRoot': False
-        }
+class Module(Module):
+    details = {
+        'Category': "settings",
+        'Name': "activity",
+        'Authors': [
+            'enty8080'
+        ],
+        'Description': "Show device activity information.",
+        'Comments': [
+            ''
+        ],
+        'Usage': "activity",
+        'MinArgs': 0,
+        'NeedsRoot': False
+    }
 
     def run(self, argc, argv):
         self.print_process("Getting activity information...")
