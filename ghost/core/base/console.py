@@ -125,6 +125,7 @@ class Console:
                         self.badges.print_empty("Usage: interact <id>")
                     else:
                         if int(command[1]) in self.devices:
+                            self.badges.print_process(f"Interacting with device {command[1]}...")
                             device = self.devices[int(command[1])]['device']
                             device.interact()
                         else:
