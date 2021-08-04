@@ -110,6 +110,16 @@ class Console:
                     else:
                         self.badges.print_warning("No devices connected.")
 
+                elif command[0] == 'disconnect':
+                    if len(command) < 2:
+                        self.badges.print_empty("Usage: disconnect <id>")
+                    else:
+                        if int(command[1]) in self.devices:
+                            self.devices[int(command[1])]['device'].disconnect()
+                            del self.devices[int(command[1])]
+                        else:
+                            self.badges.print_error("Invalud device id!")
+
                 elif command[0] == 'interact':
                     if len(command) < 2:
                         self.badges.print_empty("Usage: interact <id>")
