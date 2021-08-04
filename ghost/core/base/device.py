@@ -120,32 +120,25 @@ class Device:
                             label = commands[cmd].details['Category']
                             commands_data[label].append((cmd, commands[cmd].details['Description']))
                         for label in commands_data:
-                            self.print_table(label.title() + " Commands", headers, *commands_data[label])
+                            self.tables.print_table(label.title() + " Commands", headers, *commands_data[label])
 
                 elif command[0] == 'exit':
                     break
 
                 else:
+                    arguments = commands[1:]
+
                     if command[0] in commands:
-                        if commands[command[0]].details['MinArgs'] > 0:
-                            if (len(command) - 1) < int(commands[command[0]].details['MinArgs']):
-                                self.badges.print_empty("Usage: " + commands[command[0]].details['Usage'])
-                            else:
-                                if commands[command[0]].details['NeedsRoot']:
-                                    if self.is_rooted():
-                                        commands[command[0]].run(len(arguments.split()), arguments.split())
-                                    else:
-                                        self.badges.print_error("Target device is not rooted!")
-                                else:
-                                    commands[command[0]].run(len(arguments.split()), arguments.split())
+                        if (len(command) - 1) < int(commands[command[0]].details['MinArgs']):
+                            self.badges.print_empty("Usage: " + commands[command[0]].details['Usage'])
                         else:
                             if commands[command[0]].details['NeedsRoot']:
                                 if self.is_rooted():
-                                    commands[command[0]].run()
+                                    commands[command[0]].run(len(arguments), arguments))
                                 else:
                                     self.badges.print_error("Target device is not rooted!")
                             else:
-                                commands[command[0]].run()
+                                commands[command[0]].run(len(arguments), arguments)
                     else:
                         self.badges.print_error("Unrecognized command!")
             except (EOFError, KeyboardInterrupt):
