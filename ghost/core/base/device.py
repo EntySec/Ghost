@@ -37,6 +37,7 @@ class Device:
         self.badges = Badges()
         self.tables = Tables()
         self.colors = Colors()
+        self.loader = Loader()
 
         self.host = host
         self.port = int(port)
