@@ -37,7 +37,6 @@ class Device:
         self.badges = Badges()
         self.tables = Tables()
         self.colors = Colors()
-        self.loader = Loader(self)
 
         self.host = host
         self.port = int(port)
@@ -91,7 +90,7 @@ class Device:
         return True
 
     def interact(self):
-        commands = sorted(self.loader.load_modules())
+        commands = self.loader.load_modules(self.device)
 
         while True:
             try:
@@ -113,10 +112,10 @@ class Device:
                     if commands:
                         commands_data = dict()
                         headers = ("Command", "Description")
-                        for cmd in commands:
+                        for cmd in sorted(commands):
                             label = commands[cmd].details['Category']
                             commands_data[label] = list()
-                        for cmd in commands:
+                        for cmd in sorted(commands):
                             label = commands[cmd].details['Category']
                             commands_data[label].append((cmd, commands[cmd].details['Description']))
                         for label in commands_data:
