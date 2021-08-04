@@ -126,7 +126,7 @@ class Device:
                     break
 
                 else:
-                    arguments = commands[1:]
+                    arguments = command[1:]
 
                     if command[0] in commands:
                         if (len(command) - 1) < int(commands[command[0]].details['MinArgs']):
