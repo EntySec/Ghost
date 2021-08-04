@@ -91,7 +91,7 @@ class Device:
         return True
 
     def interact(self):
-        commands = self.loader.load_modules(self.device)
+        commands = self.loader.load_modules(self)
 
         while True:
             try:
