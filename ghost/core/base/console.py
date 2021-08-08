@@ -42,16 +42,17 @@ class Console:
 
         self.devices = dict()
         self.banner = """{}
- .--. .-.               .-.
-: .--': :              .' `.
-: : _ : `-.  .--.  .--.`. .'
-: :; :: .. :' .; :`._-.': :
-`.__.':_;:_;`.__.'`.__.':_;
+   .--. .-.               .-.
+  : .--': :              .' `.
+  : : _ : `-.  .--.  .--.`. .'
+  : :; :: .. :' .; :`._-.': :
+  `.__.':_;:_;`.__.'`.__.':_;
 
-   {}Ghost Framework 8.0.0{}
+[ {}Ghost Framework 8.0.0{}
+[ Developed by EntySec ({}https://entysec.netlify.app/{})
 """.format(self.colors.CLEAR,
            self.colors.BOLD + self.colors.WHITE,
-           self.colors.END)
+           self.colors.END, self.colors.LINED)
 
     def shell(self):
         self.badges.print_empty(self.banner)
