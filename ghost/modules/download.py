@@ -38,5 +38,5 @@ class GhostModule(Module):
                 self.print_success("File has been downloaded!")
 
         if exists and file == 'directory':
-            if self.device.download(argv[0] + '/' + os.path.split(argv[0])[1], argv[1]):
+            if self.device.download(argv[0], argv[1] + '/' + os.path.split(argv[0])[1]):
                 self.print_success("File has been downloaded!")
