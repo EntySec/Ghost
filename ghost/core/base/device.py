@@ -45,6 +45,8 @@ class Device:
         self.address = f"{self.host}:{str(self.port)}"
         self.device = AdbDeviceTcp(self.host, self.port, default_transport_timeout_s=10)
 
+        self.identificate = True
+
     def send_command(self, command, output=True):
         try:
             cmd_output = self.device.shell(command)
@@ -98,6 +100,9 @@ class Device:
         return True
 
     def interact(self):
+        if self.identificate:
+            self.send_command('touch /sdcard/.ghosted')
+
         self.badges.print_success("Interactive connection spawned!")
 
         self.badges.print_empty("")
