@@ -53,6 +53,13 @@ class Device:
         if output:
             return cmd_output
         return None
+    
+    def list(self, path):
+        try:
+            return self.device.list(path)
+        except Exception:
+            self.badges.print_error("Failed to list directory!")
+        return None
 
     def connect(self):
         self.badges.print_process(f"Connecting to {self.address}...")
