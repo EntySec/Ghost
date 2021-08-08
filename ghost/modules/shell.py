@@ -25,5 +25,5 @@ class GhostModule(Module):
     }
 
     def run(self, argc, argv):
-        output = self.device.send_command(''.join(argv))
+        output = self.device.send_command(' '.join(argv))
         self.print_empty(output)
