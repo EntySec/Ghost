@@ -30,7 +30,7 @@ class GhostModule(Module):
     def run(self, argc, argv):
         self.print_process(f"Downloading {argv[0]}...")
 
-        exists, file = self.fs.exists_directory(argv[1]):
+        exists, file = self.fs.exists_directory(argv[1])
         if exists and file == 'file':
             if self.device.download(argv[0], argv[1]):
                 self.print_success("File has been downloaded!")
