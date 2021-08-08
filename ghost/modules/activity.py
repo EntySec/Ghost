@@ -13,7 +13,7 @@ class GhostModule(Module):
         'Category': "settings",
         'Name': "activity",
         'Authors': [
-            'enty8080'
+            'Ivan Nikolsky (enty8080) - module developer'
         ],
         'Description': "Show device activity information.",
         'Comments': [
