@@ -18,7 +18,7 @@ class GhostModule(Module):
         'Category': "manage",
         'Name': "download",
         'Authors': [
-            'enty8080'
+            'Ivan Nikolsky (enty8080) - module developer'
         ],
         'Description': "Download file from device.",
         'Comments': [
