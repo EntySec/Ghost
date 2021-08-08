@@ -5,6 +5,8 @@
 # Current source: https://github.com/EntySec/Ghost
 #
 
+import datetime
+
 from ghost.lib.module import Module
 
 
@@ -32,6 +34,7 @@ class GhostModule(Module):
             data = list()
 
             for entry in sorted(output):
-                data.append((entry[0].decode(), str(entry[1]), str(entry[2]), str(entry[3])))
+                timestamp = datetime.datetime.fromtimestamp(entry[3])
+                data.append((entry[0].decode(), str(entry[1]), str(entry[2]), timestamp))
 
             self.print_table(f"Listing: {argv[0]}", headers, *data)
