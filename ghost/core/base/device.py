@@ -98,6 +98,8 @@ class Device:
         return True
 
     def interact(self):
+        self.badges.print_success("Interactive connection spawned!")
+
         self.badges.print_empty("")
         self.badges.print_process("Loading device modules...")
 
