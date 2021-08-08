@@ -41,15 +41,16 @@ class Console:
         self.tables = Tables()
 
         self.devices = dict()
-        self.banner = """
+        self.banner = """{}
  .--. .-.               .-.
 : .--': :              .' `.
 : : _ : `-.  .--.  .--.`. .'
 : :; :: .. :' .; :`._-.': :
 `.__.':_;:_;`.__.'`.__.':_;
 
-{}You has been ghosted!{}
-""".format(self.colors.BOLD + self.colors.WHITE,
+   {}Ghost Framework 8.0.0{}
+""".format(self.colors.CLEAR,
+           self.colors.BOLD + self.colors.WHITE,
            self.colors.END)
 
     def shell(self):
