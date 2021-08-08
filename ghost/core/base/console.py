@@ -105,7 +105,7 @@ class Console:
                             self.devices.update({
                                 len(self.devices): {
                                     'host': host,
-                                    'port': str(port)
+                                    'port': str(port),
                                     'device': device
                                 }
                             })
