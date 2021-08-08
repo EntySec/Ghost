@@ -30,11 +30,11 @@ class GhostModule(Module):
         output = self.device.list(argv[0])
 
         if output:
-            headers = ('Name', 'Mode', 'Size', 'Time')
+            headers = ('Name', 'Mode', 'Size', 'Modification Time')
             data = list()
 
             for entry in sorted(output):
                 timestamp = datetime.datetime.fromtimestamp(entry[3])
                 data.append((entry[0].decode(), str(entry[1]), str(entry[2]), timestamp))
 
-            self.print_table(f"Listing: {argv[0]}", headers, *data)
+            self.print_table(f"Directory {argv[0]}", headers, *data)
