@@ -91,31 +91,38 @@ class Console:
                         args = command[1].split(':')
 
                         if len(args) == 2:
+                            host, port = args[0], args[1]
+
                             device = Device(args[0], args[1])
                             connected = device.connect()
                         else:
+                            host, port = args[0], 5555
+
                             device = Device(args[0])
                             connected = device.connect()
 
                         if connected:
                             self.devices.update({
                                 len(self.devices): {
-                                    'address': args[0],
+                                    'host': host,
+                                    'port': str(port)
                                     'device': device
                                 }
                             })
                             self.badges.print_empty("")
 
                             self.badges.print_information(f"Type {self.colors.GREEN}devices{self.colors.END} to list all connected devices.")
-                            self.badges.print_information(f"Type {self.colors.GREEN}interact {str(len(self.devices)-1) + self.colors.END} to interact this device.")
+                            self.badges.print_information(
+                                f"Type {self.colors.GREEN}interact {str(len(self.devices)-1) + self.colors.END} to interact this device."
+                            )
 
                 elif command[0] == 'devices':
                     if self.devices:
                         devices = list()
                         for device in self.devices:
-                            devices.append((device, self.devices[device]['address']))
+                            devices.append((device, self.devices[device]['host'], self.devices[device]['port']))
 
-                        self.tables.print_table("Connected Devices", ('ID', 'Address'), *devices)
+                        self.tables.print_table("Connected Devices", ('ID', 'Host', 'Port'), *devices)
                     else:
                         self.badges.print_warning("No devices connected.")
 
