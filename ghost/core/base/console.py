@@ -77,6 +77,9 @@ class Console:
                     ])
 
                 elif command[0] == 'exit':
+                    for device in self.devices:
+                        self.devices[device]['device'].disconnect()
+                        del self.devices[device]
                     sys.exit(0)
 
                 elif command[0] == 'connect':
