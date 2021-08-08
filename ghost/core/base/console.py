@@ -104,6 +104,7 @@ class Console:
                                     'device': device
                                 }
                             })
+                            self.badges.print_information(f"Type {self.colors.GREEN}devices{self.colors.END} to list all connected devices.")
                             self.badges.print_information(f"Type {self.colors.GREEN}interact {str(len(self.devices)-1) + self.colors.END} to interact this device.")
 
                 elif command[0] == 'devices':
