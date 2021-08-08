@@ -28,4 +28,10 @@ class GhostModule(Module):
         output = self.device.list(argv[0])
 
         if output:
-            self.print_empty(output)
+            headers = ('Name', 'Mode', 'Size', 'Time')
+            data = list()
+
+            for entry in output:
+                data.append((entry[0].decode(), str(entry[1]), str(entry[2]), str(entry[3])))
+
+            self.print_table(f"Listing: {argv[0]}", headers, *data)
