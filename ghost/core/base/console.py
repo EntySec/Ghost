@@ -41,16 +41,17 @@ class Console:
         self.tables = Tables()
 
         self.devices = dict()
-        self.banner = """{}
+        self.banner = """{}{}
    .--. .-.               .-.
   : .--': :              .' `.
   : : _ : `-.  .--.  .--.`. .'
   : :; :: .. :' .; :`._-.': :
   `.__.':_;:_;`.__.'`.__.':_;
 
-[ {}Ghost Framework 8.0.0{}
-[ Developed by EntySec ({}https://entysec.netlify.app/{})
-""".format(self.colors.CLEAR, self.colors.BOLD + self.colors.WHITE,
+--=[ {}Ghost Framework 8.0.0{}
+--=[ Developed by EntySec ({}https://entysec.netlify.app/{})
+""".format(self.colors.CLEAR, self.colors.END,
+           self.colors.BOLD + self.colors.WHITE,
            self.colors.END, self.colors.LINE, self.colors.END)
 
     def shell(self):
