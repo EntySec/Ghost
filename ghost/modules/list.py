@@ -31,7 +31,7 @@ class GhostModule(Module):
             headers = ('Name', 'Mode', 'Size', 'Time')
             data = list()
 
-            for entry in output:
+            for entry in sorted(output):
                 data.append((entry[0].decode(), str(entry[1]), str(entry[2]), str(entry[3])))
 
             self.print_table(f"Listing: {argv[0]}", headers, *data)
