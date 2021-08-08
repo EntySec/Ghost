@@ -42,10 +42,7 @@ class Device:
         self.host = host
         self.port = int(port)
 
-        self.address = f"{self.host}:{str(self.port)}"
         self.device = AdbDeviceTcp(self.host, self.port, default_transport_timeout_s=10)
-
-        self.identificate = True
 
     def send_command(self, command, output=True):
         try:
@@ -64,13 +61,13 @@ class Device:
         return None
 
     def connect(self):
-        self.badges.print_process(f"Connecting to {self.address}...")
+        self.badges.print_process(f"Connecting to {self.host}...")
         try:
             self.device.connect()
-            self.badges.print_success(f"Connected to {self.address}!")
+            self.badges.print_success(f"Connected to {self.host}!")
             return True
         except Exception:
-            self.badges.print_error(f"Failed to connect to {self.address}!")
+            self.badges.print_error(f"Failed to connect to {self.host}!")
         return False
 
     def disconnect(self):
@@ -82,7 +79,7 @@ class Device:
             self.device.pull(input_file, output_path)
             return True
         except Exception:
-            self.badges.print_error(f"Failed to download from {self.address}!")
+            self.badges.print_error(f"Failed to download from {self.host}!")
         return False
 
     def upload(self, input_file, output_path):
@@ -90,7 +87,7 @@ class Device:
             self.device.push(input_file, output_path)
             return True
         except Exception:
-            self.badges.print_error(f"Failed to upload to {self.address}!")
+            self.badges.print_error(f"Failed to upload to {self.host}!")
         return False
 
     def is_rooted(self):
@@ -100,9 +97,6 @@ class Device:
         return True
 
     def interact(self):
-        if self.identificate:
-            self.send_command('touch /sdcard/.ghosted')
-
         self.badges.print_success("Interactive connection spawned!")
 
         self.badges.print_empty("")
@@ -115,7 +109,7 @@ class Device:
             try:
                 command = input(
                     f'{self.colors.REMOVE}(ghost: {self.colors.RED}'
-                    f'{self.address}{self.colors.END})> '
+                    f'{self.host}{self.colors.END})> '
                 ).strip()
                 command = command.split()
 
