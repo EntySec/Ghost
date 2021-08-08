@@ -52,7 +52,7 @@ class Console:
 [ Developed by EntySec ({}https://entysec.netlify.app/{})
 """.format(self.colors.CLEAR,
            self.colors.BOLD + self.colors.WHITE,
-           self.colors.END, self.colors.LINED)
+           self.colors.END, self.colors.LINE)
 
     def shell(self):
         self.badges.print_empty(self.banner)
