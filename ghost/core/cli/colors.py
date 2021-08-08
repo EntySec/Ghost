@@ -3,7 +3,7 @@
 #
 # MIT License
 #
-# Copyright (c) 2020 EntySec
+# Copyright (c) 2020-2021 EntySec
 #
 # Permission is hereby granted, free of charge, to any person obtaining a copy
 # of this software and associated documentation files (the "Software"), to deal
@@ -25,11 +25,24 @@
 #
 
 
-class Badges:
-    def __init__(self):
-        self.I = '\033[1;77m[i] \033[0m'
-        self.Q = '\033[1;77m[?] \033[0m'
-        self.S = '\033[1;32m[+] \033[0m'
-        self.W = '\033[1;33m[!] \033[0m'
-        self.E = '\033[1;31m[-] \033[0m'
-        self.G = '\033[1;34m[*] \033[0m'
+class Colors:
+    BLACK = '\033[30m'
+    RED = '\033[31m'
+    GREEN = '\033[32m'
+    YELLOW = '\033[33m'
+    BLUE = '\033[34m'
+    PURPLE = '\033[35m'
+    CYAN = '\033[36m'
+    WHITE = '\033[77m'
+
+    END = '\033[0m'
+    BOLD = '\033[1m'
+    DARK = '\033[2m'
+    BENT = '\033[3m'
+    LINE = '\033[4m'
+    TWINK = '\033[5m'
+    BACK = '\033[7m'
+
+    REMOVE = '\033[1K\r'
+    CLEAR = '\033[H\033[J'
+    NEWLINE = '\n'

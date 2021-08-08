@@ -24,26 +24,31 @@
 # SOFTWARE.
 #
 
-from ghost.core.badges import Badges
+import os
+
+import importlib.util
 
 
-class GhostModule:
-    def __init__(self, ghost):
-        self.ghost = ghost
-        self.badges = Badges()
+class Loader:
+    def import_modules(self, path, device):
+        modules = dict()
 
-        self.details = {
-            'name': "reboot",
-            'authors': ['enty8080'],
-            'description': "Reboot device.",
-            'usage': "reboot",
-            'type': "boot",
-            'args': 0,
-            'needs_args': False,
-            'needs_root': False,
-            'comments': ""
-        }
+        for mod in os.listdir(path):
+            if mod == '__init__.py' or mod[-3:] != '.py':
+                continue
+            else:
+                try:
+                    spec = importlib.util.spec_from_file_location(path + '/' + mod, path + '/' + mod)
+                    module = importlib.util.module_from_spec(spec)
+                    spec.loader.exec_module(module)
+                    module = module.GhostModule()
 
-    def run(self):
-        print(self.badges.G + "Rebooting device...")
-        self.ghost.send_command("reboot", "", True)
+                    module.device = device
+                    modules[module.details['Name']] = module
+                except Exception:
+                    pass
+        return modules
+
+    def load_modules(self, device):
+        commands = self.import_modules(f'{os.path.dirname(__file__)}/../../modules', device)
+        return commands

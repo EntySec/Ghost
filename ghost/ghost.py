@@ -28,16 +28,8 @@ import sys
 
 sys.stdout.write("\033]0;Ghost Framework\007")
 
-from ghost.core.console import Console
-from ghost.core.helper import Helper
-
+from ghost.core.base.console import Console
 console = Console()
-helper = Helper()
 
 def main():
-    if helper.check_adb_installation():
-        console.banner()
-        console.shell()
-
-    else:
-        sys.exit()
+    console.shell()

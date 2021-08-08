@@ -10,22 +10,19 @@ from ghost.lib.module import Module
 
 class GhostModule(Module):
     details = {
-        'Category': "settings",
-        'Name': "battery",
+        'Category': "manage",
+        'Name': "sleep",
         'Authors': [
             'Ivan Nikolsky (enty8080) - module developer'
         ],
-        'Description': "Show device battery information.",
+        'Description': "Put device into sleep mode.",
         'Comments': [
             ''
         ],
-        'Usage': "battery",
+        'Usage': "sleep",
         'MinArgs': 0,
         'NeedsRoot': False
     }
 
     def run(self, argc, argv):
-        self.print_process("Getting battery information...")
-
-        output = self.device.send_command("dumpsys battery")
-        self.print_empty(output)
+        self.device.send_command("input keyevent 26")

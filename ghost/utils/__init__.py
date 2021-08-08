@@ -3,7 +3,7 @@
 #
 # MIT License
 #
-# Copyright (c) 2020 EntySec
+# Copyright (c) 2020-2021 EntySec
 #
 # Permission is hereby granted, free of charge, to any person obtaining a copy
 # of this software and associated documentation files (the "Software"), to deal
@@ -23,26 +23,3 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 #
-
-import sys
-import termios
-import tty
-
-from ghost.core.ghost import Ghost
-
-
-class Keyboard:
-    def __init__(self):
-        self.ghost = Ghost()
-
-    def get_char(self):
-        fd = sys.stdin.fileno()
-        old = termios.tcgetattr(fd)
-        try:
-            tty.setraw(fd)
-            return sys.stdin.read(1)
-        finally:
-            termios.tcsetattr(fd, termios.TCSADRAIN, old)
-
-    def send_char(self, char):
-        self.ghost.send_command("shell", "input text " + char, False, False)

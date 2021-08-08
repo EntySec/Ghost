@@ -3,7 +3,7 @@
 #
 # MIT License
 #
-# Copyright (c) 2020 EntySec
+# Copyright (c) 2020-2021 EntySec
 #
 # Permission is hereby granted, free of charge, to any person obtaining a copy
 # of this software and associated documentation files (the "Software"), to deal
@@ -24,28 +24,28 @@
 # SOFTWARE.
 #
 
-import os
 
-from ghost.core.badges import Badges
+class Badges:
+    @staticmethod
+    def print_empty(message="", end='\n'):
+        print(f"\033[1K\r{message}", end=end)
 
+    @staticmethod
+    def print_process(message, end='\n'):
+        print(f"\033[1K\r\033[1;34m[*]\033[0m {message}", end=end)
 
-class GhostModule:
-    def __init__(self, ghost):
-        self.ghost = ghost
-        self.badges = Badges()
+    @staticmethod
+    def print_success(message, end='\n'):
+        print(f"\033[1K\r\033[1;32m[+]\033[0m {message}", end=end)
 
-        self.details = {
-            'name': "screen",
-            'authors': ['enty8080'],
-            'description': "Control device screen.",
-            'usage': "screen",
-            'type': "managing",
-            'args': 0,
-            'needs_args': False,
-            'needs_root': False,
-            'comments': ""
-        }
+    @staticmethod
+    def print_error(message, end='\n'):
+        print(f"\033[1K\r\033[1;31m[-]\033[0m {message}", end=end)
 
-    def run(self):
-        print(self.badges.G + "Opening device screen...")
-        os.system("scrcpy &> /dev/null")
+    @staticmethod
+    def print_warning(message, end='\n'):
+        print(f"\033[1K\r\033[1;33m[!]\033[0m {message}", end=end)
+
+    @staticmethod
+    def print_information(message, end='\n'):
+        print(f"\033[1K\r\033[1;77m[i]\033[0m {message}", end=end)

@@ -10,22 +10,22 @@ from ghost.lib.module import Module
 
 class GhostModule(Module):
     details = {
-        'Category': "settings",
-        'Name': "battery",
+        'Category': "manage",
+        'Name': "press",
         'Authors': [
             'Ivan Nikolsky (enty8080) - module developer'
         ],
-        'Description': "Show device battery information.",
+        'Description': "Press device button by keycode.",
         'Comments': [
             ''
         ],
-        'Usage': "battery",
-        'MinArgs': 0,
+        'Usage': "press <keycode>",
+        'MinArgs': 1,
         'NeedsRoot': False
     }
 
     def run(self, argc, argv):
-        self.print_process("Getting battery information...")
-
-        output = self.device.send_command("dumpsys battery")
-        self.print_empty(output)
+        if int(argv[0]) < 124:
+            self.device.send_command(f"input keyevent {argv[0]}")
+        else:
+            self.print_error("Invalid keycode!")

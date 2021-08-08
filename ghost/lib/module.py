@@ -3,7 +3,7 @@
 #
 # MIT License
 #
-# Copyright (c) 2020 EntySec
+# Copyright (c) 2020-2021 EntySec
 #
 # Permission is hereby granted, free of charge, to any person obtaining a copy
 # of this software and associated documentation files (the "Software"), to deal
@@ -24,25 +24,28 @@
 # SOFTWARE.
 #
 
-from ghost.core.badges import Badges
+from ghost.core.cli.badges import Badges
+from ghost.core.cli.colors import Colors
+from ghost.core.cli.tables import Tables
 
 
-class GhostModule:
-    def __init__(self, ghost):
-        self.ghost = ghost
-        self.badges = Badges()
+class Module(Badges, Colors, Tables):
+    device = None
 
-        self.details = {
-            'name': "click",
-            'authors': ['jaxparrow07'],
-            'description': "Clicks the specified x and y axis.",
-            'usage': "click <x> <y>",
-            'type': "managing",
-            'args': 2,
-            'needs_args': True,
-            'needs_root': False,
-            'comments': ""
-        }
+    details = {
+        'Category': "",
+        'Name': "",
+        'Authors': [
+            ''
+        ],
+        'Description': "",
+        'Comments': [
+            ''
+        ],
+        'Usage': "",
+        'MinArgs': 0,
+        'NeedsRoot': False
+    }
 
-    def run(self, args):
-        self.ghost.send_command("shell", "\"input tap " + args + "\"", True)
+    def run(self, argc, argv):
+        pass

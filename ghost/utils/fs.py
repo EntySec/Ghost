@@ -3,7 +3,7 @@
 #
 # MIT License
 #
-# Copyright (c) 2020 EntySec
+# Copyright (c) 2020-2021 EntySec
 #
 # Permission is hereby granted, free of charge, to any person obtaining a copy
 # of this software and associated documentation files (the "Software"), to deal
@@ -26,16 +26,17 @@
 
 import os
 
+from ghost.core.cli.badges import Badges
 
-class FSManip:
-    def __init__(self):
-        self.error = '\033[1;31m[-] \033[0m'
+
+class FSTools:
+    badges = Badges()
 
     def exists_directory(self, path):
         if os.path.isdir(path):
             if os.path.exists(path):
                 return True, "directory"
-            self.badges.output_error("Local directory: " + path + ": does not exist!")
+            self.badges.print_error("Local directory: " + path + ": does not exist!")
             return False, ""
         directory = os.path.split(path)[0]
         if directory == "":
@@ -43,16 +44,16 @@ class FSManip:
         if os.path.exists(directory):
             if os.path.isdir(directory):
                 return True, "file"
-            self.badges.output_error("Error: " + directory + ": not a directory!")
+            self.badges.print_error("Error: " + directory + ": not a directory!")
             return False, ""
-        self.badges.output_error("Local directory: " + directory + ": does not exist!")
+        self.badges.print_error("Local directory: " + directory + ": does not exist!")
         return False, ""
 
     def file(self, path):
         if os.path.exists(path):
             if os.path.isdir(path):
-                self.badges.output_error("Error: " + path + ": not a file!")
+                self.badges.print_error("Error: " + path + ": not a file!")
                 return False
             return True
-        self.badges.output_error("Local file: " + path + ": does not exist!")
+        self.badges.print_error("Local file: " + path + ": does not exist!")
         return False

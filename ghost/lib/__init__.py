@@ -3,7 +3,7 @@
 #
 # MIT License
 #
-# Copyright (c) 2020 EntySec
+# Copyright (c) 2020-2021 EntySec
 #
 # Permission is hereby granted, free of charge, to any person obtaining a copy
 # of this software and associated documentation files (the "Software"), to deal
@@ -23,34 +23,3 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 #
-
-import os
-
-import importlib.util
-
-
-class Loader:
-    def __init__(self, ghost):
-        self.ghost = ghost
-
-    def import_modules(self, path):
-        modules = dict()
-
-        for mod in os.listdir(path):
-            if mod == '__init__.py' or mod[-3:] != '.py':
-                continue
-            else:
-                try:
-                    spec = importlib.util.spec_from_file_location(path + '/' + mod, path + '/' + mod)
-                    module = importlib.util.module_from_spec(spec)
-                    spec.loader.exec_module(module)
-                    module = module.GhostModule(self.ghost)
-
-                    modules[module.details['name']] = module
-                except Exception:
-                    pass
-        return modules
-
-    def load_modules(self):
-        target_commands = self.import_modules(f'{os.path.dirname(__file__)}/../modules')
-        return target_commands

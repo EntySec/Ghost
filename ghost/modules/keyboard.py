@@ -1,54 +1,46 @@
 #!/usr/bin/env python3
 
 #
-# MIT License
-#
-# Copyright (c) 2020 EntySec
-#
-# Permission is hereby granted, free of charge, to any person obtaining a copy
-# of this software and associated documentation files (the "Software"), to deal
-# in the Software without restriction, including without limitation the rights
-# to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-# copies of the Software, and to permit persons to whom the Software is
-# furnished to do so, subject to the following conditions:
-#
-# The above copyright notice and this permission notice shall be included in all
-# copies or substantial portions of the Software.
-#
-# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-# IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-# FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-# AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-# LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-# OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-# SOFTWARE.
+# This module requires Ghost: https://github.com/EntySec/Ghost
+# Current source: https://github.com/EntySec/Ghost
 #
 
-from ghost.core.badges import Badges
-from ghost.core.keyboard import Keyboard
+import sys
+import termios
+import tty
+
+from ghost.lib.module import Module
 
 
-class GhostModule:
-    def __init__(self, ghost):
-        self.ghost = ghost
-        self.badges = Badges()
-        self.keyboard = Keyboard()
+class GhostModule(Module):
+    details = {
+        'Category': "manage",
+        'Name': "keyboard",
+        'Authors': [
+            'Ivan Nikolsky (enty8080) - module developer'
+        ],
+        'Description': "Interact with device keyboard.",
+        'Comments': [
+            ''
+        ],
+        'Usage': "keyboard",
+        'MinArgs': 0,
+        'NeedsRoot': False
+    }
 
-        self.details = {
-            'name': "keyboard",
-            'authors': ['enty8080'],
-            'description': "Control device keyboard.",
-            'usage': "keyboard",
-            'type': "managing",
-            'args': 0,
-            'needs_args': False,
-            'needs_root': False,
-            'comments': ""
-        }
+    def get_char(self):
+        fd = sys.stdin.fileno()
+        old = termios.tcgetattr(fd)
+        try:
+            tty.setraw(fd)
+            return sys.stdin.read(1)
+        finally:
+            termios.tcsetattr(fd, termios.TCSADRAIN, old)
 
-    def run(self):
-        print(self.badges.G + "Connecting to keyboard...")
-        print(self.badges.I + "Press Ctrl-C to stop.")
+    def run(self, argc, argv):
+        self.print_process("Interacting with keyboard...")
+        self.print_success("Interactive connection spawned!")
+
+        self.print_information("Type text below.")
         while True:
-            char = self.keyboard.get_char()
-            self.keyboard.send_char(char)
+            self.device.send_command(f"input text {self.get_char()}")

