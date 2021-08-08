@@ -104,7 +104,6 @@ class Console:
                                     'device': device
                                 }
                             })
-                            self.badges.print_empty("")
                             self.badges.print_information(f"Type {self.colors.GREEN}interact {str(len(self.devices)-1) + self.colors.END} to interact this device.")
 
                 elif command[0] == 'devices':
