@@ -5,6 +5,8 @@
 # Current source: https://github.com/EntySec/Ghost
 #
 
+import os
+
 from ghost.lib.module import Module
 from ghost.utils.fs import FSTools
 
@@ -36,7 +38,7 @@ class GhostModule(Module):
                 self.print_success("File has been downloaded!")
 
         if exists and file == 'directory':
-            open(argv[1], 'wb').close()
+            open(argv[1] + '/' + os.path.split(argv[0])[1], 'wb').close()
 
             if self.device.download(argv[0], argv[1]):
                 self.print_success("File has been downloaded!")
