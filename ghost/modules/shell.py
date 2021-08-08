@@ -13,7 +13,7 @@ class GhostModule(Module):
         'Category': "manage",
         'Name': "shell",
         'Authors': [
-            'enty8080'
+            'Ivan Nikolsky (enty8080) - module developer'
         ],
         'Description': "Execute shell command on device.",
         'Comments': [
