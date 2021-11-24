@@ -30,7 +30,7 @@ class GhostModule(Module, FSTools):
         self.print_process(f"Taking screenshot...")
         self.device.send_command("screencap /data/local/tmp/screenshot.png")
 
-        exists, is_dir = self.fs.exists_directory(argv[0])
+        exists, is_dir = self.exists(argv[0])
 
         if exists:
             if is_dir:
