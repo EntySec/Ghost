@@ -8,10 +8,9 @@
 import os
 
 from ghost.lib.module import Module
-from ghost.utils.fs import FSTools
 
 
-class GhostModule(Module, FSTools):
+class GhostModule(Module):
     details = {
         'Category': "manage",
         'Name': "upload",
@@ -28,7 +27,4 @@ class GhostModule(Module, FSTools):
     }
 
     def run(self, argc, argv):
-        self.print_process(f"Uploading {argv[1]}...")
-
-        if self.exists_file(argv[1]):
-            self.device.upload(argv[1], argv[2])
+        self.device.upload(argv[1], argv[2])
