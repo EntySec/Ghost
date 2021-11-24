@@ -11,9 +11,7 @@ from ghost.lib.module import Module
 from ghost.utils.fs import FSTools
 
 
-class GhostModule(Module):
-    fs = FSTools()
-
+class GhostModule(Module, FSTools):
     details = {
         'Category': "manage",
         'Name': "download",
@@ -32,11 +30,12 @@ class GhostModule(Module):
     def run(self, argc, argv):
         self.print_process(f"Downloading {argv[0]}...")
 
-        exists, file = self.fs.exists_directory(argv[1])
-        if exists and file == 'file':
-            if self.device.download(argv[0], argv[1]):
-                self.print_success("File has been downloaded!")
+        exists, is_dir = self.exists(argv[1])
+        if exists:
+            if is_dir:
+                path = argv[1] + '/' + os.path.split(argv[0])[1]
+            else:
+                path = argv[1]
 
-        if exists and file == 'directory':
-            if self.device.download(argv[0], argv[1] + '/' + os.path.split(argv[0])[1]):
+            if self.device.download(argv[0], argv[1]):
                 self.print_success("File has been downloaded!")
