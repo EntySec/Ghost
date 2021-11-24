@@ -37,5 +37,5 @@ class GhostModule(Module, FSTools):
             else:
                 path = argv[2]
 
-            if self.device.download(argv[1], argv[2]):
+            if self.device.download(argv[1], path):
                 self.print_success("File has been downloaded!")
