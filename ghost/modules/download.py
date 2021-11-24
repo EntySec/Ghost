@@ -28,14 +28,4 @@ class GhostModule(Module, FSTools):
     }
 
     def run(self, argc, argv):
-        self.print_process(f"Downloading {argv[1]}...")
-
-        exists, is_dir = self.exists(argv[2])
-        if exists:
-            if is_dir:
-                path = argv[2] + '/' + os.path.split(argv[1])[1]
-            else:
-                path = argv[2]
-
-            if self.device.download(argv[1], path):
-                self.print_success("File has been downloaded!")
+        self.device.download(argv[1], argv[2]):
