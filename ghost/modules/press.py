@@ -25,7 +25,7 @@ class GhostModule(Module):
     }
 
     def run(self, argc, argv):
-        if int(argv[0]) < 124:
-            self.device.send_command(f"input keyevent {argv[0]}")
+        if int(argv[1]) < 124:
+            self.device.send_command(f"input keyevent {argv[1]}")
         else:
             self.print_error("Invalid keycode!")
