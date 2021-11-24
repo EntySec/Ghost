@@ -32,28 +32,36 @@ from ghost.core.cli.badges import Badges
 class FSTools:
     badges = Badges()
 
-    def exists_directory(self, path):
-        if os.path.isdir(path):
-            if os.path.exists(path):
-                return True, "directory"
-            self.badges.print_error("Local directory: " + path + ": does not exist!")
-            return False, ""
-        directory = os.path.split(path)[0]
-        if directory == "":
-            directory = "."
-        if os.path.exists(directory):
-            if os.path.isdir(directory):
-                return True, "file"
-            self.badges.print_error("Error: " + directory + ": not a directory!")
-            return False, ""
-        self.badges.print_error("Local directory: " + directory + ": does not exist!")
-        return False, ""
+    def exists(self, path):
+        if os.path.is_dir(path):
+            return True, True
+        else:
+            directory = os.path.split(path)[0]
 
-    def file(self, path):
+            if not directory:
+                return True, False
+
+            if self.exists_dir(directory):
+                return True, False
+            else:
+                return False, False
+
+    def exists_dir(self, path):
         if os.path.exists(path):
-            if os.path.isdir(path):
-                self.badges.print_error("Error: " + path + ": not a file!")
+            if not os.path.isdir(path):
+                self.badges.print_error(f"Error: {path}: not a directory!")
                 return False
             return True
-        self.badges.print_error("Local file: " + path + ": does not exist!")
+
+        self.badges.print_error(f"Local directory: {directory}: does not exist!")
+        return False
+
+    def exists_file(self, path):
+        if os.path.exists(path):
+            if os.path.isdir(path):
+                self.badges.print_error(f"Error: {path}: not a file!")
+                return False
+            return True
+
+        self.badges.print_error(f"Local file: {path}: does not exist!")
         return False
