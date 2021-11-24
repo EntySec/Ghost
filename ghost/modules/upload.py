@@ -28,7 +28,7 @@ class GhostModule(Module, FSTools):
     }
 
     def run(self, argc, argv):
-        self.print_process(f"Uploading {argv[0]}...")
+        self.print_process(f"Uploading {argv[1]}...")
 
-        if self.exists_file(argv[0]):
-            self.device.upload(argv[0], argv[1])
+        if self.exists_file(argv[1]):
+            self.device.upload(argv[1], argv[2])
