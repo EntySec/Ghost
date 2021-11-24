@@ -8,12 +8,9 @@
 import os
 
 from ghost.lib.module import Module
-from ghost.utils.fs import FSTools
 
 
-class GhostModule(Module):
-    fs = FSTools()
-
+class GhostModule(Module, FSTools):
     details = {
         'Category': "manage",
         'Name': "screenshot",
@@ -33,13 +30,15 @@ class GhostModule(Module):
         self.print_process(f"Taking screenshot...")
         self.device.send_command("screencap /data/local/tmp/screenshot.png")
 
-        exists, file = self.fs.exists_directory(argv[0])
-        if exists and file == 'file':
-            if self.device.download('/data/local/tmp/screenshot.png', argv[0]):
+        exists, is_dir = self.fs.exists_directory(argv[0])
+
+        if exists:
+            if is_dir:
+                path = argv[0] + '/screenshot.png'
+            else:
+                path = argv[0]
+
+            if self.device.download('/data/local/tmp/screenshot.png', path):
                 self.print_success("Screenshot has been downloaded!")
 
-        if exists and file == 'directory':
-            if self.device.download('/data/local/tmp/screenshot.png', argv[0] + '/screenshot.png'):
-                self.print_success("Screenshot has been downloaded!")
-                
         self.device.send_command("rm /data/local/tmp/screenshot.png")
