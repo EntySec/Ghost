@@ -25,7 +25,7 @@ class GhostModule(Module):
     }
 
     def run(self, argc, argv):
-        if not argv[0].startswith(("http://", "https://")):
-            argv[0] = "http://" + argv[0]
+        if not argv[1].startswith(("http://", "https://")):
+            argv[1] = "http://" + argv[1]
 
-        self.device.send_command(f'am start -a android.intent.action.VIEW -d "{argv[0]}"')
+        self.device.send_command(f'am start -a android.intent.action.VIEW -d "{argv[1]}"')
