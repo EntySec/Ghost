@@ -27,4 +27,4 @@ class GhostModule(Module):
     }
 
     def run(self, argc, argv):
-        self.device.download(argv[1], argv[2]):
+        self.device.download(argv[1], argv[2])
