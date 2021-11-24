@@ -138,19 +138,17 @@ class Device:
                     break
 
                 else:
-                    arguments = command[1:]
-
                     if command[0] in commands:
                         if (len(command) - 1) < int(commands[command[0]].details['MinArgs']):
                             self.badges.print_empty("Usage: " + commands[command[0]].details['Usage'])
                         else:
                             if commands[command[0]].details['NeedsRoot']:
                                 if self.is_rooted():
-                                    commands[command[0]].run(len(arguments), arguments)
+                                    commands[command[0]].run(len(command), command)
                                 else:
                                     self.badges.print_error("Target device is not rooted!")
                             else:
-                                commands[command[0]].run(len(arguments), arguments)
+                                commands[command[0]].run(len(command), command)
                     else:
                         self.badges.print_error("Unrecognized command!")
             except (EOFError, KeyboardInterrupt):
