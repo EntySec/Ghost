@@ -31,7 +31,6 @@ class GhostModule(Module, FSTools):
         self.device.send_command("screencap /data/local/tmp/screenshot.png")
 
         exists, is_dir = self.exists(argv[0])
-
         if exists:
             if is_dir:
                 path = argv[0] + '/screenshot.png'
