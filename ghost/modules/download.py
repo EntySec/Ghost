@@ -33,7 +33,7 @@ class GhostModule(Module, FSTools):
         exists, is_dir = self.exists(argv[2])
         if exists:
             if is_dir:
-                path = argv[2] + '/' + os.path.split(argv[1])[2]
+                path = argv[2] + '/' + os.path.split(argv[1])[1]
             else:
                 path = argv[2]
 
