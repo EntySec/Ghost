@@ -8,10 +8,9 @@
 import os
 
 from ghost.lib.module import Module
-from ghost.utils.fs import FSTools
 
 
-class GhostModule(Module, FSTools):
+class GhostModule(Module):
     details = {
         'Category': "manage",
         'Name': "download",
