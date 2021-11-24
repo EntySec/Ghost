@@ -35,16 +35,14 @@ class FSTools:
     def exists(self, path):
         if os.path.is_dir(path):
             return True, True
-        else:
-            directory = os.path.split(path)[0]
+        directory = os.path.split(path)[0]
 
-            if not directory:
-                return True, False
+        if not directory:
+            return True, False
 
-            if self.exists_dir(directory):
-                return True, False
-            else:
-                return False, False
+        if self.exists_dir(directory):
+            return True, False
+        return False, False
 
     def exists_dir(self, path):
         if os.path.exists(path):
