@@ -25,8 +25,8 @@ class GhostModule(Module):
     }
 
     def run(self, argc, argv):
-        if argv[0] in ['on', 'off']:
-            if argv[0] == 'on':
+        if argv[1] in ['on', 'off']:
+            if argv[1] == 'on':
                 self.device.send_command("svc wifi enable")
             else:
                 self.device.send_command("svc wifi disable")
