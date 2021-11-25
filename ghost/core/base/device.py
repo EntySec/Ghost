@@ -31,6 +31,8 @@ from adb_shell.adb_device import AdbDeviceTcp
 from ghost.core.cli.badges import Badges
 from ghost.core.cli.tables import Tables
 from ghost.core.cli.colors import Colors
+
+from ghost.utils.fs import FSTools
 from ghost.core.base.loader import Loader
 
 
@@ -41,6 +43,7 @@ class Device:
         self.colors = Colors()
         self.loader = Loader()
 
+        self.fs = FSTools()
         self.host = host
         self.port = int(port)
 
@@ -77,7 +80,7 @@ class Device:
         return True
 
     def download(self, input_file, output_path):
-        exists, is_dir = self.exists(output_path)
+        exists, is_dir = self.fs.exists(output_path)
         
         if exists:
             if is_dir:
@@ -91,7 +94,7 @@ class Device:
         return False
 
     def upload(self, input_file, output_path):
-        if self.exists_file(input_file):
+        if self.fs.exists_file(input_file):
             try:
                 self.device.push(input_file, output_path)
                 return True
