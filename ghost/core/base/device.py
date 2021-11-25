@@ -81,13 +81,18 @@ class Device:
 
     def download(self, input_file, output_path):
         exists, is_dir = self.fs.exists(output_path)
-        
+
         if exists:
             if is_dir:
                 output_path = output_path + '/' + os.path.split(input_file)[1]
-            
+
             try:
+                self.badges.print_process(f"Downloading {input_file}...")
                 self.device.pull(input_file, output_path)
+
+                self.badges.print_process(f"Saving to {output_path}...")
+                self.badges.print_success(f"Saved to {output_path}!")
+
                 return True
             except Exception:
                 self.badges.print_error(f"Remote file: {input_file}: does not exist!")
@@ -96,7 +101,12 @@ class Device:
     def upload(self, input_file, output_path):
         if self.fs.exists_file(input_file):
             try:
+                self.badges.print_process(f"Uploading {input_file}...")
                 self.device.push(input_file, output_path)
+                
+                self.badges.print_process(f"Saving to {output_path}...")
+                self.badges.print_success(f"Saved to {output_path}!")
+
                 return True
             except Exception:
                 self.badges.print_error(f"Remote directory: {output_path}: does not exist!")
