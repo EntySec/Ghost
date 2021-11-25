@@ -140,6 +140,7 @@ class Device:
 
                 if command[0] == 'help':
                     self.tables.print_table("Core Commands", ('Command', 'Description'), *[
+                        ('clear', 'Clear terminal window.'),
                         ('exit', 'Exit current device.'),
                         ('help', 'Show available commands.')
                     ])
@@ -158,6 +159,9 @@ class Device:
 
                 elif command[0] == 'exit':
                     break
+
+                elif command[0] == 'clear':
+                    self.badges.print_empty(self.colors.CLEAR, end='')
 
                 else:
                     if command[0] in commands:
