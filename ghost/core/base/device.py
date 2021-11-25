@@ -24,6 +24,8 @@
 # SOFTWARE.
 #
 
+import os
+
 from adb_shell.adb_device import AdbDeviceTcp
 
 from ghost.core.cli.badges import Badges
@@ -75,19 +77,26 @@ class Device:
         return True
 
     def download(self, input_file, output_path):
-        try:
-            self.device.pull(input_file, output_path)
-            return True
-        except Exception:
-            self.badges.print_error(f"Failed to download from {self.host}!")
+        exists, is_dir = self.exists(output_path)
+        
+        if exists:
+            if is_dir:
+                output_path = output_path + '/' + os.path.split(input_file)[1]
+            
+            try:
+                self.device.pull(input_file, output_path)
+                return True
+            except Exception:
+                self.badges.print_error(f"Remote file: {input_file}: does not exist!")
         return False
 
     def upload(self, input_file, output_path):
-        try:
-            self.device.push(input_file, output_path)
-            return True
-        except Exception:
-            self.badges.print_error(f"Failed to upload to {self.host}!")
+        if self.exists_file(input_file):
+            try:
+                self.device.push(input_file, output_path)
+                return True
+            except Exception:
+                self.badges.print_error(f"Remote directory: {output_path}: does not exist!")
         return False
 
     def is_rooted(self):
