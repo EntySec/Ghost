@@ -86,7 +86,7 @@ class Console:
                     sys.exit(0)
 
                 elif command[0] == 'clear':
-                    self.badges.print_empty(self.colors.CLEAR)
+                    self.badges.print_empty(self.colors.CLEAR, end='')
 
                 elif command[0] == 'connect':
                     if len(command) < 2:
