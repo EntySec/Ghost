@@ -70,6 +70,7 @@ class Console:
 
                 if command[0] == 'help':
                     self.tables.print_table("Core Commands", ('Command', 'Description'), *[
+                        ('clear', 'Clear terminal window.'),
                         ('connect', 'Connect device.'),
                         ('devices', 'Show connected devices.'),
                         ('disconnect', 'Disconnect device.'),
@@ -83,6 +84,9 @@ class Console:
                         self.devices[device]['device'].disconnect()
                         del self.devices[device]
                     sys.exit(0)
+
+                elif command[0] == 'clear':
+                    self.badges.print_empty(self.colors.CLEAR)
 
                 elif command[0] == 'connect':
                     if len(command) < 2:
