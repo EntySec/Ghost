@@ -54,6 +54,8 @@ class Device:
             cmd_output = self.device.shell(command)
         except Exception:
             self.badges.print_error("Socket is not connected!")
+            return None
+
         if output:
             return cmd_output
         return None
