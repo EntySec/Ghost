@@ -27,6 +27,8 @@
 import os
 
 from adb_shell.adb_device import AdbDeviceTcp
+from adb_shell.auth.sign_pythonrsa import PythonRSASigner
+from adb_shell.auth.keygen import keygen
 
 from ghost.core.cli.badges import Badges
 from ghost.core.cli.tables import Tables
@@ -35,9 +37,8 @@ from ghost.core.cli.colors import Colors
 from ghost.utils.fs import FSTools
 from ghost.core.base.loader import Loader
 
-
 class Device:
-    def __init__(self, host, port=5555, timeout=10):
+    def __init__(self, host, port=5555, timeout=10 , key_filename='key'):
         self.badges = Badges()
         self.tables = Tables()
         self.colors = Colors()
@@ -46,9 +47,21 @@ class Device:
         self.fs = FSTools()
         self.host = host
         self.port = int(port)
+        
+        self.key_files = key_filename
+        self.device = AdbDeviceTcp(self.host, self.port, default_transport_timeout_s=timeout)
 
-        self.device = AdbDeviceTcp(self.host, self.port, default_transport_timeout_s=10)
+    def get_keys(self):
+        if not os.path.exists(self.key_files):
+            keygen(self.key_files)
 
+        with open(self.key_files , 'r') as file:
+            priv = file.read()
+
+        with open(self.key_files + '.pub', 'r') as file:
+            pub = file.read()       
+        return pub , priv
+    
     def send_command(self, command, output=True):
         try:
             cmd_output = self.device.shell(command)
@@ -70,7 +83,10 @@ class Device:
     def connect(self):
         self.badges.print_process(f"Connecting to {self.host}...")
         try:
-            self.device.connect()
+            keys = self.get_keys()
+            signer = PythonRSASigner(*keys)
+
+            self.device.connect(rsa_keys=[signer], auth_timeout_s=5)
             self.badges.print_success(f"Connected to {self.host}!")
             return True
         except Exception:
