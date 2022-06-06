@@ -24,18 +24,28 @@
 # SOFTWARE.
 #
 
-import sys
 import readline
+import sys
 
+from ghost.core.base.device import Device
 from ghost.core.cli.badges import Badges
 from ghost.core.cli.colors import Colors
 from ghost.core.cli.tables import Tables
 
-from ghost.core.base.device import Device
-
 
 class Console:
-    def __init__(self):
+    """ Subclass of ghost.core.base module.
+
+    This subclass of ghost.core.base modules is intended for providing
+    main Ghost Framework console interface.
+    """
+
+    def __init__(self) -> None:
+        """ Initialize console.
+
+        :return None: None
+        """
+
         self.badges = Badges()
         self.colors = Colors()
         self.tables = Tables()
@@ -54,7 +64,12 @@ class Console:
            self.colors.BOLD + self.colors.WHITE,
            self.colors.END, self.colors.LINE, self.colors.END)
 
-    def shell(self):
+    def shell(self) -> None:
+        """ Run console shell.
+
+        :return None: None
+        """
+
         self.badges.print_empty(self.banner)
 
         readline.parse_and_bind('tab: complete')
@@ -115,9 +130,10 @@ class Console:
                             })
                             self.badges.print_empty("")
 
-                            self.badges.print_information(f"Type {self.colors.GREEN}devices{self.colors.END} to list all connected devices.")
                             self.badges.print_information(
-                                f"Type {self.colors.GREEN}interact {str(len(self.devices)-1) + self.colors.END} to interact this device."
+                                f"Type {self.colors.GREEN}devices{self.colors.END} to list all connected devices.")
+                            self.badges.print_information(
+                                f"Type {self.colors.GREEN}interact {str(len(self.devices) - 1) + self.colors.END} to interact this device."
                             )
 
                 elif command[0] == 'devices':

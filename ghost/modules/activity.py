@@ -1,9 +1,7 @@
-#!/usr/bin/env python3
-
-#
-# This module requires Ghost: https://github.com/EntySec/Ghost
-# Current source: https://github.com/EntySec/Ghost
-#
+"""
+This module requires Ghost: https://github.com/EntySec/Ghost
+Current source: https://github.com/EntySec/Ghost
+"""
 
 from ghost.lib.module import Module
 

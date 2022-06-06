@@ -24,13 +24,28 @@
 # SOFTWARE.
 #
 
+import importlib.util
 import os
 
-import importlib.util
+from ghost.core.base.device import Device
 
 
 class Loader:
-    def import_modules(self, path, device):
+    """ Subclass of ghost.core.base module.
+
+    This subclass of ghost.core.base module is intended for providng
+    Ghost Framework loader.
+    """
+
+    @staticmethod
+    def import_modules(path: str, device: Device) -> dict:
+        """ Import modules for the specified device.
+
+        :param str path: path to import modules from
+        :param Device device: device to import modules for
+        :return dict: dict of modules
+        """
+
         modules = dict()
 
         for mod in os.listdir(path):
@@ -49,6 +64,12 @@ class Loader:
                     pass
         return modules
 
-    def load_modules(self, device):
+    def load_modules(self, device: Device) -> dict:
+        """ Load modules for the specified device and get their commands.
+
+        :param Device device: device to load modules for
+        :return dict: dict of modules commands
+        """
+
         commands = self.import_modules(f'{os.path.dirname(__file__)}/../../modules', device)
         return commands
