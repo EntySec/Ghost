@@ -27,8 +27,6 @@
 import importlib.util
 import os
 
-from ghost.core.base.device import Device
-
 
 class Loader:
     """ Subclass of ghost.core.base module.
@@ -38,7 +36,7 @@ class Loader:
     """
 
     @staticmethod
-    def import_modules(path: str, device: Device) -> dict:
+    def import_modules(path: str, device) -> dict:
         """ Import modules for the specified device.
 
         :param str path: path to import modules from
@@ -64,7 +62,7 @@ class Loader:
                     pass
         return modules
 
-    def load_modules(self, device: Device) -> dict:
+    def load_modules(self, device) -> dict:
         """ Load modules for the specified device and get their commands.
 
         :param Device device: device to load modules for
