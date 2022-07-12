@@ -17,13 +17,12 @@ class GhostModule(Module):
         'Comments': [
             ''
         ],
-        'Usage': "broadcast 'message_with_underscores'",
-        'MinArgs': 1,
+        'Usage': "broadcast",
+        'MinArgs': 0,
         'NeedsRoot': False
     }
 
     def run(self, argc, argv):
-        argv[1] = argv[1].replace("_", "")
-        print(argv[1])
-        output = self.device.send_command(f'am start -a "android.intent.action.SEND" --es "android.intent.extra.TEXT" {argv[1]} -t "text/plain"')
+        body = input("Message to broadcast >")
+        output = self.device.send_command(f'am start -a "android.intent.action.SEND" --es "android.intent.extra.TEXT" {body} -t "text/plain"')
         self.print_empty(output)
