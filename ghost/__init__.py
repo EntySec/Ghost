@@ -33,3 +33,4 @@ def cli() -> None:
 
     console = Console()
     console.shell()
+cli()
