@@ -58,7 +58,7 @@ class Loader:
 
                     module.device = device
                     modules[module.details['Name']] = module
-                except Exception:
+                except:
                     pass
         return modules
 
