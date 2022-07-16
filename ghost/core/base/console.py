@@ -23,8 +23,9 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 #
+
+import readline
 import sys
-import os
 
 from ghost.core.base.device import Device
 from ghost.core.cli.badges import Badges
@@ -71,13 +72,14 @@ class Console:
 
         self.badges.print_empty(self.banner)
 
+        readline.parse_and_bind('tab: complete')
         while True:
             try:
-                command = input(           
+                command = input(
                     f'{self.colors.REMOVE}(ghost)> '
                 ).strip()
-                self.badges.log_information(command)
                 command = command.split()
+
                 if not command:
                     continue
 
@@ -119,7 +121,6 @@ class Console:
                             connected = device.connect()
 
                         if connected:
-                            self.badges.log_information(f'Connected successfully to {command[1]}')
                             self.devices.update({
                                 len(self.devices): {
                                     'host': host,
@@ -153,7 +154,7 @@ class Console:
                             self.devices[int(command[1])]['device'].disconnect()
                             del self.devices[int(command[1])]
                         else:
-                            self.badges.print_error("Invalid device id!")
+                            self.badges.print_error("Invalud device id!")
 
                 elif command[0] == 'interact':
                     if len(command) < 2:
