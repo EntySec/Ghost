@@ -217,7 +217,6 @@ class Device:
                     f'{self.colors.REMOVE}(ghost: {self.colors.RED}'
                     f'{self.host}{self.colors.END})> '
                 ).strip()
-                self.badges.log_information(command)
                 command = command.split()
 
                 if not command:

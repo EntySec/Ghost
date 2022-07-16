@@ -21,8 +21,7 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 """
-import time
-import os
+
 
 class Badges:
     @staticmethod
@@ -48,13 +47,3 @@ class Badges:
     @staticmethod
     def print_information(message, end='\n'):
         print(f"\033[1K\r\033[1;77m[i]\033[0m {message}", end=end)
-        
-    def log_information(pass_, message):
-        if os.path.exists("history.log"):
-            history_f = open(f'history.log', "a")
-            history_f.write(f'[{time.ctime()}] (ghost)> {message} \n')
-            history_f.close()
-        else:
-            history_f = open(f'history.log', "w")
-            history_f.write(f'[{time.ctime()}] (ghost)> {message} \n')
-            history_f.close()
