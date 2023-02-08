@@ -49,7 +49,7 @@ class FSTools:
                 return False
             return True
 
-        self.badges.print_error(f"Local directory: {directory}: does not exist!")
+        self.badges.print_error(f"Local directory: {path}: does not exist!")
         return False
 
     def exists_file(self, path):
