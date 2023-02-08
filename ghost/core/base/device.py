@@ -162,7 +162,7 @@ class Device:
 
                 return True
             except Exception:
-                self.badges.print_error(f"Remote file: {input_file}: does not exist!")
+                self.badges.print_error(f"Remote file: {input_file}: does not exist or a directory!")
         return False
 
     def upload(self, input_file: str, output_path: str) -> bool:
@@ -183,7 +183,11 @@ class Device:
 
                 return True
             except Exception:
-                self.badges.print_error(f"Remote directory: {output_path}: does not exist!")
+                try:
+                    output_path = output_path + '/' + os.path.split(input_file)[1]
+                    self.device.push(input_file, output_path)
+                except Exception:
+                    self.badges.print_error(f"Remote directory: {output_path}: does not exist!")
         return False
 
     def is_rooted(self) -> bool:
