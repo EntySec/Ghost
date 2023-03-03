@@ -23,7 +23,10 @@ SOFTWARE.
 """
 
 
-class Badges:
+class Badges(object):
+    def __init__(self):
+        super().__init__()
+
     @staticmethod
     def print_empty(message="", end='\n'):
         print(f"\033[1K\r{message}", end=end)

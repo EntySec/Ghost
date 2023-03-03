@@ -7,20 +7,23 @@ from ghost.lib.module import Module
 
 
 class GhostModule(Module):
-    details = {
-        'Category': "manage",
-        'Name': "sleep",
-        'Authors': [
-            'Ivan Nikolsky (enty8080) - module developer'
-        ],
-        'Description': "Put device into sleep mode.",
-        'Comments': [
-            ''
-        ],
-        'Usage': "sleep",
-        'MinArgs': 0,
-        'NeedsRoot': False
-    }
+    def __init__(self):
+        super().__init__()
+
+        self.details = {
+            'Category': "manage",
+            'Name': "sleep",
+            'Authors': [
+                'Ivan Nikolsky (enty8080) - module developer'
+            ],
+            'Description': "Put device into sleep mode.",
+            'Comments': [
+                ''
+            ],
+            'Usage': "sleep",
+            'MinArgs': 0,
+            'NeedsRoot': False
+        }
 
     def run(self, argc, argv):
         self.device.send_command("input keyevent 26")
