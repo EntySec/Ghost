@@ -27,8 +27,11 @@ import os
 from ghost.core.cli.badges import Badges
 
 
-class FSTools:
-    badges = Badges()
+class FSTools(object):
+    def __init__(self):
+        super().__init__()
+
+        self.badges = Badges()
 
     def exists(self, path):
         if os.path.isdir(path):

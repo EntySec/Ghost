@@ -7,20 +7,23 @@ from ghost.lib.module import Module
 
 
 class GhostModule(Module):
-    details = {
-        'Category': "manage",
-        'Name': "press",
-        'Authors': [
-            'Ivan Nikolsky (enty8080) - module developer'
-        ],
-        'Description': "Press device button by keycode.",
-        'Comments': [
-            ''
-        ],
-        'Usage': "press <keycode>",
-        'MinArgs': 1,
-        'NeedsRoot': False
-    }
+    def __init__(self):
+        super().__init__()
+
+        self.details = {
+            'Category': "manage",
+            'Name': "press",
+            'Authors': [
+                'Ivan Nikolsky (enty8080) - module developer'
+            ],
+            'Description': "Press device button by keycode.",
+            'Comments': [
+                ''
+            ],
+            'Usage': "press <keycode>",
+            'MinArgs': 1,
+            'NeedsRoot': False
+        }
 
     def run(self, argc, argv):
         if int(argv[1]) < 124:

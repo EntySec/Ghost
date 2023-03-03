@@ -7,20 +7,23 @@ from ghost.lib.module import Module
 
 
 class GhostModule(Module):
-    details = {
-        'Category': "settings",
-        'Name': "wifi",
-        'Authors': [
-            'Ivan Nikolsky (enty8080) - module developer'
-        ],
-        'Description': "Set device wifi service state.",
-        'Comments': [
-            ''
-        ],
-        'Usage': "wifi <on|off>",
-        'MinArgs': 1,
-        'NeedsRoot': False
-    }
+    def __init__(self):
+        super().__init__()
+
+        self.details = {
+            'Category': "settings",
+            'Name': "wifi",
+            'Authors': [
+                'Ivan Nikolsky (enty8080) - module developer'
+            ],
+            'Description': "Set device wifi service state.",
+            'Comments': [
+                ''
+            ],
+            'Usage': "wifi <on|off>",
+            'MinArgs': 1,
+            'NeedsRoot': False
+        }
 
     def run(self, argc, argv):
         if argv[1] in ['on', 'off']:

@@ -11,22 +11,26 @@ from ghost.lib.module import Module
 
 
 class GhostModule(Module):
-    details = {
-        'Category': "manage",
-        'Name': "keyboard",
-        'Authors': [
-            'Ivan Nikolsky (enty8080) - module developer'
-        ],
-        'Description': "Interact with device keyboard.",
-        'Comments': [
-            ''
-        ],
-        'Usage': "keyboard",
-        'MinArgs': 0,
-        'NeedsRoot': False
-    }
+    def __init__(self):
+        super().__init__()
 
-    def get_char(self):
+        self.details = {
+            'Category': "manage",
+            'Name': "keyboard",
+            'Authors': [
+                'Ivan Nikolsky (enty8080) - module developer'
+            ],
+            'Description': "Interact with device keyboard.",
+            'Comments': [
+                ''
+            ],
+            'Usage': "keyboard",
+            'MinArgs': 0,
+            'NeedsRoot': False
+        }
+
+    @staticmethod
+    def get_char():
         fd = sys.stdin.fileno()
         old = termios.tcgetattr(fd)
         try:

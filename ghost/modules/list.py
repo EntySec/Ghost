@@ -9,20 +9,23 @@ from ghost.lib.module import Module
 
 
 class GhostModule(Module):
-    details = {
-        'Category': "manage",
-        'Name': "list",
-        'Authors': [
-            'Ivan Nikolsky (enty8080) - module developer'
-        ],
-        'Description': "List directory contents.",
-        'Comments': [
-            ''
-        ],
-        'Usage': "list <remote_path>",
-        'MinArgs': 1,
-        'NeedsRoot': False
-    }
+    def __init__(self):
+        super().__init__()
+
+        self.details = {
+            'Category': "manage",
+            'Name': "list",
+            'Authors': [
+                'Ivan Nikolsky (enty8080) - module developer'
+            ],
+            'Description': "List directory contents.",
+            'Comments': [
+                ''
+            ],
+            'Usage': "list <remote_path>",
+            'MinArgs': 1,
+            'NeedsRoot': False
+        }
 
     def run(self, argc, argv):
         output = self.device.list(argv[1])

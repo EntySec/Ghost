@@ -7,20 +7,23 @@ from ghost.lib.module import Module
 
 
 class GhostModule(Module):
-    details = {
-        'Category': "manage",
-        'Name': "openurl",
-        'Authors': [
-            'Ivan Nikolsky (enty8080) - module developer'
-        ],
-        'Description': "Open URL on device.",
-        'Comments': [
-            ''
-        ],
-        'Usage': "openurl <url>",
-        'MinArgs': 1,
-        'NeedsRoot': False
-    }
+    def __init__(self):
+        super().__init__()
+
+        self.details = {
+            'Category': "manage",
+            'Name': "openurl",
+            'Authors': [
+                'Ivan Nikolsky (enty8080) - module developer'
+            ],
+            'Description': "Open URL on device.",
+            'Comments': [
+                ''
+            ],
+            'Usage': "openurl <url>",
+            'MinArgs': 1,
+            'NeedsRoot': False
+        }
 
     def run(self, argc, argv):
         if not argv[1].startswith(("http://", "https://")):

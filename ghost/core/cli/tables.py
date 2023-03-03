@@ -25,8 +25,11 @@ SOFTWARE.
 from ghost.core.cli.badges import Badges
 
 
-class Tables:
-    badges = Badges()
+class Tables(object):
+    def __init__(self):
+        super().__init__()
+
+        self.badges = Badges()
 
     def print_table(self, name, headers, *args, **kwargs) -> None:
         extra_fill = kwargs.get("extra_fill", 4)

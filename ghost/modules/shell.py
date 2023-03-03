@@ -7,20 +7,23 @@ from ghost.lib.module import Module
 
 
 class GhostModule(Module):
-    details = {
-        'Category': "manage",
-        'Name': "shell",
-        'Authors': [
-            'Ivan Nikolsky (enty8080) - module developer'
-        ],
-        'Description': "Execute shell command on device.",
-        'Comments': [
-            ''
-        ],
-        'Usage': "shell <command>",
-        'MinArgs': 1,
-        'NeedsRoot': False
-    }
+    def __init__(self):
+        super().__init__()
+
+        self.details = {
+            'Category': "manage",
+            'Name': "shell",
+            'Authors': [
+                'Ivan Nikolsky (enty8080) - module developer'
+            ],
+            'Description': "Execute shell command on device.",
+            'Comments': [
+                ''
+            ],
+            'Usage': "shell <command>",
+            'MinArgs': 1,
+            'NeedsRoot': False
+        }
 
     def run(self, argc, argv):
         output = self.device.send_command(' '.join(argv[1:]))

@@ -7,20 +7,23 @@ from ghost.lib.module import Module
 
 
 class GhostModule(Module):
-    details = {
-        'Category': "settings",
-        'Name': "activity",
-        'Authors': [
-            'Ivan Nikolsky (enty8080) - module developer'
-        ],
-        'Description': "Show device activity information.",
-        'Comments': [
-            ''
-        ],
-        'Usage': "activity",
-        'MinArgs': 0,
-        'NeedsRoot': False
-    }
+    def __init__(self):
+        super().__init__()
+
+        self.details = {
+            'Category': "settings",
+            'Name': "activity",
+            'Authors': [
+                'Ivan Nikolsky (enty8080) - module developer'
+            ],
+            'Description': "Show device activity information.",
+            'Comments': [
+                ''
+            ],
+            'Usage': "activity",
+            'MinArgs': 0,
+            'NeedsRoot': False
+        }
 
     def run(self, argc, argv):
         self.print_process("Getting activity information...")
