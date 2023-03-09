@@ -1,7 +1,7 @@
 """
 MIT License
 
-Copyright (c) 2020-2022 EntySec
+Copyright (c) 2020-2023 EntySec
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -26,12 +26,26 @@ from ghost.core.cli.badges import Badges
 
 
 class Tables(object):
-    def __init__(self):
+    """ Subclass of ghost.cli module.
+
+    This subclass of ghost.cli module is intended for providing
+    methods for displaying data in tables.
+    """
+
+    def __init__(self) -> None:
         super().__init__()
 
         self.badges = Badges()
 
-    def print_table(self, name, headers, *args, **kwargs) -> None:
+    def print_table(self, name: str, headers: tuple, *args, **kwargs) -> None:
+        """ Print table with provided data.
+
+        :param str name: table title name
+        :param tuple headers: table column titles
+        *args, **kwargs: table data for each column
+        :return None: None
+        """
+
         extra_fill = kwargs.get("extra_fill", 4)
         header_separator = kwargs.get("header_separator", "-")
 

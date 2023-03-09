@@ -1,7 +1,7 @@
 """
 MIT License
 
-Copyright (c) 2020-2022 EntySec
+Copyright (c) 2020-2023 EntySec
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -31,7 +31,8 @@ from ghost.core.base.loader import Loader
 from ghost.core.cli.badges import Badges
 from ghost.core.cli.colors import Colors
 from ghost.core.cli.tables import Tables
-from ghost.utils.fs import FSTools
+
+from pex.fs import FS
 
 
 class Device(object):
@@ -59,7 +60,7 @@ class Device(object):
         self.colors = Colors()
         self.loader = Loader()
 
-        self.fs = FSTools()
+        self.fs = FS()
         self.host = host
         self.port = int(port)
 

@@ -1,7 +1,7 @@
 """
 MIT License
 
-Copyright (c) 2020-2022 EntySec
+Copyright (c) 2020-2023 EntySec
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -34,11 +34,6 @@ class Loader(object):
     """
 
     def __init__(self) -> None:
-        """ Initialize loader.
-
-        :return None: None
-        """
-
         super().__init__()
 
     @staticmethod

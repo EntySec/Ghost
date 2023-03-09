@@ -1,7 +1,7 @@
 """
 MIT License
 
-Copyright (c) 2020-2022 EntySec
+Copyright (c) 2020-2023 EntySec
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -24,7 +24,13 @@ SOFTWARE.
 
 
 class Colors(object):
-    def __init__(self):
+    """ Subclass of ghost.cli module.
+
+    This subclass of ghost.cli module is intended for providing
+    different color codes.
+    """
+
+    def __init__(self) -> None:
         super().__init__()
 
         self.BLACK = '\033[30m'
