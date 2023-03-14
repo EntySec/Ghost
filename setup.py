@@ -43,7 +43,8 @@ setup(name='ghost',
           ]
       },
       install_requires=[
-          'adb-shell'
+          'adb-shell',
+          'pex @ git+https://github.com/EntySec/Pex'
       ],
       zip_safe=False
       )
