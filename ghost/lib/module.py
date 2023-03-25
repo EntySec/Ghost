@@ -28,7 +28,13 @@ from ghost.core.cli.tables import Tables
 
 
 class Module(Badges, Colors, Tables):
-    def __init__(self):
+    """ Subclass of ghost.lib module.
+
+    This subclass of ghost.lib module is intended for providing
+    wrapper for a module.
+    """
+
+    def __init__(self) -> None:
         super().__init__()
 
         self.device = None
@@ -48,5 +54,12 @@ class Module(Badges, Colors, Tables):
             'NeedsRoot': False
         }
 
-    def run(self, argc, argv):
+    def run(self, argc: int, argv: list) -> None:
+        """ Run this module.
+
+        :param int argc: number of arguments
+        :param list argv: arguments
+        :return None: None
+        """
+
         pass
