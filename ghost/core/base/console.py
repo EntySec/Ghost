@@ -54,7 +54,7 @@ class Console(object):
   `.__.':_;:_;`.__.'`.__.':_;
 
 --=[ {}Ghost Framework 8.0.0{}
---=[ Developed by EntySec ({}https://entysec.netlify.app/{})
+--=[ Developed by EntySec ({}https://entysec.com/{})
 """.format(self.colors.CLEAR, self.colors.END,
            self.colors.BOLD + self.colors.WHITE,
            self.colors.END, self.colors.LINE, self.colors.END)
