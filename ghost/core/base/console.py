@@ -23,7 +23,6 @@ SOFTWARE.
 """
 
 import cmd
-import readline
 import sys
 
 from ghost.core.base.device import Device
