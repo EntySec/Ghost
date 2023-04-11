@@ -212,7 +212,7 @@ class Device(cmd.Cmd):
             return False
         return True
 
-    def do_help(self) -> None:
+    def do_help(self, _) -> None:
         """ Show available commands.
 
         :return None: None
@@ -233,13 +233,13 @@ class Device(cmd.Cmd):
                 command_data[label] = list()
 
             for cmd in sorted(self.commands):
-                label = commands[cmd].details['Category']
+                label = self.commands[cmd].details['Category']
                 command_data[label].append((cmd, self.commands[cmd].details['Description']))
 
             for label in command_data:
                 self.tables.print_table(label.title() + " Commands", headers, *command_data[label])
 
-    def do_clear(self) -> None:
+    def do_clear(self, _) -> None:
         """ Clear terminal window.
 
         :return None: None
@@ -247,7 +247,7 @@ class Device(cmd.Cmd):
 
         self.badges.print_empty(self.colors.CLEAR, end='')
 
-    def do_exit(self) -> None:
+    def do_exit(self, _) -> None:
         """ Exit current device.
 
         :return None: None

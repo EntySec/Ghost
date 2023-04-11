@@ -32,7 +32,7 @@ from ghost.core.cli.colors import Colors
 from ghost.core.cli.tables import Tables
 
 
-class Console(object):
+class Console(cmd.Cmd):
     """ Subclass of ghost.core.base module.
 
     This subclass of ghost.core.base modules is intended for providing
@@ -56,15 +56,15 @@ class Console(object):
   `.__.':_;:_;`.__.'`.__.':_;
 
 --=[ {}Ghost Framework 8.0.0{}
---=[ Developed by EntySec ({}https://entysec.com/{})"""\
-            .format(self.colors.CLEAR, self.colors.END,
-                    self.colors.BOLD + self.colors.WHITE,
-                    self.colors.END, self.colors.LINE, self.colors.END)
+--=[ Developed by EntySec ({}https://entysec.com/{})
+""".format(self.colors.CLEAR, self.colors.END,
+           self.colors.BOLD + self.colors.WHITE,
+           self.colors.END, self.colors.LINE, self.colors.END)
 
         self.prompt = '(ghost)> '
 
-    def do_help(self) -> None:
-        """ Display all available commands.
+    def do_help(self, _) -> None:
+        """ Show available commands.
 
         :return None: None
         """
@@ -79,7 +79,7 @@ class Console(object):
             ('interact', 'Interact with device.')
         ])
 
-    def do_exit(self) -> None:
+    def do_exit(self, _) -> None:
         """ Exit Ghost Framework.
 
         :return None: None
@@ -91,7 +91,7 @@ class Console(object):
 
         sys.exit(0)
 
-    def do_clear(self) -> None:
+    def do_clear(self, _) -> None:
         """ Clear terminal window.
 
         :return None: None
@@ -99,19 +99,25 @@ class Console(object):
 
         self.badges.print_empty(self.colors.CLEAR, end='')
 
-    def do_connect(self, host: str, port: int = 5555) -> None:
+    def do_connect(self, address: str) -> None:
         """ Connect device.
 
-        :param str host: device host
-        :param int port: device port
+        :param str address: device host:port or just host
         :return None: None
         """
 
-        if not host:
-            self.badges.print_usage("connect <host> [port]")
+        if not address:
+            self.badges.print_usage("connect <host>:[port]")
             return
 
-        device = Device(host, int(port))
+        address = address.split(':')
+
+        if len(address) < 2:
+            host, port = address[0], 5555
+        else:
+            host, port = address[0], int(address[1])
+
+        device = Device(host=host, port=port)
 
         if device.connect():
             self.devices.update({
@@ -130,7 +136,7 @@ class Console(object):
                 "to interact this device."
             )
 
-    def do_devices(self) -> None:
+    def do_devices(self, _) -> None:
         """ Show connected devices.
 
         :return None: None
