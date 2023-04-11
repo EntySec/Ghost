@@ -82,13 +82,14 @@ class Console(cmd.Cmd):
         """ Exit Ghost Framework.
 
         :return None: None
+        :raises EOFError: EOF error
         """
 
         for device in list(self.devices):
             self.devices[device]['device'].disconnect()
             del self.devices[device]
 
-        sys.exit(0)
+        raise EOFError
 
     def do_clear(self, _) -> None:
         """ Clear terminal window.
