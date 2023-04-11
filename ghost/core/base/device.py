@@ -23,6 +23,8 @@ SOFTWARE.
 """
 
 import os
+import cmd
+
 from adb_shell.adb_device import AdbDeviceTcp
 from adb_shell.auth.keygen import keygen
 from adb_shell.auth.sign_pythonrsa import PythonRSASigner
@@ -35,7 +37,7 @@ from ghost.core.cli.tables import Tables
 from pex.fs import FS
 
 
-class Device(object):
+class Device(cmd.Cmd):
     """ Subclass of ghost.core.base module.
 
     This subclass of ghost.core.base module is intended for providing
@@ -54,6 +56,7 @@ class Device(object):
         """
 
         super().__init__()
+        cmd.Cmd.__init__(self)
 
         self.badges = Badges()
         self.tables = Tables()
@@ -66,6 +69,12 @@ class Device(object):
 
         self.key_file = key_filename
         self.device = AdbDeviceTcp(self.host, self.port, default_transport_timeout_s=timeout)
+
+        self.commands = {}
+
+        self.prompt =\
+            f'{self.colors.REMOVE}(ghost: {self.colors.RED}'\
+            f'{self.host}{self.colors.END})> '
 
     def get_keys(self) -> tuple:
         """ Get cryptographic keys.
@@ -99,6 +108,7 @@ class Device(object):
 
         if output:
             return cmd_output
+
         return ""
 
     def list(self, path: str) -> list:
@@ -202,6 +212,78 @@ class Device(object):
             return False
         return True
 
+    def do_help(self) -> None:
+        """ Show available commands.
+
+        :return None: None
+        """
+
+        self.tables.print_table("Core Commands", ('Command', 'Description'), *[
+            ('clear', 'Clear terminal window.'),
+            ('exit', 'Exit current device.'),
+            ('help', 'Show available commands.')
+        ])
+
+        if self.commands:
+            command_data = dict()
+            headers = ("Command", "Description")
+
+            for cmd in sorted(self.commands):
+                label = self.commands[cmd].details['Category']
+                command_data[label] = list()
+
+            for cmd in sorted(self.commands):
+                label = commands[cmd].details['Category']
+                command_data[label].append((cmd, self.commands[cmd].details['Description']))
+
+            for label in command_data:
+                self.tables.print_table(label.title() + " Commands", headers, *command_data[label])
+
+    def do_clear(self) -> None:
+        """ Clear terminal window.
+
+        :return None: None
+        """
+
+        self.badges.print_empty(self.colors.CLEAR, end='')
+
+    def do_exit(self) -> None:
+        """ Exit current device.
+
+        :return None: None
+        """
+
+        raise EOFError
+
+    def default(self, line: str) -> None:
+        """ Custom command handler.
+
+        :param str line: line sent
+        :return None: None
+        """
+
+        command = line.split()
+
+        if command[0] not in self.commands:
+            self.badges.print_error(f"Unrecognized command: {command[0]}!")
+            return
+
+        object = self.commands[command[0]]
+
+        if (len(command) - 1) < int(object.details['MinArgs']):
+            self.badges.print_usage(object.details['Usage'])
+            return
+
+        if object.details['NeedsRoot']:
+            if not self.is_rooted():
+                self.badges.print_error("Target device is not rooted!")
+                return
+
+            object.run(len(command), command)
+            return
+
+        object.run(len(command), command)
+
     def interact(self) -> None:
         """ Interact with the specified device.
 
@@ -213,60 +295,14 @@ class Device(object):
         self.badges.print_empty("")
         self.badges.print_process("Loading device modules...")
 
-        commands = self.loader.load_modules(self)
-        self.badges.print_information(f"Modules loaded: {str(len(commands))}")
+        self.commands = self.loader.load_modules(self)
+        self.badges.print_information(f"Modules loaded: {str(len(self.commands))}")
 
-        while True:
-            try:
-                command = input(
-                    f'{self.colors.REMOVE}(ghost: {self.colors.RED}'
-                    f'{self.host}{self.colors.END})> '
-                ).strip()
-                command = command.split()
+        try:
+            cmd.Cmd.cmdloop(self)
 
-                if not command:
-                    continue
+        except (EOFError, KeyboardInterrupt):
+            return
 
-                if command[0] == 'help':
-                    self.tables.print_table("Core Commands", ('Command', 'Description'), *[
-                        ('clear', 'Clear terminal window.'),
-                        ('exit', 'Exit current device.'),
-                        ('help', 'Show available commands.')
-                    ])
-
-                    if commands:
-                        commands_data = dict()
-                        headers = ("Command", "Description")
-                        for cmd in sorted(commands):
-                            label = commands[cmd].details['Category']
-                            commands_data[label] = list()
-                        for cmd in sorted(commands):
-                            label = commands[cmd].details['Category']
-                            commands_data[label].append((cmd, commands[cmd].details['Description']))
-                        for label in commands_data:
-                            self.tables.print_table(label.title() + " Commands", headers, *commands_data[label])
-
-                elif command[0] == 'exit':
-                    break
-
-                elif command[0] == 'clear':
-                    self.badges.print_empty(self.colors.CLEAR, end='')
-
-                else:
-                    if command[0] in commands:
-                        if (len(command) - 1) < int(commands[command[0]].details['MinArgs']):
-                            self.badges.print_empty("Usage: " + commands[command[0]].details['Usage'])
-                        else:
-                            if commands[command[0]].details['NeedsRoot']:
-                                if self.is_rooted():
-                                    commands[command[0]].run(len(command), command)
-                                else:
-                                    self.badges.print_error("Target device is not rooted!")
-                            else:
-                                commands[command[0]].run(len(command), command)
-                    else:
-                        self.badges.print_error("Unrecognized command!")
-            except (EOFError, KeyboardInterrupt):
-                pass
-            except Exception as e:
-                self.badges.print_error("An error occurred: " + str(e) + "!")
+        except Exception as e:
+            self.badges.print_error(f"An error occurred: {str(e)}!")

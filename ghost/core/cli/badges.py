@@ -45,6 +45,17 @@ class Badges(object):
         print(f"\033[1K\r{message}", end=end)
 
     @staticmethod
+    def print_usage(message: str = "", end: str = '\n') -> None:
+        """ Print string with Usage: start.
+
+        :param str message: message to print
+        :param str end: string to print after the message
+        :return None: None
+        """
+
+        print(f"\033[1K\rUsage: {message}", end=end)
+
+    @staticmethod
     def print_process(message: str, end: str = '\n') -> None:
         """ Print string with [*] start.
 
