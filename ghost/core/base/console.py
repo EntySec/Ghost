@@ -212,6 +212,14 @@ class Console(cmd.Cmd):
 
         self.badges.print_error(f"Unrecognized command: {line.split()[0]}!")
 
+    def emptyline(self) -> None:
+        """ Do something on empty line.
+
+        :return None: None
+        """
+
+        pass
+
     def shell(self) -> None:
         """ Run console shell.
 
