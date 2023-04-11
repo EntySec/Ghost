@@ -255,6 +255,15 @@ class Device(cmd.Cmd):
 
         raise EOFError
 
+    def do_EOF(self, _):
+        """ Catch EOF.
+
+        :return None: None
+        :raises EOFError: EOF error
+        """
+
+        raise EOFError
+
     def default(self, line: str) -> None:
         """ Custom command handler.
 
