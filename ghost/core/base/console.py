@@ -193,6 +193,15 @@ class Console(cmd.Cmd):
         self.badges.print_process(f"Interacting with device {str(device_id)}")
         self.devices[device_id]['device'].interact()
 
+    def do_EOF(self, _):
+        """ Catch EOF.
+
+        :return None: None
+        :raises EOFError: EOF error
+        """
+
+        raise EOFError
+
     def default(self, line: str) -> None:
         """ Default unrecognized command handler.
 
@@ -208,11 +217,12 @@ class Console(cmd.Cmd):
         :return None: None
         """
 
-        try:
-            cmd.Cmd.cmdloop(self)
+        while True:
+            try:
+                cmd.Cmd.cmdloop(self)
 
-        except (EOFError, KeyboardInterrupt):
-            pass
+            except (EOFError, KeyboardInterrupt):
+                break
 
-        except Exception as e:
-            self.badges.print_error("An error occurred: " + str(e) + "!")
+            except Exception as e:
+                self.badges.print_error("An error occurred: " + str(e) + "!")
