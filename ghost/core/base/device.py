@@ -307,11 +307,12 @@ class Device(cmd.Cmd):
         self.commands = self.loader.load_modules(self)
         self.badges.print_information(f"Modules loaded: {str(len(self.commands))}")
 
-        try:
-            cmd.Cmd.cmdloop(self)
+        while True:
+            try:
+                cmd.Cmd.cmdloop(self)
 
-        except (EOFError, KeyboardInterrupt):
-            return
+            except (EOFError, KeyboardInterrupt):
+                break
 
-        except Exception as e:
-            self.badges.print_error(f"An error occurred: {str(e)}!")
+            except Exception as e:
+                self.badges.print_error(f"An error occurred: {str(e)}!")
