@@ -22,6 +22,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 """
 
+import cmd
 import readline
 import sys
 
@@ -31,7 +32,7 @@ from ghost.core.cli.colors import Colors
 from ghost.core.cli.tables import Tables
 
 
-class Console(object):
+class Console(cmd.Cmd):
     """ Subclass of ghost.core.base module.
 
     This subclass of ghost.core.base modules is intended for providing
@@ -40,13 +41,14 @@ class Console(object):
 
     def __init__(self) -> None:
         super().__init__()
+        cmd.Cmd.__init__(self)
 
         self.badges = Badges()
         self.colors = Colors()
         self.tables = Tables()
 
         self.devices = dict()
-        self.banner = """{}{}
+        self.intro = """{}{}
    .--. .-.               .-.
   : .--': :              .' `.
   : : _ : `-.  .--.  .--.`. .'
@@ -59,111 +61,159 @@ class Console(object):
            self.colors.BOLD + self.colors.WHITE,
            self.colors.END, self.colors.LINE, self.colors.END)
 
+        self.prompt = '(ghost)> '
+
+    def do_help(self, _) -> None:
+        """ Show available commands.
+
+        :return None: None
+        """
+
+        self.tables.print_table("Core Commands", ('Command', 'Description'), *[
+            ('clear', 'Clear terminal window.'),
+            ('connect', 'Connect device.'),
+            ('devices', 'Show connected devices.'),
+            ('disconnect', 'Disconnect device.'),
+            ('exit', 'Exit Ghost Framework.'),
+            ('help', 'Show available commands.'),
+            ('interact', 'Interact with device.')
+        ])
+
+    def do_exit(self, _) -> None:
+        """ Exit Ghost Framework.
+
+        :return None: None
+        """
+
+        for device in list(self.devices):
+            self.devices[device]['device'].disconnect()
+            del self.devices[device]
+
+        sys.exit(0)
+
+    def do_clear(self, _) -> None:
+        """ Clear terminal window.
+
+        :return None: None
+        """
+
+        self.badges.print_empty(self.colors.CLEAR, end='')
+
+    def do_connect(self, address: str) -> None:
+        """ Connect device.
+
+        :param str address: device host:port or just host
+        :return None: None
+        """
+
+        if not address:
+            self.badges.print_usage("connect <host>:[port]")
+            return
+
+        address = address.split(':')
+
+        if len(address) < 2:
+            host, port = address[0], 5555
+        else:
+            host, port = address[0], int(address[1])
+
+        device = Device(host=host, port=port)
+
+        if device.connect():
+            self.devices.update({
+                len(self.devices): {
+                    'host': host,
+                    'port': str(port),
+                    'device': device
+                }
+            })
+            self.badges.print_empty("")
+
+            self.badges.print_information(
+                f"Type {self.colors.GREEN}devices{self.colors.END} to list all connected devices.")
+            self.badges.print_information(
+                f"Type {self.colors.GREEN}interact {str(len(self.devices) - 1) + self.colors.END} "
+                "to interact this device."
+            )
+
+    def do_devices(self, _) -> None:
+        """ Show connected devices.
+
+        :return None: None
+        """
+
+        if not self.devices:
+            self.badges.print_warning("No devices connected.")
+            return
+
+        devices = list()
+
+        for device in self.devices:
+            devices.append(
+                (device, self.devices[device]['host'],
+                 self.devices[device]['port']))
+
+        self.tables.print_table("Connected Devices", ('ID', 'Host', 'Port'), *devices)
+
+    def do_disconnect(self, device_id: int) -> None:
+        """ Disconnect device.
+
+        :param int device_id: device ID
+        :return None: None
+        """
+
+        if not device_id:
+            self.badges.print_usage("disconnect <id>")
+            return
+
+        device_id = int(device_id)
+
+        if device_id not in self.devices:
+            self.badges.print_error("Invalid device ID!")
+            return
+
+        self.devices[device_id]['device'].disconnect()
+        self.devices.pop(device_id)
+
+    def do_interact(self, device_id: int) -> None:
+        """ Interact with device.
+
+        :param int device_id: device ID
+        """
+
+        if not device_id:
+            self.badges.print_usage("interact <id>")
+            return
+
+        device_id = int(device_id)
+
+        if device_id not in self.devices:
+            self.badges.print_error("Invalid device ID!")
+            return
+
+        self.badges.print_process(f"Interacting with device {str(device_id)}")
+        self.devices[device_id]['device'].interact()
+
+    def default(self, line: str) -> None:
+        """ Default unrecognized command handler.
+
+        :param str line: line sent
+        :return None: None
+        """
+
+        self.badges.print_error(f"Unrecognized command: {line.split()[0]}!")
+
     def shell(self) -> None:
         """ Run console shell.
 
         :return None: None
         """
 
-        self.badges.print_empty(self.banner)
+        try:
+            cmd.Cmd.cmdloop(self)
 
-        readline.parse_and_bind('tab: complete')
-        while True:
-            try:
-                command = input(
-                    f'{self.colors.REMOVE}(ghost)> '
-                ).strip()
-                command = command.split()
+        except (EOFError, KeyboardInterrupt):
+            pass
 
-                if not command:
-                    continue
-
-                if command[0] == 'help':
-                    self.tables.print_table("Core Commands", ('Command', 'Description'), *[
-                        ('clear', 'Clear terminal window.'),
-                        ('connect', 'Connect device.'),
-                        ('devices', 'Show connected devices.'),
-                        ('disconnect', 'Disconnect device.'),
-                        ('exit', 'Exit Ghost Framework.'),
-                        ('help', 'Show available commands.'),
-                        ('interact', 'Interact with device.')
-                    ])
-
-                elif command[0] == 'exit':
-                    for device in list(self.devices):
-                        self.devices[device]['device'].disconnect()
-                        del self.devices[device]
-                    sys.exit(0)
-
-                elif command[0] == 'clear':
-                    self.badges.print_empty(self.colors.CLEAR, end='')
-
-                elif command[0] == 'connect':
-                    if len(command) < 2:
-                        self.badges.print_empty("Usage: connect <address>")
-                    else:
-                        args = command[1].split(':')
-
-                        if len(args) == 2:
-                            host, port = args[0], args[1]
-
-                            device = Device(args[0], args[1])
-                            connected = device.connect()
-                        else:
-                            host, port = args[0], 5555
-
-                            device = Device(args[0])
-                            connected = device.connect()
-
-                        if connected:
-                            self.devices.update({
-                                len(self.devices): {
-                                    'host': host,
-                                    'port': str(port),
-                                    'device': device
-                                }
-                            })
-                            self.badges.print_empty("")
-
-                            self.badges.print_information(
-                                f"Type {self.colors.GREEN}devices{self.colors.END} to list all connected devices.")
-                            self.badges.print_information(
-                                f"Type {self.colors.GREEN}interact {str(len(self.devices) - 1) + self.colors.END} to interact this device."
-                            )
-
-                elif command[0] == 'devices':
-                    if self.devices:
-                        devices = list()
-                        for device in self.devices:
-                            devices.append((device, self.devices[device]['host'], self.devices[device]['port']))
-
-                        self.tables.print_table("Connected Devices", ('ID', 'Host', 'Port'), *devices)
-                    else:
-                        self.badges.print_warning("No devices connected.")
-
-                elif command[0] == 'disconnect':
-                    if len(command) < 2:
-                        self.badges.print_empty("Usage: disconnect <id>")
-                    else:
-                        if int(command[1]) in self.devices:
-                            self.devices[int(command[1])]['device'].disconnect()
-                            del self.devices[int(command[1])]
-                        else:
-                            self.badges.print_error("Invalud device id!")
-
-                elif command[0] == 'interact':
-                    if len(command) < 2:
-                        self.badges.print_empty("Usage: interact <id>")
-                    else:
-                        if int(command[1]) in self.devices:
-                            self.badges.print_process(f"Interacting with device {command[1]}...")
-                            device = self.devices[int(command[1])]['device']
-                            device.interact()
-                        else:
-                            self.badges.print_error("Invalid device id!")
-                else:
-                    self.badges.print_error("Unrecognized command!")
-            except (EOFError, KeyboardInterrupt):
-                pass
-            except Exception as e:
-                self.badges.print_error("An error occurred: " + str(e) + "!")
+        except Exception as e:
+            self.badges.print_error("An error occurred: " + str(e) + "!")
