@@ -26,10 +26,11 @@ from ghost.core.cli.badges import Badges
 
 
 class Tables(object):
-    """ Subclass of ghost.cli module.
+    """ Subclass of ghost.core.cli module.
 
-    This subclass of ghost.cli module is intended for providing
-    methods for displaying data in tables.
+    This subclass of ghost.core.cli module is intended for
+    providing an implementation for tables printer, which can
+    print data as a table.
     """
 
     def __init__(self) -> None:
@@ -38,11 +39,21 @@ class Tables(object):
         self.badges = Badges()
 
     def print_table(self, name: str, headers: tuple, *args, **kwargs) -> None:
-        """ Print table with provided data.
+        """ Print table.
 
-        :param str name: table title name
-        :param tuple headers: table column titles
-        *args, **kwargs: table data for each column
+        Usage example: print_table('Example', ('Col1', 'Col2'), *[(1,2),(3,4)])
+        Sample output:
+
+        Example
+        =======
+
+          Col1    Col2
+          ----    ----
+          1       2
+          3       4
+
+        :param str name: table name
+        :param tuple headers: tuple of headers
         :return None: None
         """
 
@@ -61,7 +72,7 @@ class Tables(object):
             except TypeError:
                 return 0
 
-        fill = list()
+        fill = []
         headers_line = '    '
         headers_separator_line = '    '
         for idx, header in enumerate(headers):
@@ -70,16 +81,25 @@ class Tables(object):
 
             current_line_fill = max(column) + extra_fill
             fill.append(current_line_fill)
-            headers_line = "".join((headers_line, "{header:<{fill}}".format(header=header, fill=current_line_fill)))
-            headers_separator_line = "".join((
-                headers_separator_line,
-                "{:<{}}".format(header_separator * len(header), current_line_fill)
-            ))
+            headers_line = "".join(
+                (
+                    headers_line,
+                    "{header:<{fill}}".format(header=header, fill=current_line_fill),
+                )
+            )
+            headers_separator_line = "".join(
+                (
+                    headers_separator_line,
+                    "{:<{}}".format(header_separator * len(header), current_line_fill),
+                )
+            )
 
-        self.badges.print_empty('\n' + name.split()[0].title() + name[len(name.split()[0]):] + ':')
+        self.badges.print_empty(
+            '\n' + name.split()[0].title() + name[len(name.split()[0]):] + ':'
+        )
         self.badges.print_empty()
-        self.badges.print_empty(headers_line)
-        self.badges.print_empty(headers_separator_line)
+        self.badges.print_empty(headers_line.rstrip())
+        self.badges.print_empty(headers_separator_line.rstrip())
         for arg in args:
             content_line = "    "
             for idx, element in enumerate(arg):
@@ -89,9 +109,8 @@ class Tables(object):
                 if '\033' in element:
                     fill_line = fill[idx] + 9 * element.count('\033') // 2
 
-                content_line = "".join((
-                    content_line,
-                    "{:<{}}".format(element, fill_line)
-                ))
-            self.badges.print_empty(content_line)
+                content_line = "".join(
+                    (content_line, "{:<{}}".format(element, fill_line))
+                )
+            self.badges.print_empty(content_line.rstrip())
         self.badges.print_empty()
