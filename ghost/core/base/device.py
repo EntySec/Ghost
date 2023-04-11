@@ -293,6 +293,14 @@ class Device(cmd.Cmd):
 
         object.run(len(command), command)
 
+    def emptyline(self) -> None:
+        """ Do something on empty line.
+
+        :return None: None
+        """
+
+        pass
+
     def interact(self) -> None:
         """ Interact with the specified device.
 
