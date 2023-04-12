@@ -320,6 +320,7 @@ class Device(cmd.Cmd):
                 cmd.Cmd.cmdloop(self)
 
             except (EOFError, KeyboardInterrupt):
+                self.badges.print_empty(end='')
                 break
 
             except Exception as e:
