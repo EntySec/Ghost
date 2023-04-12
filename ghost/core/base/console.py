@@ -47,7 +47,7 @@ class Console(cmd.Cmd):
         self.tables = Tables()
 
         self.devices = dict()
-        self.intro = """{}{}
+        self.banner = """{}{}
    .--. .-.               .-.
   : .--': :              .' `.
   : : _ : `-.  .--.  .--.`. .'
@@ -226,11 +226,14 @@ class Console(cmd.Cmd):
         :return None: None
         """
 
+        self.badges.print_empty(self.banner)
+
         while True:
             try:
                 cmd.Cmd.cmdloop(self)
 
             except (EOFError, KeyboardInterrupt):
+                self.badges.print_empty(end='')
                 break
 
             except Exception as e:
