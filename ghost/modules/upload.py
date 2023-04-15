@@ -19,9 +19,6 @@ class GhostModule(Module):
                 'Ivan Nikolsky (enty8080) - module developer'
             ],
             'Description': "Upload file to device.",
-            'Comments': [
-                ''
-            ],
             'Usage': "upload <local_file> <remote_path>",
             'MinArgs': 2,
             'NeedsRoot': False
