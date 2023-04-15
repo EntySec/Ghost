@@ -29,7 +29,7 @@ import os
 class Loader(object):
     """ Subclass of ghost.core.base module.
 
-    This subclass of ghost.core.base module is intended for providng
+    This subclass of ghost.core.base module is intended for providing
     Ghost Framework loader.
     """
 
