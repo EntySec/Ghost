@@ -47,7 +47,7 @@ class Loader(object):
         :return dict: dict of modules
         """
 
-        modules = dict()
+        modules = {}
 
         for mod in os.listdir(path):
             if mod == '__init__.py' or mod[-3:] != '.py':
