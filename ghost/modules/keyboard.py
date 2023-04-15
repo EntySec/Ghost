@@ -21,9 +21,6 @@ class GhostModule(Module):
                 'Ivan Nikolsky (enty8080) - module developer'
             ],
             'Description': "Interact with device keyboard.",
-            'Comments': [
-                ''
-            ],
             'Usage': "keyboard",
             'MinArgs': 0,
             'NeedsRoot': False
