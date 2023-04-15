@@ -17,9 +17,6 @@ class GhostModule(Module):
                 'Ivan Nikolsky (enty8080) - module developer'
             ],
             'Description': "Show device activity information.",
-            'Comments': [
-                ''
-            ],
             'Usage': "activity",
             'MinArgs': 0,
             'NeedsRoot': False
