@@ -146,7 +146,7 @@ class Console(cmd.Cmd):
             self.badges.print_warning("No devices connected.")
             return
 
-        devices = list()
+        devices = []
 
         for device in self.devices:
             devices.append(
