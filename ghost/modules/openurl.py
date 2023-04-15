@@ -17,9 +17,6 @@ class GhostModule(Module):
                 'Ivan Nikolsky (enty8080) - module developer'
             ],
             'Description': "Open URL on device.",
-            'Comments': [
-                ''
-            ],
             'Usage': "openurl <url>",
             'MinArgs': 1,
             'NeedsRoot': False
