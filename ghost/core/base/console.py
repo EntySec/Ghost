@@ -46,7 +46,7 @@ class Console(cmd.Cmd):
         self.colors = Colors()
         self.tables = Tables()
 
-        self.devices = dict()
+        self.devices = {}
         self.banner = """{}{}
    .--. .-.               .-.
   : .--': :              .' `.
