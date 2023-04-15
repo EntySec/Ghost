@@ -25,6 +25,8 @@ SOFTWARE.
 import importlib.util
 import os
 
+from typing import Any
+
 
 class Loader(object):
     """ Subclass of ghost.core.base module.
@@ -37,11 +39,11 @@ class Loader(object):
         super().__init__()
 
     @staticmethod
-    def import_modules(path: str, device) -> dict:
+    def import_modules(path: str, device: Any) -> dict:
         """ Import modules for the specified device.
 
         :param str path: path to import modules from
-        :param Device device: device to import modules for
+        :param Any device: device to import modules for
         :return dict: dict of modules
         """
 
@@ -61,6 +63,7 @@ class Loader(object):
                     modules[module.details['Name']] = module
                 except Exception:
                     pass
+
         return modules
 
     def load_modules(self, device) -> dict:
