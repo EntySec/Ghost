@@ -17,9 +17,6 @@ class GhostModule(Module):
                 'Ivan Nikolsky (enty8080) - module developer'
             ],
             'Description': "Put device into sleep mode.",
-            'Comments': [
-                ''
-            ],
             'Usage': "sleep",
             'MinArgs': 0,
             'NeedsRoot': False
