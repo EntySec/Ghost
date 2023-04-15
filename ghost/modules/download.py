@@ -19,9 +19,6 @@ class GhostModule(Module):
                 'Ivan Nikolsky (enty8080) - module developer'
             ],
             'Description': "Download file from device.",
-            'Comments': [
-                ''
-            ],
             'Usage': "download <remote_file> <local_path>",
             'MinArgs': 2,
             'NeedsRoot': False
