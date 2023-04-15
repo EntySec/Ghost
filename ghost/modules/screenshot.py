@@ -19,9 +19,6 @@ class GhostModule(Module):
                 'Ivan Nikolsky (enty8080) - module developer'
             ],
             'Description': "Take device screenshot.",
-            'Comments': [
-                ''
-            ],
             'Usage': "screenshot <local_path>",
             'MinArgs': 1,
             'NeedsRoot': False
