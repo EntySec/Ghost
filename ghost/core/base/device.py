@@ -225,7 +225,7 @@ class Device(cmd.Cmd):
         ])
 
         if self.commands:
-            command_data = dict()
+            command_data = {}
             headers = ("Command", "Description")
 
             for cmd in sorted(self.commands):
