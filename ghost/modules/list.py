@@ -12,7 +12,7 @@ class GhostModule(Module):
     def __init__(self):
         super().__init__()
 
-        self.details = {
+        self.details.update({
             'Category': "manage",
             'Name': "list",
             'Authors': [
@@ -22,7 +22,7 @@ class GhostModule(Module):
             'Usage': "list <remote_path>",
             'MinArgs': 1,
             'NeedsRoot': False
-        }
+        })
 
     def run(self, argc, argv):
         output = self.device.list(argv[1])
