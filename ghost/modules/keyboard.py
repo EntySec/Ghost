@@ -14,7 +14,7 @@ class GhostModule(Module):
     def __init__(self):
         super().__init__()
 
-        self.details = {
+        self.details.update({
             'Category': "manage",
             'Name': "keyboard",
             'Authors': [
@@ -24,7 +24,7 @@ class GhostModule(Module):
             'Usage': "keyboard",
             'MinArgs': 0,
             'NeedsRoot': False
-        }
+        })
 
     @staticmethod
     def get_char():
