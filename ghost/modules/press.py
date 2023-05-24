@@ -10,7 +10,7 @@ class GhostModule(Module):
     def __init__(self):
         super().__init__()
 
-        self.details = {
+        self.details.update({
             'Category': "manage",
             'Name': "press",
             'Authors': [
@@ -20,7 +20,7 @@ class GhostModule(Module):
             'Usage': "press <keycode>",
             'MinArgs': 1,
             'NeedsRoot': False
-        }
+        })
 
     def run(self, argc, argv):
         if int(argv[1]) < 124:
