@@ -46,9 +46,6 @@ class Module(Badges, Colors, Tables):
                 ''
             ],
             'Description': "",
-            'Comments': [
-                ''
-            ],
             'Usage': "",
             'MinArgs': 0,
             'NeedsRoot': False
