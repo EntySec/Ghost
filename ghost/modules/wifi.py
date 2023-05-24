@@ -10,7 +10,7 @@ class GhostModule(Module):
     def __init__(self):
         super().__init__()
 
-        self.details = {
+        self.details.update({
             'Category': "settings",
             'Name': "wifi",
             'Authors': [
@@ -20,7 +20,7 @@ class GhostModule(Module):
             'Usage': "wifi <on|off>",
             'MinArgs': 1,
             'NeedsRoot': False
-        }
+        })
 
     def run(self, argc, argv):
         if argv[1] in ['on', 'off']:
