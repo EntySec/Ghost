@@ -31,9 +31,9 @@ from ghost.core.device import Device
 
 
 class Console(cmd.Cmd):
-    """ Subclass of ghost.core.base module.
+    """ Subclass of ghost.core module.
 
-    This subclass of ghost.core.base modules is intended for providing
+    This subclass of ghost.core modules is intended for providing
     main Ghost Framework console interface.
     """
 
