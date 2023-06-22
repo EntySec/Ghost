@@ -38,9 +38,9 @@ from pex.fs import FS
 
 
 class Device(cmd.Cmd):
-    """ Subclass of ghost.core.base module.
+    """ Subclass of ghost.core module.
 
-    This subclass of ghost.core.base module is intended for providing
+    This subclass of ghost.core module is intended for providing
     an implementation of device controller.
     """
 
