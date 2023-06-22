@@ -25,10 +25,9 @@ SOFTWARE.
 import cmd
 import sys
 
+from badges import Badges, Tables
+
 from ghost.core.base.device import Device
-from ghost.core.cli.badges import Badges
-from ghost.core.cli.colors import Colors
-from ghost.core.cli.tables import Tables
 
 
 class Console(cmd.Cmd):
@@ -43,22 +42,19 @@ class Console(cmd.Cmd):
         cmd.Cmd.__init__(self)
 
         self.badges = Badges()
-        self.colors = Colors()
         self.tables = Tables()
 
         self.devices = {}
-        self.banner = """{}{}
+        self.banner = """%clear%end
    .--. .-.               .-.
   : .--': :              .' `.
   : : _ : `-.  .--.  .--.`. .'
   : :; :: .. :' .; :`._-.': :
   `.__.':_;:_;`.__.'`.__.':_;
 
---=[ {}Ghost Framework 8.0.0{}
---=[ Developed by EntySec ({}https://entysec.com/{})
-""".format(self.colors.CLEAR, self.colors.END,
-           self.colors.BOLD + self.colors.WHITE,
-           self.colors.END, self.colors.LINE, self.colors.END)
+--=[ %bold%whiteGhost Framework 8.0.0%end
+--=[ Developed by EntySec (%linehttps://entysec.com/%end)
+"""
 
         self.prompt = '(ghost)> '
 
@@ -97,7 +93,7 @@ class Console(cmd.Cmd):
         :return None: None
         """
 
-        self.badges.print_empty(self.colors.CLEAR, end='')
+        self.badges.print_empty('%clear', end='')
 
     def do_connect(self, address: str) -> None:
         """ Connect device.
@@ -130,9 +126,9 @@ class Console(cmd.Cmd):
             self.badges.print_empty("")
 
             self.badges.print_information(
-                f"Type {self.colors.GREEN}devices{self.colors.END} to list all connected devices.")
+                f"Type %greendevices%end to list all connected devices.")
             self.badges.print_information(
-                f"Type {self.colors.GREEN}interact {str(len(self.devices) - 1) + self.colors.END} "
+                f"Type %greeninteract {str(len(self.devices) - 1)}%end "
                 "to interact this device."
             )
 
@@ -191,7 +187,7 @@ class Console(cmd.Cmd):
             self.badges.print_error("Invalid device ID!")
             return
 
-        self.badges.print_process(f"Interacting with device {str(device_id)}")
+        self.badges.print_process(f"Interacting with device {str(device_id)}...")
         self.devices[device_id]['device'].interact()
 
     def do_EOF(self, _):
@@ -226,7 +222,7 @@ class Console(cmd.Cmd):
         :return None: None
         """
 
-        self.badges.print_empty(self.banner)
+        self.badges.print_empty(self.banner, translate=False)
 
         while True:
             try:

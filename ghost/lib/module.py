@@ -22,12 +22,10 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 """
 
-from ghost.core.cli.badges import Badges
-from ghost.core.cli.colors import Colors
-from ghost.core.cli.tables import Tables
+from badges import Badges, Tables
 
 
-class Module(Badges, Colors, Tables):
+class Module(Badges, Tables):
     """ Subclass of ghost.lib module.
 
     This subclass of ghost.lib module is intended for providing

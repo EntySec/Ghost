@@ -44,7 +44,9 @@ setup(name='ghost',
       },
       install_requires=[
           'adb-shell',
-          'pex @ git+https://github.com/EntySec/Pex'
+          'pex @ git+https://github.com/EntySec/Pex',
+          'badges @ git+https://github.com/EntySec/Badges',
+          'colorscript @ git+https://github.com/EntySec/ColorScript'
       ],
       zip_safe=False
       )

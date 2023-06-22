@@ -25,14 +25,14 @@ SOFTWARE.
 import os
 import cmd
 
+from badges import Badges, Tables
+from colorscript import ColorScript
+
 from adb_shell.adb_device import AdbDeviceTcp
 from adb_shell.auth.keygen import keygen
 from adb_shell.auth.sign_pythonrsa import PythonRSASigner
 
 from ghost.core.base.loader import Loader
-from ghost.core.cli.badges import Badges
-from ghost.core.cli.colors import Colors
-from ghost.core.cli.tables import Tables
 
 from pex.fs import FS
 
@@ -60,7 +60,6 @@ class Device(cmd.Cmd):
 
         self.badges = Badges()
         self.tables = Tables()
-        self.colors = Colors()
         self.loader = Loader()
 
         self.fs = FS()
@@ -72,9 +71,8 @@ class Device(cmd.Cmd):
 
         self.commands = {}
 
-        self.prompt =\
-            f'{self.colors.REMOVE}(ghost: {self.colors.RED}'\
-            f'{self.host}{self.colors.END})> '
+        self.prompt = ColorScript().parse(
+            f'%remove(ghost: %red{self.host}%end)> ')
 
     def get_keys(self) -> tuple:
         """ Get cryptographic keys.
