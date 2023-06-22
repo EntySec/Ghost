@@ -29,9 +29,9 @@ from typing import Any
 
 
 class Loader(object):
-    """ Subclass of ghost.core.base module.
+    """ Subclass of ghost.core module.
 
-    This subclass of ghost.core.base module is intended for providing
+    This subclass of ghost.core module is intended for providing
     Ghost Framework loader.
     """
 
