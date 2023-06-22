@@ -27,7 +27,7 @@ import sys
 
 from badges import Badges, Tables
 
-from ghost.core.base.device import Device
+from ghost.core.device import Device
 
 
 class Console(cmd.Cmd):
