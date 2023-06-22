@@ -243,7 +243,7 @@ class Device(cmd.Cmd):
         :return None: None
         """
 
-        self.badges.print_empty("%clear", end='')
+        self.badges.print_empty('%clear', end='')
 
     def do_exit(self, _) -> None:
         """ Exit current device.
