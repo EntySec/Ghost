@@ -32,7 +32,7 @@ from adb_shell.adb_device import AdbDeviceTcp
 from adb_shell.auth.keygen import keygen
 from adb_shell.auth.sign_pythonrsa import PythonRSASigner
 
-from ghost.core.base.loader import Loader
+from ghost.core.loader import Loader
 
 from pex.fs import FS
 
