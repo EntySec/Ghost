@@ -73,4 +73,4 @@ class Loader(object):
         :return dict: dict of modules commands
         """
 
-        return self.import_modules(f'{os.path.dirname(__file__)}/../modules', device)
+        return self.import_modules(f'{os.path.dirname(os.path.dirname(__file__))}/modules', device)
