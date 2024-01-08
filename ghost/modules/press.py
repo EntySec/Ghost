@@ -14,7 +14,7 @@ class GhostModule(Module):
             'Category': "manage",
             'Name': "press",
             'Authors': [
-                'Ivan Nikolsky (enty8080) - module developer'
+                'Ivan Nikolskiy (enty8080) - module developer'
             ],
             'Description': "Press device button by keycode.",
             'Usage': "press <keycode>",

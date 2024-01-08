@@ -14,7 +14,7 @@ class GhostModule(Module):
             'Category': "settings",
             'Name': "battery",
             'Authors': [
-                'Ivan Nikolsky (enty8080) - module developer'
+                'Ivan Nikolskiy (enty8080) - module developer'
             ],
             'Description': "Show device battery information.",
             'Usage': "battery",

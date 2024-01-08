@@ -18,7 +18,7 @@ class GhostModule(Module):
             'Category': "manage",
             'Name': "keyboard",
             'Authors': [
-                'Ivan Nikolsky (enty8080) - module developer'
+                'Ivan Nikolskiy (enty8080) - module developer'
             ],
             'Description': "Interact with device keyboard.",
             'Usage': "keyboard",

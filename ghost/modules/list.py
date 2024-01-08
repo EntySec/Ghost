@@ -16,7 +16,7 @@ class GhostModule(Module):
             'Category': "manage",
             'Name': "list",
             'Authors': [
-                'Ivan Nikolsky (enty8080) - module developer'
+                'Ivan Nikolskiy (enty8080) - module developer'
             ],
             'Description': "List directory contents.",
             'Usage': "list <remote_path>",

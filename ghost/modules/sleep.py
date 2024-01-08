@@ -14,7 +14,7 @@ class GhostModule(Module):
             'Category': "manage",
             'Name': "sleep",
             'Authors': [
-                'Ivan Nikolsky (enty8080) - module developer'
+                'Ivan Nikolskiy (enty8080) - module developer'
             ],
             'Description': "Put device into sleep mode.",
             'Usage': "sleep",

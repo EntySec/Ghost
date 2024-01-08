@@ -16,7 +16,7 @@ class GhostModule(Module):
             'Category': "manage",
             'Name': "upload",
             'Authors': [
-                'Ivan Nikolsky (enty8080) - module developer'
+                'Ivan Nikolskiy (enty8080) - module developer'
             ],
             'Description': "Upload file to device.",
             'Usage': "upload <local_file> <remote_path>",

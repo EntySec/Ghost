@@ -14,7 +14,7 @@ class GhostModule(Module):
             'Category': "settings",
             'Name': "wifi",
             'Authors': [
-                'Ivan Nikolsky (enty8080) - module developer'
+                'Ivan Nikolskiy (enty8080) - module developer'
             ],
             'Description': "Set device wifi service state.",
             'Usage': "wifi <on|off>",
