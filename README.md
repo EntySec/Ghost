@@ -13,10 +13,10 @@
         <img src="https://img.shields.io/badge/language-Python-blue.svg">
     </a>
     <a href="https://github.com/EntySec/Ghost/forks">
-        <img src="https://img.shields.io/github/forks/EntySec/Ghost?color=green">
+        <img src="https://img.shields.io/github/forks/EntySec/Ghost?style=flat&color=green">
     </a>
     <a href="https://github.com/EntySec/Ghost/stargazers">
-        <img src="https://img.shields.io/github/stars/EntySec/Ghost?color=yellow">
+        <img src="https://img.shields.io/github/stars/EntySec/Ghost?style=flat&color=yellow">
     </a>
     <a href="https://www.codefactor.io/repository/github/entysec/ghost">
         <img src="https://www.codefactor.io/repository/github/entysec/ghost/badge">
