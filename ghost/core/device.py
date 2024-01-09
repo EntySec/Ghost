@@ -182,7 +182,7 @@ class Device(cmd.Cmd):
         :return bool: True if upload succeed
         """
 
-        if self.fs.exists_file(input_file):
+        if self.fs.check_file(input_file):
             try:
                 self.badges.print_process(f"Uploading {input_file}...")
                 self.device.push(input_file, output_path)
