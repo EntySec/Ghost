@@ -71,7 +71,7 @@ class Device(cmd.Cmd):
 
         self.commands = {}
 
-        self.prompt = ColorScript().parse(
+        self.prompt = ColorScript().parse_input(
             f'%remove(ghost: %red{self.host}%end)> ')
 
     def get_keys(self) -> tuple:
