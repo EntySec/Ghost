@@ -222,7 +222,7 @@ class Console(cmd.Cmd):
         :return None: None
         """
 
-        self.badges.print_empty(self.banner, translate=False)
+        self.badges.print_empty(self.banner)
 
         while True:
             try:
