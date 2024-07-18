@@ -8,9 +8,7 @@ from ghost.lib.module import Module
 
 class GhostModule(Module):
     def __init__(self):
-        super().__init__()
-
-        self.details.update({
+        super().__init__({
             'Category': "manage",
             'Name': "network",
             'Authors': [
@@ -43,4 +41,4 @@ class GhostModule(Module):
             print(output)
 
         else:
-            self.print_empty(f"Usage: {self.details['Usage']}")
+            self.print_empty(f"Usage: {self.info['Usage']}")

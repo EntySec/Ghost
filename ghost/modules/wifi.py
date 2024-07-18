@@ -8,9 +8,7 @@ from ghost.lib.module import Module
 
 class GhostModule(Module):
     def __init__(self):
-        super().__init__()
-
-        self.details.update({
+        super().__init__({
             'Category': "settings",
             'Name': "wifi",
             'Authors': [
@@ -29,4 +27,4 @@ class GhostModule(Module):
             else:
                 self.device.send_command("svc wifi disable")
         else:
-            self.print_empty(f"Usage: {self.details['Usage']}")
+            self.print_empty(f"Usage: {self.info['Usage']}")

@@ -30,7 +30,7 @@ from badges import Badges, Tables
 from ghost.core.device import Device
 
 
-class Console(cmd.Cmd):
+class Console(cmd.Cmd, Badges, Tables):
     """ Subclass of ghost.core module.
 
     This subclass of ghost.core modules is intended for providing
@@ -39,10 +39,6 @@ class Console(cmd.Cmd):
 
     def __init__(self) -> None:
         super().__init__()
-        cmd.Cmd.__init__(self)
-
-        self.badges = Badges()
-        self.tables = Tables()
 
         self.devices = {}
         self.banner = """%clear%end
@@ -64,7 +60,7 @@ class Console(cmd.Cmd):
         :return None: None
         """
 
-        self.tables.print_table("Core Commands", ('Command', 'Description'), *[
+        self.print_table("Core Commands", ('Command', 'Description'), *[
             ('clear', 'Clear terminal window.'),
             ('connect', 'Connect device.'),
             ('devices', 'Show connected devices.'),
@@ -93,7 +89,7 @@ class Console(cmd.Cmd):
         :return None: None
         """
 
-        self.badges.print_empty('%clear', end='')
+        self.print_empty('%clear', end='')
 
     def do_connect(self, address: str) -> None:
         """ Connect device.
@@ -103,7 +99,7 @@ class Console(cmd.Cmd):
         """
 
         if not address:
-            self.badges.print_usage("connect <host>:[port]")
+            self.print_usage("connect <host>:[port]")
             return
 
         address = address.split(':')
@@ -123,11 +119,11 @@ class Console(cmd.Cmd):
                     'device': device
                 }
             })
-            self.badges.print_empty("")
+            self.print_empty("")
 
-            self.badges.print_information(
+            self.print_information(
                 f"Type %greendevices%end to list all connected devices.")
-            self.badges.print_information(
+            self.print_information(
                 f"Type %greeninteract {str(len(self.devices) - 1)}%end "
                 "to interact this device."
             )
@@ -139,7 +135,7 @@ class Console(cmd.Cmd):
         """
 
         if not self.devices:
-            self.badges.print_warning("No devices connected.")
+            self.print_warning("No devices connected.")
             return
 
         devices = []
@@ -149,7 +145,7 @@ class Console(cmd.Cmd):
                 (device, self.devices[device]['host'],
                  self.devices[device]['port']))
 
-        self.tables.print_table("Connected Devices", ('ID', 'Host', 'Port'), *devices)
+        self.print_table("Connected Devices", ('ID', 'Host', 'Port'), *devices)
 
     def do_disconnect(self, device_id: int) -> None:
         """ Disconnect device.
@@ -159,13 +155,13 @@ class Console(cmd.Cmd):
         """
 
         if not device_id:
-            self.badges.print_usage("disconnect <id>")
+            self.print_usage("disconnect <id>")
             return
 
         device_id = int(device_id)
 
         if device_id not in self.devices:
-            self.badges.print_error("Invalid device ID!")
+            self.print_error("Invalid device ID!")
             return
 
         self.devices[device_id]['device'].disconnect()
@@ -178,16 +174,16 @@ class Console(cmd.Cmd):
         """
 
         if not device_id:
-            self.badges.print_usage("interact <id>")
+            self.print_usage("interact <id>")
             return
 
         device_id = int(device_id)
 
         if device_id not in self.devices:
-            self.badges.print_error("Invalid device ID!")
+            self.print_error("Invalid device ID!")
             return
 
-        self.badges.print_process(f"Interacting with device {str(device_id)}...")
+        self.print_process(f"Interacting with device {str(device_id)}...")
         self.devices[device_id]['device'].interact()
 
     def do_EOF(self, _):
@@ -206,7 +202,7 @@ class Console(cmd.Cmd):
         :return None: None
         """
 
-        self.badges.print_error(f"Unrecognized command: {line.split()[0]}!")
+        self.print_error(f"Unrecognized command: {line.split()[0]}!")
 
     def emptyline(self) -> None:
         """ Do something on empty line.
@@ -222,15 +218,15 @@ class Console(cmd.Cmd):
         :return None: None
         """
 
-        self.badges.print_empty(self.banner)
+        self.print_empty(self.banner)
 
         while True:
             try:
-                cmd.Cmd.cmdloop(self)
+                self.cmdloop()
 
             except (EOFError, KeyboardInterrupt):
-                self.badges.print_empty(end='')
+                self.print_empty(end='')
                 break
 
             except Exception as e:
-                self.badges.print_error("An error occurred: " + str(e) + "!")
+                self.print_error("An error occurred: " + str(e) + "!")

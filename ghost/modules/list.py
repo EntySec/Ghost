@@ -10,9 +10,7 @@ from ghost.lib.module import Module
 
 class GhostModule(Module):
     def __init__(self):
-        super().__init__()
-
-        self.details.update({
+        super().__init__({
             'Category': "manage",
             'Name': "list",
             'Authors': [

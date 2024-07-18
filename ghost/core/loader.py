@@ -22,8 +22,8 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 """
 
-import importlib.util
 import os
+import importlib.util
 
 from typing import Any
 
@@ -34,9 +34,6 @@ class Loader(object):
     This subclass of ghost.core module is intended for providing
     Ghost Framework loader.
     """
-
-    def __init__(self) -> None:
-        super().__init__()
 
     @staticmethod
     def import_modules(path: str, device: Any) -> dict:
@@ -60,9 +57,9 @@ class Loader(object):
                     module = module.GhostModule()
 
                     module.device = device
-                    modules[module.details['Name']] = module
-                except Exception:
-                    pass
+                    modules[module.info['Name']] = module
+                except Exception as e:
+                    print(str(e))
 
         return modules
 
@@ -73,4 +70,5 @@ class Loader(object):
         :return dict: dict of modules commands
         """
 
-        return self.import_modules(f'{os.path.dirname(os.path.dirname(__file__))}/modules', device)
+        return self.import_modules(
+            f'{os.path.dirname(os.path.dirname(__file__))}/modules', device)

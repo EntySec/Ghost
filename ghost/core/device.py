@@ -37,7 +37,7 @@ from ghost.core.loader import Loader
 from pex.fs import FS
 
 
-class Device(cmd.Cmd):
+class Device(cmd.Cmd, Loader, Badges, Tables, FS):
     """ Subclass of ghost.core module.
 
     This subclass of ghost.core module is intended for providing
@@ -56,13 +56,7 @@ class Device(cmd.Cmd):
         """
 
         super().__init__()
-        cmd.Cmd.__init__(self)
 
-        self.badges = Badges()
-        self.tables = Tables()
-        self.loader = Loader()
-
-        self.fs = FS()
         self.host = host
         self.port = int(port)
 
@@ -101,7 +95,7 @@ class Device(cmd.Cmd):
         try:
             cmd_output = self.device.shell(command)
         except Exception:
-            self.badges.print_error("Socket is not connected!")
+            self.print_error("Socket is not connected!")
             return None
 
         if output:
@@ -119,7 +113,7 @@ class Device(cmd.Cmd):
         try:
             return self.device.list(path)
         except Exception:
-            self.badges.print_error("Failed to list directory!")
+            self.print_error("Failed to list directory!")
         return []
 
     def connect(self) -> bool:
@@ -128,16 +122,20 @@ class Device(cmd.Cmd):
         :return bool: True if connection succeed
         """
 
-        self.badges.print_process(f"Connecting to {self.host}...")
+        self.print_process(f"Connecting to {self.host}...")
+
         try:
             keys = self.get_keys()
             signer = PythonRSASigner(*keys)
 
             self.device.connect(rsa_keys=[signer], auth_timeout_s=5)
-            self.badges.print_success(f"Connected to {self.host}!")
+            self.print_success(f"Connected to {self.host}!")
+
             return True
+
         except Exception:
-            self.badges.print_error(f"Failed to connect to {self.host}!")
+            self.print_error(f"Failed to connect to {self.host}!")
+
         return False
 
     def disconnect(self) -> None:
@@ -156,22 +154,24 @@ class Device(cmd.Cmd):
         :return bool: True if download succeed
         """
 
-        exists, is_dir = self.fs.exists(output_path)
+        exists, is_dir = self.exists(output_path)
 
         if exists:
             if is_dir:
                 output_path = output_path + '/' + os.path.split(input_file)[1]
 
             try:
-                self.badges.print_process(f"Downloading {input_file}...")
+                self.print_process(f"Downloading {input_file}...")
                 self.device.pull(input_file, output_path)
 
-                self.badges.print_process(f"Saving to {output_path}...")
-                self.badges.print_success(f"Saved to {output_path}!")
+                self.print_process(f"Saving to {output_path}...")
+                self.print_success(f"Saved to {output_path}!")
 
                 return True
+
             except Exception:
-                self.badges.print_error(f"Remote file: {input_file}: does not exist or a directory!")
+                self.print_error(f"Remote file: {input_file}: does not exist or a directory!")
+
         return False
 
     def upload(self, input_file: str, output_path: str) -> bool:
@@ -182,21 +182,24 @@ class Device(cmd.Cmd):
         :return bool: True if upload succeed
         """
 
-        if self.fs.check_file(input_file):
+        if self.check_file(input_file):
             try:
-                self.badges.print_process(f"Uploading {input_file}...")
+                self.print_process(f"Uploading {input_file}...")
                 self.device.push(input_file, output_path)
 
-                self.badges.print_process(f"Saving to {output_path}...")
-                self.badges.print_success(f"Saved to {output_path}!")
+                self.print_process(f"Saving to {output_path}...")
+                self.print_success(f"Saved to {output_path}!")
 
                 return True
+
             except Exception:
                 try:
                     output_path = output_path + '/' + os.path.split(input_file)[1]
                     self.device.push(input_file, output_path)
+
                 except Exception:
-                    self.badges.print_error(f"Remote directory: {output_path}: does not exist!")
+                    self.print_error(f"Remote directory: {output_path}: does not exist!")
+
         return False
 
     def is_rooted(self) -> bool:
@@ -206,8 +209,10 @@ class Device(cmd.Cmd):
         """
 
         responder = self.send_command('which su')
+
         if not responder or responder.isspace():
             return False
+
         return True
 
     def do_help(self, _) -> None:
@@ -216,7 +221,7 @@ class Device(cmd.Cmd):
         :return None: None
         """
 
-        self.tables.print_table("Core Commands", ('Command', 'Description'), *[
+        self.print_table("Core Commands", ('Command', 'Description'), *[
             ('clear', 'Clear terminal window.'),
             ('exit', 'Exit current device.'),
             ('help', 'Show available commands.')
@@ -227,15 +232,15 @@ class Device(cmd.Cmd):
             headers = ("Command", "Description")
 
             for cmd in sorted(self.commands):
-                label = self.commands[cmd].details['Category']
+                label = self.commands[cmd].info['Category']
                 command_data[label] = list()
 
             for cmd in sorted(self.commands):
-                label = self.commands[cmd].details['Category']
-                command_data[label].append((cmd, self.commands[cmd].details['Description']))
+                label = self.commands[cmd].info['Category']
+                command_data[label].append((cmd, self.commands[cmd].info['Description']))
 
             for label in command_data:
-                self.tables.print_table(label.title() + " Commands", headers, *command_data[label])
+                self.print_table(label.title() + " Commands", headers, *command_data[label])
 
     def do_clear(self, _) -> None:
         """ Clear terminal window.
@@ -243,7 +248,7 @@ class Device(cmd.Cmd):
         :return None: None
         """
 
-        self.badges.print_empty('%clear', end='')
+        self.print_empty('%clear', end='')
 
     def do_exit(self, _) -> None:
         """ Exit current device.
@@ -272,18 +277,18 @@ class Device(cmd.Cmd):
         command = line.split()
 
         if command[0] not in self.commands:
-            self.badges.print_error(f"Unrecognized command: {command[0]}!")
+            self.print_error(f"Unrecognized command: {command[0]}!")
             return
 
         object = self.commands[command[0]]
 
-        if (len(command) - 1) < int(object.details['MinArgs']):
-            self.badges.print_usage(object.details['Usage'])
+        if (len(command) - 1) < int(object.info['MinArgs']):
+            self.print_usage(object.info['Usage'])
             return
 
-        if object.details['NeedsRoot']:
+        if object.info['NeedsRoot']:
             if not self.is_rooted():
-                self.badges.print_error("Target device is not rooted!")
+                self.print_error("Target device is not rooted!")
                 return
 
             object.run(len(command), command)
@@ -305,21 +310,21 @@ class Device(cmd.Cmd):
         :return None: None
         """
 
-        self.badges.print_success("Interactive connection spawned!")
+        self.print_success("Interactive connection spawned!")
 
-        self.badges.print_empty("")
-        self.badges.print_process("Loading device modules...")
+        self.print_empty()
+        self.print_process("Loading device modules...")
 
-        self.commands = self.loader.load_modules(self)
-        self.badges.print_information(f"Modules loaded: {str(len(self.commands))}")
+        self.commands = self.load_modules(self)
+        self.print_information(f"Modules loaded: {str(len(self.commands))}")
 
         while True:
             try:
-                cmd.Cmd.cmdloop(self)
+                self.cmdloop()
 
             except (EOFError, KeyboardInterrupt):
-                self.badges.print_empty(end='')
+                self.print_empty(end='')
                 break
 
             except Exception as e:
-                self.badges.print_error(f"An error occurred: {str(e)}!")
+                self.print_error(f"An error occurred: {str(e)}!")

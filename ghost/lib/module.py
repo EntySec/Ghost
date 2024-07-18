@@ -32,12 +32,8 @@ class Module(Badges, Tables):
     wrapper for a module.
     """
 
-    def __init__(self) -> None:
-        super().__init__()
-
-        self.device = None
-
-        self.details = {
+    def __init__(self, info: dict = {}) -> None:
+        self.info = {
             'Category': "",
             'Name': "",
             'Authors': [
@@ -48,6 +44,8 @@ class Module(Badges, Tables):
             'MinArgs': 0,
             'NeedsRoot': False
         }
+        self.info.update(info)
+        self.device = None
 
     def run(self, argc: int, argv: list) -> None:
         """ Run this module.
