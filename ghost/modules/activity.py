@@ -3,10 +3,10 @@ This module requires Ghost: https://github.com/EntySec/Ghost
 Current source: https://github.com/EntySec/Ghost
 """
 
-from ghost.lib.module import Module
+from badges.cmd import Command
 
 
-class GhostModule(Module):
+class ExternalCommand(Command):
     def __init__(self):
         super().__init__({
             'Category': "settings",
@@ -20,7 +20,7 @@ class GhostModule(Module):
             'NeedsRoot': False
         })
 
-    def run(self, argc, argv):
+    def run(self, _):
         self.print_process("Getting activity information...")
 
         output = self.device.send_command("dumpsys activity")

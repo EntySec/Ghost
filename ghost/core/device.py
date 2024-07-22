@@ -23,21 +23,17 @@ SOFTWARE.
 """
 
 import os
-import cmd
 
-from badges import Badges, Tables
-from colorscript import ColorScript
+from badges.cmd import Cmd
 
 from adb_shell.adb_device import AdbDeviceTcp
 from adb_shell.auth.keygen import keygen
 from adb_shell.auth.sign_pythonrsa import PythonRSASigner
 
-from ghost.core.loader import Loader
-
 from pex.fs import FS
 
 
-class Device(cmd.Cmd, Loader, Badges, Tables, FS):
+class Device(Cmd, FS):
     """ Subclass of ghost.core module.
 
     This subclass of ghost.core module is intended for providing
@@ -55,18 +51,17 @@ class Device(cmd.Cmd, Loader, Badges, Tables, FS):
         :return None: None
         """
 
-        super().__init__()
-
         self.host = host
         self.port = int(port)
 
         self.key_file = key_filename
         self.device = AdbDeviceTcp(self.host, self.port, default_transport_timeout_s=timeout)
 
-        self.commands = {}
-
-        self.prompt = ColorScript().parse_input(
-            f'%remove(ghost: %red{self.host}%end)> ')
+        super().__init__(
+            prompt=f'(%lineghost%end: %red{self.host}%end)> ',
+            path=[f'{os.path.dirname(os.path.dirname(__file__))}/modules'],
+            device=self
+        )
 
     def get_keys(self) -> tuple:
         """ Get cryptographic keys.
@@ -215,33 +210,6 @@ class Device(cmd.Cmd, Loader, Badges, Tables, FS):
 
         return True
 
-    def do_help(self, _) -> None:
-        """ Show available commands.
-
-        :return None: None
-        """
-
-        self.print_table("Core Commands", ('Command', 'Description'), *[
-            ('clear', 'Clear terminal window.'),
-            ('exit', 'Exit current device.'),
-            ('help', 'Show available commands.')
-        ])
-
-        if self.commands:
-            command_data = {}
-            headers = ("Command", "Description")
-
-            for cmd in sorted(self.commands):
-                label = self.commands[cmd].info['Category']
-                command_data[label] = list()
-
-            for cmd in sorted(self.commands):
-                label = self.commands[cmd].info['Category']
-                command_data[label].append((cmd, self.commands[cmd].info['Description']))
-
-            for label in command_data:
-                self.print_table(label.title() + " Commands", headers, *command_data[label])
-
     def do_clear(self, _) -> None:
         """ Clear terminal window.
 
@@ -258,52 +226,6 @@ class Device(cmd.Cmd, Loader, Badges, Tables, FS):
 
         raise EOFError
 
-    def do_EOF(self, _):
-        """ Catch EOF.
-
-        :return None: None
-        :raises EOFError: EOF error
-        """
-
-        raise EOFError
-
-    def default(self, line: str) -> None:
-        """ Custom command handler.
-
-        :param str line: line sent
-        :return None: None
-        """
-
-        command = line.split()
-
-        if command[0] not in self.commands:
-            self.print_error(f"Unrecognized command: {command[0]}!")
-            return
-
-        object = self.commands[command[0]]
-
-        if (len(command) - 1) < int(object.info['MinArgs']):
-            self.print_usage(object.info['Usage'])
-            return
-
-        if object.info['NeedsRoot']:
-            if not self.is_rooted():
-                self.print_error("Target device is not rooted!")
-                return
-
-            object.run(len(command), command)
-            return
-
-        object.run(len(command), command)
-
-    def emptyline(self) -> None:
-        """ Do something on empty line.
-
-        :return None: None
-        """
-
-        pass
-
     def interact(self) -> None:
         """ Interact with the specified device.
 
@@ -315,12 +237,11 @@ class Device(cmd.Cmd, Loader, Badges, Tables, FS):
         self.print_empty()
         self.print_process("Loading device modules...")
 
-        self.commands = self.load_modules(self)
-        self.print_information(f"Modules loaded: {str(len(self.commands))}")
+        self.print_information(f"Modules loaded: {str(len(self.external))}")
 
         while True:
             try:
-                self.cmdloop()
+                self.loop()
 
             except (EOFError, KeyboardInterrupt):
                 self.print_empty(end='')

@@ -3,10 +3,10 @@ This module requires Ghost: https://github.com/EntySec/Ghost
 Current source: https://github.com/EntySec/Ghost
 """
 
-from ghost.lib.module import Module
+from badges.cmd import Command
 
 
-class GhostModule(Module):
+class ExternalCommand(Command):
     def __init__(self):
         super().__init__({
             'Category': "manage",
@@ -20,8 +20,8 @@ class GhostModule(Module):
             'NeedsRoot': False
         })
 
-    def run(self, argc, argv):
-        if int(argv[1]) < 124:
-            self.device.send_command(f"input keyevent {argv[1]}")
+    def run(self, args):
+        if int(args[1]) < 124:
+            self.device.send_command(f"input keyevent {args[1]}")
         else:
             self.print_error("Invalid keycode!")

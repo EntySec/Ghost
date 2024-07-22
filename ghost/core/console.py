@@ -22,15 +22,12 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 """
 
-import cmd
-import sys
-
-from badges import Badges, Tables
+from badges.cmd import Cmd
 
 from ghost.core.device import Device
 
 
-class Console(cmd.Cmd, Badges, Tables):
+class Console(Cmd):
     """ Subclass of ghost.core module.
 
     This subclass of ghost.core modules is intended for providing
@@ -38,7 +35,7 @@ class Console(cmd.Cmd, Badges, Tables):
     """
 
     def __init__(self) -> None:
-        super().__init__()
+        super().__init__(prompt='(%lineghost%end)> ')
 
         self.devices = {}
         self.banner = """%clear%end
@@ -51,24 +48,6 @@ class Console(cmd.Cmd, Badges, Tables):
 --=[ %bold%whiteGhost Framework 8.0.0%end
 --=[ Developed by EntySec (%linehttps://entysec.com/%end)
 """
-
-        self.prompt = '(ghost)> '
-
-    def do_help(self, _) -> None:
-        """ Show available commands.
-
-        :return None: None
-        """
-
-        self.print_table("Core Commands", ('Command', 'Description'), *[
-            ('clear', 'Clear terminal window.'),
-            ('connect', 'Connect device.'),
-            ('devices', 'Show connected devices.'),
-            ('disconnect', 'Disconnect device.'),
-            ('exit', 'Exit Ghost Framework.'),
-            ('help', 'Show available commands.'),
-            ('interact', 'Interact with device.')
-        ])
 
     def do_exit(self, _) -> None:
         """ Exit Ghost Framework.
@@ -91,18 +70,18 @@ class Console(cmd.Cmd, Badges, Tables):
 
         self.print_empty('%clear', end='')
 
-    def do_connect(self, address: str) -> None:
+    def do_connect(self, args: list) -> None:
         """ Connect device.
 
-        :param str address: device host:port or just host
+        :param list args: arguments
         :return None: None
         """
 
-        if not address:
+        if len(args) < 2:
             self.print_usage("connect <host>:[port]")
             return
 
-        address = address.split(':')
+        address = args[1].split(':')
 
         if len(address) < 2:
             host, port = address[0], 5555
@@ -147,18 +126,18 @@ class Console(cmd.Cmd, Badges, Tables):
 
         self.print_table("Connected Devices", ('ID', 'Host', 'Port'), *devices)
 
-    def do_disconnect(self, device_id: int) -> None:
+    def do_disconnect(self, args: list) -> None:
         """ Disconnect device.
 
-        :param int device_id: device ID
+        :param list args: arguments
         :return None: None
         """
 
-        if not device_id:
+        if len(args) < 2:
             self.print_usage("disconnect <id>")
             return
 
-        device_id = int(device_id)
+        device_id = int(args[1])
 
         if device_id not in self.devices:
             self.print_error("Invalid device ID!")
@@ -167,17 +146,18 @@ class Console(cmd.Cmd, Badges, Tables):
         self.devices[device_id]['device'].disconnect()
         self.devices.pop(device_id)
 
-    def do_interact(self, device_id: int) -> None:
+    def do_interact(self, args: list) -> None:
         """ Interact with device.
 
-        :param int device_id: device ID
+        :param list args: arguments
+        :return None: None
         """
 
-        if not device_id:
+        if len(args) < 2:
             self.print_usage("interact <id>")
             return
 
-        device_id = int(device_id)
+        device_id = int(args[1])
 
         if device_id not in self.devices:
             self.print_error("Invalid device ID!")
@@ -185,32 +165,6 @@ class Console(cmd.Cmd, Badges, Tables):
 
         self.print_process(f"Interacting with device {str(device_id)}...")
         self.devices[device_id]['device'].interact()
-
-    def do_EOF(self, _):
-        """ Catch EOF.
-
-        :return None: None
-        :raises EOFError: EOF error
-        """
-
-        raise EOFError
-
-    def default(self, line: str) -> None:
-        """ Default unrecognized command handler.
-
-        :param str line: line sent
-        :return None: None
-        """
-
-        self.print_error(f"Unrecognized command: {line.split()[0]}!")
-
-    def emptyline(self) -> None:
-        """ Do something on empty line.
-
-        :return None: None
-        """
-
-        pass
 
     def shell(self) -> None:
         """ Run console shell.
@@ -222,7 +176,7 @@ class Console(cmd.Cmd, Badges, Tables):
 
         while True:
             try:
-                self.cmdloop()
+                self.loop()
 
             except (EOFError, KeyboardInterrupt):
                 self.print_empty(end='')

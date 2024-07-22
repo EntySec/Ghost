@@ -5,10 +5,10 @@ Current source: https://github.com/EntySec/Ghost
 
 import os
 
-from ghost.lib.module import Module
+from badges.cmd import Command
 
 
-class GhostModule(Module):
+class ExternalCommand(Command):
     def __init__(self):
         super().__init__({
             'Category': "manage",
@@ -22,9 +22,9 @@ class GhostModule(Module):
             'NeedsRoot': False
         })
 
-    def run(self, argc, argv):
+    def run(self, args):
         self.print_process(f"Taking screenshot...")
         self.device.send_command("screencap /data/local/tmp/screenshot.png")
 
-        self.device.download('/data/local/tmp/screenshot.png', argv[1])
+        self.device.download('/data/local/tmp/screenshot.png', args[1])
         self.device.send_command("rm /data/local/tmp/screenshot.png")

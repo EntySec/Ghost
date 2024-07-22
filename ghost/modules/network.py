@@ -3,10 +3,10 @@ This module requires Ghost: https://github.com/EntySec/Ghost
 Current source: https://github.com/EntySec/Ghost
 """
 
-from ghost.lib.module import Module
+from badges.cmd import Command
 
 
-class GhostModule(Module):
+class ExternalCommand(Command):
     def __init__(self):
         super().__init__({
             'Category': "manage",
@@ -14,31 +14,47 @@ class GhostModule(Module):
             'Authors': [
                 'Loubaris - module developer'
             ],
-            'Description': "Retrieve network informations",
-            'Usage': "Arguments:\n - arptable: Show device ARP Table\n - ipconfig: Show device configuration\n - iproute: Show device's routing table\n - location: Retrieve network location\n - statistics: Show network stats\n - open_ports: Check for open ports\n - service_list: Show all network services\n - forwarding: Check for IP forwarding",
+            'Description': "Retrieve network informations.",
+            'Usage': "network [option]",
             'MinArgs': 1,
-            'NeedsRoot': False
+            'NeedsRoot': False,
+            'Options': {
+                'arptable': ['', 'Show device ARP table.'],
+                'ipconfig': ['', 'Show device IP configuration.'],
+                'iproute': ['', 'Show device route table.'],
+                'location': ['', 'Show device location.'],
+                'statistics': ['', 'Show network stats.'],
+                'open_ports': ['', 'Show opened ports.'],
+                'service_list': ['', 'Show services list.'],
+                'forwarding': ['', 'Show forwarding rules.']
+            }
         })
 
-    def run(self, argc, argv):
-        if argv[1] in ['arptable', 'ipconfig', 'iproute', 'location', 'statistics', 'open_ports', 'service_list', 'forwarding']:
-            if argv[1] == 'arptable':
-                output = self.device.send_command('cat /proc/net/arp')
-            elif argv[1] == 'ipconfig':
-                output = self.device.send_command('ip addr show')
-            elif argv[1] == 'iproute':
-                output = self.device.send_command('ip route show')
-            elif argv[1] == 'location':
-                output = self.device.send_command('dumpsys location')
-            elif argv[1] == 'statistics':
-                output = self.device.send_command('cat /proc/net/netstat')
-            elif argv[1] == 'open_ports':
-                output = self.device.send_command('busybox netstat -an')
-            elif argv[1] == 'service_list':
-                output = self.device.send_command('service list')
-            elif argv[1] == 'forwarding':
-                output = self.device.send_command('cat /proc/sys/net/ipv4/ip_forward')
-            print(output)
+    def run(self, args):
+        output = ""
 
-        else:
-            self.print_empty(f"Usage: {self.info['Usage']}")
+        if args[1] == 'arptable':
+            output = self.device.send_command('cat /proc/net/arp')
+
+        elif args[1] == 'ipconfig':
+            output = self.device.send_command('ip addr show')
+
+        elif args[1] == 'iproute':
+            output = self.device.send_command('ip route show')
+
+        elif args[1] == 'location':
+            output = self.device.send_command('dumpsys location')
+
+        elif args[1] == 'statistics':
+            output = self.device.send_command('cat /proc/net/netstat')
+
+        elif args[1] == 'open_ports':
+            output = self.device.send_command('busybox netstat -an')
+
+        elif args[1] == 'service_list':
+            output = self.device.send_command('service list')
+
+        elif args[1] == 'forwarding':
+            output = self.device.send_command('cat /proc/sys/net/ipv4/ip_forward')
+
+        self.print_empty(output)

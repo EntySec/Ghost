@@ -5,10 +5,10 @@ Current source: https://github.com/EntySec/Ghost
 
 import datetime
 
-from ghost.lib.module import Module
+from badges.cmd import Command
 
 
-class GhostModule(Module):
+class ExternalCommand(Command):
     def __init__(self):
         super().__init__({
             'Category': "manage",
@@ -22,8 +22,8 @@ class GhostModule(Module):
             'NeedsRoot': False
         })
 
-    def run(self, argc, argv):
-        output = self.device.list(argv[1])
+    def run(self, args):
+        output = self.device.list(args[1])
 
         if output:
             headers = ('Name', 'Mode', 'Size', 'Modification Time')
@@ -33,4 +33,4 @@ class GhostModule(Module):
                 timestamp = datetime.datetime.fromtimestamp(entry[3])
                 data.append((entry[0].decode(), str(entry[1]), str(entry[2]), timestamp))
 
-            self.print_table(f"Directory {argv[1]}", headers, *data)
+            self.print_table(f"Directory {args[1]}", headers, *data)
