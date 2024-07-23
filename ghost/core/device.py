@@ -210,22 +210,6 @@ class Device(Cmd, FS):
 
         return True
 
-    def do_clear(self, _) -> None:
-        """ Clear terminal window.
-
-        :return None: None
-        """
-
-        self.print_empty('%clear', end='')
-
-    def do_exit(self, _) -> None:
-        """ Exit current device.
-
-        :return None: None
-        """
-
-        raise EOFError
-
     def interact(self) -> None:
         """ Interact with the specified device.
 
@@ -238,14 +222,4 @@ class Device(Cmd, FS):
         self.print_process("Loading device modules...")
 
         self.print_information(f"Modules loaded: {str(len(self.external))}")
-
-        while True:
-            try:
-                self.loop()
-
-            except (EOFError, KeyboardInterrupt):
-                self.print_empty(end='')
-                break
-
-            except Exception as e:
-                self.print_error(f"An error occurred: {str(e)}!")
+        self.loop()
