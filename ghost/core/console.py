@@ -62,14 +62,6 @@ class Console(Cmd):
 
         raise EOFError
 
-    def do_clear(self, _) -> None:
-        """ Clear terminal window.
-
-        :return None: None
-        """
-
-        self.print_empty('%clear', end='')
-
     def do_connect(self, args: list) -> None:
         """ Connect device.
 
@@ -173,14 +165,4 @@ class Console(Cmd):
         """
 
         self.print_empty(self.banner)
-
-        while True:
-            try:
-                self.loop()
-
-            except (EOFError, KeyboardInterrupt):
-                self.print_empty(end='')
-                break
-
-            except Exception as e:
-                self.print_error("An error occurred: " + str(e) + "!")
+        self.loop()
