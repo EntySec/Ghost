@@ -35,10 +35,9 @@ class Console(Cmd):
     """
 
     def __init__(self) -> None:
-        super().__init__(prompt='(%lineghost%end)> ')
-
-        self.devices = {}
-        self.banner = """%clear%end
+        super().__init__(
+            prompt='(%lineghost%end)> '
+            intro="""%clear%end
    .--. .-.               .-.
   : .--': :              .' `.
   : : _ : `-.  .--.  .--.`. .'
@@ -48,6 +47,9 @@ class Console(Cmd):
 --=[ %bold%whiteGhost Framework 8.0.0%end
 --=[ Developed by EntySec (%linehttps://entysec.com/%end)
 """
+        )
+
+    self.devices = {}
 
     def do_exit(self, _) -> None:
         """ Exit Ghost Framework.
@@ -164,5 +166,4 @@ class Console(Cmd):
         :return None: None
         """
 
-        self.print_empty(self.banner)
         self.loop()
