@@ -3,14 +3,12 @@ This module requires Ghost: https://github.com/EntySec/Ghost
 Current source: https://github.com/EntySec/Ghost
 """
 
-from ghost.lib.module import Module
+from badges.cmd import Command
 
 
-class GhostModule(Module):
+class ExternalCommand(Command):
     def __init__(self):
-        super().__init__()
-
-        self.details.update({
+        super().__init__({
             'Category': "settings",
             'Name': "wifi",
             'Authors': [
@@ -22,11 +20,11 @@ class GhostModule(Module):
             'NeedsRoot': False
         })
 
-    def run(self, argc, argv):
-        if argv[1] in ['on', 'off']:
-            if argv[1] == 'on':
+    def run(self, args):
+        if args[1] in ['on', 'off']:
+            if args[1] == 'on':
                 self.device.send_command("svc wifi enable")
             else:
                 self.device.send_command("svc wifi disable")
         else:
-            self.print_empty(f"Usage: {self.details['Usage']}")
+            self.print_usage(self.info['Usage'])

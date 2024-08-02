@@ -3,14 +3,12 @@ This module requires Ghost: https://github.com/EntySec/Ghost
 Current source: https://github.com/EntySec/Ghost
 """
 
-from ghost.lib.module import Module
+from badges.cmd import Command
 
 
-class GhostModule(Module):
+class ExternalCommand(Command):
     def __init__(self):
-        super().__init__()
-
-        self.details.update({
+        super().__init__({
             'Category': "manage",
             'Name': "openurl",
             'Authors': [
@@ -22,8 +20,8 @@ class GhostModule(Module):
             'NeedsRoot': False
         })
 
-    def run(self, argc, argv):
-        if not argv[1].startswith(("http://", "https://")):
-            argv[1] = "http://" + argv[1]
+    def run(self, args):
+        if not args[1].startswith(("http://", "https://")):
+            args[1] = "http://" + args[1]
 
-        self.device.send_command(f'am start -a android.intent.action.VIEW -d "{argv[1]}"')
+        self.device.send_command(f'am start -a android.intent.action.VIEW -d "{args[1]}"')

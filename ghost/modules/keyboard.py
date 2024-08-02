@@ -7,14 +7,12 @@ import sys
 import termios
 import tty
 
-from ghost.lib.module import Module
+from badges.cmd import Command
 
 
-class GhostModule(Module):
+class ExternalCommand(Command):
     def __init__(self):
-        super().__init__()
-
-        self.details.update({
+        super().__init__({
             'Category': "manage",
             'Name': "keyboard",
             'Authors': [
@@ -36,7 +34,7 @@ class GhostModule(Module):
         finally:
             termios.tcsetattr(fd, termios.TCSADRAIN, old)
 
-    def run(self, argc, argv):
+    def run(self, _):
         self.print_process("Interacting with keyboard...")
         self.print_success("Interactive connection spawned!")
 

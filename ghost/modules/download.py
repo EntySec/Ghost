@@ -5,14 +5,12 @@ Current source: https://github.com/EntySec/Ghost
 
 import os
 
-from ghost.lib.module import Module
+from badges.cmd import Command
 
 
-class GhostModule(Module):
+class ExternalCommand(Command):
     def __init__(self):
-        super().__init__()
-
-        self.details.update({
+        super().__init__({
             'Category': "manage",
             'Name': "download",
             'Authors': [
@@ -24,5 +22,5 @@ class GhostModule(Module):
             'NeedsRoot': False
         })
 
-    def run(self, argc, argv):
-        self.device.download(argv[1], argv[2])
+    def run(self, args):
+        self.device.download(args[1], args[2])
