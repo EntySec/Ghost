@@ -36,7 +36,7 @@ class Console(Cmd):
 
     def __init__(self) -> None:
         super().__init__(
-            prompt='(%lineghost%end)> '
+            prompt='(%lineghost%end)> ',
             intro="""%clear%end
    .--. .-.               .-.
   : .--': :              .' `.
@@ -49,7 +49,7 @@ class Console(Cmd):
 """
         )
 
-    self.devices = {}
+        self.devices = {}
 
     def do_exit(self, _) -> None:
         """ Exit Ghost Framework.
