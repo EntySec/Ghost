@@ -15,46 +15,101 @@ class ExternalCommand(Command):
                 'Loubaris - module developer'
             ],
             'Description': "Retrieve network informations.",
-            'Usage': "network [option]",
-            'MinArgs': 1,
             'NeedsRoot': False,
-            'Options': {
-                'arptable': ['', 'Show device ARP table.'],
-                'ipconfig': ['', 'Show device IP configuration.'],
-                'iproute': ['', 'Show device route table.'],
-                'location': ['', 'Show device location.'],
-                'statistics': ['', 'Show network stats.'],
-                'open_ports': ['', 'Show opened ports.'],
-                'service_list': ['', 'Show services list.'],
-                'forwarding': ['', 'Show forwarding rules.']
-            }
+            'MinArgs': 1,
+            'Options': [
+                (
+                    ('-a', '--arp'),
+                    {
+                        'help': "Show device ARP table.",
+                        'action': 'store_true'
+                    }
+                ),
+                (
+                    ('-i', '--ipconfig'),
+                    {
+                        'help': "Show device IP configuration.",
+                        'action': 'store_true'
+                    }
+                ),
+                (
+                    ('-I', '--iproute'),
+                    {
+                        'help': "Show device route table.",
+                        'action': 'store_true'
+                    }
+                ),
+                (
+                    ('-l', '--locate'),
+                    {
+                        'help': "Show device location.",
+                        'action': 'store_true'
+                    }
+                ),
+                (
+                    ('-s', '--stats'),
+                    {
+                        'help': "Show device network stats.",
+                        'action': 'store_true'
+                    }
+                ),
+                (
+                    ('-p', '--ports'),
+                    {
+                        'help': "Show device open ports.",
+                        'action': 'store_true'
+                    }
+                ),
+                (
+                    ('-S', '--services'),
+                    {
+                        'help': "Show device services.",
+                        'action': 'store_true'
+                    }
+                ),
+                (
+                    ('-f', '--forwarding'),
+                    {
+                        'help': "Show device forwarding rules.",
+                        'action': 'store_true'
+                    }
+                )
+            ]
         })
 
     def run(self, args):
-        output = ""
+        outputs = []
 
-        if args[1] == 'arptable':
-            output = self.device.send_command('cat /proc/net/arp')
+        if args.arp:
+            outputs.append(
+                self.device.send_command('cat /proc/net/arp'))
 
-        elif args[1] == 'ipconfig':
-            output = self.device.send_command('ip addr show')
+        if args.ipconfig:
+            outputs.append(
+                self.device.send_command('ip addr show'))
 
-        elif args[1] == 'iproute':
-            output = self.device.send_command('ip route show')
+        if args.iproute:
+            outputs.append(
+                self.device.send_command('ip route show'))
 
-        elif args[1] == 'location':
-            output = self.device.send_command('dumpsys location')
+        if args.locate:
+            outputs.append(
+                self.device.send_command('dumpsys location'))
 
-        elif args[1] == 'statistics':
-            output = self.device.send_command('cat /proc/net/netstat')
+        if args.stats:
+            outputs.append(
+                self.device.send_command('cat /proc/net/netstat'))
 
-        elif args[1] == 'open_ports':
-            output = self.device.send_command('busybox netstat -an')
+        if args.ports:
+            outputs.append(
+                self.device.send_command('busybox netstat -an'))
 
-        elif args[1] == 'service_list':
-            output = self.device.send_command('service list')
+        if args.services:
+            outputs.append(
+                self.device.send_command('service list'))
 
-        elif args[1] == 'forwarding':
-            output = self.device.send_command('cat /proc/sys/net/ipv4/ip_forward')
+        if args.forwarding:
+            outputs.append(
+                self.device.send_command('cat /proc/sys/net/ipv4/ip_forward'))
 
-        self.print_empty(output)
+        self.print_empty('\n'.join(outputs))
