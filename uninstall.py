@@ -22,7 +22,6 @@ from rich.prompt import Confirm
 console = Console()
 ROOT = Path(__file__).parent.resolve()
 
-# List of Python packages installed by Ghost installer
 PYTHON_PACKAGES = [
     "ghost",
     "adb-shell",
@@ -31,7 +30,6 @@ PYTHON_PACKAGES = [
     "colorscript",
 ]
 
-# Default virtualenv path
 DEFAULT_VENV = ROOT / ".venv"
 
 
@@ -73,7 +71,6 @@ def main() -> None:
         if use_venv:
             remove_virtualenv(DEFAULT_VENV)
 
-    # Ask if want to uninstall packages from system Python
     uninstall_system = Confirm.ask("Do you want to uninstall Ghost Python packages from system interpreter?", default=False)
     if uninstall_system:
         python_exe = sys.executable
