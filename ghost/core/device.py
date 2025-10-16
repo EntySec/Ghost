@@ -32,6 +32,18 @@ from adb_shell.auth.sign_pythonrsa import PythonRSASigner
 
 from pex.fs import FS
 
+# Rich UI imports (visuals only — program logic is NOT modified)
+from rich.console import Console
+from rich.panel import Panel
+from rich.table import Table
+from rich.text import Text
+from rich.align import Align
+
+# Main purple theme
+_PURPLE = "#7B61FF"
+
+_console = Console()
+
 
 class Device(Cmd, FS):
     """ Subclass of ghost.core module.
@@ -63,6 +75,62 @@ class Device(Cmd, FS):
             device=self
         )
 
+    # -------------------------
+    # Rich-based Print Methods
+    # (Presentation only — do NOT change program logic)
+    # -------------------------
+    def _footer_return_to_menu(self) -> Text:
+        """Small helper to produce the 'Return to Menu' footer text."""
+        t = Text("Index 99 → Exit", style="bold")
+        t.stylize(f"bold {_PURPLE}")
+        return t
+
+    def print_process(self, message: str) -> None:
+        """Display a process/info message using Rich Panel."""
+        panel = Panel.fit(
+            Align.left(Text(message)),
+            title=Text("PROCESS", style="bold white on " + _PURPLE),
+            border_style=_PURPLE
+        )
+        _console.print(panel)
+
+    def print_success(self, message: str) -> None:
+        """Display a success message using Rich Panel."""
+        panel = Panel.fit(
+            Align.left(Text(message)),
+            title=Text("SUCCESS", style="bold white on " + _PURPLE),
+            border_style=_PURPLE
+        )
+        _console.print(panel)
+
+    def print_error(self, message: str) -> None:
+        """Display an error message using Rich Panel."""
+        panel = Panel.fit(
+            Align.left(Text(message)),
+            title=Text("ERROR", style="bold white on " + _PURPLE),
+            border_style="red"
+        )
+        _console.print(panel)
+
+    def print_information(self, message: str) -> None:
+        """Display an informational message using Rich Table for clarity."""
+        table = Table.grid(padding=(0, 1))
+        table.add_column(justify="left")
+        table.add_row(Text(message))
+        panel = Panel.fit(
+            table,
+            title=Text("INFO", style="bold white on " + _PURPLE),
+            border_style=_PURPLE
+        )
+        _console.print(panel)
+
+    def print_empty(self) -> None:
+        """Print an empty line/space using Rich (visual spacer)."""
+        _console.print()
+
+    # -------------------------
+    # Original methods (logic unchanged)
+    # -------------------------
     def get_keys(self) -> tuple:
         """ Get cryptographic keys.
 
