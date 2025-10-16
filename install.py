@@ -26,7 +26,6 @@ from rich.text import Text
 console = Console()
 ROOT = Path(__file__).parent.resolve()
 
-# GitHub/URL dependencies
 VCS_PACKAGES = [
     "badges @ git+https://github.com/EntySec/Badges",
     "pex @ git+https://github.com/EntySec/Pex",
@@ -34,7 +33,7 @@ VCS_PACKAGES = [
     "adb-shell"
 ]
 
-PY_PACKAGES: List[str] = []  # any pure python packages from requirements.txt
+PY_PACKAGES: List[str] = []
 
 DEFAULT_VENV = ROOT / ".venv"
 
@@ -117,18 +116,15 @@ def main() -> None:
     else:
         py_exe = sys.executable
 
-    # Upgrade pip
     console.print("[bold]Upgrading pip in target environment...[/bold]")
     cmd_upgrade = [py_exe, "-m", "pip", "install", "--upgrade", "pip"]
     if break_system_flag:
         cmd_upgrade.append("--break-system-packages")
     run(cmd_upgrade)
 
-    # Install GitHub / VCS packages first
     console.print(Panel(f"Installing VCS/GitHub packages ({len(VCS_PACKAGES)} items)...", title="Dependencies"))
     install_packages(py_exe, VCS_PACKAGES, break_system_flag)
 
-    # Install local Ghost package
     console.print(Panel("Installing Ghost main package...", style="purple"))
     install_local_package(py_exe, break_system_flag)
 
