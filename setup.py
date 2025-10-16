@@ -1,5 +1,3 @@
-# setup.py — minimal install_requires (keep package install from local source only)
-
 from pathlib import Path
 from setuptools import setup, find_packages
 
@@ -27,7 +25,6 @@ setup(
         "License :: OSI Approved :: MIT License",
         "Programming Language :: Python :: 3",
     ],
-    # Keep runtime install_requires minimal. Put VCS/complex deps into requirements.txt
     install_requires=[
         "adb-shell",
     ],
