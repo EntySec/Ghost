@@ -26,6 +26,27 @@ from badges.cmd import Cmd
 
 from ghost.core.device import Device
 
+# --- Rich UI imports for styling (visual-only; logic untouched) ---
+from rich.console import Console as RichConsole
+from rich.panel import Panel
+from rich.table import Table
+from rich.text import Text
+from rich.align import Align
+from rich import box
+from rich.style import Style
+from rich.rule import Rule
+from rich.padding import Padding
+from rich.columns import Columns
+from rich.markdown import Markdown
+
+# Theme colors
+PURPLE = "#7B61FF"
+WHITE_ON_PURPLE = Style(color="white", bgcolor=PURPLE, bold=True)
+INFO_STYLE = Style(color=PURPLE, bold=True)
+WARN_STYLE = Style(color="yellow", bold=True)
+ERR_STYLE = Style(color="red", bold=True)
+SUCCESS_STYLE = Style(color="green", bold=True)
+
 
 class Console(Cmd):
     """ Subclass of ghost.core module.
@@ -35,6 +56,7 @@ class Console(Cmd):
     """
 
     def __init__(self) -> None:
+        # keep original prompt/intro tokens so framework behavior is unchanged
         super().__init__(
             prompt='(%lineghost%end)> ',
             intro="""%clear%end
@@ -49,8 +71,117 @@ class Console(Cmd):
 """
         )
 
+        # preserve devices dict & logic
         self.devices = {}
 
+        # create rich console for all visual outputs
+        self.rich = RichConsole()
+        self._render_header()
+
+    # -------------------------
+    # Visual helpers (only)
+    # -------------------------
+    def _render_header(self) -> None:
+        """Render a fancy hacker-style header with tools table."""
+        title = Text("Ghost Framework 8.0.0", style="bold white")
+        subtitle = Text("Developed by EntySec — https://entysec.com/", style="dim")
+
+        # ASCII art panel (kept similar to original)
+        ascii_art = Text(
+            "   .--. .-.               .-.\n"
+            "  : .--': :              .' `.\n"
+            "  : : _ : `-.  .--.  .--.`. .'\n"
+            "  : :; :: .. :' .; :`._-.': :\n"
+            "  `.__.':_;:_;`.__.'`.__.':_;",
+            justify="center",
+        )
+
+        left = Panel(
+            Align.center(ascii_art),
+            border_style=PURPLE,
+            box=box.HEAVY,
+            padding=(0, 2),
+            title="[bold]" + "GHOST",
+            subtitle=title,
+        )
+
+        # Tools / Commands table (visual only)
+        tools_table = Table.grid(expand=True)
+        tools_table.add_column(ratio=1)
+        tools_table.add_column(ratio=2)
+
+        tools = Table(box=box.SIMPLE_HEAVY, expand=False, border_style=PURPLE)
+        tools.add_column("Command", style="bold white", no_wrap=True)
+        tools.add_column("Description", style="dim")
+
+        tools.add_row("connect <host>:[port]", "Connect to device via ADB (default port 5555)")
+        tools.add_row("devices", "List connected devices")
+        tools.add_row("disconnect <id>", "Disconnect device by ID")
+        tools.add_row("interact <id>", "Interact with a connected device")
+        tools.add_row("exit", "Quit Ghost Framework")
+        tools.add_row("Index 99", "Return to Menu / Exit (UI helper)")
+
+        right_panel = Panel(
+            Align.left(
+                Text.assemble(subtitle, "\n\n", "Theme: ", (PURPLE, "Hacker • Purple"))
+            ),
+            border_style=PURPLE,
+            box=box.ROUNDED,
+            padding=(0, 1),
+            title="[bold]Info",
+        )
+
+        # combine header columns
+        header_columns = Columns([left, Panel(Padding(tools, (1, 2)), border_style=PURPLE), right_panel])
+        self.rich.print(header_columns)
+        self.rich.print(Rule(style=PURPLE))
+        self.rich.print(Align.center(Text("Type [bold]devices[/bold] to list connected devices — Index 99 → Exit", style=INFO_STYLE)))
+        self.rich.print()
+
+    def print_empty(self, message: str = "") -> None:
+        # preserve signature and behavior, but print a small spacer
+        self.rich.print("")  # purely visual
+
+    def print_information(self, message: str) -> None:
+        # visually enhanced info box (preserves semantics)
+        self.rich.print(Panel(Text(message), border_style=PURPLE, title="[bold white]INFO", box=box.MINIMAL))
+
+    def print_warning(self, message: str) -> None:
+        self.rich.print(Panel(Text(message), border_style="yellow", title="[bold white]WARNING", box=box.MINIMAL))
+
+    def print_error(self, message: str) -> None:
+        self.rich.print(Panel(Text(message), border_style="red", title="[bold white]ERROR", box=box.MINIMAL))
+
+    def print_success(self, message: str) -> None:
+        self.rich.print(Panel(Text(message), border_style="green", title="[bold white]SUCCESS", box=box.MINIMAL))
+
+    def print_usage(self, usage: str) -> None:
+        # show usage in an emphasized box
+        usage_text = Text.assemble(("Usage: ", "bold"), (usage, ""))
+        footer = Text("Index 99 → Return to Menu", style=INFO_STYLE)
+        self.rich.print(Panel(usage_text, border_style=PURPLE, title="[bold]USAGE", subtitle=footer))
+
+    def print_process(self, message: str) -> None:
+        # lightweight status indicator (visual only)
+        with self.rich.status(Text(message, style=INFO_STYLE), spinner="bouncingBall", spinner_style=PURPLE):
+            # no blocking logic here — just visual affordance
+            pass
+
+    def print_table(self, title: str, columns: tuple, *rows) -> None:
+        """Render a stylized table for lists like connected devices."""
+        table = Table(title=title, box=box.SIMPLE_HEAVY, expand=False, border_style=PURPLE)
+        for col in columns:
+            table.add_column(str(col), header_style="bold white")
+        for row in rows:
+            # ensure each item is string (matching original behavior)
+            table.add_row(*[str(x) for x in row])
+        footer = Text("Index 99 → Return to Menu", style=INFO_STYLE)
+        wrapper = Panel(Padding(table, (0, 1)), subtitle=footer, border_style=PURPLE)
+        self.rich.print(wrapper)
+
+    # -------------------------
+    # Original command logic (UNCHANGED)
+    # -------------------------
     def do_exit(self, _) -> None:
         """ Exit Ghost Framework.
 

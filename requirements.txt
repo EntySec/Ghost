@@ -1,0 +1,5 @@
+adb-shell>=0.1
+pex @ git+https://github.com/EntySec/Pex.git
+badges @ git+https://github.com/EntySec/Badges.git
+colorscript @ git+https://github.com/EntySec/ColorScript.git
+rich>=10.0
