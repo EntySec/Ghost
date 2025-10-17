@@ -82,11 +82,10 @@ class Console(Cmd):
     # Visual helpers (only)
     # -------------------------
     def _render_header(self) -> None:
-        """Render a fancy hacker-style header with tools table."""
+        """Render a fancy hacker-style header with tools table and quick help."""
         title = Text("Ghost Framework 8.0.0", style="bold white")
         subtitle = Text("Developed by EntySec — https://entysec.com/", style="dim")
 
-        # ASCII art panel (kept similar to original)
         ascii_art = Text(
             "   .--. .-.               .-.\n"
             "  : .--': :              .' `.\n"
@@ -101,25 +100,25 @@ class Console(Cmd):
             border_style=PURPLE,
             box=box.HEAVY,
             padding=(0, 2),
-            title="[bold]" + "GHOST",
+            title="[bold]GHOST",
             subtitle=title,
         )
 
-        # Tools / Commands table (visual only)
-        tools_table = Table.grid(expand=True)
-        tools_table.add_column(ratio=1)
-        tools_table.add_column(ratio=2)
+        # Quick Help / Shortcuts table
+        quick_help = Table(box=box.SIMPLE_HEAVY, expand=False, border_style=PURPLE)
+        quick_help.add_column("Command / Alias", style="bold white", no_wrap=True)
+        quick_help.add_column("Description", style="dim")
 
-        tools = Table(box=box.SIMPLE_HEAVY, expand=False, border_style=PURPLE)
-        tools.add_column("Command", style="bold white", no_wrap=True)
-        tools.add_column("Description", style="dim")
-
-        tools.add_row("connect <host>:[port]", "Connect to device via ADB (default port 5555)")
-        tools.add_row("devices", "List connected devices")
-        tools.add_row("disconnect <id>", "Disconnect device by ID")
-        tools.add_row("interact <id>", "Interact with a connected device")
-        tools.add_row("exit", "Quit Ghost Framework")
-        tools.add_row("Index 99", "Return to Menu / Exit (UI helper)")
+        quick_help.add_row("connect <host>:[port]", "Connect to device via ADB (default port 5555)")
+        quick_help.add_row("devices", "List connected devices")
+        quick_help.add_row("disconnect <id>", "Disconnect device by ID")
+        quick_help.add_row("interact <id>", "Interact with a connected device")
+        quick_help.add_row("analyze <id>", "Run Device Analyzer")
+        quick_help.add_row("an <id>", "Alias for analyze")
+        quick_help.add_row("logcat <id>", "Start live logcat stream")
+        quick_help.add_row("lc <id>", "Alias for logcat")
+        quick_help.add_row("exit", "Quit Ghost Framework")
+        quick_help.add_row("Index 99", "Return to Menu / Exit (UI helper)")
 
         right_panel = Panel(
             Align.left(
@@ -131,12 +130,12 @@ class Console(Cmd):
             title="[bold]Info",
         )
 
-        # combine header columns
-        header_columns = Columns([left, Panel(Padding(tools, (1, 2)), border_style=PURPLE), right_panel])
+        header_columns = Columns([left, Panel(Padding(quick_help, (1, 2)), border_style=PURPLE), right_panel])
         self.rich.print(header_columns)
         self.rich.print(Rule(style=PURPLE))
         self.rich.print(Align.center(Text("Type [bold]devices[/bold] to list connected devices — Index 99 → Exit", style=INFO_STYLE)))
         self.rich.print()
+
 
     def print_empty(self, message: str = "") -> None:
         # preserve signature and behavior, but print a small spacer
@@ -290,7 +289,7 @@ class Console(Cmd):
 
         self.print_process(f"Interacting with device {str(device_id)}...")
         self.devices[device_id]['device'].interact()
-
+    
     def shell(self) -> None:
         """ Run console shell.
 
