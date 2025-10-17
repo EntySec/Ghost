@@ -11,17 +11,11 @@ requires-python = ">=3.9"
 
 dependencies = [
     "adb-shell",
-    "rich<13.0.0"
-]
-
-
-[project.optional-dependencies]
-vcs = [
+    "rich<13.0.0",
     "badges @ git+https://github.com/EntySec/Badges",
     "pex @ git+https://github.com/EntySec/Pex",
     "colorscript @ git+https://github.com/EntySec/ColorScript"
 ]
-
 
 [project.scripts]
 ghost = "ghost:main"
