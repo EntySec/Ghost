@@ -24,12 +24,8 @@ SOFTWARE.
 
 from ghost.core.console import Console
 
-
-def cli() -> None:
-    """ Ghost Framework command-line interface.
-
-    :return None: None
-    """
-
+def main():
+    """Ghost CLI entry-point."""
     console = Console()
     console.shell()
+

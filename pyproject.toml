@@ -5,20 +5,17 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "ghost"
 version = "1.0.0"
-description = "Ghost CLI tool — no interactive installer"
+description = "Ghost CLI tool"
 readme = "README.md"
 requires-python = ">=3.9"
-dependencies = [
-    "adb-shell",
-    "rich"
-]
+dependencies = ["rich", "adb-shell"]
 
 [project.optional-dependencies]
 vcs = [
-    "badges@git+https://github.com/EntySec/Badges",
-    "pex@git+https://github.com/EntySec/Pex",
-    "colorscript@git+https://github.com/EntySec/ColorScript"
+    "badges @ git+https://github.com/EntySec/Badges",
+    "pex @ git+https://github.com/EntySec/Pex",
+    "colorscript @ git+https://github.com/EntySec/ColorScript"
 ]
 
 [project.scripts]
-ghost = "ghost.main:main"
+ghost = "ghost:main"
