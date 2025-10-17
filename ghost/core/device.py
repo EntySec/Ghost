@@ -30,6 +30,7 @@ from adb_shell.adb_device import AdbDeviceTcp
 from adb_shell.auth.keygen import keygen
 from adb_shell.auth.sign_pythonrsa import PythonRSASigner
 from pex.fs import FS
+
 from rich.console import Console
 from rich.panel import Panel
 from rich.table import Table
@@ -40,12 +41,12 @@ _PURPLE = "#7B61FF"
 _console = Console()
 
 _MAX_RETRIES = 5
-_RETRY_DELAY = 3      
-_HEALTHCHECK_DELAY = 10 
+_RETRY_DELAY = 3
+_HEALTHCHECK_DELAY = 10
 
 
 class Device(Cmd, FS):
-    """Enhanced Device class with auto-reconnect and retry mechanisms."""
+    """Enhanced Device class with auto-reconnect, analyzer & log viewer."""
 
     def __init__(self, host: str, port: int = 5555, timeout: int = 10, key_filename: str = 'key') -> None:
         self.host = host
@@ -62,32 +63,23 @@ class Device(Cmd, FS):
             device=self
         )
 
-    def print_process(self, message: str) -> None:
+    # -------------------------
+    # Rich Print Helpers
+    # -------------------------
+    def print_panel(self, message: str, title: str, color: str = _PURPLE) -> None:
         _console.print(Panel.fit(Align.left(Text(message)),
-                                 title=Text("PROCESS", style="bold white on " + _PURPLE),
-                                 border_style=_PURPLE))
+                                 title=Text(title, style=f"bold white on {color}"),
+                                 border_style=color))
 
-    def print_success(self, message: str) -> None:
-        _console.print(Panel.fit(Align.left(Text(message)),
-                                 title=Text("SUCCESS", style="bold white on " + _PURPLE),
-                                 border_style=_PURPLE))
+    def print_process(self, message: str) -> None: self.print_panel(message, "PROCESS", _PURPLE)
+    def print_success(self, message: str) -> None: self.print_panel(message, "SUCCESS", "green")
+    def print_error(self, message: str) -> None: self.print_panel(message, "ERROR", "red")
+    def print_information(self, message: str) -> None: self.print_panel(message, "INFO", _PURPLE)
+    def print_empty(self): _console.print()
 
-    def print_error(self, message: str) -> None:
-        _console.print(Panel.fit(Align.left(Text(message)),
-                                 title=Text("ERROR", style="bold white on " + _PURPLE),
-                                 border_style="red"))
-
-    def print_information(self, message: str) -> None:
-        table = Table.grid(padding=(0, 1))
-        table.add_column(justify="left")
-        table.add_row(Text(message))
-        _console.print(Panel.fit(table,
-                                 title=Text("INFO", style="bold white on " + _PURPLE),
-                                 border_style=_PURPLE))
-
-    def print_empty(self) -> None:
-        _console.print()
-
+    # -------------------------
+    # Device Keys
+    # -------------------------
     def get_keys(self) -> tuple:
         if not os.path.exists(self.key_file):
             keygen(self.key_file)
@@ -97,8 +89,10 @@ class Device(Cmd, FS):
             pub = f.read()
         return pub, priv
 
+    # -------------------------
+    # Connection Management
+    # -------------------------
     def connect(self, auto_reconnect: bool = True) -> bool:
-        """Connect device with retry and optional auto-reconnect thread."""
         self._stop_reconnect.clear()
         self.print_process(f"Connecting to {self.host}...")
         keys = self.get_keys()
@@ -122,14 +116,11 @@ class Device(Cmd, FS):
         return False
 
     def _start_auto_reconnect_thread(self) -> None:
-        """Start background thread to monitor and auto-reconnect."""
-        if self._reconnect_thread and self._reconnect_thread.is_alive():
-            return
+        if self._reconnect_thread and self._reconnect_thread.is_alive(): return
         self._reconnect_thread = threading.Thread(target=self.auto_reconnect, daemon=True)
         self._reconnect_thread.start()
 
     def auto_reconnect(self) -> None:
-        """Monitor device connection and reconnect if disconnected."""
         while not self._stop_reconnect.is_set():
             try:
                 self.device.shell("echo ping", transport_timeout_s=3)
@@ -142,17 +133,18 @@ class Device(Cmd, FS):
             time.sleep(_HEALTHCHECK_DELAY)
 
     def disconnect(self) -> None:
-        """Gracefully disconnect device and stop reconnect thread."""
         self._stop_reconnect.set()
         if self._reconnect_thread and self._reconnect_thread.is_alive():
             self._reconnect_thread.join(timeout=2)
-
         try:
             self.device.close()
             self.print_success(f"Disconnected from {self.host}.")
         except Exception:
             self.print_error("Failed to disconnect properly!")
 
+    # -------------------------
+    # Command / File Operations
+    # -------------------------
     def send_command(self, command: str, output: bool = True) -> str:
         try:
             cmd_output = self.device.shell(command)
@@ -171,8 +163,7 @@ class Device(Cmd, FS):
     def download(self, input_file: str, output_path: str) -> bool:
         exists, is_dir = self.exists(output_path)
         if exists:
-            if is_dir:
-                output_path = output_path + '/' + os.path.split(input_file)[1]
+            if is_dir: output_path += '/' + os.path.split(input_file)[1]
             try:
                 self.print_process(f"Downloading {input_file}...")
                 self.device.pull(input_file, output_path)
@@ -191,7 +182,7 @@ class Device(Cmd, FS):
                 return True
             except Exception:
                 try:
-                    output_path = output_path + '/' + os.path.split(input_file)[1]
+                    output_path += '/' + os.path.split(input_file)[1]
                     self.device.push(input_file, output_path)
                 except Exception:
                     self.print_error(f"Remote directory {output_path} does not exist!")
@@ -206,3 +197,51 @@ class Device(Cmd, FS):
         self.print_process("Loading device modules...")
         self.print_information(f"Modules loaded: {str(len(self.external))}")
         self.loop()
+
+    # -------------------------
+    # Device Analyzer
+    # -------------------------
+    def analyze_device(self):
+        self.print_process(f"Analyzing {self.host} ...")
+        try:
+            props = {
+                "Manufacturer": self.send_command("getprop ro.product.manufacturer"),
+                "Model": self.send_command("getprop ro.product.model"),
+                "Android Version": self.send_command("getprop ro.build.version.release"),
+                "Security Patch": self.send_command("getprop ro.build.version.security_patch"),
+                "Architecture": self.send_command("getprop ro.product.cpu.abi"),
+                "Rooted": "Yes" if self.is_rooted() else "No"
+            }
+
+            table = Table(title=f"📱 Device Analysis — {self.host}", border_style=_PURPLE)
+            table.add_column("Property", style="bold white")
+            table.add_column("Value", style="dim")
+
+            for k, v in props.items(): table.add_row(k, v.strip() if v else "N/A")
+            _console.print(table)
+            self.print_success("Analysis complete!")
+        except Exception as e:
+            self.print_error(f"Analysis failed: {e}")
+
+    # -------------------------
+    # Real-Time Log Viewer
+    # -------------------------
+    def live_logcat(self):
+        self.print_information("Starting live logcat stream (Press Ctrl+C to stop)...")
+
+        def stream_logs():
+            try:
+                shell = self.device.shell("logcat -v time", decode=False)
+                for line in shell:
+                    decoded = line.decode(errors="ignore").strip()
+                    if " E " in decoded: _console.print(Text(decoded, style="red"))
+                    elif " W " in decoded: _console.print(Text(decoded, style="yellow"))
+                    else: _console.print(Text(decoded, style="dim"))
+            except KeyboardInterrupt:
+                self.print_process("Log streaming stopped by user.")
+            except Exception as e:
+                self.print_error(f"Logcat error: {e}")
+
+        t = threading.Thread(target=stream_logs)
+        t.daemon = True
+        t.start()
