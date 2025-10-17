@@ -97,20 +97,30 @@ class Console(Cmd):
             subtitle=title,
         )
 
-        quick_help = Table(box=box.SIMPLE_HEAVY, expand=False, border_style=PURPLE)
-        quick_help.add_column("Command / Alias", style="bold white", no_wrap=True)
-        quick_help.add_column("Description", style="dim")
+        help_table = Table(title=Text("🚀 Ghost Framework Commands", style="bold white on " + PURPLE, justify="center"),
+                        box=box.DOUBLE_EDGE,
+                        border_style=PURPLE,
+                        expand=False,
+                        show_lines=True)
 
-        quick_help.add_row("connect <host>:[port]", "Connect to device via ADB (default port 5555)")
-        quick_help.add_row("devices", "List connected devices")
-        quick_help.add_row("disconnect <id>", "Disconnect device by ID")
-        quick_help.add_row("interact <id>", "Interact with a connected device")
-        quick_help.add_row("analyze <id>", "Run Device Analyzer")
-        quick_help.add_row("an <id>", "Alias for analyze")
-        quick_help.add_row("logcat <id>", "Start live logcat stream")
-        quick_help.add_row("lc <id>", "Alias for logcat")
-        quick_help.add_row("exit", "Quit Ghost Framework")
-        quick_help.add_row("Index 99", "Return to Menu / Exit (UI helper)")
+        help_table.add_column("Command", style="bold white on " + "#5A3EFF", no_wrap=True, justify="center")
+        help_table.add_column("Description", style="italic dim", justify="left")
+
+        commands = [
+            ("🔌 connect <host>:[port]", "Connect to device via ADB (default port 5555)"),
+            ("📱 devices", "List connected devices"),
+            ("❌ disconnect <id>", "Disconnect device by ID"),
+            ("💬 interact <id>", "Interact with a connected device"),
+            ("🔍 analyze <id> / an <id>", "Run Device Analyzer"),
+            ("📜 logcat <id> / lc <id>", "Start live logcat stream"),
+            ("🚪 exit", "Quit Ghost Framework"),
+            ("🔄 Index 99", "Return to Menu / Exit (UI helper)")
+        ]
+
+        ALT_ROW = "#2E2E2E"
+        for i, (cmd, desc) in enumerate(commands):
+            style = Style(bgcolor=ALT_ROW) if i % 2 else Style()
+            help_table.add_row(cmd, desc, style=style)
 
         right_panel = Panel(
             Align.left(
@@ -122,12 +132,11 @@ class Console(Cmd):
             title="[bold]Info",
         )
 
-        header_columns = Columns([left, Panel(Padding(quick_help, (1, 2)), border_style=PURPLE), right_panel])
+        header_columns = Columns([left, Panel(help_table, padding=(1, 2), border_style=PURPLE), right_panel])
         self.rich.print(header_columns)
         self.rich.print(Rule(style=PURPLE))
         self.rich.print(Align.center(Text("Type [bold]devices[/bold] to list connected devices — Index 99 → Exit", style=INFO_STYLE)))
         self.rich.print()
-
 
     def print_empty(self, message: str = "") -> None:
         self.rich.print("")
