@@ -5,11 +5,13 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "ghost"
 version = "1.0.0"
-description = "Ghost — staged installation framework"
-authors = [{ name="Your Name", email="you@example.com" }]
+description = "Ghost CLI tool — no interactive installer"
 readme = "README.md"
 requires-python = ">=3.9"
-dependencies = ["adb-shell", "rich"]
+dependencies = [
+    "adb-shell",
+    "rich"
+]
 
 [project.optional-dependencies]
 vcs = [
@@ -17,7 +19,6 @@ vcs = [
     "pex@git+https://github.com/EntySec/Pex",
     "colorscript@git+https://github.com/EntySec/ColorScript"
 ]
-
 
 [project.scripts]
 ghost = "ghost.main:main"
