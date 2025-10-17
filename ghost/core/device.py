@@ -63,9 +63,6 @@ class Device(Cmd, FS):
             device=self
         )
 
-    # -------------------------
-    # Rich Print Helpers
-    # -------------------------
     def print_panel(self, message: str, title: str, color: str = _PURPLE) -> None:
         _console.print(Panel.fit(Align.left(Text(message)),
                                  title=Text(title, style=f"bold white on {color}"),
@@ -77,9 +74,7 @@ class Device(Cmd, FS):
     def print_information(self, message: str) -> None: self.print_panel(message, "INFO", _PURPLE)
     def print_empty(self): _console.print()
 
-    # -------------------------
-    # Device Keys
-    # -------------------------
+
     def get_keys(self) -> tuple:
         if not os.path.exists(self.key_file):
             keygen(self.key_file)
@@ -89,9 +84,7 @@ class Device(Cmd, FS):
             pub = f.read()
         return pub, priv
 
-    # -------------------------
-    # Connection Management
-    # -------------------------
+
     def connect(self, auto_reconnect: bool = True) -> bool:
         self._stop_reconnect.clear()
         self.print_process(f"Connecting to {self.host}...")
@@ -142,9 +135,7 @@ class Device(Cmd, FS):
         except Exception:
             self.print_error("Failed to disconnect properly!")
 
-    # -------------------------
-    # Command / File Operations
-    # -------------------------
+
     def send_command(self, command: str, output: bool = True) -> str:
         try:
             cmd_output = self.device.shell(command)
@@ -198,9 +189,6 @@ class Device(Cmd, FS):
         self.print_information(f"Modules loaded: {str(len(self.external))}")
         self.loop()
 
-    # -------------------------
-    # Device Analyzer
-    # -------------------------
     def analyze_device(self):
         self.print_process(f"Analyzing {self.host} ...")
         try:
@@ -223,9 +211,6 @@ class Device(Cmd, FS):
         except Exception as e:
             self.print_error(f"Analysis failed: {e}")
 
-    # -------------------------
-    # Real-Time Log Viewer
-    # -------------------------
     def live_logcat(self):
         self.print_information("Starting live logcat stream (Press Ctrl+C to stop)...")
 
