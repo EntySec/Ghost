@@ -70,7 +70,6 @@ def main() -> None:
     use_brek = args.brek
     use_venv = not args.no_venv
 
-    # انتخاب خودکار در حالت بدون prompt
     if not args.yes:
         if not (args.brek or args.no_venv):
             choice = Prompt.ask(
