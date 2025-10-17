@@ -31,3 +31,22 @@
     <br>
     <code>pip3 install git+https://github.com/EntySec/Ghost</code>
 </p>
+
+# Ghost
+
+Ghost — staged installation framework
+
+## install
+
+```bash
+
+python -m venv .venv
+source .venv/bin/activate
+
+
+pip install --upgrade pip
+pip install .[vcs]
+
+
+ghost
+
