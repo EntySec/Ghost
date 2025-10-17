@@ -7,13 +7,14 @@ name = "ghost"
 version = "1.0.0"
 description = "Ghost — staged installation framework"
 authors = [
-    { name="Your Name", email="you@example.com" }
+    { name="enty8080 ", email="enty8080@gmail.com" }
 ]
 readme = "README.md"
 requires-python = ">=3.9"
 
 dependencies = [
-    "adb-shell"
+    "adb-shell",
+    "rich"
 ]
 
 optional-dependencies = { 
