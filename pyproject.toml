@@ -1,0 +1,28 @@
+[build-system]
+requires = ["setuptools>=65", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "ghost"
+version = "1.0.0"
+description = "Ghost — staged installation framework"
+authors = [
+    { name="Your Name", email="you@example.com" }
+]
+readme = "README.md"
+requires-python = ">=3.9"
+
+dependencies = [
+    "adb-shell"
+]
+
+optional-dependencies = { 
+    vcs = [
+        "badges @ git+https://github.com/EntySec/Badges",
+        "pex @ git+https://github.com/EntySec/Pex",
+        "colorscript @ git+https://github.com/EntySec/ColorScript"
+    ]
+}
+
+[project.scripts]
+ghost = "ghost.main:main"
