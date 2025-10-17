@@ -8,7 +8,12 @@ version = "1.0.0"
 description = "Ghost CLI tool"
 readme = "README.md"
 requires-python = ">=3.9"
-dependencies = ["rich", "adb-shell"]
+
+dependencies = [
+    "adb-shell",
+    "rich<13.0.0"
+]
+
 
 [project.optional-dependencies]
 vcs = [
@@ -16,6 +21,7 @@ vcs = [
     "pex @ git+https://github.com/EntySec/Pex",
     "colorscript @ git+https://github.com/EntySec/ColorScript"
 ]
+
 
 [project.scripts]
 ghost = "ghost:main"
