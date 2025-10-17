@@ -26,7 +26,6 @@ from badges.cmd import Cmd
 
 from ghost.core.device import Device
 
-# --- Rich UI imports for styling (visual-only; logic untouched) ---
 from rich.console import Console as RichConsole
 from rich.panel import Panel
 from rich.table import Table
@@ -39,7 +38,6 @@ from rich.padding import Padding
 from rich.columns import Columns
 from rich.markdown import Markdown
 
-# Theme colors
 PURPLE = "#7B61FF"
 WHITE_ON_PURPLE = Style(color="white", bgcolor=PURPLE, bold=True)
 INFO_STYLE = Style(color=PURPLE, bold=True)
@@ -56,7 +54,6 @@ class Console(Cmd):
     """
 
     def __init__(self) -> None:
-        # keep original prompt/intro tokens so framework behavior is unchanged
         super().__init__(
             prompt='(%lineghost%end)> ',
             intro="""%clear%end
@@ -71,16 +68,12 @@ class Console(Cmd):
 """
         )
 
-        # preserve devices dict & logic
         self.devices = {}
 
-        # create rich console for all visual outputs
         self.rich = RichConsole()
         self._render_header()
 
-    # -------------------------
-    # Visual helpers (only)
-    # -------------------------
+
     def _render_header(self) -> None:
         """Render a fancy hacker-style header with tools table and quick help."""
         title = Text("Ghost Framework 8.0.0", style="bold white")
@@ -104,7 +97,6 @@ class Console(Cmd):
             subtitle=title,
         )
 
-        # Quick Help / Shortcuts table
         quick_help = Table(box=box.SIMPLE_HEAVY, expand=False, border_style=PURPLE)
         quick_help.add_column("Command / Alias", style="bold white", no_wrap=True)
         quick_help.add_column("Description", style="dim")
@@ -138,11 +130,8 @@ class Console(Cmd):
 
 
     def print_empty(self, message: str = "") -> None:
-        # preserve signature and behavior, but print a small spacer
-        self.rich.print("")  # purely visual
-
+        self.rich.print("")
     def print_information(self, message: str) -> None:
-        # visually enhanced info box (preserves semantics)
         self.rich.print(Panel(Text(message), border_style=PURPLE, title="[bold white]INFO", box=box.MINIMAL))
 
     def print_warning(self, message: str) -> None:
@@ -155,15 +144,12 @@ class Console(Cmd):
         self.rich.print(Panel(Text(message), border_style="green", title="[bold white]SUCCESS", box=box.MINIMAL))
 
     def print_usage(self, usage: str) -> None:
-        # show usage in an emphasized box
         usage_text = Text.assemble(("Usage: ", "bold"), (usage, ""))
         footer = Text("Index 99 → Return to Menu", style=INFO_STYLE)
         self.rich.print(Panel(usage_text, border_style=PURPLE, title="[bold]USAGE", subtitle=footer))
 
     def print_process(self, message: str) -> None:
-        # lightweight status indicator (visual only)
         with self.rich.status(Text(message, style=INFO_STYLE), spinner="bouncingBall", spinner_style=PURPLE):
-            # no blocking logic here — just visual affordance
             pass
 
     def print_table(self, title: str, columns: tuple, *rows) -> None:
@@ -172,15 +158,11 @@ class Console(Cmd):
         for col in columns:
             table.add_column(str(col), header_style="bold white")
         for row in rows:
-            # ensure each item is string (matching original behavior)
             table.add_row(*[str(x) for x in row])
         footer = Text("Index 99 → Return to Menu", style=INFO_STYLE)
         wrapper = Panel(Padding(table, (0, 1)), subtitle=footer, border_style=PURPLE)
         self.rich.print(wrapper)
 
-    # -------------------------
-    # Original command logic (UNCHANGED)
-    # -------------------------
     def do_exit(self, _) -> None:
         """ Exit Ghost Framework.
 
