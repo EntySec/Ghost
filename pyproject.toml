@@ -19,9 +19,9 @@ dependencies = [
 
 optional-dependencies = { 
     vcs = [
-        "badges @ git+https://github.com/EntySec/Badges",
-        "pex @ git+https://github.com/EntySec/Pex",
-        "colorscript @ git+https://github.com/EntySec/ColorScript"
+        "badges@git+https://github.com/EntySec/Badges",
+        "pex@git+https://github.com/EntySec/Pex",
+        "colorscript@git+https://github.com/EntySec/ColorScript"
     ]
 }
 
