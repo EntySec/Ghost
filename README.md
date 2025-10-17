@@ -36,6 +36,14 @@
 
 Ghost — staged installation framework
 
+## fast-install
+
+```bash
+
+pip install .[vcs] --break
+
+```
+
 ## install
 
 ```bash
@@ -49,4 +57,6 @@ pip install .[vcs]
 
 
 ghost
+
+```
 
