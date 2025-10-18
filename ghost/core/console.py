@@ -138,8 +138,8 @@ class Console(Cmd):
         self.rich.print(Align.center(Text("Type [bold]devices[/bold] to list connected devices — Index 99 → Exit", style=INFO_STYLE)))
         self.rich.print()
 
-    def print_empty(self, message: str = "") -> None:
-        self.rich.print("")
+    def print_empty(self, message: str = "", end: str = "\n") -> None:
+        self.rich.print(message)
     def print_information(self, message: str) -> None:
         self.rich.print(Panel(Text(message), border_style=PURPLE, title="[bold white]INFO", box=box.MINIMAL))
 
