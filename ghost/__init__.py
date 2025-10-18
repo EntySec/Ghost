@@ -24,7 +24,7 @@ SOFTWARE.
 
 from ghost.core.console import Console
 
-def main():
+def cli():
     """Ghost CLI entry-point."""
     console = Console()
     console.shell()
