@@ -22,7 +22,7 @@ dependencies = [
 ]
 
 [project.scripts]
-ghost = "ghost:cli"
+ghost = "ghost.cli:main"
 
 [tool.setuptools.packages.find]
 where = ["."]
