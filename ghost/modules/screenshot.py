@@ -4,8 +4,14 @@ Current source: https://github.com/EntySec/Ghost
 """
 
 import os
-
 from badges.cmd import Command
+from rich.console import Console
+from rich.panel import Panel
+from rich.text import Text
+from rich.align import Align
+
+_PURPLE = "#7B61FF"
+_console = Console()
 
 
 class ExternalCommand(Command):
@@ -22,9 +28,24 @@ class ExternalCommand(Command):
             'NeedsRoot': False
         })
 
-    def run(self, args):
-        self.print_process(f"Taking screenshot...")
-        self.device.send_command("screencap /data/local/tmp/screenshot.png")
+    def print_panel(self, title: str, message: str, color: str = _PURPLE):
+        panel = Panel.fit(
+            Align.left(Text(message)),
+            title=Text(title, style=f"bold white on {color}"),
+            border_style=color
+        )
+        _console.print(panel)
 
-        self.device.download('/data/local/tmp/screenshot.png', args[1])
+    def run(self, args):
+        local_path = args[1]
+        self.print_panel("PROCESS", "Taking screenshot on device...")
+
+        self.device.send_command("screencap /data/local/tmp/screenshot.png")
+        success = self.device.download('/data/local/tmp/screenshot.png', local_path)
+
+        if success:
+            self.print_panel("SUCCESS", f"Screenshot saved to {local_path}")
+        else:
+            self.print_panel("ERROR", "Failed to download screenshot!", color="red")
+
         self.device.send_command("rm /data/local/tmp/screenshot.png")

@@ -4,6 +4,13 @@ Current source: https://github.com/EntySec/Ghost
 """
 
 from badges.cmd import Command
+from rich.console import Console
+from rich.panel import Panel
+from rich.text import Text
+from rich.align import Align
+
+_PURPLE = "#7B61FF"
+_console = Console()
 
 
 class ExternalCommand(Command):
@@ -20,11 +27,20 @@ class ExternalCommand(Command):
             'NeedsRoot': False
         })
 
+    def print_panel(self, title: str, message: str, color: str = _PURPLE):
+        panel = Panel.fit(
+            Align.left(Text(message)),
+            title=Text(title, style=f"bold white on {color}"),
+            border_style=color
+        )
+        _console.print(panel)
+
     def run(self, args):
-        if args[1] in ['on', 'off']:
-            if args[1] == 'on':
-                self.device.send_command("svc wifi enable")
-            else:
-                self.device.send_command("svc wifi disable")
+        state = args[1].lower()
+        if state in ['on', 'off']:
+            action = "enable" if state == 'on' else "disable"
+            self.print_panel("PROCESS", f"Turning WiFi {state}...")
+            self.device.send_command(f"svc wifi {action}")
+            self.print_panel("SUCCESS", f"WiFi turned {state} successfully!")
         else:
-            self.print_usage(self.info['Usage'])
+            self.print_panel("USAGE", f"Usage: {self.info['Usage']}", color="red")
