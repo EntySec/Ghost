@@ -1,21 +1,33 @@
 [build-system]
-requires = ["setuptools>=65", "wheel"]
+requires = ["setuptools>=61", "wheel"]
 build-backend = "setuptools.build_meta"
 
 [project]
 name = "ghost"
-version = "1.0.0"
-description = "Ghost CLI tool"
+version = "8.0.0"
+description = "Ghost Framework is an Android post-exploitation framework that exploits the Android Debug Bridge to remotely access an Android device."
 readme = "README.md"
-requires-python = ">=3.9"
+requires-python = ">=3.7.0"
+license = { file = "LICENSE" }
+authors = [
+  { name = "EntySec", email = "entysec@gmail.com" }
+]
+urls = { Homepage = "https://github.com/EntySec/Ghost" }
 
 dependencies = [
-    "adb-shell",
-    "rich<13.0.0",
-    "badges @ git+https://github.com/EntySec/Badges",
-    "pex @ git+https://github.com/EntySec/Pex",
-    "colorscript @ git+https://github.com/EntySec/ColorScript"
+  "adb-shell",
+  "pex @ git+https://github.com/EntySec/Pex",
+  "badges @ git+https://github.com/EntySec/Badges",
+  "colorscript @ git+https://github.com/EntySec/ColorScript",
 ]
 
 [project.scripts]
 ghost = "ghost:cli"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["*"]
+exclude = []
+
+[tool.setuptools]
+include-package-data = true
