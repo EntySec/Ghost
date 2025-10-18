@@ -23,7 +23,6 @@ SOFTWARE.
 """
 
 from badges.cmd import Cmd
-
 from ghost.core.device import Device
 
 from rich.console import Console as RichConsole
@@ -36,7 +35,6 @@ from rich.style import Style
 from rich.rule import Rule
 from rich.padding import Padding
 from rich.columns import Columns
-from rich.markdown import Markdown
 
 PURPLE = "#7B61FF"
 WHITE_ON_PURPLE = Style(color="white", bgcolor=PURPLE, bold=True)
@@ -56,21 +54,23 @@ class Console(Cmd):
     def __init__(self) -> None:
         super().__init__(
             prompt='(%lineghost%end)> ',
-            intro="""%clear%end
+            intro="""
    .--. .-.               .-.
   : .--': :              .' `.
   : : _ : `-.  .--.  .--.`. .'
   : :; :: .. :' .; :`._-.': :
   `.__.':_;:_;`.__.'`.__.':_;
 
---=[ %bold%whiteGhost Framework 8.0.0%end
---=[ Developed by EntySec (%linehttps://entysec.com/%end)
+--=[ Ghost Framework 8.0.0
+--=[ Developed by EntySec (https://entysec.com/)
 """
         )
 
         self.devices = {}
 
-        self.rich = RichConsole()
+        # Force ANSI + TrueColor for Linux/modern terminals
+        self.rich = RichConsole(force_terminal=True, color_system="truecolor")
+        self.rich.clear()
         self._render_header()
 
 
@@ -113,6 +113,7 @@ class Console(Cmd):
             ("💬 interact <id>", "Interact with a connected device"),
             ("🔍 analyze <id> / an <id>", "Run Device Analyzer"),
             ("📜 logcat <id> / lc <id>", "Start live logcat stream"),
+            ("🧹 clear", "Clear the terminal screen"),
             ("🚪 exit", "Quit Ghost Framework"),
             ("🔄 Index 99", "Return to Menu / Exit (UI helper)")
         ]
@@ -139,25 +140,32 @@ class Console(Cmd):
         self.rich.print()
 
     def print_empty(self, message: str = "", end: str = "\n") -> None:
+        """Print a simple message."""
         self.rich.print(message)
     def print_information(self, message: str) -> None:
+        """Print an informational message in a panel."""
         self.rich.print(Panel(Text(message), border_style=PURPLE, title="[bold white]INFO", box=box.MINIMAL))
 
     def print_warning(self, message: str) -> None:
+        """Print a warning message in a panel."""
         self.rich.print(Panel(Text(message), border_style="yellow", title="[bold white]WARNING", box=box.MINIMAL))
 
     def print_error(self, message: str) -> None:
+        """Print an error message in a panel."""
         self.rich.print(Panel(Text(message), border_style="red", title="[bold white]ERROR", box=box.MINIMAL))
 
     def print_success(self, message: str) -> None:
+        """Print a success message in a panel."""
         self.rich.print(Panel(Text(message), border_style="green", title="[bold white]SUCCESS", box=box.MINIMAL))
 
     def print_usage(self, usage: str) -> None:
+        """Print usage information for a command."""
         usage_text = Text.assemble(("Usage: ", "bold"), (usage, ""))
         footer = Text("Index 99 → Return to Menu", style=INFO_STYLE)
         self.rich.print(Panel(usage_text, border_style=PURPLE, title="[bold]USAGE", subtitle=footer))
 
     def print_process(self, message: str) -> None:
+        """Show a processing spinner with a message."""
         with self.rich.status(Text(message, style=INFO_STYLE), spinner="bouncingBall", spinner_style=PURPLE):
             pass
 
@@ -173,25 +181,14 @@ class Console(Cmd):
         self.rich.print(wrapper)
 
     def do_exit(self, _) -> None:
-        """ Exit Ghost Framework.
-
-        :return None: None
-        :raises EOFError: EOF error
-        """
-
+        """Quit Ghost Framework and disconnect all devices."""
         for device in list(self.devices):
             self.devices[device]['device'].disconnect()
             del self.devices[device]
-
         raise EOFError
 
     def do_connect(self, args: list) -> None:
-        """ Connect device.
-
-        :param list args: arguments
-        :return None: None
-        """
-
+        """Connect to a device via ADB."""
         if len(args) < 2:
             self.print_usage("connect <host>:[port]")
             return
@@ -214,7 +211,6 @@ class Console(Cmd):
                 }
             })
             self.print_empty("")
-
             self.print_information(
                 f"Type %greendevices%end to list all connected devices.")
             self.print_information(
@@ -223,37 +219,25 @@ class Console(Cmd):
             )
 
     def do_devices(self, _) -> None:
-        """ Show connected devices.
-
-        :return None: None
-        """
-
+        """List all connected devices."""
         if not self.devices:
             self.print_warning("No devices connected.")
             return
 
         devices = []
-
         for device in self.devices:
             devices.append(
                 (device, self.devices[device]['host'],
                  self.devices[device]['port']))
-
         self.print_table("Connected Devices", ('ID', 'Host', 'Port'), *devices)
 
     def do_disconnect(self, args: list) -> None:
-        """ Disconnect device.
-
-        :param list args: arguments
-        :return None: None
-        """
-
+        """Disconnect a connected device by ID."""
         if len(args) < 2:
             self.print_usage("disconnect <id>")
             return
 
         device_id = int(args[1])
-
         if device_id not in self.devices:
             self.print_error("Invalid device ID!")
             return
@@ -262,29 +246,23 @@ class Console(Cmd):
         self.devices.pop(device_id)
 
     def do_interact(self, args: list) -> None:
-        """ Interact with device.
-
-        :param list args: arguments
-        :return None: None
-        """
-
+        """Interact with a connected device by ID."""
         if len(args) < 2:
             self.print_usage("interact <id>")
             return
 
         device_id = int(args[1])
-
         if device_id not in self.devices:
             self.print_error("Invalid device ID!")
             return
 
         self.print_process(f"Interacting with device {str(device_id)}...")
         self.devices[device_id]['device'].interact()
-    
+
+    def do_clear(self, _) -> None:
+        """Clear the terminal screen."""
+        self.rich.clear()
+
     def shell(self) -> None:
-        """ Run console shell.
-
-        :return None: None
-        """
-
+        """Start the main Ghost Framework loop."""
         self.loop()
