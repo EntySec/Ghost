@@ -18,4 +18,4 @@ dependencies = [
 ]
 
 [project.scripts]
-ghost = "ghost:main"
+ghost = "ghost:cli"
