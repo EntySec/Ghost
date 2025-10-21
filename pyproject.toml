@@ -1,0 +1,33 @@
+[build-system]
+requires = ["setuptools>=61", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "ghost"
+version = "8.0.0"
+description = "Ghost Framework is an Android post-exploitation framework that exploits the Android Debug Bridge to remotely access an Android device."
+readme = "README.md"
+requires-python = ">=3.7.0"
+license = { file = "LICENSE" }
+authors = [
+  { name = "EntySec", email = "entysec@gmail.com" }
+]
+urls = { Homepage = "https://github.com/EntySec/Ghost" }
+
+dependencies = [
+  "adb-shell",
+  "pex @ git+https://github.com/EntySec/Pex",
+  "badges @ git+https://github.com/EntySec/Badges",
+  "colorscript @ git+https://github.com/EntySec/ColorScript",
+]
+
+[project.scripts]
+ghost = "ghost.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["*"]
+exclude = []
+
+[tool.setuptools]
+include-package-data = true
