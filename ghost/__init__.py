@@ -22,14 +22,4 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 """
 
-from ghost.core.console import Console
-
-
-def cli() -> None:
-    """ Ghost Framework command-line interface.
-
-    :return None: None
-    """
-
-    console = Console()
-    console.shell()
+__version__ = "…"
