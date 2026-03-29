@@ -30,4 +30,8 @@
     <b>Installation</b><br>
     <br>
     <code>pip3 install git+https://github.com/EntySec/Ghost</code>
-</p>
+</p><img width="1366" height="768" alt="image" src="https://github.com/user-attachments/assets/f6d8a4a6-3284-4cd5-b348-491f6dcfb661" />
+fe80::4cc3:60ff:fefc:499e
+192.168.1.5
+2400:ac40:60b:5c56:4cc3:60ff:fefc:499e
+2400:ac40:60b:5c56:3ea7:5d7a:e590:c4ac
